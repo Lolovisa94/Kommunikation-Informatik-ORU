@@ -15,6 +15,7 @@ import java.sql.DriverManager;
 
 
 public class ConnectionClass {
+    private static Connection connection;
     
     public static void test(){
 	ConnectionClass obj_DB_Connection = new ConnectionClass();
@@ -22,20 +23,22 @@ public class ConnectionClass {
 	connection = obj_DB_Connection.get_connection();
 	System.out.println(connection);
     }
-        
-     public static Connection get_connection(){
-	Connection connection=null;
-	try{
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		connection=DriverManager.getConnection("jdbc:mysql://35.228.249.180:3306/CommunicationDB","root","root");
-            
-	}catch (Exception e) {
-		System.out.println(e);
-	}
-	return connection;
-     }
+    
+    //Only establishes new connection if no other connection is found. Returns current connection if connection is found.
+    public static Connection get_connection(){
+        if (connection == null) {
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                connection = DriverManager.getConnection("jdbc:mysql://35.228.249.180:3306/CommunicationDB", "root", "root");
+
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+        return connection;
+    }
      
-      public static Connection conn = ConnectionClass.get_connection();
+    public static Connection conn = ConnectionClass.get_connection();
 }
 
     

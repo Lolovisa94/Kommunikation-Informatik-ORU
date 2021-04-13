@@ -6,6 +6,7 @@
 package GUI;
 
 import Objects.CurrentUser;
+import Methods.SearchUser;
 
 
 /**
@@ -13,6 +14,7 @@ import Objects.CurrentUser;
  * @author Pierre
  */
 public class PageGUI extends javax.swing.JFrame {
+        private SearchUser searchUser;
 
     /**
      * Creates new form StartingPageGUI
@@ -22,8 +24,19 @@ public class PageGUI extends javax.swing.JFrame {
         resetMenu();
         resetPanel();
         selectStartsida();
+        initializeMethods();
+        initializeGUIComponents();
 
         welcomeText(CurrentUser.currentUser.getName());
+    }
+    
+    public void initializeGUIComponents() {
+        lblIngetSokresultat.setVisible(false);
+        spSoktaAnvandare.setVisible(false);
+    }
+    
+    public void initializeMethods() {
+        searchUser = new SearchUser();
     }
 
     public void resetMenu() {
@@ -93,6 +106,13 @@ public class PageGUI extends javax.swing.JFrame {
         selSokfunktion.setVisible(true);
         pnlSokfunktion.setVisible(true);
         isSelSokfunktion = true;
+        
+        tblSoktaAnvandare.setVisible(false);
+    }
+    
+    public String getSearchText(){
+        String searchText = tfSokText.getText();
+        return searchText;
     }
 
     public void selectProfilinstallningar() {
@@ -158,13 +178,18 @@ public class PageGUI extends javax.swing.JFrame {
         lblMeddelanden = new javax.swing.JLabel();
         pnlSokfunktion = new javax.swing.JPanel();
         lblSokfunktion = new javax.swing.JLabel();
+        tfSokText = new javax.swing.JTextField();
+        btnSokAnvandare = new javax.swing.JPanel();
+        lblbtnSokAnvandare = new javax.swing.JLabel();
+        spSoktaAnvandare = new javax.swing.JScrollPane();
+        tblSoktaAnvandare = new javax.swing.JTable();
+        lblIngetSokresultat = new javax.swing.JLabel();
         pnlProfilinstallningar = new javax.swing.JPanel();
         lblProfilinstallningar = new javax.swing.JLabel();
         pnlAdminfunktionalitet = new javax.swing.JPanel();
         lblAdminfunktionalitet = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1920, 1010));
 
         panelMenuBackground.setBackground(new java.awt.Color(158, 174, 187));
         panelMenuBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -233,7 +258,7 @@ public class PageGUI extends javax.swing.JFrame {
             .addGroup(btnStartsidaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblBtnStartsida)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         selStartsida.getAccessibleContext().setAccessibleDescription("");
@@ -284,7 +309,7 @@ public class PageGUI extends javax.swing.JFrame {
             .addGroup(btnAdminfunktionalitetLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblBtnAdminfunktionalitet)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btnProfilinstallningar.setBackground(new java.awt.Color(77, 85, 92));
@@ -333,7 +358,7 @@ public class PageGUI extends javax.swing.JFrame {
             .addGroup(btnProfilinstallningarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblBtnProfilinstallningar)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btnSokfunktion.setBackground(new java.awt.Color(77, 85, 92));
@@ -382,7 +407,7 @@ public class PageGUI extends javax.swing.JFrame {
             .addGroup(btnSokfunktionLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblBtnSokfunktion)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btnMeddelanden.setBackground(new java.awt.Color(77, 85, 92));
@@ -431,7 +456,7 @@ public class PageGUI extends javax.swing.JFrame {
             .addGroup(btnMeddelandenLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblBtnStartsida4)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btnKalender.setBackground(new java.awt.Color(77, 85, 92));
@@ -480,7 +505,7 @@ public class PageGUI extends javax.swing.JFrame {
             .addGroup(btnKalenderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblBtnKalender)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btnForum.setBackground(new java.awt.Color(77, 85, 92));
@@ -529,7 +554,7 @@ public class PageGUI extends javax.swing.JFrame {
             .addGroup(btnForumLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblBtnForum)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelMenuLayout = new javax.swing.GroupLayout(panelMenu);
@@ -684,21 +709,92 @@ public class PageGUI extends javax.swing.JFrame {
         lblSokfunktion.setForeground(new java.awt.Color(77, 85, 92));
         lblSokfunktion.setText("Sökfunktion");
 
+        tfSokText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfSokTextActionPerformed(evt);
+            }
+        });
+
+        btnSokAnvandare.setBackground(new java.awt.Color(0, 94, 125));
+        btnSokAnvandare.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
+        btnSokAnvandare.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSokAnvandareMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSokAnvandareMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSokAnvandareMouseExited(evt);
+            }
+        });
+
+        lblbtnSokAnvandare.setFont(new java.awt.Font("Poppins", 1, 20)); // NOI18N
+        lblbtnSokAnvandare.setForeground(new java.awt.Color(158, 174, 187));
+        lblbtnSokAnvandare.setText("Sök");
+        lblbtnSokAnvandare.setIconTextGap(5);
+        btnSokAnvandare.add(lblbtnSokAnvandare);
+
+        spSoktaAnvandare.setBackground(new java.awt.Color(158, 174, 187));
+        spSoktaAnvandare.setForeground(new java.awt.Color(77, 85, 92));
+        spSoktaAnvandare.setColumnHeader(null);
+        spSoktaAnvandare.setColumnHeaderView(null);
+        spSoktaAnvandare.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        spSoktaAnvandare.setOpaque(false);
+
+        tblSoktaAnvandare.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        tblSoktaAnvandare.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Namn", "Telefon", "Email"
+            }
+        ));
+        tblSoktaAnvandare.setName(""); // NOI18N
+        tblSoktaAnvandare.setRowHeight(20);
+        tblSoktaAnvandare.getTableHeader().setReorderingAllowed(false);
+        spSoktaAnvandare.setViewportView(tblSoktaAnvandare);
+
+        lblIngetSokresultat.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblIngetSokresultat.setForeground(new java.awt.Color(77, 85, 92));
+        lblIngetSokresultat.setText("Sökningen gav inget resultat.");
+
         javax.swing.GroupLayout pnlSokfunktionLayout = new javax.swing.GroupLayout(pnlSokfunktion);
         pnlSokfunktion.setLayout(pnlSokfunktionLayout);
         pnlSokfunktionLayout.setHorizontalGroup(
             pnlSokfunktionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSokfunktionLayout.createSequentialGroup()
-                .addGap(413, 413, 413)
-                .addComponent(lblSokfunktion)
-                .addContainerGap(927, Short.MAX_VALUE))
+                .addGroup(pnlSokfunktionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlSokfunktionLayout.createSequentialGroup()
+                        .addGap(413, 413, 413)
+                        .addComponent(lblSokfunktion))
+                    .addGroup(pnlSokfunktionLayout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addGroup(pnlSokfunktionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(spSoktaAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 761, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlSokfunktionLayout.createSequentialGroup()
+                                .addComponent(tfSokText, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnSokAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblIngetSokresultat, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(717, Short.MAX_VALUE))
         );
         pnlSokfunktionLayout.setVerticalGroup(
             pnlSokfunktionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSokfunktionLayout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addComponent(lblSokfunktion, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(898, Short.MAX_VALUE))
+                .addGap(62, 62, 62)
+                .addGroup(pnlSokfunktionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlSokfunktionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnSokAnvandare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tfSokText, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
+                    .addComponent(lblIngetSokresultat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addComponent(spSoktaAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(496, Short.MAX_VALUE))
         );
 
         jLayeredPane2.add(pnlSokfunktion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -905,6 +1001,40 @@ public class PageGUI extends javax.swing.JFrame {
         selectAdminfunktionalitet();
     }//GEN-LAST:event_btnAdminfunktionalitetMouseClicked
 
+    private void tfSokTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfSokTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfSokTextActionPerformed
+
+    private void btnSokAnvandareMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSokAnvandareMouseClicked
+        // TODO add your handling code here:
+        boolean foundUsers = searchUser.findUsers(tfSokText.getText(), tblSoktaAnvandare);
+        if(foundUsers){
+            spSoktaAnvandare.setVisible(true);
+            tblSoktaAnvandare.setVisible(true);
+            lblIngetSokresultat.setVisible(false);
+        }else {
+            spSoktaAnvandare.setVisible(false);
+            tblSoktaAnvandare.setVisible(false);
+            lblIngetSokresultat.setVisible(true);
+        }
+        
+    }//GEN-LAST:event_btnSokAnvandareMouseClicked
+
+    private void btnSokAnvandareMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSokAnvandareMouseEntered
+        // TODO add your handling code here:
+        btnSokAnvandare.setBackground(new java.awt.Color(158, 174, 187));
+
+        btnSokAnvandare.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0,94,125), 2, true));
+        lblbtnSokAnvandare.setForeground(new java.awt.Color(0, 94, 125));
+    }//GEN-LAST:event_btnSokAnvandareMouseEntered
+
+    private void btnSokAnvandareMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSokAnvandareMouseExited
+        // TODO add your handling code here:
+        btnSokAnvandare.setBackground(new java.awt.Color(0, 94, 125));
+        lblbtnSokAnvandare.setForeground(new java.awt.Color(158, 174, 187));
+        btnSokAnvandare.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
+    }//GEN-LAST:event_btnSokAnvandareMouseExited
+
     private boolean isSelStartsida;
     private boolean isSelSokfunktion;
     private boolean isSelProfilinstallningar;
@@ -920,6 +1050,7 @@ public class PageGUI extends javax.swing.JFrame {
     public static javax.swing.JPanel btnKalender;
     public static javax.swing.JPanel btnMeddelanden;
     public static javax.swing.JPanel btnProfilinstallningar;
+    private javax.swing.JPanel btnSokAnvandare;
     public static javax.swing.JPanel btnSokfunktion;
     public static javax.swing.JPanel btnStartsida;
     private javax.swing.JLabel iconLogga;
@@ -933,6 +1064,7 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblBtnStartsida;
     private javax.swing.JLabel lblBtnStartsida4;
     private javax.swing.JLabel lblForum;
+    private javax.swing.JLabel lblIngetSokresultat;
     private javax.swing.JLabel lblKalender;
     private javax.swing.JLabel lblMeddelanden;
     private javax.swing.JLabel lblOrebro;
@@ -940,6 +1072,7 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblSokfunktion;
     private javax.swing.JLabel lblUniversitet;
     private javax.swing.JLabel lblWelcome;
+    private javax.swing.JLabel lblbtnSokAnvandare;
     private javax.swing.JPanel panelMenu;
     private javax.swing.JPanel panelMenuBackground;
     private javax.swing.JPanel panelMenuLogga;
@@ -957,5 +1090,8 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JPanel selProfilinstallningar;
     private javax.swing.JPanel selSokfunktion;
     private javax.swing.JPanel selStartsida;
+    private javax.swing.JScrollPane spSoktaAnvandare;
+    private javax.swing.JTable tblSoktaAnvandare;
+    private javax.swing.JTextField tfSokText;
     // End of variables declaration//GEN-END:variables
 }

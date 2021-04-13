@@ -5,24 +5,35 @@
  */
 package Validation;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  *
  * @author Pierre
  */
 public class Validation {
-    
+    private static boolean resultat;
+
     //felmeddelande när ett fält är tomt, tar in en String i parametern och returnar en boolean
-        public static boolean fieldEmpty(String field) {
+    public static boolean fieldEmpty(String field) {
         resultat = false;
         if (field.equals("")) {
             resultat = true;
         }
         return resultat;
     }
-        
-        public static void setLabelText(javax.swing.JLabel label, String text){
+
+    public static void setLabelText(javax.swing.JLabel label, String text) {
         label.setText(text);
-        }        
-        
-private static boolean resultat;
+    }
+    
+    //Validerar user input för att kontrollera att namn endast innehåller bokstäver och mellanslag.
+    public static boolean isValidatedName(String name) {
+        Pattern pattern = Pattern.compile("^[a-zA-Z\\s]+$", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(name);
+        boolean matchFound = matcher.find();
+
+        return matchFound;
+    }
 }
