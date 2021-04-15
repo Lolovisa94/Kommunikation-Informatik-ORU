@@ -5,7 +5,7 @@ package GUI;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import Methods.LogIn;
+import methods.LogIn;
 import java.sql.ResultSet;
 /**
  *

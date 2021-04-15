@@ -1,4 +1,4 @@
-package Methods;
+package methods;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,6 +18,7 @@ public class User {
     private String pw;
     private boolean admin;
     private String email;
+    private String notifikation;
 
     public User(int id, String name, int phone, String pw, String admin, String email) {
         this.id = id;
@@ -26,6 +27,25 @@ public class User {
         this.pw = pw;
         setAdmin(admin);
         this.email = email;
+    }
+    
+    public User(String notifikation) {
+        
+        this.notifikation = notifikation;
+        
+
+    }
+    
+    public void setNotify(String notifikation) {
+
+        this.notifikation = notifikation;
+
+    }
+
+    public String getNotify() {
+
+        return notifikation;
+
     }
 
     public void setID(int id) {

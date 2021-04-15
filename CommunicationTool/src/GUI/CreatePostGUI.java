@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import methods.CreatePost;
 import methods.FetchPosts;
+import methods.Inlagg;
 /**
  *
  * @author Pierre
@@ -20,6 +21,7 @@ public class CreatePostGUI extends javax.swing.JFrame {
     public CreatePostGUI() {
         initComponents();
         fillCategories();
+                    
     }
             private void fillCategories()
         {
@@ -254,6 +256,7 @@ public class CreatePostGUI extends javax.swing.JFrame {
 
     private void btnPostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPostActionPerformed
         new CreatePost();
+        System.out.println("post created = " + CreatePost.postCreated);
         if(CreatePost.postCreated == true){
         dispose();
         new FetchPosts();

@@ -9,12 +9,15 @@ import javax.swing.JOptionPane;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import GUI.CreatePostGUI;
+import Objects.LatestPost;
+import mail.Mail;
 /**
  *
  * @author hamma
  */
 public final class CreatePost
     {
+    private int id;
     private String titel; //borde fungera
     private String text; //borde fungera
     private final String publiceringsdatum; //borde fungera
@@ -39,8 +42,37 @@ public final class CreatePost
         this.kategori = CreatePostGUI.getCategory();
         this.titel = CreatePostGUI.getTitel();
         createPostSQL();
+        sendEmailNotification();
+
     }
     @SuppressWarnings("UseSpecificCatch")
+    
+    public void sendEmailNotification(){
+        
+        
+            if(postCreated){
+            String selectIDQuery = "SELECT Inlägg_ID FROM Inlägg where Titel = '" + titel + "'";
+                try{
+            Statement st = Connectivity.ConnectionClass.conn.createStatement();
+            rs = st.executeQuery(selectIDQuery);
+            rs.next();
+            id = rs.getInt("Inlägg_ID");
+                } catch (Exception e){
+                    JOptionPane.showMessageDialog(null, "Något gick fel kontakta IT med felkod" + e);
+                    System.out.println(e);
+                }
+                Inlagg newPost = new Inlagg(id, titel, text, publiceringstid, kategori_ID);
+                
+                LatestPost.inlagg = newPost; 
+                
+                Mail mail = new Mail();
+                mail.lagraEmail();
+                mail.iterationMail();
+            }
+    }       
+    
+
+    
     public boolean createPostSQL()
     {
         postCreated = false;
@@ -134,5 +166,9 @@ public final class CreatePost
             System.out.println(e);
             JOptionPane.showMessageDialog(null, "Något gick fel. Kontakta administratör. Felkod " + e);
         }
+    }
+
+    private Inlagg newInlagg() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -11,13 +11,13 @@ import Validation.Validation;
 import java.awt.Dimension;
 import methods.FetchPosts;
 
-
 /**
  *
  * @author Pierre
  */
 public class PageGUI extends javax.swing.JFrame {
-        private SearchUser searchUser;
+
+    private SearchUser searchUser;
 
     /**
      * Creates new form StartingPageGUI
@@ -32,13 +32,13 @@ public class PageGUI extends javax.swing.JFrame {
 
         welcomeText(CurrentUser.currentUser.getName());
     }
-    
+
     public void initializeGUIComponents() {
         lblIngetSokresultat.setVisible(false);
         tblSoktaAnvandare.setVisible(false);
-        
+
     }
-    
+
     public void initializeMethods() {
         searchUser = new SearchUser();
     }
@@ -111,11 +111,11 @@ public class PageGUI extends javax.swing.JFrame {
         selSokfunktion.setVisible(true);
         pnlSokfunktion.setVisible(true);
         isSelSokfunktion = true;
-        
+
         tblSoktaAnvandare.setVisible(false);
     }
-    
-    public String getSearchText(){
+
+    public String getSearchText() {
         String searchText = tfSokText.getText();
         return searchText;
     }
@@ -126,6 +126,8 @@ public class PageGUI extends javax.swing.JFrame {
         selProfilinstallningar.setVisible(true);
         pnlProfilinstallningar.setVisible(true);
         isSelProfilinstallningar = true;
+                setInfoPersonligInfo();
+                setRadio();
     }
 
     public void selectAdminfunktionalitet() {
@@ -133,7 +135,7 @@ public class PageGUI extends javax.swing.JFrame {
         resetMenu();
         selAdminfunktionalitet.setVisible(true);
         pnlAdminfunktionalitet.setVisible(true);
-        isSelAdminfunktionalitet= true;
+        isSelAdminfunktionalitet = true;
     }
 
     public void welcomeText(String name) {
@@ -141,10 +143,27 @@ public class PageGUI extends javax.swing.JFrame {
         lblWelcome.setText("Välkommen " + name + "!");
     }
 
-        public static void setFelmeddelandePIUppdatera() {
+    public static void setFelmeddelandePIUppdatera() {
         Validation.setLabelText(lblPIFelmeddelandeUppdatera, "Inga ändringar har gjorts!");
     }
-    
+
+    public void setInfoPersonligInfo() {
+        lblPIUserName.setText(CurrentUser.currentUser.getName());
+
+        int ii = CurrentUser.currentUser.getPhone();
+        String phone = Integer.toString(ii);
+
+        tfPITlfn.setText(phone);
+        tfPIEmail.setText(CurrentUser.currentUser.getEmail());
+
+        // förhindrar att den automatiskt fokuserar på ett textfält och användaren råka ändra
+        pnlStartsida.requestFocus();
+
+        //int > String
+        int i = 10;
+        String s = Integer.toString(i);
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -228,6 +247,9 @@ public class PageGUI extends javax.swing.JFrame {
         btnPIUppdatera = new javax.swing.JButton();
         lblPIFelmeddelandeNamn = new javax.swing.JLabel();
         lblPIFelmeddelandeUppdatera = new javax.swing.JLabel();
+        lblPITlfn1 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1173,6 +1195,29 @@ public class PageGUI extends javax.swing.JFrame {
         lblPIFelmeddelandeNamn.setFont(new java.awt.Font(".SF NS Text", 1, 13)); // NOI18N
         lblPIFelmeddelandeNamn.setForeground(new java.awt.Color(255, 51, 51));
 
+        lblPITlfn1.setBackground(new java.awt.Color(77, 85, 92));
+        lblPITlfn1.setFont(new java.awt.Font("Poppins Medium", 1, 14)); // NOI18N
+        lblPITlfn1.setForeground(new java.awt.Color(77, 85, 92));
+        lblPITlfn1.setText("Notifiering via e-post:");
+
+        jRadioButton1.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
+        jRadioButton1.setForeground(new java.awt.Color(51, 51, 51));
+        jRadioButton1.setText("Ja");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton2.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
+        jRadioButton2.setForeground(new java.awt.Color(51, 51, 51));
+        jRadioButton2.setText("Nej");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlProfilinstallningarLayout = new javax.swing.GroupLayout(pnlProfilinstallningar);
         pnlProfilinstallningar.setLayout(pnlProfilinstallningarLayout);
         pnlProfilinstallningarLayout.setHorizontalGroup(
@@ -1180,35 +1225,42 @@ public class PageGUI extends javax.swing.JFrame {
             .addGroup(pnlProfilinstallningarLayout.createSequentialGroup()
                 .addGap(413, 413, 413)
                 .addGroup(pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPersonligaInstallningarText)
-                    .addComponent(lblPIRubrik)
                     .addGroup(pnlProfilinstallningarLayout.createSequentialGroup()
-                        .addGroup(pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPIEmail)
-                            .addComponent(lblPITlfn)
-                            .addComponent(lblPINamn))
-                        .addGap(87, 87, 87)
-                        .addGroup(pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfPITlfn, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(tfPIEmail, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(pnlPIUserName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblPIFelmeddelandeNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnlProfilinstallningarLayout.createSequentialGroup()
-                        .addGap(251, 251, 251)
-                        .addComponent(btnPIUppdatera))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlProfilinstallningarLayout.createSequentialGroup()
-                        .addComponent(lblPIPW)
+                        .addComponent(lblPITlfn1)
                         .addGroup(pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlProfilinstallningarLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lblPIFelmeddelandeUppdatera, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(879, Short.MAX_VALUE))
                             .addGroup(pnlProfilinstallningarLayout.createSequentialGroup()
+                                .addGap(61, 61, 61)
+                                .addComponent(jRadioButton1)
+                                .addGap(74, 74, 74)
+                                .addComponent(jRadioButton2)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(pnlProfilinstallningarLayout.createSequentialGroup()
+                        .addGroup(pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblPersonligaInstallningarText)
+                            .addComponent(lblPIRubrik)
+                            .addGroup(pnlProfilinstallningarLayout.createSequentialGroup()
+                                .addGroup(pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblPIEmail)
+                                    .addComponent(lblPITlfn)
+                                    .addComponent(lblPINamn))
+                                .addGap(87, 87, 87)
+                                .addGroup(pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfPITlfn, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(tfPIEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(pnlPIUserName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblPIFelmeddelandeNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(pnlProfilinstallningarLayout.createSequentialGroup()
+                                .addComponent(lblPIPW)
                                 .addGap(182, 182, 182)
-                                .addComponent(jButton1)
-                                .addGap(354, 354, 354)))))
-                .addContainerGap(687, Short.MAX_VALUE))
+                                .addGroup(pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton1)
+                                    .addComponent(btnPIUppdatera))))
+                        .addContainerGap(717, Short.MAX_VALUE))))
         );
         pnlProfilinstallningarLayout.setVerticalGroup(
             pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1217,7 +1269,7 @@ public class PageGUI extends javax.swing.JFrame {
                 .addComponent(lblPIRubrik, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblPersonligaInstallningarText, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addGap(47, 47, 47)
                 .addGroup(pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblPINamn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlProfilinstallningarLayout.createSequentialGroup()
@@ -1234,14 +1286,21 @@ public class PageGUI extends javax.swing.JFrame {
                     .addComponent(lblPITlfn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfPITlfn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblPIFelmeddelandeUppdatera, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGroup(pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlProfilinstallningarLayout.createSequentialGroup()
+                        .addComponent(lblPIFelmeddelandeUppdatera, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRadioButton1)
+                            .addComponent(jRadioButton2)))
+                    .addComponent(lblPITlfn1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPIUppdatera)
-                .addGap(51, 51, 51)
+                .addGap(52, 52, 52)
                 .addGroup(pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPIPW, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addContainerGap(252, Short.MAX_VALUE))
+                .addContainerGap(218, Short.MAX_VALUE))
         );
 
         jLayeredPane2.add(pnlProfilinstallningar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -1403,10 +1462,10 @@ public class PageGUI extends javax.swing.JFrame {
     private void btnSokAnvandareMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSokAnvandareMouseClicked
         // TODO add your handling code here:
         boolean foundUsers = searchUser.findUsers(tfSokText.getText(), tblSoktaAnvandare);
-        if(foundUsers){
+        if (foundUsers) {
             tblSoktaAnvandare.setVisible(true);
             lblIngetSokresultat.setVisible(false);
-        }else {
+        } else {
             tblSoktaAnvandare.setVisible(false);
             lblIngetSokresultat.setVisible(true);
         }
@@ -1416,7 +1475,7 @@ public class PageGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         btnSokAnvandare.setBackground(new java.awt.Color(158, 174, 187));
 
-        btnSokAnvandare.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0,94,125), 2, true));
+        btnSokAnvandare.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
         lblbtnSokAnvandare.setForeground(new java.awt.Color(0, 94, 125));
     }//GEN-LAST:event_btnSokAnvandareMouseEntered
 
@@ -1520,11 +1579,48 @@ public class PageGUI extends javax.swing.JFrame {
 
     private void btnPIUppdateraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPIUppdateraActionPerformed
         // TODO add your handling code here:
-
         methods.ChangeUserInfo cUi = new methods.ChangeUserInfo();
         cUi.changeMailTel(tfPIEmail.getText(), tfPITlfn.getText());
+        // cUi.controlRadio();
+
     }//GEN-LAST:event_btnPIUppdateraActionPerformed
 
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+
+        if (jRadioButton1.isSelected()) {
+
+            jRadioButton2.setSelected(false);
+
+        }
+
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+
+        if (jRadioButton2.isSelected()) {
+
+            jRadioButton1.setSelected(false);
+
+        }
+
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+        public void setRadio() {
+        
+        if (CurrentUser.currentUser.getNotify().equals("J")) {
+            
+             jRadioButton1.setSelected(true);
+           
+        }
+        
+        else {
+            
+             jRadioButton2.setSelected(true);
+        }
+        
+    }
+    
+    
     private boolean isSelStartsida;
     private boolean isSelSokfunktion;
     private boolean isSelProfilinstallningar;
@@ -1553,6 +1649,8 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel iconSearch;
     private javax.swing.JButton jButton1;
     private javax.swing.JLayeredPane jLayeredPane2;
+    public static javax.swing.JRadioButton jRadioButton1;
+    public static javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JLabel lblAdminfunktionalitet;
     private javax.swing.JLabel lblBtnAdminfunktionalitet;
     private javax.swing.JLabel lblBtnForum;
@@ -1577,6 +1675,7 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblPIPW;
     private javax.swing.JLabel lblPIRubrik;
     private javax.swing.JLabel lblPITlfn;
+    private javax.swing.JLabel lblPITlfn1;
     private javax.swing.JLabel lblPIUserName;
     private javax.swing.JLabel lblPersonligaInstallningarText;
     private javax.swing.JLabel lblSokfunktion;

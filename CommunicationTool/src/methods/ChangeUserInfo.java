@@ -7,7 +7,6 @@ package methods;
 
 import Objects.CurrentUser;
 import java.sql.ResultSet;
-
 import Validation.Validation;
 import Objects.CurrentUser;
 import Connectivity.ConnectionClass;
@@ -27,8 +26,8 @@ public class ChangeUserInfo {
     public void changeMailTel(String mail, String tel) {
 
         ResultSet userInfo = null;
-        ResultSet userInfo2 = null;
-        ResultSet update = null;
+        //ResultSet userInfo2 = null;
+        //ResultSet update = null;
 
         if (Validation.fieldEmpty(mail) || Validation.fieldEmpty(tel)) {
 
@@ -39,28 +38,23 @@ public class ChangeUserInfo {
 
             try {
                 Statement st = Connectivity.ConnectionClass.conn.createStatement();
-                System.out.println("1");
-                String controlEmail = "SELECT * from Användare where Användare_ID =" + CurrentUser.currentUser.getID();
-                //String controlNumber = "SELECT Telefon from Användare where Telefon =" + CurrentUser.currentUser.getPhone();
-
+                String controlEmail = "SELECT * from Användare where Användare_ID =" + CurrentUser.currentUser.getID();               
                 userInfo = st.executeQuery(controlEmail);
-                System.out.println("2");
-
+                
                 if (userInfo.next()) {
-                    System.out.println("3");
+                   
                     // Fånga email och telefonen av personen genom databasen                      
                     String getEmail = userInfo.getString("Email");
                     String getNumber = userInfo.getString("Telefon");
-                    System.out.println("4");
-                    if (getEmail.equals(mail) && getNumber.equals(tel)) {
+ 
+                    boolean noti = controlRadio();     
+                    if (getEmail.equals(mail) && getNumber.equals(tel) && !noti ) {
 
-//                        GUI.changePersonInfo cPi = new GUI.changePersonInfo();
                         PageGUI.setFelmeddelandePIUppdatera();
-                        System.out.println("5");
+                                            
                     } else {
+                        
                         // SQL frågorna som använts för att uppdatera email och telefonen
-                        System.out.println("6");
-                        System.out.println(CurrentUser.currentUser.getID());
                         String email = "UPDATE Användare SET Email =" + "'" + mail + "'" + " where Användare_ID = " + CurrentUser.currentUser.getID();
                         String number = "UPDATE Användare SET Telefon =" + "'" + tel + "'" + " where Användare_ID =" + CurrentUser.currentUser.getID();
 
@@ -85,7 +79,7 @@ public class ChangeUserInfo {
     public void changePassword(String oldPassword, String newPassword) {
 
         ResultSet userInfo = null;
-        ResultSet update = null;
+      //  ResultSet update = null;
 
         System.out.println(CurrentUser.currentUser.getID());
 
@@ -98,18 +92,11 @@ public class ChangeUserInfo {
 
             try {
                 Statement st = Connectivity.ConnectionClass.conn.createStatement();
-
-                //GUI.changePassword cp = new GUI.changePassword();
-                String controlPass = "SELECT * from Användare where Lösenord =" + "'" + oldPassword + "'";
-                //String controlNumber = "SELECT Telefon from Användare where Telefon =" + CurrentUser.currentUser.getPhone();
-
+                String controlPass = "SELECT * from Användare where Lösenord =" + "'" + oldPassword + "'" + " and Användare_ID= " + CurrentUser.currentUser.getID();
                 userInfo = st.executeQuery(controlPass);
-
-                if (userInfo.next()) {
-
-                    // Fånga email och telefonen av personen genom databasen                      
+                
+                if (userInfo.next()) { 
                     String getPassword = userInfo.getString("Lösenord");
-                    //  String getNumber = userInfo.getString("Telefon");
 
                     if (getPassword.equals(oldPassword) && newPassword.length() <= 100) {
 
@@ -118,17 +105,79 @@ public class ChangeUserInfo {
                         CurrentUser.currentUser.setPw(newPassword);
                         JOptionPane.showMessageDialog(null, "Uppdaterat!");
 
-                    } else {
+                    } 
+                   
+                }
+                else  {
+                        
+                    JOptionPane.showMessageDialog(null, "Kontrollera att det gamla lösenordet är skrivet rätt och att det nya ej överskrider 100 karaktärer!");    
+                    
+                    }
 
-                        JOptionPane.showMessageDialog(null, "Kontrollera att det gamla lösenordet är skrivet och att det nya ej överskrider 100 karaktärer!");
+                        
+            } catch (Exception e) {
 
+                System.out.println("termination");
+            }
+            
+            
+            
+        }
+    }
+    public boolean controlRadio() {
+        
+        ResultSet userInfo = null;
+        
+        boolean hasChanged = false;
+        
+        try {
+                Statement st = Connectivity.ConnectionClass.conn.createStatement();
+                String controlNotification = "SELECT * from Notifikation where Användare_ID =" + CurrentUser.currentUser.getID();
+                userInfo = st.executeQuery(controlNotification);
+               
+
+                if (userInfo.next()) {
+                  
+                    // Fånga email och telefonen av personen genom databasen                      
+                    String getNotification = userInfo.getString("Notifiering");
+                   
+                    System.out.println(getNotification);
+                    
+                    if ((PageGUI.jRadioButton1.isSelected()) && !CurrentUser.currentUser.getNotify().equals("J")) {
+
+                        String yesNotification = "UPDATE Notifikation SET Notifiering = " + "'J'" + "where Användare_ID = " + CurrentUser.currentUser.getID();
+                        st.executeUpdate(yesNotification);
+                       CurrentUser.currentUser.setNotify("J");
+                        PageGUI.jRadioButton1.setSelected(true);
+                        hasChanged = true;
+                    
+
+                    } 
+                    else if (PageGUI.jRadioButton2.isSelected() && !CurrentUser.currentUser.getNotify().equals("N")) {
+
+                       String noNotification = "UPDATE Notifikation SET Notifiering = " + "'N'" + "where Användare_ID = " + CurrentUser.currentUser.getID();
+                       st.executeUpdate(noNotification);
+                       CurrentUser.currentUser.setNotify("N");
+                       PageGUI.jRadioButton2.setSelected(true);
+                       hasChanged = true;
+                        
+                        
+                    }else {
+                       
+                        System.out.println("error");
+                    }
+ {
+                           
+                        
                     }
                 }
             } catch (Exception e) {
 
                 System.out.println("termination");
             }
-        }
+        
+        return hasChanged;
+        
     }
 
 }

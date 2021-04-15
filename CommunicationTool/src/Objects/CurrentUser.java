@@ -1,6 +1,6 @@
 package Objects;
 
-import Methods.User;
+import methods.User;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
