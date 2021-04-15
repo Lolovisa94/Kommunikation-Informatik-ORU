@@ -6,8 +6,10 @@
 package GUI;
 
 import Objects.CurrentComments;
+import Objects.CurrentUser;
 import java.awt.Color;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
@@ -35,6 +37,8 @@ public class PostGUI extends javax.swing.JFrame {
     public static String publisher;
     public static String title;
     public static String postText;
+    public static String user;
+    public static boolean admin;
 
     /**
      * Creates new form PostGUI
@@ -45,12 +49,18 @@ public class PostGUI extends javax.swing.JFrame {
         this.publisher = publisher;
         this.title = title;
         this.postText = postText;
-
         
         initComponents();
      new FetchComments(postID);
-
-        
+     btnPGUppdateraPost.setVisible(false);
+     btnPGRedigera.setVisible(false);
+     
+     if(CurrentUser.currentUser.isAdmin() || CurrentUser.currentUser.getName().equals(publisher)){
+         btnPGRedigera.setVisible(true);
+     }
+     
+     //CurrentUser.currentUser.isAdmin();
+     //CurrentUser.currentUser.getName();
     }
     
         public static void addMessage(String text) {
@@ -96,6 +106,8 @@ public class PostGUI extends javax.swing.JFrame {
         iconLogga = new javax.swing.JLabel();
         lblAuthor = new javax.swing.JLabel();
         btnPGComment = new javax.swing.JButton();
+        btnPGRedigera = new javax.swing.JButton();
+        btnPGUppdateraPost = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(10000, 10000));
@@ -157,6 +169,24 @@ public class PostGUI extends javax.swing.JFrame {
             }
         });
 
+        btnPGRedigera.setBackground(new java.awt.Color(202, 100, 91));
+        btnPGRedigera.setForeground(new java.awt.Color(158, 174, 187));
+        btnPGRedigera.setText("Redigera Post");
+        btnPGRedigera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPGRedigeraActionPerformed(evt);
+            }
+        });
+
+        btnPGUppdateraPost.setBackground(new java.awt.Color(202, 100, 91));
+        btnPGUppdateraPost.setForeground(new java.awt.Color(158, 174, 187));
+        btnPGUppdateraPost.setText("Uppdatera Post");
+        btnPGUppdateraPost.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPGUppdateraPostActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -169,7 +199,6 @@ public class PostGUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTitle)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(iconLogga)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -179,7 +208,14 @@ public class PostGUI extends javax.swing.JFrame {
                                         .addComponent(lblOrebro)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(btnPGComment, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(lblAuthor))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblTitle)
+                                    .addComponent(lblAuthor))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnPGRedigera, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnPGUppdateraPost, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(63, 63, 63)))
                 .addContainerGap())
         );
@@ -194,7 +230,11 @@ public class PostGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblOrebro)
-                            .addComponent(btnPGComment)))
+                            .addComponent(btnPGComment))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPGRedigera)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPGUppdateraPost))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(iconLogga)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -225,6 +265,29 @@ public class PostGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         new CommentGUI(postID).setVisible(true);
     }//GEN-LAST:event_btnPGCommentActionPerformed
+
+    private void btnPGRedigeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPGRedigeraActionPerformed
+        // TODO add your handling code here:
+        taPostText.setEditable(true);
+        btnPGUppdateraPost.setVisible(true);
+    }//GEN-LAST:event_btnPGRedigeraActionPerformed
+
+    private void btnPGUppdateraPostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPGUppdateraPostActionPerformed
+        // TODO add your handling code here:
+        try{
+        String newText = taPostText.getText();
+        Statement st = Connectivity.ConnectionClass.conn.createStatement();
+        String query = "UPDATE `Inlägg` SET Text = '"+newText+"' where Titel = '"+title+"';";
+        st.execute(query);
+        
+        btnPGUppdateraPost.setVisible(false);
+        btnPGRedigera.setEnabled(false);
+        taPostText.setEditable(false);
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_btnPGUppdateraPostActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,6 +327,8 @@ public class PostGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPGComment;
+    private javax.swing.JButton btnPGRedigera;
+    private javax.swing.JButton btnPGUppdateraPost;
     private javax.swing.JLabel iconLogga;
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JScrollPane jScrollPane1;

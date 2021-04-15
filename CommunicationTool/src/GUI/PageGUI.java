@@ -13,6 +13,7 @@ import java.awt.Dimension;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import methods.EditForum;
 import methods.FetchPosts;
 import methods.User;
 
@@ -95,6 +96,10 @@ public class PageGUI extends javax.swing.JFrame {
         selForum.setVisible(true);
         pnlForum.setVisible(true);
         isSelForum = true;
+        if(!CurrentUser.currentUser.isAdmin())
+        {
+            btnTaBortBloggtrad.setVisible(false);
+        } 
     }
 
     public void selectKalender() {
@@ -242,6 +247,8 @@ public class PageGUI extends javax.swing.JFrame {
         sepFSok = new javax.swing.JSeparator();
         tfFSok = new javax.swing.JTextField();
         iconSearch = new javax.swing.JLabel();
+        btnTaBortBloggtrad = new javax.swing.JPanel();
+        lblbtnTaBortBloggtrad = new javax.swing.JLabel();
         pnlProfilinstallningar = new javax.swing.JPanel();
         lblPIRubrik = new javax.swing.JLabel();
         lblPIEmail = new javax.swing.JLabel();
@@ -1114,6 +1121,33 @@ public class PageGUI extends javax.swing.JFrame {
 
         pnlForum.add(pnlFSok, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 10, -1, -1));
 
+        btnTaBortBloggtrad.setBackground(new java.awt.Color(0, 94, 125));
+        btnTaBortBloggtrad.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
+        btnTaBortBloggtrad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTaBortBloggtradMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnTaBortBloggtradMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnTaBortBloggtradMouseExited(evt);
+            }
+        });
+
+        lblbtnTaBortBloggtrad.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        lblbtnTaBortBloggtrad.setForeground(new java.awt.Color(158, 174, 187));
+        lblbtnTaBortBloggtrad.setText("Ta Bort Bloggtråd");
+        lblbtnTaBortBloggtrad.setIconTextGap(5);
+        lblbtnTaBortBloggtrad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                lblbtnTaBortBloggtradKeyPressed(evt);
+            }
+        });
+        btnTaBortBloggtrad.add(lblbtnTaBortBloggtrad);
+
+        pnlForum.add(btnTaBortBloggtrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 310, 270, -1));
+
         jLayeredPane2.add(pnlForum, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pnlProfilinstallningar.setBackground(new java.awt.Color(158, 174, 187));
@@ -1795,6 +1829,32 @@ public class PageGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnTaBortAnvändareActionPerformed
 
+    private void lblbtnTaBortBloggtradKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblbtnTaBortBloggtradKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblbtnTaBortBloggtradKeyPressed
+
+    private void btnTaBortBloggtradMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTaBortBloggtradMouseClicked
+        // TODO add your handling code here:
+        int row = tblForum.getSelectedRow();
+        String threadName = tblForum.getValueAt(row, 1).toString();
+        EditForum.removeThread(threadName);
+        new FetchPosts();
+    }//GEN-LAST:event_btnTaBortBloggtradMouseClicked
+
+    private void btnTaBortBloggtradMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTaBortBloggtradMouseEntered
+        // TODO add your handling code here:
+        btnTaBortBloggtrad.setBackground(new java.awt.Color(158, 174, 187));
+        lblbtnTaBortBloggtrad.setForeground(new java.awt.Color(0, 94, 125));
+        btnTaBortBloggtrad.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
+    }//GEN-LAST:event_btnTaBortBloggtradMouseEntered
+
+    private void btnTaBortBloggtradMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTaBortBloggtradMouseExited
+        // TODO add your handling code here:
+        btnTaBortBloggtrad.setBackground(new java.awt.Color(0, 94, 125));
+        lblbtnTaBortBloggtrad.setForeground(new java.awt.Color(158, 174, 187));
+        btnTaBortBloggtrad.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
+    }//GEN-LAST:event_btnTaBortBloggtradMouseExited
+
         public void setRadio() {
         
         if (CurrentUser.currentUser.getNotify().equals("J")) {
@@ -1834,6 +1894,7 @@ public class PageGUI extends javax.swing.JFrame {
     public static javax.swing.JPanel btnSokfunktion;
     public static javax.swing.JPanel btnStartsida;
     private javax.swing.JButton btnTaBortAnvändare;
+    public static javax.swing.JPanel btnTaBortBloggtrad;
     private javax.swing.JCheckBox cbAdminFraga;
     public static javax.swing.JCheckBox cbFForskning;
     public static javax.swing.JCheckBox cbFOvrigt;
@@ -1883,6 +1944,7 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblbtnFUppdatera;
     private javax.swing.JLabel lblbtnSkapaBloggtrad;
     private javax.swing.JLabel lblbtnSokAnvandare;
+    private javax.swing.JLabel lblbtnTaBortBloggtrad;
     private javax.swing.JPanel panelMenu;
     private javax.swing.JPanel panelMenuBackground;
     private javax.swing.JPanel panelMenuLogga;
