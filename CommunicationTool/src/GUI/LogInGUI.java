@@ -5,6 +5,7 @@ package GUI;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import java.awt.event.KeyEvent;
 import methods.LogIn;
 import java.sql.ResultSet;
 /**
@@ -148,6 +149,11 @@ public class LogInGUI extends javax.swing.JFrame {
                 tfEmailActionPerformed(evt);
             }
         });
+        tfEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tfEmailKeyPressed(evt);
+            }
+        });
 
         pfPw.setBackground(new java.awt.Color(158, 174, 187));
         pfPw.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
@@ -156,6 +162,11 @@ public class LogInGUI extends javax.swing.JFrame {
         pfPw.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pfPwActionPerformed(evt);
+            }
+        });
+        pfPw.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                pfPwKeyPressed(evt);
             }
         });
 
@@ -275,8 +286,29 @@ public class LogInGUI extends javax.swing.JFrame {
     private void btnLogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogInMouseClicked
         // TODO add your handling code here:
         
-        LogIn.logIn(tfEmail.getText(), pfPw.getText());
+        if(LogIn.logIn(tfEmail.getText(), pfPw.getText())){
+        dispose();
+        }
     }//GEN-LAST:event_btnLogInMouseClicked
+
+    private void pfPwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pfPwKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                    if(LogIn.logIn(tfEmail.getText(), pfPw.getText())){
+        dispose();
+        }
+        
+        }
+    }//GEN-LAST:event_pfPwKeyPressed
+
+    private void tfEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfEmailKeyPressed
+        // TODO add your handling code here:
+                if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                    if(LogIn.logIn(tfEmail.getText(), pfPw.getText())){
+                dispose();
+                }
+        }
+    }//GEN-LAST:event_tfEmailKeyPressed
 
     
     public static void setFelmeddelande(String text){

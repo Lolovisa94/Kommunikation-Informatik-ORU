@@ -38,7 +38,7 @@ public class CommentGUI extends javax.swing.JFrame {
         btnPGPostComment = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(158, 174, 187));
 
         jPanel1.setBackground(new java.awt.Color(77, 85, 92));

@@ -4,17 +4,30 @@
  * and open the template in the editor.
  */
 package GUI;
+
+import com.jcraft.jsch.JSchException;
+import com.jcraft.jsch.SftpException;
+import java.io.File;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import javax.swing.JFileChooser;
 import methods.CreatePost;
 import methods.FetchPosts;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import methods.Inlagg;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import methods.Filnamn;
+import methods.SFPT;
 /**
  *
  * @author Pierre
  */
 public class CreatePostGUI extends javax.swing.JFrame {
     private ResultSet rs = null;
+    private String filename;
     /**
      * Creates new form CreatePostGUI
      */
@@ -74,6 +87,7 @@ public class CreatePostGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFileChooser1 = new javax.swing.JFileChooser();
         jPanel1 = new javax.swing.JPanel();
         panelMenuLogga = new javax.swing.JPanel();
         iconLogga = new javax.swing.JLabel();
@@ -89,6 +103,7 @@ public class CreatePostGUI extends javax.swing.JFrame {
         taText = new javax.swing.JTextArea();
         lblInnehall = new javax.swing.JLabel();
         btnPost = new javax.swing.JButton();
+        btnBifogaFil = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -167,6 +182,15 @@ public class CreatePostGUI extends javax.swing.JFrame {
             }
         });
 
+        btnBifogaFil.setBackground(new java.awt.Color(202, 100, 91));
+        btnBifogaFil.setForeground(new java.awt.Color(77, 85, 92));
+        btnBifogaFil.setText("Bifoga fil");
+        btnBifogaFil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBifogaFilActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlCreatePostLayout = new javax.swing.GroupLayout(pnlCreatePost);
         pnlCreatePost.setLayout(pnlCreatePostLayout);
         pnlCreatePostLayout.setHorizontalGroup(
@@ -175,26 +199,28 @@ public class CreatePostGUI extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(pnlCreatePostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlCreatePostLayout.createSequentialGroup()
-                        .addComponent(lblInnehall)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(28, 28, 28)
+                        .addComponent(btnBifogaFil)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnPost, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(70, 70, 70))
                     .addGroup(pnlCreatePostLayout.createSequentialGroup()
+                        .addGroup(pnlCreatePostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlCreatePostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(tfTitel)
+                                .addComponent(sepTradtitel, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblTradtitel)
+                            .addComponent(lblInnehall))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                        .addComponent(lblKategori)
+                        .addGap(39, 39, 39))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCreatePostLayout.createSequentialGroup()
                         .addGroup(pnlCreatePostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2)
                             .addGroup(pnlCreatePostLayout.createSequentialGroup()
-                                .addGroup(pnlCreatePostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlCreatePostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(tfTitel)
-                                        .addComponent(sepTradtitel, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(lblTradtitel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                                .addGroup(pnlCreatePostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblKategori)
-                                    .addComponent(cbCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(cbCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2))
                         .addGap(21, 21, 21))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCreatePostLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnPost, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70))
         );
         pnlCreatePostLayout.setVerticalGroup(
             pnlCreatePostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,7 +240,9 @@ public class CreatePostGUI extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22)
-                .addComponent(btnPost)
+                .addGroup(pnlCreatePostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPost)
+                    .addComponent(btnBifogaFil))
                 .addGap(20, 20, 20))
         );
 
@@ -255,19 +283,72 @@ public class CreatePostGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_tfTitelActionPerformed
 
     private void btnPostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPostActionPerformed
-        new CreatePost();
-        System.out.println("post created = " + CreatePost.postCreated);
-        if(CreatePost.postCreated == true){
-        dispose();
-        new FetchPosts();
+Filnamn namn = new Filnamn();
+         boolean nameInfo=false; 
+            if(filename!=null){
+                try {
+                    namn.Filnamn(filename);
+               nameInfo =namn.checkFileName(namn.getFilename());
+                 
+                } catch (Exception ex) {
+                 
+                }
+            }else{
+                new CreatePost();
+                dispose();
+                 new FetchPosts(); 
+             
+            }
+        if(nameInfo==false){
+            new CreatePost();
+        SFPT uploadFile= new SFPT();
+            try {
+                uploadFile.connect();
+                uploadFile.upload(filename);
+                uploadFile.disconnect();
+            try {
+                namn.linkFileToPost(namn.getFilename());
+            } catch (SQLException ex) {
+                Logger.getLogger(CreatePostGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                
+            } catch (JSchException ex) {
+                Logger.getLogger(CreatePostGUI.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SftpException ex) {
+                Logger.getLogger(CreatePostGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            dispose();
+                 new FetchPosts(); 
+        }else{
+       
+         JOptionPane.showMessageDialog(null, "Du måste tyvärr byta till något annat namn på filen");
         }
-        
     }//GEN-LAST:event_btnPostActionPerformed
 
     private void cbCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCategoryActionPerformed
             
     }//GEN-LAST:event_cbCategoryActionPerformed
 
+    private void btnBifogaFilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBifogaFilActionPerformed
+        // TODO add your handling code here:
+                JFileChooser createPost = new JFileChooser();
+        createPost.setVisible(true);
+        JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f = chooser.getSelectedFile();
+        String filename = f.getAbsolutePath();
+        setFilename(filename);
+        
+    }//GEN-LAST:event_btnBifogaFilActionPerformed
+
+    public void setFilename(String filename){
+this.filename=filename;
+}
+    
+    public String getFilename(){
+return filename;
+}
+    
     /**
      * @param args the command line arguments
      */
@@ -307,9 +388,11 @@ public class CreatePostGUI extends javax.swing.JFrame {
     public static boolean titleEmpty;
     public static boolean textEmpty;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBifogaFil;
     private javax.swing.JButton btnPost;
     public static javax.swing.JComboBox<String> cbCategory;
     private javax.swing.JLabel iconLogga;
+    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblInnehall;

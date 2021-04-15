@@ -19,8 +19,8 @@ import GUI.PageGUI;
  */
 public class LogIn {
     
-    public static void logIn(String email, String pw){
-    
+    public static boolean logIn(String email, String pw){
+    boolean logInSuccessful = false;
         ResultSet userInfo = null;
         ResultSet userInfo2 = null;
                
@@ -58,6 +58,7 @@ public class LogIn {
                      CurrentUser.currentUser.setNotify(userInfo2.getString(2));   
                      System.out.println("11");
                      new PageGUI().setVisible(true);
+                     logInSuccessful = true;
                     
         } else {
                 System.out.println("Inloggning misslyckades");
@@ -74,6 +75,7 @@ public class LogIn {
 	}
         
         }
+        return logInSuccessful;
         
     }
     
