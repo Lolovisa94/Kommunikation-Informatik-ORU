@@ -5,7 +5,9 @@ package methods;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import Connectivity.ConnectionClass;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  *
@@ -100,6 +102,30 @@ public class User {
 
     public String getEmail() {
         return email;
+    }
+    
+    
+        public void addNewUser(String namn, int tele, String email, String losenord, boolean admin) {
+
+        try {
+
+            //int anvTele = tele.VAD SKA DET STÅ ? ();
+
+
+            Statement st = ConnectionClass.conn.createStatement();
+            String query = "";
+            
+            if (!admin) {
+                query = "insert into `Användare` (namn, telefon, lösenord, admin, email) values ('" + namn + "'," + tele + ", '" + losenord + "','N', '" + email + "');";
+            } else {
+                query = "insert into `Användare` (namn, telefon, lösenord, admin, email) values ('" + namn + "'," + tele + ", '" + losenord + "','J', '" + email + "');";
+            }
+            st.execute(query);
+            
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
 }

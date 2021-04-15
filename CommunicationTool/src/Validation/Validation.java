@@ -7,6 +7,8 @@ package Validation;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -24,6 +26,37 @@ public class Validation {
         return resultat;
     }
 
+        public boolean verifyInformation(JTextField anvNamnet, JTextField anvTelefon, JTextField anvEpost, JTextField anvLosen) {
+        boolean notEmpty = true;
+
+        String anvNamn = anvNamnet.getText();
+        int anvTele = Integer.parseInt(anvTelefon.getText());
+        String anvEmail = anvEpost.getText();
+        String anvLosenord = anvLosen.getText();
+
+        if (anvNamn.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Var god ange ett användarnamn");
+            anvNamnet.requestFocus();
+            notEmpty = false;
+        } else if (anvTelefon.getText().isEmpty()) {
+            Integer.parseInt(anvTelefon.getText());
+            JOptionPane.showMessageDialog(null, "Var god ange ett telefonnummer");
+            anvTelefon.requestFocus();
+            notEmpty = false;
+        } else if (anvEmail.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Var god ange en e-mail");
+            anvEpost.requestFocus();
+            notEmpty = false;
+        } else if (anvLosenord.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Var god ange ett lösenord");
+            anvLosen.requestFocus();
+            notEmpty = false;
+        }
+        
+        return notEmpty;
+
+    }
+        
     public static void setLabelText(javax.swing.JLabel label, String text) {
         label.setText(text);
     }

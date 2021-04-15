@@ -63,7 +63,7 @@
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="btnStartsida" alignment="0" max="32767" attributes="0"/>
                           <Component id="panelMenuLogga" alignment="0" pref="409" max="32767" attributes="0"/>
-                          <Component id="btnAdminfunktionalitet" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnLaggTillAnvandare" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnProfilinstallningar" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnSokfunktion" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnMeddelanden" alignment="0" max="32767" attributes="0"/>
@@ -91,7 +91,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnProfilinstallningar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnAdminfunktionalitet" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnLaggTillAnvandare" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="818" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -229,16 +229,16 @@
                 </Container>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="btnAdminfunktionalitet">
+            <Container class="javax.swing.JPanel" name="btnLaggTillAnvandare">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="5c" green="55" red="4d" type="rgb"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAdminfunktionalitetMouseClicked"/>
-                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAdminfunktionalitetMouseEntered"/>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAdminfunktionalitetMouseExited"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnLaggTillAnvandareMouseClicked"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnLaggTillAnvandareMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnLaggTillAnvandareMouseExited"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
@@ -250,7 +250,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                           <Component id="lblBtnAdminfunktionalitet" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="217" max="32767" attributes="0"/>
+                          <EmptySpace pref="223" max="32767" attributes="0"/>
                           <Component id="selAdminfunktionalitet" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -275,7 +275,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="bb" green="ae" red="9e" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Adminfunktionalitet"/>
+                    <Property name="text" type="java.lang.String" value="L&#xe4;gg Till Anv&#xe4;ndare"/>
                   </Properties>
                 </Component>
                 <Container class="javax.swing.JPanel" name="selAdminfunktionalitet">
@@ -1004,55 +1004,6 @@
                     </Component>
                   </SubComponents>
                 </Container>
-              </SubComponents>
-            </Container>
-            <Container class="javax.swing.JPanel" name="pnlAdminfunktionalitet">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="bb" green="ae" red="9e" type="rgb"/>
-                </Property>
-              </Properties>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="0" width="-1" height="-1"/>
-                </Constraint>
-              </Constraints>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="413" max="-2" attributes="0"/>
-                          <Component id="lblAdminfunktionalitet" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="927" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                          <Component id="lblAdminfunktionalitet" min="-2" pref="60" max="-2" attributes="0"/>
-                          <EmptySpace pref="898" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JLabel" name="lblAdminfunktionalitet">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="5c" green="55" red="4d" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Poppins Medium" size="48" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="5c" green="55" red="4d" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Adminfunktionalitet"/>
-                  </Properties>
-                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="pnlForum">
@@ -1826,6 +1777,174 @@
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
                   </AuxValues>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="pnlLaggTillAnvandare">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                </Property>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="0" y="0" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="413" max="-2" attributes="0"/>
+                                  <Component id="lblLaggTillAnvandare" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="btnLaggTillAnv" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lblAdminFraga" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblAnvNamn" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblAnvTele" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblAnvEpost" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblAnvLosenord" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="tfLosenord" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
+                                              <Component id="tfAnvTelefon" alignment="0" min="-2" pref="193" max="-2" attributes="0"/>
+                                              <Component id="tfAnvNamn" alignment="0" min="-2" pref="193" max="-2" attributes="0"/>
+                                              <Component id="cbAdminFraga" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="tfEmail" alignment="0" min="-2" pref="193" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="lblLaggTillAnvError" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="950" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                          <Component id="lblLaggTillAnvandare" min="-2" pref="60" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblAdminFraga" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbAdminFraga" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblAnvNamn" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tfAnvNamn" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblAnvTele" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tfAnvTelefon" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblAnvEpost" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tfEmail" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="tfLosenord" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                              <Component id="lblAnvLosenord" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="btnLaggTillAnv" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="lblLaggTillAnvError" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="538" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="lblLaggTillAnvandare">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="5c" green="55" red="4d" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poppins Medium" size="48" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="5c" green="55" red="4d" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="L&#xe4;gg till anv&#xe4;ndare"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblAnvTele">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Telefon"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnLaggTillAnv">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="L&#xe4;gg till ny anv&#xe4;nadare"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLaggTillAnvActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JTextField" name="tfAnvNamn">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblAdminFraga">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Admin"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblAnvNamn">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Namn"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbAdminFraga">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Ja"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbAdminFragaActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JTextField" name="tfLosenord">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfLosenordActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblAnvLosenord">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="L&#xf6;senord"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="tfEmail">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfEmailActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblAnvEpost">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Email"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="tfAnvTelefon">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblLaggTillAnvError">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="5b" green="64" red="ca" type="rgb"/>
+                    </Property>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>

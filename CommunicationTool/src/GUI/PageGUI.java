@@ -5,11 +5,16 @@
  */
 package GUI;
 
+import Connectivity.ConnectionClass;
 import Objects.CurrentUser;
 import Methods.SearchUser;
 import Validation.Validation;
 import java.awt.Dimension;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 import methods.FetchPosts;
+import methods.User;
 
 /**
  *
@@ -52,6 +57,9 @@ public class PageGUI extends javax.swing.JFrame {
         selSokfunktion.setVisible(false);
         selProfilinstallningar.setVisible(false);
         selAdminfunktionalitet.setVisible(false);
+        if(!CurrentUser.currentUser.isAdmin()){
+        btnLaggTillAnvandare.setVisible(false);
+        }
 
         isSelStartsida = false;
         isSelSokfunktion = false;
@@ -69,7 +77,7 @@ public class PageGUI extends javax.swing.JFrame {
         pnlMeddelanden.setVisible(false);
         pnlSokfunktion.setVisible(false);
         pnlProfilinstallningar.setVisible(false);
-        pnlAdminfunktionalitet.setVisible(false);
+        pnlLaggTillAnvandare.setVisible(false);
     }
 
     public void selectStartsida() {
@@ -134,7 +142,7 @@ public class PageGUI extends javax.swing.JFrame {
         resetPanel();
         resetMenu();
         selAdminfunktionalitet.setVisible(true);
-        pnlAdminfunktionalitet.setVisible(true);
+        pnlLaggTillAnvandare.setVisible(true);
         isSelAdminfunktionalitet = true;
     }
 
@@ -177,7 +185,7 @@ public class PageGUI extends javax.swing.JFrame {
         btnStartsida = new javax.swing.JPanel();
         lblBtnStartsida = new javax.swing.JLabel();
         selStartsida = new javax.swing.JPanel();
-        btnAdminfunktionalitet = new javax.swing.JPanel();
+        btnLaggTillAnvandare = new javax.swing.JPanel();
         lblBtnAdminfunktionalitet = new javax.swing.JLabel();
         selAdminfunktionalitet = new javax.swing.JPanel();
         btnProfilinstallningar = new javax.swing.JPanel();
@@ -210,8 +218,6 @@ public class PageGUI extends javax.swing.JFrame {
         lblIngetSokresultat = new javax.swing.JLabel();
         spSoktaAnvandare = new javax.swing.JScrollPane();
         tblSoktaAnvandare = new javax.swing.JTable();
-        pnlAdminfunktionalitet = new javax.swing.JPanel();
-        lblAdminfunktionalitet = new javax.swing.JLabel();
         pnlForum = new javax.swing.JPanel();
         btnSkapaBloggtrad = new javax.swing.JPanel();
         lblbtnSkapaBloggtrad = new javax.swing.JLabel();
@@ -250,6 +256,20 @@ public class PageGUI extends javax.swing.JFrame {
         lblPITlfn1 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
+        pnlLaggTillAnvandare = new javax.swing.JPanel();
+        lblLaggTillAnvandare = new javax.swing.JLabel();
+        lblAnvTele = new javax.swing.JLabel();
+        btnLaggTillAnv = new javax.swing.JButton();
+        tfAnvNamn = new javax.swing.JTextField();
+        lblAdminFraga = new javax.swing.JLabel();
+        lblAnvNamn = new javax.swing.JLabel();
+        cbAdminFraga = new javax.swing.JCheckBox();
+        tfLosenord = new javax.swing.JTextField();
+        lblAnvLosenord = new javax.swing.JLabel();
+        tfEmail = new javax.swing.JTextField();
+        lblAnvEpost = new javax.swing.JLabel();
+        tfAnvTelefon = new javax.swing.JTextField();
+        lblLaggTillAnvError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -325,22 +345,22 @@ public class PageGUI extends javax.swing.JFrame {
 
         selStartsida.getAccessibleContext().setAccessibleDescription("");
 
-        btnAdminfunktionalitet.setBackground(new java.awt.Color(77, 85, 92));
-        btnAdminfunktionalitet.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnLaggTillAnvandare.setBackground(new java.awt.Color(77, 85, 92));
+        btnLaggTillAnvandare.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAdminfunktionalitetMouseClicked(evt);
+                btnLaggTillAnvandareMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnAdminfunktionalitetMouseEntered(evt);
+                btnLaggTillAnvandareMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnAdminfunktionalitetMouseExited(evt);
+                btnLaggTillAnvandareMouseExited(evt);
             }
         });
 
         lblBtnAdminfunktionalitet.setFont(new java.awt.Font("Poppins Medium", 0, 12)); // NOI18N
         lblBtnAdminfunktionalitet.setForeground(new java.awt.Color(158, 174, 187));
-        lblBtnAdminfunktionalitet.setText("Adminfunktionalitet");
+        lblBtnAdminfunktionalitet.setText("Lägg Till Användare");
 
         selAdminfunktionalitet.setBackground(new java.awt.Color(202, 100, 91));
 
@@ -355,20 +375,20 @@ public class PageGUI extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout btnAdminfunktionalitetLayout = new javax.swing.GroupLayout(btnAdminfunktionalitet);
-        btnAdminfunktionalitet.setLayout(btnAdminfunktionalitetLayout);
-        btnAdminfunktionalitetLayout.setHorizontalGroup(
-            btnAdminfunktionalitetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnAdminfunktionalitetLayout.createSequentialGroup()
+        javax.swing.GroupLayout btnLaggTillAnvandareLayout = new javax.swing.GroupLayout(btnLaggTillAnvandare);
+        btnLaggTillAnvandare.setLayout(btnLaggTillAnvandareLayout);
+        btnLaggTillAnvandareLayout.setHorizontalGroup(
+            btnLaggTillAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnLaggTillAnvandareLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(lblBtnAdminfunktionalitet)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
                 .addComponent(selAdminfunktionalitet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        btnAdminfunktionalitetLayout.setVerticalGroup(
-            btnAdminfunktionalitetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        btnLaggTillAnvandareLayout.setVerticalGroup(
+            btnLaggTillAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(selAdminfunktionalitet, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(btnAdminfunktionalitetLayout.createSequentialGroup()
+            .addGroup(btnLaggTillAnvandareLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblBtnAdminfunktionalitet)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -627,7 +647,7 @@ public class PageGUI extends javax.swing.JFrame {
                 .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnStartsida, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelMenuLogga, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
-                    .addComponent(btnAdminfunktionalitet, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLaggTillAnvandare, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnProfilinstallningar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSokfunktion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnMeddelanden, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -652,7 +672,7 @@ public class PageGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnProfilinstallningar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnAdminfunktionalitet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLaggTillAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(818, 818, 818))
         );
 
@@ -843,32 +863,6 @@ public class PageGUI extends javax.swing.JFrame {
         );
 
         jLayeredPane2.add(pnlSokfunktion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        pnlAdminfunktionalitet.setBackground(new java.awt.Color(158, 174, 187));
-
-        lblAdminfunktionalitet.setBackground(new java.awt.Color(77, 85, 92));
-        lblAdminfunktionalitet.setFont(new java.awt.Font("Poppins Medium", 1, 48)); // NOI18N
-        lblAdminfunktionalitet.setForeground(new java.awt.Color(77, 85, 92));
-        lblAdminfunktionalitet.setText("Adminfunktionalitet");
-
-        javax.swing.GroupLayout pnlAdminfunktionalitetLayout = new javax.swing.GroupLayout(pnlAdminfunktionalitet);
-        pnlAdminfunktionalitet.setLayout(pnlAdminfunktionalitetLayout);
-        pnlAdminfunktionalitetLayout.setHorizontalGroup(
-            pnlAdminfunktionalitetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlAdminfunktionalitetLayout.createSequentialGroup()
-                .addGap(413, 413, 413)
-                .addComponent(lblAdminfunktionalitet)
-                .addContainerGap(927, Short.MAX_VALUE))
-        );
-        pnlAdminfunktionalitetLayout.setVerticalGroup(
-            pnlAdminfunktionalitetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlAdminfunktionalitetLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(lblAdminfunktionalitet, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(898, Short.MAX_VALUE))
-        );
-
-        jLayeredPane2.add(pnlAdminfunktionalitet, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pnlForum.setBackground(new java.awt.Color(158, 174, 187));
         pnlForum.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1305,6 +1299,115 @@ public class PageGUI extends javax.swing.JFrame {
 
         jLayeredPane2.add(pnlProfilinstallningar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        pnlLaggTillAnvandare.setBackground(new java.awt.Color(158, 174, 187));
+
+        lblLaggTillAnvandare.setBackground(new java.awt.Color(77, 85, 92));
+        lblLaggTillAnvandare.setFont(new java.awt.Font("Poppins Medium", 1, 48)); // NOI18N
+        lblLaggTillAnvandare.setForeground(new java.awt.Color(77, 85, 92));
+        lblLaggTillAnvandare.setText("Lägg till användare");
+
+        lblAnvTele.setText("Telefon");
+
+        btnLaggTillAnv.setText("Lägg till ny använadare");
+        btnLaggTillAnv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLaggTillAnvActionPerformed(evt);
+            }
+        });
+
+        lblAdminFraga.setText("Admin");
+
+        lblAnvNamn.setText("Namn");
+
+        cbAdminFraga.setText("Ja");
+        cbAdminFraga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbAdminFragaActionPerformed(evt);
+            }
+        });
+
+        tfLosenord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfLosenordActionPerformed(evt);
+            }
+        });
+
+        lblAnvLosenord.setText("Lösenord");
+
+        tfEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfEmailActionPerformed(evt);
+            }
+        });
+
+        lblAnvEpost.setText("Email");
+
+        lblLaggTillAnvError.setForeground(new java.awt.Color(202, 100, 91));
+
+        javax.swing.GroupLayout pnlLaggTillAnvandareLayout = new javax.swing.GroupLayout(pnlLaggTillAnvandare);
+        pnlLaggTillAnvandare.setLayout(pnlLaggTillAnvandareLayout);
+        pnlLaggTillAnvandareLayout.setHorizontalGroup(
+            pnlLaggTillAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLaggTillAnvandareLayout.createSequentialGroup()
+                .addGroup(pnlLaggTillAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlLaggTillAnvandareLayout.createSequentialGroup()
+                        .addGap(413, 413, 413)
+                        .addComponent(lblLaggTillAnvandare))
+                    .addGroup(pnlLaggTillAnvandareLayout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addGroup(pnlLaggTillAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnLaggTillAnv, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlLaggTillAnvandareLayout.createSequentialGroup()
+                                .addGroup(pnlLaggTillAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblAdminFraga)
+                                    .addComponent(lblAnvNamn)
+                                    .addComponent(lblAnvTele)
+                                    .addComponent(lblAnvEpost)
+                                    .addComponent(lblAnvLosenord))
+                                .addGap(89, 89, 89)
+                                .addGroup(pnlLaggTillAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfAnvTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfAnvNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbAdminFraga)
+                                    .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblLaggTillAnvError))))
+                .addContainerGap(950, Short.MAX_VALUE))
+        );
+        pnlLaggTillAnvandareLayout.setVerticalGroup(
+            pnlLaggTillAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLaggTillAnvandareLayout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(lblLaggTillAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(82, 82, 82)
+                .addGroup(pnlLaggTillAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAdminFraga)
+                    .addComponent(cbAdminFraga))
+                .addGap(18, 18, 18)
+                .addGroup(pnlLaggTillAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAnvNamn)
+                    .addComponent(tfAnvNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlLaggTillAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAnvTele)
+                    .addComponent(tfAnvTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(pnlLaggTillAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAnvEpost)
+                    .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlLaggTillAnvandareLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAnvLosenord))
+                .addGap(36, 36, 36)
+                .addComponent(btnLaggTillAnv)
+                .addGap(18, 18, 18)
+                .addComponent(lblLaggTillAnvError)
+                .addContainerGap(538, Short.MAX_VALUE))
+        );
+
+        jLayeredPane2.add(pnlLaggTillAnvandare, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         panelMenuBackground.add(jLayeredPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 1500, 1020));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1391,19 +1494,19 @@ public class PageGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnProfilinstallningarMouseExited
 
-    private void btnAdminfunktionalitetMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdminfunktionalitetMouseEntered
+    private void btnLaggTillAnvandareMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLaggTillAnvandareMouseEntered
         // TODO add your handling code here:
         if (!isSelAdminfunktionalitet) {
             selAdminfunktionalitet.setVisible(true);
         }
-    }//GEN-LAST:event_btnAdminfunktionalitetMouseEntered
+    }//GEN-LAST:event_btnLaggTillAnvandareMouseEntered
 
-    private void btnAdminfunktionalitetMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdminfunktionalitetMouseExited
+    private void btnLaggTillAnvandareMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLaggTillAnvandareMouseExited
         // TODO add your handling code here:
         if (!isSelAdminfunktionalitet) {
             selAdminfunktionalitet.setVisible(false);
         }
-    }//GEN-LAST:event_btnAdminfunktionalitetMouseExited
+    }//GEN-LAST:event_btnLaggTillAnvandareMouseExited
 
     private void btnStartsidaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStartsidaMouseEntered
         // TODO add your handling code here:
@@ -1450,10 +1553,10 @@ public class PageGUI extends javax.swing.JFrame {
         selectProfilinstallningar();
     }//GEN-LAST:event_btnProfilinstallningarMouseClicked
 
-    private void btnAdminfunktionalitetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdminfunktionalitetMouseClicked
+    private void btnLaggTillAnvandareMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLaggTillAnvandareMouseClicked
         // TODO add your handling code here:
         selectAdminfunktionalitet();
-    }//GEN-LAST:event_btnAdminfunktionalitetMouseClicked
+    }//GEN-LAST:event_btnLaggTillAnvandareMouseClicked
 
     private void tfSokTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfSokTextActionPerformed
         // TODO add your handling code here:
@@ -1605,6 +1708,66 @@ public class PageGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
+    private void btnLaggTillAnvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillAnvActionPerformed
+        ResultSet userInfo = null;
+        boolean anvAdmin = cbAdminFraga.isSelected();
+        String anvNamn = tfAnvNamn.getText();
+        int anvTele = Integer.parseInt(tfAnvTelefon.getText());
+        String anvEmail = tfEmail.getText();
+        String anvLosenord = tfLosenord.getText();
+        lblLaggTillAnvError.setText("");
+
+        User user = new User(0, anvNamn, anvTele, anvLosenord, "J", anvEmail);
+        Validation validate = new Validation();
+
+        if (validate.verifyInformation(tfAnvNamn, tfAnvTelefon, tfEmail, tfLosenord)) {
+            user.addNewUser(anvNamn, anvTele, anvEmail, anvLosenord, anvAdmin);
+            
+            tfAnvNamn.setText("");
+            tfAnvTelefon.setText("");
+            tfEmail.setText("");
+            tfLosenord.setText("");
+            
+            
+            try{
+                
+                System.out.println("1");
+                Statement st = ConnectionClass.conn.createStatement();
+                System.out.println("2");
+                String getID = "SELECT Användare_ID FROM Användare WHERE Namn = '" + anvNamn + "' AND Telefon = " + anvTele +" AND Email = '" + anvEmail +"' AND Lösenord = '"+ anvLosenord +"'";
+                System.out.println("33");
+                userInfo = st.executeQuery(getID);
+                System.out.println("34");
+                userInfo.next();
+                int id = userInfo.getInt("Användare_ID");
+                System.out.println("ID är " + id);
+                System.out.println("3");
+                String insertNotifikation = "INSERT INTO Notifikation VALUES (" + id + ", 'J', " + id +")";
+                System.out.println("4");
+                st.executeUpdate(insertNotifikation);
+                System.out.println("5");
+            
+            
+            } catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Något gick väldigt fel kontakta IT med felkod" + e);
+            }
+            JOptionPane.showMessageDialog(null, "Ny användare vid namn " + anvNamn + " tillagd!");
+            
+        }
+    }//GEN-LAST:event_btnLaggTillAnvActionPerformed
+
+    private void cbAdminFragaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAdminFragaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbAdminFragaActionPerformed
+
+    private void tfLosenordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLosenordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfLosenordActionPerformed
+
+    private void tfEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfEmailActionPerformed
+
         public void setRadio() {
         
         if (CurrentUser.currentUser.getNotify().equals("J")) {
@@ -1631,10 +1794,11 @@ public class PageGUI extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JPanel btnAdminfunktionalitet;
     private javax.swing.JPanel btnFUppdatera;
     public static javax.swing.JPanel btnForum;
     public static javax.swing.JPanel btnKalender;
+    private javax.swing.JButton btnLaggTillAnv;
+    public static javax.swing.JPanel btnLaggTillAnvandare;
     public static javax.swing.JPanel btnMeddelanden;
     private javax.swing.JButton btnPIUppdatera;
     public static javax.swing.JPanel btnProfilinstallningar;
@@ -1642,6 +1806,7 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JPanel btnSokAnvandare;
     public static javax.swing.JPanel btnSokfunktion;
     public static javax.swing.JPanel btnStartsida;
+    private javax.swing.JCheckBox cbAdminFraga;
     public static javax.swing.JCheckBox cbFForskning;
     public static javax.swing.JCheckBox cbFOvrigt;
     public static javax.swing.JCheckBox cbFUtbildning;
@@ -1651,7 +1816,11 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane2;
     public static javax.swing.JRadioButton jRadioButton1;
     public static javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JLabel lblAdminfunktionalitet;
+    private javax.swing.JLabel lblAdminFraga;
+    private javax.swing.JLabel lblAnvEpost;
+    private javax.swing.JLabel lblAnvLosenord;
+    private javax.swing.JLabel lblAnvNamn;
+    private javax.swing.JLabel lblAnvTele;
     private javax.swing.JLabel lblBtnAdminfunktionalitet;
     private javax.swing.JLabel lblBtnForum;
     private javax.swing.JLabel lblBtnKalender;
@@ -1666,6 +1835,8 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblForum;
     private javax.swing.JLabel lblIngetSokresultat;
     private javax.swing.JLabel lblKalender;
+    private javax.swing.JLabel lblLaggTillAnvError;
+    private javax.swing.JLabel lblLaggTillAnvandare;
     private javax.swing.JLabel lblMeddelanden;
     private javax.swing.JLabel lblOrebro;
     private javax.swing.JLabel lblPIEmail;
@@ -1687,11 +1858,11 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JPanel panelMenu;
     private javax.swing.JPanel panelMenuBackground;
     private javax.swing.JPanel panelMenuLogga;
-    private javax.swing.JPanel pnlAdminfunktionalitet;
     private javax.swing.JPanel pnlFSok;
     private javax.swing.JPanel pnlFVisaKategorier;
     private javax.swing.JPanel pnlForum;
     private javax.swing.JPanel pnlKalender;
+    private javax.swing.JPanel pnlLaggTillAnvandare;
     private javax.swing.JPanel pnlMeddelanden;
     private javax.swing.JPanel pnlPIUserName;
     private javax.swing.JPanel pnlProfilinstallningar;
@@ -1709,7 +1880,11 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane spSoktaAnvandare;
     public static javax.swing.JTable tblForum;
     private javax.swing.JTable tblSoktaAnvandare;
+    private javax.swing.JTextField tfAnvNamn;
+    private javax.swing.JTextField tfAnvTelefon;
+    private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfFSok;
+    private javax.swing.JTextField tfLosenord;
     private javax.swing.JTextField tfPIEmail;
     private javax.swing.JTextField tfPITlfn;
     private javax.swing.JTextField tfSokText;
