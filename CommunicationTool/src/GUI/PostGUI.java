@@ -7,18 +7,26 @@ package GUI;
 
 import Objects.CurrentComments;
 import Objects.CurrentUser;
+import com.jcraft.jsch.JSchException;
+import com.jcraft.jsch.SftpException;
 import java.awt.Color;
+import java.io.File;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.Timer;
 import javax.swing.border.Border;
 import methods.FetchComments;
+import methods.Filnamn;
+import methods.SFPT;
 
 /**
  *
@@ -39,6 +47,7 @@ public class PostGUI extends javax.swing.JFrame {
     public static String postText;
     public static String user;
     public static boolean admin;
+    public String fileObject;
 
     /**
      * Creates new form PostGUI
@@ -49,6 +58,11 @@ public class PostGUI extends javax.swing.JFrame {
         this.publisher = publisher;
         this.title = title;
         this.postText = postText;
+        Filnamn fil = new Filnamn();
+        this.fileObject= fil.getFileObject(postID);
+        
+        
+        
         
         initComponents();
      new FetchComments(postID);
@@ -58,6 +72,10 @@ public class PostGUI extends javax.swing.JFrame {
      if(CurrentUser.currentUser.isAdmin() || CurrentUser.currentUser.getName().equals(publisher)){
          btnPGRedigera.setVisible(true);
      }
+     if(fileObject==null){
+     btnHämtaFil.setVisible(false);
+     }
+     
      
      //CurrentUser.currentUser.isAdmin();
      //CurrentUser.currentUser.getName();
@@ -108,6 +126,7 @@ public class PostGUI extends javax.swing.JFrame {
         btnPGComment = new javax.swing.JButton();
         btnPGRedigera = new javax.swing.JButton();
         btnPGUppdateraPost = new javax.swing.JButton();
+        btnHämtaFil = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(10000, 10000));
@@ -187,6 +206,14 @@ public class PostGUI extends javax.swing.JFrame {
             }
         });
 
+        btnHämtaFil.setBackground(new java.awt.Color(202, 100, 91));
+        btnHämtaFil.setText("Hämta bifogad fil");
+        btnHämtaFil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHämtaFilActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -213,9 +240,10 @@ public class PostGUI extends javax.swing.JFrame {
                                     .addComponent(lblTitle)
                                     .addComponent(lblAuthor))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnPGRedigera, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnPGUppdateraPost, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnPGRedigera, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                    .addComponent(btnPGUppdateraPost, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                    .addComponent(btnHämtaFil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(63, 63, 63)))
                 .addContainerGap())
         );
@@ -234,7 +262,9 @@ public class PostGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPGRedigera)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPGUppdateraPost))
+                        .addComponent(btnPGUppdateraPost)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnHämtaFil))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(iconLogga)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -289,6 +319,21 @@ public class PostGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnPGUppdateraPostActionPerformed
 
+    private void btnHämtaFilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHämtaFilActionPerformed
+        // TODO add your handling code here:
+        SFPT download = new SFPT();
+        try {
+            String home = System.getProperty("user.home");
+File file = new File(home+"/Downloads/" + fileObject );
+            download.connect();
+            download.download(fileObject,file.toString());
+            download.disconnect();
+        } catch (JSchException | SftpException ex) {
+            Logger.getLogger(PostGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JOptionPane.showMessageDialog(null, "Filen: " + fileObject + " är nedladdad" );
+    }//GEN-LAST:event_btnHämtaFilActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -326,6 +371,7 @@ public class PostGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHämtaFil;
     private javax.swing.JButton btnPGComment;
     private javax.swing.JButton btnPGRedigera;
     private javax.swing.JButton btnPGUppdateraPost;

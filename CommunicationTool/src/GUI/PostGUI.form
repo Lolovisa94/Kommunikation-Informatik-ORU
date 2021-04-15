@@ -72,9 +72,10 @@
                                       <Component id="lblAuthor" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnPGRedigera" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
-                                      <Component id="btnPGUppdateraPost" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="btnPGRedigera" alignment="0" pref="150" max="32767" attributes="0"/>
+                                      <Component id="btnPGUppdateraPost" alignment="0" pref="150" max="32767" attributes="0"/>
+                                      <Component id="btnHämtaFil" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -102,6 +103,8 @@
                           <Component id="btnPGRedigera" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnPGUppdateraPost" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btnHämtaFil" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="iconLogga" min="-2" max="-2" attributes="0"/>
@@ -297,6 +300,17 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPGUppdateraPostActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnH&#xe4;mtaFil">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="5b" green="64" red="ca" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="H&#xe4;mta bifogad fil"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnH&#xe4;mtaFilActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

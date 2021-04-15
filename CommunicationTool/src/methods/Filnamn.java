@@ -17,6 +17,8 @@ import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class Filnamn {
     private String fileName;
     private ResultSet rs= null;
@@ -53,4 +55,21 @@ int postID =rs.getInt("Inlägg_ID");
 String createFile = "Insert into Filer (Namn, Inlägg_ID) values ('" + name + "'" + "," + postID + ")";
 st.executeUpdate(createFile);
 }
+public String getFileObject(int Inlägg_ID) {
+   
+      String getFileObject = null;
+        try {
+             Statement st = Connectivity.ConnectionClass.conn.createStatement();
+       
+String query= "SELECT Namn FROM Filer where Inlägg_ID=" + Inlägg_ID;
+    rs=st.executeQuery(query);
+    rs.next();
+     getFileObject=rs.getString("Namn");}
+    catch (Exception e){
+            System.out.println(e);
+            }
+    
+return getFileObject;
+}
+
 }
