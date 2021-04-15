@@ -7,7 +7,9 @@ package GUI;
 
 import Objects.CurrentUser;
 import Methods.SearchUser;
+import Validation.Validation;
 import java.awt.Dimension;
+import methods.FetchPosts;
 
 
 /**
@@ -81,6 +83,7 @@ public class PageGUI extends javax.swing.JFrame {
     public void selectForum() {
         resetPanel();
         resetMenu();
+        new FetchPosts();
         selForum.setVisible(true);
         pnlForum.setVisible(true);
         isSelForum = true;
@@ -138,6 +141,10 @@ public class PageGUI extends javax.swing.JFrame {
         lblWelcome.setText("Välkommen " + name + "!");
     }
 
+        public static void setFelmeddelandePIUppdatera() {
+        Validation.setLabelText(lblPIFelmeddelandeUppdatera, "Inga ändringar har gjorts!");
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -172,8 +179,6 @@ public class PageGUI extends javax.swing.JFrame {
         jLayeredPane2 = new javax.swing.JLayeredPane();
         pnlStartsida = new javax.swing.JPanel();
         lblWelcome = new javax.swing.JLabel();
-        pnlForum = new javax.swing.JPanel();
-        lblForum = new javax.swing.JLabel();
         pnlKalender = new javax.swing.JPanel();
         lblKalender = new javax.swing.JLabel();
         pnlMeddelanden = new javax.swing.JPanel();
@@ -186,10 +191,43 @@ public class PageGUI extends javax.swing.JFrame {
         lblIngetSokresultat = new javax.swing.JLabel();
         spSoktaAnvandare = new javax.swing.JScrollPane();
         tblSoktaAnvandare = new javax.swing.JTable();
-        pnlProfilinstallningar = new javax.swing.JPanel();
-        lblProfilinstallningar = new javax.swing.JLabel();
         pnlAdminfunktionalitet = new javax.swing.JPanel();
         lblAdminfunktionalitet = new javax.swing.JLabel();
+        pnlForum = new javax.swing.JPanel();
+        btnSkapaBloggtrad = new javax.swing.JPanel();
+        lblbtnSkapaBloggtrad = new javax.swing.JLabel();
+        lblForum = new javax.swing.JLabel();
+        pnlFVisaKategorier = new javax.swing.JPanel();
+        lblFVisaKategorier = new javax.swing.JLabel();
+        lblFForskning = new javax.swing.JLabel();
+        lblFUtbildning = new javax.swing.JLabel();
+        lblFAllmant = new javax.swing.JLabel();
+        cbFForskning = new javax.swing.JCheckBox();
+        cbFUtbildning = new javax.swing.JCheckBox();
+        cbFOvrigt = new javax.swing.JCheckBox();
+        btnFUppdatera = new javax.swing.JPanel();
+        lblbtnFUppdatera = new javax.swing.JLabel();
+        sPForum = new javax.swing.JScrollPane();
+        tblForum = new javax.swing.JTable();
+        pnlFSok = new javax.swing.JPanel();
+        sepFSok = new javax.swing.JSeparator();
+        tfFSok = new javax.swing.JTextField();
+        iconSearch = new javax.swing.JLabel();
+        pnlProfilinstallningar = new javax.swing.JPanel();
+        lblPIRubrik = new javax.swing.JLabel();
+        lblPIEmail = new javax.swing.JLabel();
+        lblPITlfn = new javax.swing.JLabel();
+        lblPIPW = new javax.swing.JLabel();
+        lblPINamn = new javax.swing.JLabel();
+        tfPITlfn = new javax.swing.JTextField();
+        tfPIEmail = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        lblPersonligaInstallningarText = new javax.swing.JLabel();
+        pnlPIUserName = new javax.swing.JPanel();
+        lblPIUserName = new javax.swing.JLabel();
+        btnPIUppdatera = new javax.swing.JButton();
+        lblPIFelmeddelandeNamn = new javax.swing.JLabel();
+        lblPIFelmeddelandeUppdatera = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -626,32 +664,6 @@ public class PageGUI extends javax.swing.JFrame {
 
         jLayeredPane2.add(pnlStartsida, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        pnlForum.setBackground(new java.awt.Color(158, 174, 187));
-
-        lblForum.setBackground(new java.awt.Color(77, 85, 92));
-        lblForum.setFont(new java.awt.Font("Poppins Medium", 1, 48)); // NOI18N
-        lblForum.setForeground(new java.awt.Color(77, 85, 92));
-        lblForum.setText("Forum");
-
-        javax.swing.GroupLayout pnlForumLayout = new javax.swing.GroupLayout(pnlForum);
-        pnlForum.setLayout(pnlForumLayout);
-        pnlForumLayout.setHorizontalGroup(
-            pnlForumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlForumLayout.createSequentialGroup()
-                .addGap(413, 413, 413)
-                .addComponent(lblForum)
-                .addContainerGap(927, Short.MAX_VALUE))
-        );
-        pnlForumLayout.setVerticalGroup(
-            pnlForumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlForumLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(lblForum, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(898, Short.MAX_VALUE))
-        );
-
-        jLayeredPane2.add(pnlForum, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         pnlKalender.setBackground(new java.awt.Color(158, 174, 187));
 
         lblKalender.setBackground(new java.awt.Color(77, 85, 92));
@@ -810,32 +822,6 @@ public class PageGUI extends javax.swing.JFrame {
 
         jLayeredPane2.add(pnlSokfunktion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        pnlProfilinstallningar.setBackground(new java.awt.Color(158, 174, 187));
-
-        lblProfilinstallningar.setBackground(new java.awt.Color(77, 85, 92));
-        lblProfilinstallningar.setFont(new java.awt.Font("Poppins Medium", 1, 48)); // NOI18N
-        lblProfilinstallningar.setForeground(new java.awt.Color(77, 85, 92));
-        lblProfilinstallningar.setText("Profilinställningar");
-
-        javax.swing.GroupLayout pnlProfilinstallningarLayout = new javax.swing.GroupLayout(pnlProfilinstallningar);
-        pnlProfilinstallningar.setLayout(pnlProfilinstallningarLayout);
-        pnlProfilinstallningarLayout.setHorizontalGroup(
-            pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlProfilinstallningarLayout.createSequentialGroup()
-                .addGap(413, 413, 413)
-                .addComponent(lblProfilinstallningar)
-                .addContainerGap(927, Short.MAX_VALUE))
-        );
-        pnlProfilinstallningarLayout.setVerticalGroup(
-            pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlProfilinstallningarLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(lblProfilinstallningar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(898, Short.MAX_VALUE))
-        );
-
-        jLayeredPane2.add(pnlProfilinstallningar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         pnlAdminfunktionalitet.setBackground(new java.awt.Color(158, 174, 187));
 
         lblAdminfunktionalitet.setBackground(new java.awt.Color(77, 85, 92));
@@ -861,6 +847,404 @@ public class PageGUI extends javax.swing.JFrame {
         );
 
         jLayeredPane2.add(pnlAdminfunktionalitet, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        pnlForum.setBackground(new java.awt.Color(158, 174, 187));
+        pnlForum.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnSkapaBloggtrad.setBackground(new java.awt.Color(0, 94, 125));
+        btnSkapaBloggtrad.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
+        btnSkapaBloggtrad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSkapaBloggtradMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSkapaBloggtradMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSkapaBloggtradMouseExited(evt);
+            }
+        });
+
+        lblbtnSkapaBloggtrad.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        lblbtnSkapaBloggtrad.setForeground(new java.awt.Color(158, 174, 187));
+        lblbtnSkapaBloggtrad.setText("Skapa Bloggtråd");
+        lblbtnSkapaBloggtrad.setIconTextGap(5);
+        lblbtnSkapaBloggtrad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                lblbtnSkapaBloggtradKeyPressed(evt);
+            }
+        });
+        btnSkapaBloggtrad.add(lblbtnSkapaBloggtrad);
+
+        pnlForum.add(btnSkapaBloggtrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 260, 270, -1));
+
+        lblForum.setBackground(new java.awt.Color(77, 85, 92));
+        lblForum.setFont(new java.awt.Font("Poppins Medium", 1, 48)); // NOI18N
+        lblForum.setForeground(new java.awt.Color(77, 85, 92));
+        lblForum.setText("Forum");
+        pnlForum.add(lblForum, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, -1, 60));
+
+        pnlFVisaKategorier.setBackground(new java.awt.Color(158, 174, 187));
+
+        lblFVisaKategorier.setBackground(new java.awt.Color(77, 85, 92));
+        lblFVisaKategorier.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
+        lblFVisaKategorier.setForeground(new java.awt.Color(77, 85, 92));
+        lblFVisaKategorier.setText("Visa kategorier");
+
+        lblFForskning.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
+        lblFForskning.setForeground(new java.awt.Color(77, 85, 92));
+        lblFForskning.setText("Forskning");
+
+        lblFUtbildning.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
+        lblFUtbildning.setForeground(new java.awt.Color(77, 85, 92));
+        lblFUtbildning.setText("Utbildning");
+
+        lblFAllmant.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
+        lblFAllmant.setForeground(new java.awt.Color(77, 85, 92));
+        lblFAllmant.setText("Allmänt");
+
+        cbFForskning.setBackground(new java.awt.Color(158, 174, 187));
+        cbFForskning.setSelected(true);
+        cbFForskning.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbFForskningActionPerformed(evt);
+            }
+        });
+
+        cbFUtbildning.setBackground(new java.awt.Color(158, 174, 187));
+        cbFUtbildning.setSelected(true);
+        cbFUtbildning.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbFUtbildningActionPerformed(evt);
+            }
+        });
+
+        cbFOvrigt.setBackground(new java.awt.Color(158, 174, 187));
+        cbFOvrigt.setSelected(true);
+        cbFOvrigt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbFOvrigtActionPerformed(evt);
+            }
+        });
+
+        btnFUppdatera.setBackground(new java.awt.Color(0, 94, 125));
+        btnFUppdatera.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
+        btnFUppdatera.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnFUppdateraMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnFUppdateraMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnFUppdateraMouseExited(evt);
+            }
+        });
+
+        lblbtnFUppdatera.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        lblbtnFUppdatera.setForeground(new java.awt.Color(158, 174, 187));
+        lblbtnFUppdatera.setText("Uppdatera");
+        lblbtnFUppdatera.setIconTextGap(5);
+        btnFUppdatera.add(lblbtnFUppdatera);
+
+        javax.swing.GroupLayout pnlFVisaKategorierLayout = new javax.swing.GroupLayout(pnlFVisaKategorier);
+        pnlFVisaKategorier.setLayout(pnlFVisaKategorierLayout);
+        pnlFVisaKategorierLayout.setHorizontalGroup(
+            pnlFVisaKategorierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFVisaKategorierLayout.createSequentialGroup()
+                .addGroup(pnlFVisaKategorierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlFVisaKategorierLayout.createSequentialGroup()
+                        .addComponent(lblFVisaKategorier)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnFUppdatera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlFVisaKategorierLayout.createSequentialGroup()
+                        .addComponent(lblFForskning)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbFForskning)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addComponent(lblFUtbildning)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbFUtbildning)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblFAllmant)
+                        .addGap(4, 4, 4)
+                        .addComponent(cbFOvrigt)))
+                .addContainerGap())
+        );
+        pnlFVisaKategorierLayout.setVerticalGroup(
+            pnlFVisaKategorierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFVisaKategorierLayout.createSequentialGroup()
+                .addGroup(pnlFVisaKategorierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblFVisaKategorier)
+                    .addComponent(btnFUppdatera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlFVisaKategorierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlFVisaKategorierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(cbFForskning, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(pnlFVisaKategorierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblFForskning)
+                            .addComponent(lblFAllmant)))
+                    .addComponent(cbFOvrigt)
+                    .addComponent(lblFUtbildning)
+                    .addComponent(cbFUtbildning))
+                .addGap(0, 15, Short.MAX_VALUE))
+        );
+
+        pnlForum.add(pnlFVisaKategorier, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, -1, -1));
+
+        sPForum.setBackground(new java.awt.Color(158, 174, 187));
+        sPForum.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(77, 85, 92), 1, true));
+        sPForum.setForeground(new java.awt.Color(158, 174, 187));
+        sPForum.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
+        sPForum.getViewport().setBackground(new java.awt.Color(158, 174, 187));
+
+        tblForum.setBackground(new java.awt.Color(158, 174, 187));
+        tblForum.setFont(new java.awt.Font("Poppins Medium", 0, 18)); // NOI18N
+        tblForum.setForeground(new java.awt.Color(77, 85, 92));
+        tblForum.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Kategori", "Titel", "Trådförfattare", "Publicerad"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblForum.setGridColor(new java.awt.Color(77, 85, 92));
+        tblForum.setOpaque(false);
+        tblForum.setRowHeight(40);
+        tblForum.setSelectionBackground(new java.awt.Color(0, 94, 125));
+        tblForum.setSelectionForeground(new java.awt.Color(158, 174, 187));
+        tblForum.setShowGrid(true);
+        tblForum.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblForumMouseClicked(evt);
+            }
+        });
+        sPForum.setViewportView(tblForum);
+        tblForum.getTableHeader().setFont(new java.awt.Font("Poppins Medium", 0, 18));
+
+        tblForum.getTableHeader().setForeground(new java.awt.Color(77,85,92));
+
+        tblForum.getTableHeader().setBackground(new java.awt.Color(158, 174, 187));
+
+        tblForum.getTableHeader().setBorder(new javax.swing.border.LineBorder(new java.awt.Color(77, 85, 92), 1, true));
+
+        pnlForum.add(sPForum, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 1150, 465));
+
+        pnlFSok.setBackground(new java.awt.Color(158, 174, 187));
+
+        sepFSok.setBackground(new java.awt.Color(0, 94, 125));
+        sepFSok.setForeground(new java.awt.Color(0, 94, 125));
+
+        tfFSok.setBackground(new java.awt.Color(158, 174, 187));
+        tfFSok.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
+        tfFSok.setForeground(new java.awt.Color(0, 94, 125));
+        tfFSok.setBorder(null);
+        tfFSok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfFSokActionPerformed(evt);
+            }
+        });
+
+        iconSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/searchIcon.png"))); // NOI18N
+
+        javax.swing.GroupLayout pnlFSokLayout = new javax.swing.GroupLayout(pnlFSok);
+        pnlFSok.setLayout(pnlFSokLayout);
+        pnlFSokLayout.setHorizontalGroup(
+            pnlFSokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFSokLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlFSokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(sepFSok)
+                    .addComponent(tfFSok, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(iconSearch)
+                .addContainerGap(124, Short.MAX_VALUE))
+        );
+        pnlFSokLayout.setVerticalGroup(
+            pnlFSokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFSokLayout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addGroup(pnlFSokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfFSok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iconSearch))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sepFSok, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
+        );
+
+        pnlForum.add(pnlFSok, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 10, -1, -1));
+
+        jLayeredPane2.add(pnlForum, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        pnlProfilinstallningar.setBackground(new java.awt.Color(158, 174, 187));
+
+        lblPIRubrik.setBackground(new java.awt.Color(77, 85, 92));
+        lblPIRubrik.setFont(new java.awt.Font("Poppins Medium", 1, 24)); // NOI18N
+        lblPIRubrik.setForeground(new java.awt.Color(77, 85, 92));
+        lblPIRubrik.setText("Personliga inställningar:");
+
+        lblPIEmail.setBackground(new java.awt.Color(77, 85, 92));
+        lblPIEmail.setFont(new java.awt.Font("Poppins Medium", 1, 14)); // NOI18N
+        lblPIEmail.setForeground(new java.awt.Color(77, 85, 92));
+        lblPIEmail.setText("Email:");
+
+        lblPITlfn.setBackground(new java.awt.Color(77, 85, 92));
+        lblPITlfn.setFont(new java.awt.Font("Poppins Medium", 1, 14)); // NOI18N
+        lblPITlfn.setForeground(new java.awt.Color(77, 85, 92));
+        lblPITlfn.setText("Telefonnummer:");
+
+        lblPIPW.setBackground(new java.awt.Color(77, 85, 92));
+        lblPIPW.setFont(new java.awt.Font("Poppins Medium", 1, 14)); // NOI18N
+        lblPIPW.setForeground(new java.awt.Color(77, 85, 92));
+        lblPIPW.setText("Lösenord:");
+
+        lblPINamn.setBackground(new java.awt.Color(77, 85, 92));
+        lblPINamn.setFont(new java.awt.Font("Poppins Medium", 1, 14)); // NOI18N
+        lblPINamn.setForeground(new java.awt.Color(77, 85, 92));
+        lblPINamn.setText("Namn:");
+
+        tfPIEmail.setColumns(8);
+        tfPIEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfPIEmailActionPerformed(evt);
+            }
+        });
+
+        jButton1.setBackground(new java.awt.Color(202, 100, 91));
+        jButton1.setForeground(new java.awt.Color(204, 204, 204));
+        jButton1.setText("Byt lösenord");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        lblPersonligaInstallningarText.setBackground(new java.awt.Color(77, 85, 92));
+        lblPersonligaInstallningarText.setFont(new java.awt.Font("Poppins Medium", 1, 14)); // NOI18N
+        lblPersonligaInstallningarText.setForeground(new java.awt.Color(77, 85, 92));
+        lblPersonligaInstallningarText.setText("Välkommen! Här finns möjligheten att när som helst se och ändra sin personliga information!");
+
+        pnlPIUserName.setForeground(new java.awt.Color(153, 153, 153));
+        pnlPIUserName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlPIUserNameMouseClicked(evt);
+            }
+        });
+
+        lblPIUserName.setFont(new java.awt.Font(".SF NS Text", 1, 13)); // NOI18N
+        lblPIUserName.setForeground(new java.awt.Color(0, 0, 0));
+        lblPIUserName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblPIUserNameMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlPIUserNameLayout = new javax.swing.GroupLayout(pnlPIUserName);
+        pnlPIUserName.setLayout(pnlPIUserNameLayout);
+        pnlPIUserNameLayout.setHorizontalGroup(
+            pnlPIUserNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblPIUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+        );
+        pnlPIUserNameLayout.setVerticalGroup(
+            pnlPIUserNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPIUserNameLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblPIUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        btnPIUppdatera.setBackground(new java.awt.Color(202, 100, 91));
+        btnPIUppdatera.setForeground(new java.awt.Color(204, 204, 204));
+        btnPIUppdatera.setText("Uppdatera");
+        btnPIUppdatera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPIUppdateraActionPerformed(evt);
+            }
+        });
+
+        lblPIFelmeddelandeNamn.setFont(new java.awt.Font(".SF NS Text", 1, 13)); // NOI18N
+        lblPIFelmeddelandeNamn.setForeground(new java.awt.Color(255, 51, 51));
+
+        javax.swing.GroupLayout pnlProfilinstallningarLayout = new javax.swing.GroupLayout(pnlProfilinstallningar);
+        pnlProfilinstallningar.setLayout(pnlProfilinstallningarLayout);
+        pnlProfilinstallningarLayout.setHorizontalGroup(
+            pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlProfilinstallningarLayout.createSequentialGroup()
+                .addGap(413, 413, 413)
+                .addGroup(pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPersonligaInstallningarText)
+                    .addComponent(lblPIRubrik)
+                    .addGroup(pnlProfilinstallningarLayout.createSequentialGroup()
+                        .addGroup(pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPIEmail)
+                            .addComponent(lblPITlfn)
+                            .addComponent(lblPINamn))
+                        .addGap(87, 87, 87)
+                        .addGroup(pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfPITlfn, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(tfPIEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(pnlPIUserName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblPIFelmeddelandeNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnlProfilinstallningarLayout.createSequentialGroup()
+                        .addGap(251, 251, 251)
+                        .addComponent(btnPIUppdatera))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlProfilinstallningarLayout.createSequentialGroup()
+                        .addComponent(lblPIPW)
+                        .addGroup(pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlProfilinstallningarLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblPIFelmeddelandeUppdatera, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlProfilinstallningarLayout.createSequentialGroup()
+                                .addGap(182, 182, 182)
+                                .addComponent(jButton1)
+                                .addGap(354, 354, 354)))))
+                .addContainerGap(687, Short.MAX_VALUE))
+        );
+        pnlProfilinstallningarLayout.setVerticalGroup(
+            pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlProfilinstallningarLayout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(lblPIRubrik, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblPersonligaInstallningarText, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addGroup(pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPINamn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlProfilinstallningarLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(pnlPIUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(lblPIFelmeddelandeNamn)
+                .addGap(49, 49, 49)
+                .addGroup(pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPIEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfPIEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(100, 100, 100)
+                .addGroup(pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPITlfn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfPITlfn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblPIFelmeddelandeUppdatera, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnPIUppdatera)
+                .addGap(51, 51, 51)
+                .addGroup(pnlProfilinstallningarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPIPW, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addContainerGap(252, Short.MAX_VALUE))
+        );
+
+        jLayeredPane2.add(pnlProfilinstallningar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         panelMenuBackground.add(jLayeredPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 1500, 1020));
 
@@ -1048,6 +1432,99 @@ public class PageGUI extends javax.swing.JFrame {
         tfSokText.setText("");
     }//GEN-LAST:event_tfSokTextMouseClicked
 
+    private void lblbtnSkapaBloggtradKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblbtnSkapaBloggtradKeyPressed
+
+    }//GEN-LAST:event_lblbtnSkapaBloggtradKeyPressed
+
+    private void btnSkapaBloggtradMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkapaBloggtradMouseClicked
+        // TODO add your handling code here:
+        new CreatePostGUI().setVisible(true);
+    }//GEN-LAST:event_btnSkapaBloggtradMouseClicked
+
+    private void btnSkapaBloggtradMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkapaBloggtradMouseEntered
+        // TODO add your handling code here:
+        btnSkapaBloggtrad.setBackground(new java.awt.Color(158, 174, 187));
+
+        btnSkapaBloggtrad.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
+        lblbtnSkapaBloggtrad.setForeground(new java.awt.Color(0, 94, 125));
+    }//GEN-LAST:event_btnSkapaBloggtradMouseEntered
+
+    private void btnSkapaBloggtradMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkapaBloggtradMouseExited
+        // TODO add your handling code here:
+        btnSkapaBloggtrad.setBackground(new java.awt.Color(0, 94, 125));
+        lblbtnSkapaBloggtrad.setForeground(new java.awt.Color(158, 174, 187));
+        btnSkapaBloggtrad.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
+    }//GEN-LAST:event_btnSkapaBloggtradMouseExited
+
+    private void cbFForskningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbFForskningActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbFForskningActionPerformed
+
+    private void cbFUtbildningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbFUtbildningActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbFUtbildningActionPerformed
+
+    private void cbFOvrigtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbFOvrigtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbFOvrigtActionPerformed
+
+    private void btnFUppdateraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFUppdateraMouseClicked
+        // TODO add your handling code here:
+        new FetchPosts();
+    }//GEN-LAST:event_btnFUppdateraMouseClicked
+
+    private void btnFUppdateraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFUppdateraMouseEntered
+        // TODO add your handling code here:
+        btnFUppdatera.setBackground(new java.awt.Color(158, 174, 187));
+        btnFUppdatera.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
+        lblbtnFUppdatera.setForeground(new java.awt.Color(0, 94, 125));
+
+    }//GEN-LAST:event_btnFUppdateraMouseEntered
+
+    private void btnFUppdateraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFUppdateraMouseExited
+        // TODO add your handling code here:
+        btnFUppdatera.setBackground(new java.awt.Color(0, 94, 125));
+        lblbtnFUppdatera.setForeground(new java.awt.Color(158, 174, 187));
+        btnFUppdatera.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
+    }//GEN-LAST:event_btnFUppdateraMouseExited
+
+    private void tblForumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblForumMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblForumMouseClicked
+
+    private void tfFSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfFSokActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfFSokActionPerformed
+
+    private void tfPIEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPIEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfPIEmailActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+
+        changePassword cp = new changePassword();
+        cp.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void lblPIUserNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPIUserNameMouseClicked
+        // TODO add your handling code here:
+
+        lblPIFelmeddelandeNamn.setText("Du kan inte ändra på namnet var vänlig och kontakta universitetet!");
+    }//GEN-LAST:event_lblPIUserNameMouseClicked
+
+    private void pnlPIUserNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPIUserNameMouseClicked
+        // TODO add your handling code here:
+        lblPIFelmeddelandeNamn.setText("Du kan inte ändra på namnet var vänlig och kontakta universitetet!");
+    }//GEN-LAST:event_pnlPIUserNameMouseClicked
+
+    private void btnPIUppdateraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPIUppdateraActionPerformed
+        // TODO add your handling code here:
+
+        methods.ChangeUserInfo cUi = new methods.ChangeUserInfo();
+        cUi.changeMailTel(tfPIEmail.getText(), tfPITlfn.getText());
+    }//GEN-LAST:event_btnPIUppdateraActionPerformed
+
     private boolean isSelStartsida;
     private boolean isSelSokfunktion;
     private boolean isSelProfilinstallningar;
@@ -1059,14 +1536,22 @@ public class PageGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JPanel btnAdminfunktionalitet;
+    private javax.swing.JPanel btnFUppdatera;
     public static javax.swing.JPanel btnForum;
     public static javax.swing.JPanel btnKalender;
     public static javax.swing.JPanel btnMeddelanden;
+    private javax.swing.JButton btnPIUppdatera;
     public static javax.swing.JPanel btnProfilinstallningar;
+    private javax.swing.JPanel btnSkapaBloggtrad;
     private javax.swing.JPanel btnSokAnvandare;
     public static javax.swing.JPanel btnSokfunktion;
     public static javax.swing.JPanel btnStartsida;
+    public static javax.swing.JCheckBox cbFForskning;
+    public static javax.swing.JCheckBox cbFOvrigt;
+    public static javax.swing.JCheckBox cbFUtbildning;
     private javax.swing.JLabel iconLogga;
+    private javax.swing.JLabel iconSearch;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JLabel lblAdminfunktionalitet;
     private javax.swing.JLabel lblBtnAdminfunktionalitet;
@@ -1076,26 +1561,44 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblBtnSokfunktion;
     private javax.swing.JLabel lblBtnStartsida;
     private javax.swing.JLabel lblBtnStartsida4;
+    private javax.swing.JLabel lblFAllmant;
+    private javax.swing.JLabel lblFForskning;
+    private javax.swing.JLabel lblFUtbildning;
+    private javax.swing.JLabel lblFVisaKategorier;
     private javax.swing.JLabel lblForum;
     private javax.swing.JLabel lblIngetSokresultat;
     private javax.swing.JLabel lblKalender;
     private javax.swing.JLabel lblMeddelanden;
     private javax.swing.JLabel lblOrebro;
-    private javax.swing.JLabel lblProfilinstallningar;
+    private javax.swing.JLabel lblPIEmail;
+    private static javax.swing.JLabel lblPIFelmeddelandeNamn;
+    public static javax.swing.JLabel lblPIFelmeddelandeUppdatera;
+    private javax.swing.JLabel lblPINamn;
+    private javax.swing.JLabel lblPIPW;
+    private javax.swing.JLabel lblPIRubrik;
+    private javax.swing.JLabel lblPITlfn;
+    private javax.swing.JLabel lblPIUserName;
+    private javax.swing.JLabel lblPersonligaInstallningarText;
     private javax.swing.JLabel lblSokfunktion;
     private javax.swing.JLabel lblUniversitet;
     private javax.swing.JLabel lblWelcome;
+    private javax.swing.JLabel lblbtnFUppdatera;
+    private javax.swing.JLabel lblbtnSkapaBloggtrad;
     private javax.swing.JLabel lblbtnSokAnvandare;
     private javax.swing.JPanel panelMenu;
     private javax.swing.JPanel panelMenuBackground;
     private javax.swing.JPanel panelMenuLogga;
     private javax.swing.JPanel pnlAdminfunktionalitet;
+    private javax.swing.JPanel pnlFSok;
+    private javax.swing.JPanel pnlFVisaKategorier;
     private javax.swing.JPanel pnlForum;
     private javax.swing.JPanel pnlKalender;
     private javax.swing.JPanel pnlMeddelanden;
+    private javax.swing.JPanel pnlPIUserName;
     private javax.swing.JPanel pnlProfilinstallningar;
     private javax.swing.JPanel pnlSokfunktion;
     private javax.swing.JPanel pnlStartsida;
+    private javax.swing.JScrollPane sPForum;
     private javax.swing.JPanel selAdminfunktionalitet;
     private javax.swing.JPanel selForum;
     private javax.swing.JPanel selKalender;
@@ -1103,8 +1606,13 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JPanel selProfilinstallningar;
     private javax.swing.JPanel selSokfunktion;
     private javax.swing.JPanel selStartsida;
+    private javax.swing.JSeparator sepFSok;
     private javax.swing.JScrollPane spSoktaAnvandare;
+    public static javax.swing.JTable tblForum;
     private javax.swing.JTable tblSoktaAnvandare;
+    private javax.swing.JTextField tfFSok;
+    private javax.swing.JTextField tfPIEmail;
+    private javax.swing.JTextField tfPITlfn;
     private javax.swing.JTextField tfSokText;
     // End of variables declaration//GEN-END:variables
 }

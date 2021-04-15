@@ -6,27 +6,41 @@ package Methods;
  * and open the template in the editor.
  */
 import java.sql.ResultSet;
+
 /**
  *
  * @author pierre
  */
 public class User {
+    private int id;
     private String name;
     private int phone;
     private String pw;
     private boolean admin;
     private String email;
 
-    public User(String name, int phone, String pw, String admin, String email) {
+    public User(int id, String name, int phone, String pw, String admin, String email) {
+        this.id = id;
         this.name = name;
         this.phone = phone;
         this.pw = pw;
         setAdmin(admin);
         this.email = email;
     }
-    
-    
-    public void setName(String name){
+
+    public void setID(int id) {
+
+        this.id = id;
+
+    }
+
+    public int getID() {
+
+        return id;
+
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -39,8 +53,8 @@ public class User {
     }
 
     public void setAdmin(String admin) {
-        if(admin.toLowerCase().equals("j")){
-        this.admin = true;
+        if (admin.toLowerCase().equals("j")) {
+            this.admin = true;
         }
     }
 
@@ -67,8 +81,5 @@ public class User {
     public String getEmail() {
         return email;
     }
-    
-    
-    
-    
+
 }

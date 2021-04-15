@@ -19,8 +19,8 @@ import GUI.PageGUI;
  */
 public class LogIn {
     
-    public static void logIn(String email, String pw){
-    
+    public static boolean logIn(String email, String pw){
+        boolean logInSuccessful = false;
         ResultSet userInfo = null;
         if(fieldEmpty(email, pw)){
         
@@ -36,14 +36,13 @@ public class LogIn {
         
             if (dbPw.equals(pw)){
                 System.out.println(userInfo.getString(2) + " Logged In");
-                User loggedInUser = new User(userInfo.getString(2), userInfo.getInt(3), 
+                User loggedInUser = new User(userInfo.getInt(1), userInfo.getString(2), userInfo.getInt(3), 
                         userInfo.getString(4), userInfo.getString(5), userInfo.getString(6));
 
                     CurrentUser.currentUser = loggedInUser;  
                     new PageGUI().setVisible(true);
-                    
-                    
-                    
+                    logInSuccessful = true;
+         
         } else {
                 System.out.println("Inloggning misslyckades");
                 LogInGUI.setFelmeddelande("<html>Fel inloggningsuppgifter<br>försök igen</html>");
@@ -59,7 +58,7 @@ public class LogIn {
 	}
         
         }
-        
+        return logInSuccessful;
     }
     
     

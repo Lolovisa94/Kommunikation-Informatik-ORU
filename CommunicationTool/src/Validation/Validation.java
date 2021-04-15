@@ -36,4 +36,22 @@ public class Validation {
 
         return matchFound;
     }
+    
+            public static boolean fieldTooLong(String field, int maxLength){
+            resultat = false;
+            if(field.length() > maxLength){
+            resultat = true;
+            }
+            
+                    return resultat;
+        }
+        
+        public static boolean titleExists(String field1, String field2){
+            resultat = false;
+            if(field1.toLowerCase().equals(field2.toLowerCase())){
+            resultat = true;
+            }
+        
+            return resultat;
+        }
 }
