@@ -60,8 +60,4 @@ import java.io.File;
               session.disconnect();
           }
       }
-
-    public void upload(String cUsersoliveDownloadsnedladdning_1jpg, String homersakey20210415) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
   }
