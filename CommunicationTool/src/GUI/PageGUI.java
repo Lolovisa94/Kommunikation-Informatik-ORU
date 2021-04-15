@@ -121,6 +121,9 @@ public class PageGUI extends javax.swing.JFrame {
         isSelSokfunktion = true;
 
         tblSoktaAnvandare.setVisible(false);
+        if(!CurrentUser.currentUser.isAdmin()){
+        btnTaBortAnvändare.setVisible(false);
+        }
     }
 
     public String getSearchText() {
@@ -218,6 +221,7 @@ public class PageGUI extends javax.swing.JFrame {
         lblIngetSokresultat = new javax.swing.JLabel();
         spSoktaAnvandare = new javax.swing.JScrollPane();
         tblSoktaAnvandare = new javax.swing.JTable();
+        btnTaBortAnvändare = new javax.swing.JButton();
         pnlForum = new javax.swing.JPanel();
         btnSkapaBloggtrad = new javax.swing.JPanel();
         lblbtnSkapaBloggtrad = new javax.swing.JLabel();
@@ -825,6 +829,13 @@ public class PageGUI extends javax.swing.JFrame {
                 tblSoktaAnvandare.getRowHeight() * tblSoktaAnvandare.getRowCount()));
         spSoktaAnvandare.setViewportView(tblSoktaAnvandare);
 
+        btnTaBortAnvändare.setText("Ta bort användare");
+        btnTaBortAnvändare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaBortAnvändareActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlSokfunktionLayout = new javax.swing.GroupLayout(pnlSokfunktion);
         pnlSokfunktion.setLayout(pnlSokfunktionLayout);
         pnlSokfunktionLayout.setHorizontalGroup(
@@ -837,13 +848,15 @@ public class PageGUI extends javax.swing.JFrame {
                     .addGroup(pnlSokfunktionLayout.createSequentialGroup()
                         .addGap(101, 101, 101)
                         .addGroup(pnlSokfunktionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(spSoktaAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 764, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnlSokfunktionLayout.createSequentialGroup()
                                 .addComponent(tfSokText, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnSokAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(lblIngetSokresultat, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(lblIngetSokresultat, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlSokfunktionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnTaBortAnvändare)
+                                .addComponent(spSoktaAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 764, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(717, Short.MAX_VALUE))
         );
         pnlSokfunktionLayout.setVerticalGroup(
@@ -855,11 +868,13 @@ public class PageGUI extends javax.swing.JFrame {
                 .addGroup(pnlSokfunktionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlSokfunktionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btnSokAnvandare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(tfSokText, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
+                        .addComponent(tfSokText))
                     .addComponent(lblIngetSokresultat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addComponent(spSoktaAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(231, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(btnTaBortAnvändare)
+                .addContainerGap(175, Short.MAX_VALUE))
         );
 
         jLayeredPane2.add(pnlSokfunktion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -1768,6 +1783,18 @@ public class PageGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfEmailActionPerformed
 
+    private void btnTaBortAnvändareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAnvändareActionPerformed
+        {
+            int row = tblSoktaAnvandare.getSelectedRow();
+            String email = tblSoktaAnvandare.getValueAt(row, 2).toString();
+            if(searchUser.removeUser(email)){
+                JOptionPane.showMessageDialog(null, "Användare borttagen!");
+            
+            }
+        }
+
+    }//GEN-LAST:event_btnTaBortAnvändareActionPerformed
+
         public void setRadio() {
         
         if (CurrentUser.currentUser.getNotify().equals("J")) {
@@ -1806,6 +1833,7 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JPanel btnSokAnvandare;
     public static javax.swing.JPanel btnSokfunktion;
     public static javax.swing.JPanel btnStartsida;
+    private javax.swing.JButton btnTaBortAnvändare;
     private javax.swing.JCheckBox cbAdminFraga;
     public static javax.swing.JCheckBox cbFForskning;
     public static javax.swing.JCheckBox cbFOvrigt;

@@ -80,4 +80,31 @@ public class SearchUser {
         return usersFound;
     }
     
+    
+        public boolean removeUser(String email)
+    {
+        boolean userRemoved = false;
+        String query = "delete from `Användare` where Email = '"+email+"';";
+        String query2 = "SELECT Användare_ID FROM Användare WHERE Email = '" + email +"';"; 
+
+        
+        try{
+            st = ConnectionClass.conn.createStatement();
+            ResultSet rs = st.executeQuery(query2); 
+            if(rs.next()){
+            int id = rs.getInt("Användare_ID");
+            String deleteQuery = "DELETE FROM Notifikation WHERE Användare_ID =" + id;
+            
+            st.execute(deleteQuery);
+            st.execute(query);
+            userRemoved = true;
+            
+            }
+            
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        return userRemoved;
+    }
+    
 }

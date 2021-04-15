@@ -52,8 +52,7 @@ public class send_email_gmail {
                         //message.setDisposition("Inlägget handlar om rödluvan och hur hon influerat lärarna på informatik programmet!");
                     
 			Transport.send(message);
-			System.out.println("Done");
-                                                                                           
+			System.out.println("Done");                                                                       
                    }
                    
 		} catch (MessagingException e) {
