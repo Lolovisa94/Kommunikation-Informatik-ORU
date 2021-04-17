@@ -9,6 +9,7 @@ import Objects.CurrentComments;
 import Objects.CurrentUser;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import mail.Mail;
 
 /**
  *
@@ -35,6 +36,9 @@ public class PostComment {
                 try{
                 Statement st = Connectivity.ConnectionClass.conn.createStatement();
                 st.executeUpdate(addCommentSQLQuery);
+                mail.Mail mail = new Mail();
+                mail.commentsAndPost(postID);
+                
                 
                 }catch (Exception e){
                     System.out.println(e);
