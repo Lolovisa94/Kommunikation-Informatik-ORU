@@ -11,6 +11,7 @@ import javax.swing.*;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import GUI.PostGUI;
+import java.lang.reflect.Array;
 
 //implements Runnable 
 public class FetchComments{
@@ -37,6 +38,7 @@ public class FetchComments{
 //        this.msgCounter = 0;
         this.messages = nyMessages;
         getMessages();
+        sortMessages();
         addMessages();
         System.out.println("getMessages fungerar om vi ser detta");
 //        run();
@@ -84,6 +86,28 @@ public class FetchComments{
             System.out.println(e);
         }
 
+    }
+    
+    public void sortMessages(){
+        int y = 0;
+        String message;
+        int lastMessage = messages.length - 1;
+        String[] orderMessages = new String[lastMessage + 1];
+
+    while(0 <= lastMessage){
+
+
+        message = Array.get(messages, lastMessage).toString();
+        orderMessages[y] = message;
+
+        System.out.println(message);
+        System.out.println(lastMessage);
+        System.out.println(y);
+        lastMessage--;
+        y++;
+    }
+
+    messages = orderMessages;
     }
     
     public void addMessages(){

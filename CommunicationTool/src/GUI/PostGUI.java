@@ -10,6 +10,7 @@ import Objects.CurrentUser;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.SftpException;
 import java.awt.Color;
+import java.awt.Point;
 import java.io.File;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -24,6 +25,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.Timer;
 import javax.swing.border.Border;
+import javax.swing.text.DefaultCaret;
 import methods.FetchComments;
 import methods.Filnamn;
 import methods.SFPT;
@@ -76,6 +78,8 @@ public class PostGUI extends javax.swing.JFrame {
      btnHämtaFil.setVisible(false);
      }
      
+   
+     
      
      //CurrentUser.currentUser.isAdmin();
      //CurrentUser.currentUser.getName();
@@ -85,7 +89,11 @@ public class PostGUI extends javax.swing.JFrame {
 //        boolean oddMessage = msgCounter % 2 != 0;
 //        Color color = oddMessage ? Color.WHITE : Color.GRAY;
 
-        JTextArea label = new JTextArea(text);
+        JTextArea label = new JTextArea();
+                DefaultCaret caret = (DefaultCaret) label.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
+        label.setText(text);
+
         label.setMaximumSize(new java.awt.Dimension(600, 600));
         label.setLineWrap(true);
         label.setOpaque(true);
@@ -97,11 +105,14 @@ public class PostGUI extends javax.swing.JFrame {
 //    JPanel panelBox = new JPanel();
 //    panelBox.setLayout(new BoxLayout(panelBox, BoxLayout.X_AXIS));
 //    panelBox.setBorder(BorderFactory.createEmptyBorder(2,4,2,4));
+
         panelBox.add(label);
+       
 //    panel.add(panelBox);
 //    panel.revalidate();
 //    msgCounter++;
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -150,8 +161,11 @@ public class PostGUI extends javax.swing.JFrame {
 
         jScrollPane1.setBackground(new java.awt.Color(158, 174, 187));
         jScrollPane1.setAutoscrolls(true);
+        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane1.setViewportView(panelBox);
 
         panelBox.setBackground(new java.awt.Color(158, 174, 187));
+        panelBox.setAlignmentY(0.0F);
         panelBox.setAlignmentY(0.0F);
         panelBox.setLayout(new javax.swing.BoxLayout(panelBox, javax.swing.BoxLayout.Y_AXIS));
 

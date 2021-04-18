@@ -239,8 +239,6 @@ public class PageGUI extends javax.swing.JFrame {
         cbFForskning = new javax.swing.JCheckBox();
         cbFUtbildning = new javax.swing.JCheckBox();
         cbFOvrigt = new javax.swing.JCheckBox();
-        btnFUppdatera = new javax.swing.JPanel();
-        lblbtnFUppdatera = new javax.swing.JLabel();
         sPForum = new javax.swing.JScrollPane();
         tblForum = new javax.swing.JTable();
         pnlFSok = new javax.swing.JPanel();
@@ -943,6 +941,11 @@ public class PageGUI extends javax.swing.JFrame {
 
         cbFForskning.setBackground(new java.awt.Color(158, 174, 187));
         cbFForskning.setSelected(true);
+        cbFForskning.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbFForskningMouseClicked(evt);
+            }
+        });
         cbFForskning.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbFForskningActionPerformed(evt);
@@ -951,6 +954,11 @@ public class PageGUI extends javax.swing.JFrame {
 
         cbFUtbildning.setBackground(new java.awt.Color(158, 174, 187));
         cbFUtbildning.setSelected(true);
+        cbFUtbildning.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbFUtbildningMouseClicked(evt);
+            }
+        });
         cbFUtbildning.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbFUtbildningActionPerformed(evt);
@@ -959,31 +967,16 @@ public class PageGUI extends javax.swing.JFrame {
 
         cbFOvrigt.setBackground(new java.awt.Color(158, 174, 187));
         cbFOvrigt.setSelected(true);
+        cbFOvrigt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbFOvrigtMouseClicked(evt);
+            }
+        });
         cbFOvrigt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbFOvrigtActionPerformed(evt);
             }
         });
-
-        btnFUppdatera.setBackground(new java.awt.Color(0, 94, 125));
-        btnFUppdatera.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
-        btnFUppdatera.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnFUppdateraMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnFUppdateraMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnFUppdateraMouseExited(evt);
-            }
-        });
-
-        lblbtnFUppdatera.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        lblbtnFUppdatera.setForeground(new java.awt.Color(158, 174, 187));
-        lblbtnFUppdatera.setText("Uppdatera");
-        lblbtnFUppdatera.setIconTextGap(5);
-        btnFUppdatera.add(lblbtnFUppdatera);
 
         javax.swing.GroupLayout pnlFVisaKategorierLayout = new javax.swing.GroupLayout(pnlFVisaKategorier);
         pnlFVisaKategorier.setLayout(pnlFVisaKategorierLayout);
@@ -993,8 +986,7 @@ public class PageGUI extends javax.swing.JFrame {
                 .addGroup(pnlFVisaKategorierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlFVisaKategorierLayout.createSequentialGroup()
                         .addComponent(lblFVisaKategorier)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnFUppdatera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(pnlFVisaKategorierLayout.createSequentialGroup()
                         .addComponent(lblFForskning)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1012,9 +1004,7 @@ public class PageGUI extends javax.swing.JFrame {
         pnlFVisaKategorierLayout.setVerticalGroup(
             pnlFVisaKategorierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFVisaKategorierLayout.createSequentialGroup()
-                .addGroup(pnlFVisaKategorierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblFVisaKategorier)
-                    .addComponent(btnFUppdatera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblFVisaKategorier)
                 .addGap(18, 18, 18)
                 .addGroup(pnlFVisaKategorierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlFVisaKategorierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1679,26 +1669,6 @@ public class PageGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbFOvrigtActionPerformed
 
-    private void btnFUppdateraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFUppdateraMouseClicked
-        // TODO add your handling code here:
-        new FetchPosts();
-    }//GEN-LAST:event_btnFUppdateraMouseClicked
-
-    private void btnFUppdateraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFUppdateraMouseEntered
-        // TODO add your handling code here:
-        btnFUppdatera.setBackground(new java.awt.Color(158, 174, 187));
-        btnFUppdatera.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
-        lblbtnFUppdatera.setForeground(new java.awt.Color(0, 94, 125));
-
-    }//GEN-LAST:event_btnFUppdateraMouseEntered
-
-    private void btnFUppdateraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFUppdateraMouseExited
-        // TODO add your handling code here:
-        btnFUppdatera.setBackground(new java.awt.Color(0, 94, 125));
-        lblbtnFUppdatera.setForeground(new java.awt.Color(158, 174, 187));
-        btnFUppdatera.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
-    }//GEN-LAST:event_btnFUppdateraMouseExited
-
     private void tblForumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblForumMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tblForumMouseClicked
@@ -1855,6 +1825,22 @@ public class PageGUI extends javax.swing.JFrame {
         btnTaBortBloggtrad.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
     }//GEN-LAST:event_btnTaBortBloggtradMouseExited
 
+    private void cbFForskningMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbFForskningMouseClicked
+        // TODO add your handling code here:
+        new FetchPosts();
+        
+    }//GEN-LAST:event_cbFForskningMouseClicked
+
+    private void cbFUtbildningMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbFUtbildningMouseClicked
+        // TODO add your handling code here:
+        new FetchPosts();
+    }//GEN-LAST:event_cbFUtbildningMouseClicked
+
+    private void cbFOvrigtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbFOvrigtMouseClicked
+        // TODO add your handling code here:
+        new FetchPosts();
+    }//GEN-LAST:event_cbFOvrigtMouseClicked
+
         public void setRadio() {
         
         if (CurrentUser.currentUser.getNotify().equals("J")) {
@@ -1881,7 +1867,6 @@ public class PageGUI extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel btnFUppdatera;
     public static javax.swing.JPanel btnForum;
     public static javax.swing.JPanel btnKalender;
     private javax.swing.JButton btnLaggTillAnv;
@@ -1941,7 +1926,6 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblSokfunktion;
     private javax.swing.JLabel lblUniversitet;
     private javax.swing.JLabel lblWelcome;
-    private javax.swing.JLabel lblbtnFUppdatera;
     private javax.swing.JLabel lblbtnSkapaBloggtrad;
     private javax.swing.JLabel lblbtnSokAnvandare;
     private javax.swing.JLabel lblbtnTaBortBloggtrad;
