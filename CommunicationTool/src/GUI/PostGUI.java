@@ -28,6 +28,7 @@ import javax.swing.border.Border;
 import javax.swing.text.DefaultCaret;
 import methods.FetchComments;
 import methods.Filnamn;
+import methods.LikePost;
 import methods.SFPT;
 
 /**
@@ -50,6 +51,7 @@ public class PostGUI extends javax.swing.JFrame {
     public static String user;
     public static boolean admin;
     public String fileObject;
+    public boolean isLiked = false;
 
     /**
      * Creates new form PostGUI
@@ -78,9 +80,17 @@ public class PostGUI extends javax.swing.JFrame {
      btnHämtaFil.setVisible(false);
      }
      
+     if(LikePost.checkLike(postID)){
+         if(LikePost.checkLikeJN(postID)){
+         btnPGLike.setBackground(new java.awt.Color(202, 100, 91));
+         isLiked = true;}
+     
+     }
+     
+     
    
-     
-     
+    Integer nrLikes = LikePost.likeCounter(postID);
+    lblPostLike.setText(nrLikes.toString());
      //CurrentUser.currentUser.isAdmin();
      //CurrentUser.currentUser.getName();
     }
@@ -138,6 +148,8 @@ public class PostGUI extends javax.swing.JFrame {
         btnPGRedigera = new javax.swing.JButton();
         btnPGUppdateraPost = new javax.swing.JButton();
         btnHämtaFil = new javax.swing.JButton();
+        btnPGLike = new javax.swing.JPanel();
+        lblPostLike = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(10000, 10000));
@@ -228,6 +240,20 @@ public class PostGUI extends javax.swing.JFrame {
             }
         });
 
+        btnPGLike.setBackground(new java.awt.Color(77, 85, 92));
+        btnPGLike.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 100, 91), 2, true));
+        btnPGLike.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPGLikeMouseClicked(evt);
+            }
+        });
+
+        lblPostLike.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
+        lblPostLike.setForeground(new java.awt.Color(234, 234, 234));
+        lblPostLike.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/likeIcon.png"))); // NOI18N
+        lblPostLike.setText("1");
+        btnPGLike.add(lblPostLike);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -235,8 +261,9 @@ public class PostGUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,7 +285,11 @@ public class PostGUI extends javax.swing.JFrame {
                                     .addComponent(btnPGRedigera, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                                     .addComponent(btnPGUppdateraPost, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                                     .addComponent(btnHämtaFil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(63, 63, 63)))
+                        .addGap(63, 63, 63))
+                    .addComponent(jScrollPane2)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnPGLike, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -286,7 +317,9 @@ public class PostGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPGLike, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -348,6 +381,24 @@ File file = new File(home+"/Downloads/" + fileObject );
         JOptionPane.showMessageDialog(null, "Filen: " + fileObject + " är nedladdad" );
     }//GEN-LAST:event_btnHämtaFilActionPerformed
 
+    private void btnPGLikeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPGLikeMouseClicked
+        // TODO add your handling code here:
+        
+        if(isLiked){
+            btnPGLike.setBackground(new java.awt.Color(77,85,92));
+            isLiked = false;
+            new LikePost(postID);
+        } else {
+            btnPGLike.setBackground(new java.awt.Color(202, 100, 91));
+            new LikePost(postID);
+            isLiked = true;
+        
+        }
+            Integer nrLikes = LikePost.likeCounter(postID);
+            lblPostLike.setText(nrLikes.toString());
+        
+    }//GEN-LAST:event_btnPGLikeMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -387,6 +438,7 @@ File file = new File(home+"/Downloads/" + fileObject );
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHämtaFil;
     private javax.swing.JButton btnPGComment;
+    private javax.swing.JPanel btnPGLike;
     private javax.swing.JButton btnPGRedigera;
     private javax.swing.JButton btnPGUppdateraPost;
     private javax.swing.JLabel iconLogga;
@@ -395,6 +447,7 @@ File file = new File(home+"/Downloads/" + fileObject );
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblAuthor;
     private javax.swing.JLabel lblOrebro;
+    private javax.swing.JLabel lblPostLike;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblUniversitet;
     public static javax.swing.JPanel panel;
