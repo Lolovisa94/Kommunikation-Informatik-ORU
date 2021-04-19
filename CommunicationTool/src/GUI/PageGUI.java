@@ -211,6 +211,7 @@ public class PageGUI extends javax.swing.JFrame {
         btnForum = new javax.swing.JPanel();
         lblBtnForum = new javax.swing.JLabel();
         selForum = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         pnlStartsida = new javax.swing.JPanel();
         lblWelcome = new javax.swing.JLabel();
@@ -279,6 +280,18 @@ public class PageGUI extends javax.swing.JFrame {
         lblAnvEpost = new javax.swing.JLabel();
         tfAnvTelefon = new javax.swing.JTextField();
         lblLaggTillAnvError = new javax.swing.JLabel();
+        pnlInformelltForum = new javax.swing.JPanel();
+        btnIFSkapaBloggtrad = new javax.swing.JPanel();
+        lblbtnSkapaBloggtrad1 = new javax.swing.JLabel();
+        lblIFForum = new javax.swing.JLabel();
+        sPIFForum1 = new javax.swing.JScrollPane();
+        tblForum1 = new javax.swing.JTable();
+        pnlFSok1 = new javax.swing.JPanel();
+        sepFSok1 = new javax.swing.JSeparator();
+        tfFSok1 = new javax.swing.JTextField();
+        iconSearch1 = new javax.swing.JLabel();
+        btnIFTaBortBloggtrad = new javax.swing.JPanel();
+        lblbtnTaBortBloggtrad1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -340,7 +353,7 @@ public class PageGUI extends javax.swing.JFrame {
             .addGroup(btnStartsidaLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(lblBtnStartsida)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 282, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 291, Short.MAX_VALUE)
                 .addComponent(selStartsida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         btnStartsidaLayout.setVerticalGroup(
@@ -391,7 +404,7 @@ public class PageGUI extends javax.swing.JFrame {
             .addGroup(btnLaggTillAnvandareLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(lblBtnAdminfunktionalitet)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE)
                 .addComponent(selAdminfunktionalitet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         btnLaggTillAnvandareLayout.setVerticalGroup(
@@ -440,7 +453,7 @@ public class PageGUI extends javax.swing.JFrame {
             .addGroup(btnProfilinstallningarLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(lblBtnProfilinstallningar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 249, Short.MAX_VALUE)
                 .addComponent(selProfilinstallningar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         btnProfilinstallningarLayout.setVerticalGroup(
@@ -489,7 +502,7 @@ public class PageGUI extends javax.swing.JFrame {
             .addGroup(btnSokfunktionLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(lblBtnSokfunktion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 266, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 277, Short.MAX_VALUE)
                 .addComponent(selSokfunktion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         btnSokfunktionLayout.setVerticalGroup(
@@ -538,7 +551,7 @@ public class PageGUI extends javax.swing.JFrame {
             .addGroup(btnMeddelandenLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(lblBtnStartsida4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 255, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 268, Short.MAX_VALUE)
                 .addComponent(selMeddelanden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         btnMeddelandenLayout.setVerticalGroup(
@@ -587,7 +600,7 @@ public class PageGUI extends javax.swing.JFrame {
             .addGroup(btnKalenderLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(lblBtnKalender)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 284, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 291, Short.MAX_VALUE)
                 .addComponent(selKalender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         btnKalenderLayout.setVerticalGroup(
@@ -636,7 +649,7 @@ public class PageGUI extends javax.swing.JFrame {
             .addGroup(btnForumLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(lblBtnForum)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 298, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 303, Short.MAX_VALUE)
                 .addComponent(selForum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         btnForumLayout.setVerticalGroup(
@@ -647,6 +660,13 @@ public class PageGUI extends javax.swing.JFrame {
                 .addComponent(lblBtnForum)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jButton2.setText("Informellt forum");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelMenuLayout = new javax.swing.GroupLayout(panelMenu);
         panelMenu.setLayout(panelMenuLayout);
@@ -662,7 +682,11 @@ public class PageGUI extends javax.swing.JFrame {
                     .addComponent(btnMeddelanden, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnKalender, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnForum, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 17, Short.MAX_VALUE))
+            .addGroup(panelMenuLayout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         panelMenuLayout.setVerticalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -682,7 +706,9 @@ public class PageGUI extends javax.swing.JFrame {
                 .addComponent(btnProfilinstallningar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnLaggTillAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(818, 818, 818))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addContainerGap())
         );
 
         panelMenuBackground.add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 1010));
@@ -1447,6 +1473,162 @@ public class PageGUI extends javax.swing.JFrame {
 
         jLayeredPane2.add(pnlLaggTillAnvandare, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        pnlInformelltForum.setBackground(new java.awt.Color(158, 174, 187));
+        pnlInformelltForum.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnIFSkapaBloggtrad.setBackground(new java.awt.Color(0, 94, 125));
+        btnIFSkapaBloggtrad.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
+        btnIFSkapaBloggtrad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnIFSkapaBloggtradMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnIFSkapaBloggtradMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnIFSkapaBloggtradMouseExited(evt);
+            }
+        });
+
+        lblbtnSkapaBloggtrad1.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        lblbtnSkapaBloggtrad1.setForeground(new java.awt.Color(158, 174, 187));
+        lblbtnSkapaBloggtrad1.setText("Skapa Bloggtråd");
+        lblbtnSkapaBloggtrad1.setIconTextGap(5);
+        lblbtnSkapaBloggtrad1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                lblbtnSkapaBloggtrad1KeyPressed(evt);
+            }
+        });
+        btnIFSkapaBloggtrad.add(lblbtnSkapaBloggtrad1);
+
+        pnlInformelltForum.add(btnIFSkapaBloggtrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 260, 270, -1));
+
+        lblIFForum.setBackground(new java.awt.Color(77, 85, 92));
+        lblIFForum.setFont(new java.awt.Font("Poppins Medium", 1, 48)); // NOI18N
+        lblIFForum.setForeground(new java.awt.Color(77, 85, 92));
+        lblIFForum.setText("Informellt Forum");
+        pnlInformelltForum.add(lblIFForum, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, -1, 60));
+
+        sPIFForum1.setBackground(new java.awt.Color(158, 174, 187));
+        sPIFForum1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(77, 85, 92), 1, true));
+        sPIFForum1.setForeground(new java.awt.Color(158, 174, 187));
+        sPIFForum1.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
+        sPForum.getViewport().setBackground(new java.awt.Color(158, 174, 187));
+
+        tblForum1.setBackground(new java.awt.Color(158, 174, 187));
+        tblForum1.setFont(new java.awt.Font("Poppins Medium", 0, 18)); // NOI18N
+        tblForum1.setForeground(new java.awt.Color(77, 85, 92));
+        tblForum1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Kategori", "Titel", "Trådförfattare", "Publicerad"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblForum1.setGridColor(new java.awt.Color(77, 85, 92));
+        tblForum1.setOpaque(false);
+        tblForum1.setRowHeight(40);
+        tblForum1.setSelectionBackground(new java.awt.Color(0, 94, 125));
+        tblForum1.setSelectionForeground(new java.awt.Color(158, 174, 187));
+        tblForum1.setShowGrid(true);
+        tblForum1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblForum1MouseClicked(evt);
+            }
+        });
+        sPIFForum1.setViewportView(tblForum1);
+        tblForum.getTableHeader().setFont(new java.awt.Font("Poppins Medium", 0, 18));
+
+        tblForum.getTableHeader().setForeground(new java.awt.Color(77,85,92));
+
+        tblForum.getTableHeader().setBackground(new java.awt.Color(158, 174, 187));
+
+        tblForum.getTableHeader().setBorder(new javax.swing.border.LineBorder(new java.awt.Color(77, 85, 92), 1, true));
+
+        pnlInformelltForum.add(sPIFForum1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 1150, 465));
+
+        pnlFSok1.setBackground(new java.awt.Color(158, 174, 187));
+
+        sepFSok1.setBackground(new java.awt.Color(0, 94, 125));
+        sepFSok1.setForeground(new java.awt.Color(0, 94, 125));
+
+        tfFSok1.setBackground(new java.awt.Color(158, 174, 187));
+        tfFSok1.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
+        tfFSok1.setForeground(new java.awt.Color(0, 94, 125));
+        tfFSok1.setBorder(null);
+        tfFSok1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfFSok1ActionPerformed(evt);
+            }
+        });
+
+        iconSearch1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/searchIcon.png"))); // NOI18N
+
+        javax.swing.GroupLayout pnlFSok1Layout = new javax.swing.GroupLayout(pnlFSok1);
+        pnlFSok1.setLayout(pnlFSok1Layout);
+        pnlFSok1Layout.setHorizontalGroup(
+            pnlFSok1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFSok1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlFSok1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(sepFSok1)
+                    .addComponent(tfFSok1, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(iconSearch1)
+                .addContainerGap(124, Short.MAX_VALUE))
+        );
+        pnlFSok1Layout.setVerticalGroup(
+            pnlFSok1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFSok1Layout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addGroup(pnlFSok1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfFSok1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iconSearch1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sepFSok1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
+        );
+
+        pnlInformelltForum.add(pnlFSok1, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 10, -1, -1));
+
+        btnIFTaBortBloggtrad.setBackground(new java.awt.Color(0, 94, 125));
+        btnIFTaBortBloggtrad.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
+        btnIFTaBortBloggtrad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnIFTaBortBloggtradMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnIFTaBortBloggtradMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnIFTaBortBloggtradMouseExited(evt);
+            }
+        });
+
+        lblbtnTaBortBloggtrad1.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        lblbtnTaBortBloggtrad1.setForeground(new java.awt.Color(158, 174, 187));
+        lblbtnTaBortBloggtrad1.setText("Ta Bort Bloggtråd");
+        lblbtnTaBortBloggtrad1.setIconTextGap(5);
+        lblbtnTaBortBloggtrad1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                lblbtnTaBortBloggtrad1KeyPressed(evt);
+            }
+        });
+        btnIFTaBortBloggtrad.add(lblbtnTaBortBloggtrad1);
+
+        pnlInformelltForum.add(btnIFTaBortBloggtrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 310, 270, -1));
+
+        jLayeredPane2.add(pnlInformelltForum, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         panelMenuBackground.add(jLayeredPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 1500, 1020));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1841,6 +2023,50 @@ public class PageGUI extends javax.swing.JFrame {
         new FetchPosts();
     }//GEN-LAST:event_cbFOvrigtMouseClicked
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void lblbtnSkapaBloggtrad1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblbtnSkapaBloggtrad1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblbtnSkapaBloggtrad1KeyPressed
+
+    private void btnIFSkapaBloggtradMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIFSkapaBloggtradMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIFSkapaBloggtradMouseClicked
+
+    private void btnIFSkapaBloggtradMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIFSkapaBloggtradMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIFSkapaBloggtradMouseEntered
+
+    private void btnIFSkapaBloggtradMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIFSkapaBloggtradMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIFSkapaBloggtradMouseExited
+
+    private void tblForum1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblForum1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblForum1MouseClicked
+
+    private void tfFSok1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfFSok1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfFSok1ActionPerformed
+
+    private void lblbtnTaBortBloggtrad1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblbtnTaBortBloggtrad1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblbtnTaBortBloggtrad1KeyPressed
+
+    private void btnIFTaBortBloggtradMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIFTaBortBloggtradMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIFTaBortBloggtradMouseClicked
+
+    private void btnIFTaBortBloggtradMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIFTaBortBloggtradMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIFTaBortBloggtradMouseEntered
+
+    private void btnIFTaBortBloggtradMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIFTaBortBloggtradMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIFTaBortBloggtradMouseExited
+
         public void setRadio() {
         
         if (CurrentUser.currentUser.getNotify().equals("J")) {
@@ -1868,6 +2094,8 @@ public class PageGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JPanel btnForum;
+    private javax.swing.JPanel btnIFSkapaBloggtrad;
+    public static javax.swing.JPanel btnIFTaBortBloggtrad;
     public static javax.swing.JPanel btnKalender;
     private javax.swing.JButton btnLaggTillAnv;
     public static javax.swing.JPanel btnLaggTillAnvandare;
@@ -1886,7 +2114,9 @@ public class PageGUI extends javax.swing.JFrame {
     public static javax.swing.JCheckBox cbFUtbildning;
     private javax.swing.JLabel iconLogga;
     private javax.swing.JLabel iconSearch;
+    private javax.swing.JLabel iconSearch1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLayeredPane jLayeredPane2;
     public static javax.swing.JRadioButton jRadioButton1;
     public static javax.swing.JRadioButton jRadioButton2;
@@ -1907,6 +2137,7 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblFUtbildning;
     private javax.swing.JLabel lblFVisaKategorier;
     private javax.swing.JLabel lblForum;
+    private javax.swing.JLabel lblIFForum;
     private javax.swing.JLabel lblIngetSokresultat;
     private javax.swing.JLabel lblKalender;
     private javax.swing.JLabel lblLaggTillAnvError;
@@ -1927,14 +2158,18 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblUniversitet;
     private javax.swing.JLabel lblWelcome;
     private javax.swing.JLabel lblbtnSkapaBloggtrad;
+    private javax.swing.JLabel lblbtnSkapaBloggtrad1;
     private javax.swing.JLabel lblbtnSokAnvandare;
     private javax.swing.JLabel lblbtnTaBortBloggtrad;
+    private javax.swing.JLabel lblbtnTaBortBloggtrad1;
     private javax.swing.JPanel panelMenu;
     private javax.swing.JPanel panelMenuBackground;
     private javax.swing.JPanel panelMenuLogga;
     private javax.swing.JPanel pnlFSok;
+    private javax.swing.JPanel pnlFSok1;
     private javax.swing.JPanel pnlFVisaKategorier;
     private javax.swing.JPanel pnlForum;
+    private javax.swing.JPanel pnlInformelltForum;
     private javax.swing.JPanel pnlKalender;
     private javax.swing.JPanel pnlLaggTillAnvandare;
     private javax.swing.JPanel pnlMeddelanden;
@@ -1943,6 +2178,7 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JPanel pnlSokfunktion;
     private javax.swing.JPanel pnlStartsida;
     private javax.swing.JScrollPane sPForum;
+    private javax.swing.JScrollPane sPIFForum1;
     private javax.swing.JPanel selAdminfunktionalitet;
     private javax.swing.JPanel selForum;
     private javax.swing.JPanel selKalender;
@@ -1951,13 +2187,16 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JPanel selSokfunktion;
     private javax.swing.JPanel selStartsida;
     private javax.swing.JSeparator sepFSok;
+    private javax.swing.JSeparator sepFSok1;
     private javax.swing.JScrollPane spSoktaAnvandare;
     public static javax.swing.JTable tblForum;
+    public static javax.swing.JTable tblForum1;
     private javax.swing.JTable tblSoktaAnvandare;
     private javax.swing.JTextField tfAnvNamn;
     private javax.swing.JTextField tfAnvTelefon;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfFSok;
+    private javax.swing.JTextField tfFSok1;
     private javax.swing.JTextField tfLosenord;
     private javax.swing.JTextField tfPIEmail;
     private javax.swing.JTextField tfPITlfn;
