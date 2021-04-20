@@ -12,7 +12,12 @@ import Validation.Validation;
 import java.awt.Dimension;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import methods.EditForum;
 import methods.FetchPosts;
 import methods.User;
@@ -24,6 +29,7 @@ import methods.User;
 public class PageGUI extends javax.swing.JFrame {
 
     private SearchUser searchUser;
+    public static FetchPosts currentFetchPosts;
 
     /**
      * Creates new form StartingPageGUI
@@ -37,7 +43,11 @@ public class PageGUI extends javax.swing.JFrame {
         initializeGUIComponents();
 
         welcomeText(CurrentUser.currentUser.getName());
+        
+        
     }
+    
+
 
     public void initializeGUIComponents() {
         lblIngetSokresultat.setVisible(false);
@@ -92,7 +102,7 @@ public class PageGUI extends javax.swing.JFrame {
     public void selectForum() {
         resetPanel();
         resetMenu();
-        new FetchPosts();
+        currentFetchPosts = new FetchPosts();
         selForum.setVisible(true);
         pnlForum.setVisible(true);
         isSelForum = true;
@@ -1065,6 +1075,23 @@ public class PageGUI extends javax.swing.JFrame {
 
         tblForum.getTableHeader().setBorder(new javax.swing.border.LineBorder(new java.awt.Color(77, 85, 92), 1, true));
 
+        tblForum.setAutoCreateRowSorter(true);
+
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(tblForum.getModel());
+        tblForum.setRowSorter(sorter);
+        ArrayList<RowSorter.SortKey> sortKeys = new ArrayList<>();
+
+        int columnIndexToSort = 3;
+        sortKeys.add(new RowSorter.SortKey(columnIndexToSort, SortOrder.DESCENDING));
+
+        sorter.setSortKeys(sortKeys);
+        sorter.sort();
+
+        tblForum.getColumnModel().getColumn(0).setPreferredWidth(8);
+        tblForum.getColumnModel().getColumn(1).setPreferredWidth(400);
+        tblForum.getColumnModel().getColumn(2).setPreferredWidth(20);
+        tblForum.getColumnModel().getColumn(3).setPreferredWidth(20);
+
         pnlForum.add(sPForum, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 1150, 465));
 
         pnlFSok.setBackground(new java.awt.Color(158, 174, 187));
@@ -1808,7 +1835,7 @@ public class PageGUI extends javax.swing.JFrame {
         int row = tblForum.getSelectedRow();
         String threadName = tblForum.getValueAt(row, 1).toString();
         EditForum.removeThread(threadName);
-        new FetchPosts();
+        currentFetchPosts.postList();
     }//GEN-LAST:event_btnTaBortBloggtradMouseClicked
 
     private void btnTaBortBloggtradMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTaBortBloggtradMouseEntered
@@ -1827,18 +1854,18 @@ public class PageGUI extends javax.swing.JFrame {
 
     private void cbFForskningMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbFForskningMouseClicked
         // TODO add your handling code here:
-        new FetchPosts();
+        currentFetchPosts.postList();
         
     }//GEN-LAST:event_cbFForskningMouseClicked
 
     private void cbFUtbildningMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbFUtbildningMouseClicked
         // TODO add your handling code here:
-        new FetchPosts();
+        currentFetchPosts.postList();
     }//GEN-LAST:event_cbFUtbildningMouseClicked
 
     private void cbFOvrigtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbFOvrigtMouseClicked
         // TODO add your handling code here:
-        new FetchPosts();
+        currentFetchPosts.postList();
     }//GEN-LAST:event_cbFOvrigtMouseClicked
 
         public void setRadio() {
