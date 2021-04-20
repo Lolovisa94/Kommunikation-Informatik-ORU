@@ -49,7 +49,7 @@ public class send_email_gmail {
 			message.setRecipients(Message.RecipientType.TO,
 			InternetAddress.parse(arrayEmail.get(i)));
 			message.setSubject("Titel innehåll");    
-			message.setText("Hej! " + arrayName.get(i) + " En ny post har med titel lagts upp!!");   
+			message.setText("Hej! " + arrayName.get(i) + " En ny post har lagts upp!!");   
                         
                         //message.setDisposition("Inlägget handlar om rödluvan och hur hon influerat lärarna på informatik programmet!");
                     

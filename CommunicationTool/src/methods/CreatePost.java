@@ -53,6 +53,8 @@ public final class CreatePost
             if(postCreated){
             String selectIDQuery = "SELECT Inlägg_ID FROM Inlägg where Titel = '" + titel + "'";
                 try{
+                    
+                   
             Statement st = Connectivity.ConnectionClass.conn.createStatement();
             rs = st.executeQuery(selectIDQuery);
             rs.next();

@@ -12,7 +12,13 @@ import Validation.Validation;
 import java.awt.Dimension;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import methods.Calendar;
 import methods.EditForum;
 import methods.FetchPosts;
 import methods.User;
@@ -37,6 +43,7 @@ public class PageGUI extends javax.swing.JFrame {
         initializeGUIComponents();
 
         welcomeText(CurrentUser.currentUser.getName());
+        
     }
 
     public void initializeGUIComponents() {
@@ -162,6 +169,8 @@ public class PageGUI extends javax.swing.JFrame {
     public static void setFelmeddelandePIUppdatera() {
         Validation.setLabelText(lblPIFelmeddelandeUppdatera, "Inga ändringar har gjorts!");
     }
+    
+
 
     public void setInfoPersonligInfo() {
         lblPIUserName.setText(CurrentUser.currentUser.getName());
@@ -216,6 +225,14 @@ public class PageGUI extends javax.swing.JFrame {
         lblWelcome = new javax.swing.JLabel();
         pnlKalender = new javax.swing.JPanel();
         lblKalender = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+        lblKalenderFelText = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        lblKalenderText = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         pnlMeddelanden = new javax.swing.JPanel();
         lblMeddelanden = new javax.swing.JLabel();
         pnlSokfunktion = new javax.swing.JPanel();
@@ -722,21 +739,96 @@ public class PageGUI extends javax.swing.JFrame {
         lblKalender.setForeground(new java.awt.Color(77, 85, 92));
         lblKalender.setText("Kalender");
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Namn", "Starttid", "Sluttid", "Beskrivning", "Datum"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jButton2.setText("Hämta från privat");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        lblKalenderFelText.setBackground(new java.awt.Color(77, 85, 92));
+        lblKalenderFelText.setFont(new java.awt.Font("Poppins Medium", 1, 12)); // NOI18N
+        lblKalenderFelText.setForeground(new java.awt.Color(0, 0, 0));
+
+        lblKalenderText.setBackground(new java.awt.Color(77, 85, 92));
+        lblKalenderText.setFont(new java.awt.Font("Poppins Medium", 1, 12)); // NOI18N
+        lblKalenderText.setForeground(new java.awt.Color(77, 85, 92));
+        lblKalenderText.setText("Välkommen här kan du se din privata kalender");
+
+        jButton3.setText("Lägg till");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Hämta från publik");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlKalenderLayout = new javax.swing.GroupLayout(pnlKalender);
         pnlKalender.setLayout(pnlKalenderLayout);
         pnlKalenderLayout.setHorizontalGroup(
             pnlKalenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlKalenderLayout.createSequentialGroup()
-                .addGap(413, 413, 413)
-                .addComponent(lblKalender)
-                .addContainerGap(927, Short.MAX_VALUE))
+                .addGroup(pnlKalenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlKalenderLayout.createSequentialGroup()
+                        .addGap(413, 413, 413)
+                        .addComponent(lblKalender))
+                    .addGroup(pnlKalenderLayout.createSequentialGroup()
+                        .addGap(362, 362, 362)
+                        .addComponent(lblKalenderText, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlKalenderLayout.createSequentialGroup()
+                        .addGap(362, 362, 362)
+                        .addComponent(lblKalenderFelText, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlKalenderLayout.createSequentialGroup()
+                        .addGap(290, 290, 290)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlKalenderLayout.createSequentialGroup()
+                        .addGap(439, 439, 439)
+                        .addComponent(jButton3))
+                    .addGroup(pnlKalenderLayout.createSequentialGroup()
+                        .addGap(327, 327, 327)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(95, 95, 95)
+                        .addGroup(pnlKalenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(847, Short.MAX_VALUE))
         );
         pnlKalenderLayout.setVerticalGroup(
             pnlKalenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlKalenderLayout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addComponent(lblKalender, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(898, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(lblKalenderText)
+                .addGap(61, 61, 61)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblKalenderFelText, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(pnlKalenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addGap(18, 18, 18)
+                .addComponent(jButton4)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addContainerGap(473, Short.MAX_VALUE))
         );
 
         jLayeredPane2.add(pnlKalender, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -826,7 +918,6 @@ public class PageGUI extends javax.swing.JFrame {
             }
         ));
         tblSoktaAnvandare.setName(""); // NOI18N
-        tblSoktaAnvandare.setRowHeight(20);
         tblSoktaAnvandare.getTableHeader().setReorderingAllowed(false);
         tblSoktaAnvandare.setPreferredScrollableViewportSize(
             new Dimension(
@@ -872,14 +963,16 @@ public class PageGUI extends javax.swing.JFrame {
                 .addGap(62, 62, 62)
                 .addGroup(pnlSokfunktionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlSokfunktionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnSokAnvandare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pnlSokfunktionLayout.createSequentialGroup()
+                            .addComponent(btnSokAnvandare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(41, 41, 41))
                         .addComponent(tfSokText))
                     .addComponent(lblIngetSokresultat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addComponent(spSoktaAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(btnTaBortAnvändare)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
 
         jLayeredPane2.add(pnlSokfunktion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -1841,6 +1934,51 @@ public class PageGUI extends javax.swing.JFrame {
         new FetchPosts();
     }//GEN-LAST:event_cbFOvrigtMouseClicked
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+  
+        
+        Date date = jDateChooser1.getDate();
+        DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+        String s = format.format(date);
+        
+        System.out.println("testning " +  s);
+        //jTextField1.setText(format.format(date));
+        Calendar c = new Calendar();
+        c.privateCalendar(jTable1, s);
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+        BookMeetingGUI book = new BookMeetingGUI();
+        book.setVisible(true);
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        
+        Date date = jDateChooser1.getDate();
+        DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+        String s = format.format(date);
+        
+        System.out.println("testning " +  s);
+        //jTextField1.setText(format.format(date));
+        Calendar c = new Calendar();
+        c.publicCalendar(jTable1, s);
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    
+    
+    public void felmeddelandeText() {
+        
+        lblKalenderFelText.setText("halooo");
+        
+    }
+    
         public void setRadio() {
         
         if (CurrentUser.currentUser.getNotify().equals("J")) {
@@ -1887,9 +2025,15 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel iconLogga;
     private javax.swing.JLabel iconSearch;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLayeredPane jLayeredPane2;
     public static javax.swing.JRadioButton jRadioButton1;
     public static javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JTable jTable1;
     private javax.swing.JLabel lblAdminFraga;
     private javax.swing.JLabel lblAnvEpost;
     private javax.swing.JLabel lblAnvLosenord;
@@ -1909,6 +2053,8 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblForum;
     private javax.swing.JLabel lblIngetSokresultat;
     private javax.swing.JLabel lblKalender;
+    public static javax.swing.JLabel lblKalenderFelText;
+    private javax.swing.JLabel lblKalenderText;
     private javax.swing.JLabel lblLaggTillAnvError;
     private javax.swing.JLabel lblLaggTillAnvandare;
     private javax.swing.JLabel lblMeddelanden;
