@@ -667,6 +667,7 @@
                 <Property name="text" type="java.lang.String" value="Informellt forum"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton2MouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
               </Events>
             </Component>
@@ -1726,9 +1727,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name=".SF NS Text" size="13" style="1"/>
                         </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblPIUserNameMouseClicked"/>
@@ -2091,7 +2089,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="tblForum1">
+                    <Component class="javax.swing.JTable" name="tblIFForum">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="bb" green="ae" red="9e" type="rgb"/>
@@ -2127,7 +2125,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblForum1MouseClicked"/>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblIFForumMouseClicked"/>
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="tblForum.getTableHeader().setFont(new java.awt.Font(&quot;Poppins Medium&quot;, 0, 18));&#xa;&#xa;tblForum.getTableHeader().setForeground(new java.awt.Color(77,85,92));&#xa;&#xa;tblForum.getTableHeader().setBackground(new java.awt.Color(158, 174, 187));&#xa;&#xa;&#xa;tblForum.getTableHeader().setBorder(new javax.swing.border.LineBorder(new java.awt.Color(77, 85, 92), 1, true));"/>
@@ -2242,7 +2240,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="lblbtnTaBortBloggtrad1">
+                    <Component class="javax.swing.JLabel" name="lblbtnIFTaBortBloggtrad">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Poppins" size="14" style="1"/>
@@ -2254,7 +2252,7 @@
                         <Property name="iconTextGap" type="int" value="5"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="lblbtnTaBortBloggtrad1KeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="lblbtnIFTaBortBloggtradKeyPressed"/>
                       </Events>
                     </Component>
                   </SubComponents>

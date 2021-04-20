@@ -153,6 +153,26 @@ public class PageGUI extends javax.swing.JFrame {
         pnlLaggTillAnvandare.setVisible(true);
         isSelAdminfunktionalitet = true;
     }
+    
+    public void selectInformelltForum() {
+        resetPanel();
+        resetMenu();
+        pnlInformelltForum.setVisible(true);
+ 
+    }
+    
+    public void removePost(){
+        int row = tblForum.getSelectedRow();
+        String threadName = tblForum.getValueAt(row, 1).toString();
+        EditForum.removeThread(threadName);
+    }
+    
+    public void removeIFPost(){
+        int row = tblIFForum.getSelectedRow();
+        String threadNameIF = tblIFForum.getValueAt(row, 1).toString();
+        EditForum.removeThread(threadNameIF);
+    }
+    
 
     public void welcomeText(String name) {
 
@@ -285,13 +305,13 @@ public class PageGUI extends javax.swing.JFrame {
         lblbtnSkapaBloggtrad1 = new javax.swing.JLabel();
         lblIFForum = new javax.swing.JLabel();
         sPIFForum1 = new javax.swing.JScrollPane();
-        tblForum1 = new javax.swing.JTable();
+        tblIFForum = new javax.swing.JTable();
         pnlFSok1 = new javax.swing.JPanel();
         sepFSok1 = new javax.swing.JSeparator();
         tfFSok1 = new javax.swing.JTextField();
         iconSearch1 = new javax.swing.JLabel();
         btnIFTaBortBloggtrad = new javax.swing.JPanel();
-        lblbtnTaBortBloggtrad1 = new javax.swing.JLabel();
+        lblbtnIFTaBortBloggtrad = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -662,6 +682,11 @@ public class PageGUI extends javax.swing.JFrame {
         );
 
         jButton2.setText("Informellt forum");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -1222,7 +1247,6 @@ public class PageGUI extends javax.swing.JFrame {
         });
 
         lblPIUserName.setFont(new java.awt.Font(".SF NS Text", 1, 13)); // NOI18N
-        lblPIUserName.setForeground(new java.awt.Color(0, 0, 0));
         lblPIUserName.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblPIUserNameMouseClicked(evt);
@@ -1515,10 +1539,10 @@ public class PageGUI extends javax.swing.JFrame {
         sPIFForum1.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
         sPForum.getViewport().setBackground(new java.awt.Color(158, 174, 187));
 
-        tblForum1.setBackground(new java.awt.Color(158, 174, 187));
-        tblForum1.setFont(new java.awt.Font("Poppins Medium", 0, 18)); // NOI18N
-        tblForum1.setForeground(new java.awt.Color(77, 85, 92));
-        tblForum1.setModel(new javax.swing.table.DefaultTableModel(
+        tblIFForum.setBackground(new java.awt.Color(158, 174, 187));
+        tblIFForum.setFont(new java.awt.Font("Poppins Medium", 0, 18)); // NOI18N
+        tblIFForum.setForeground(new java.awt.Color(77, 85, 92));
+        tblIFForum.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -1534,18 +1558,18 @@ public class PageGUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tblForum1.setGridColor(new java.awt.Color(77, 85, 92));
-        tblForum1.setOpaque(false);
-        tblForum1.setRowHeight(40);
-        tblForum1.setSelectionBackground(new java.awt.Color(0, 94, 125));
-        tblForum1.setSelectionForeground(new java.awt.Color(158, 174, 187));
-        tblForum1.setShowGrid(true);
-        tblForum1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblIFForum.setGridColor(new java.awt.Color(77, 85, 92));
+        tblIFForum.setOpaque(false);
+        tblIFForum.setRowHeight(40);
+        tblIFForum.setSelectionBackground(new java.awt.Color(0, 94, 125));
+        tblIFForum.setSelectionForeground(new java.awt.Color(158, 174, 187));
+        tblIFForum.setShowGrid(true);
+        tblIFForum.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblForum1MouseClicked(evt);
+                tblIFForumMouseClicked(evt);
             }
         });
-        sPIFForum1.setViewportView(tblForum1);
+        sPIFForum1.setViewportView(tblIFForum);
         tblForum.getTableHeader().setFont(new java.awt.Font("Poppins Medium", 0, 18));
 
         tblForum.getTableHeader().setForeground(new java.awt.Color(77,85,92));
@@ -1614,16 +1638,16 @@ public class PageGUI extends javax.swing.JFrame {
             }
         });
 
-        lblbtnTaBortBloggtrad1.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        lblbtnTaBortBloggtrad1.setForeground(new java.awt.Color(158, 174, 187));
-        lblbtnTaBortBloggtrad1.setText("Ta Bort Bloggtråd");
-        lblbtnTaBortBloggtrad1.setIconTextGap(5);
-        lblbtnTaBortBloggtrad1.addKeyListener(new java.awt.event.KeyAdapter() {
+        lblbtnIFTaBortBloggtrad.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        lblbtnIFTaBortBloggtrad.setForeground(new java.awt.Color(158, 174, 187));
+        lblbtnIFTaBortBloggtrad.setText("Ta Bort Bloggtråd");
+        lblbtnIFTaBortBloggtrad.setIconTextGap(5);
+        lblbtnIFTaBortBloggtrad.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                lblbtnTaBortBloggtrad1KeyPressed(evt);
+                lblbtnIFTaBortBloggtradKeyPressed(evt);
             }
         });
-        btnIFTaBortBloggtrad.add(lblbtnTaBortBloggtrad1);
+        btnIFTaBortBloggtrad.add(lblbtnIFTaBortBloggtrad);
 
         pnlInformelltForum.add(btnIFTaBortBloggtrad, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 310, 270, -1));
 
@@ -1987,10 +2011,8 @@ public class PageGUI extends javax.swing.JFrame {
 
     private void btnTaBortBloggtradMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTaBortBloggtradMouseClicked
         // TODO add your handling code here:
-        int row = tblForum.getSelectedRow();
-        String threadName = tblForum.getValueAt(row, 1).toString();
-        EditForum.removeThread(threadName);
         new FetchPosts();
+        removePost();
     }//GEN-LAST:event_btnTaBortBloggtradMouseClicked
 
     private void btnTaBortBloggtradMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTaBortBloggtradMouseEntered
@@ -2043,29 +2065,45 @@ public class PageGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnIFSkapaBloggtradMouseExited
 
-    private void tblForum1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblForum1MouseClicked
+    private void tblIFForumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblIFForumMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblForum1MouseClicked
+    }//GEN-LAST:event_tblIFForumMouseClicked
 
     private void tfFSok1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfFSok1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfFSok1ActionPerformed
 
-    private void lblbtnTaBortBloggtrad1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblbtnTaBortBloggtrad1KeyPressed
+    private void lblbtnIFTaBortBloggtradKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblbtnIFTaBortBloggtradKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lblbtnTaBortBloggtrad1KeyPressed
+    }//GEN-LAST:event_lblbtnIFTaBortBloggtradKeyPressed
 
     private void btnIFTaBortBloggtradMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIFTaBortBloggtradMouseClicked
-        // TODO add your handling code here:
+
+        new FetchPosts();
+        removeIFPost();
+        
     }//GEN-LAST:event_btnIFTaBortBloggtradMouseClicked
 
     private void btnIFTaBortBloggtradMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIFTaBortBloggtradMouseEntered
-        // TODO add your handling code here:
+        
+        btnIFTaBortBloggtrad.setBackground(new java.awt.Color(158, 174, 187));
+        lblbtnIFTaBortBloggtrad.setForeground(new java.awt.Color(0, 94, 125));
+        btnIFTaBortBloggtrad.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
+        
     }//GEN-LAST:event_btnIFTaBortBloggtradMouseEntered
 
     private void btnIFTaBortBloggtradMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIFTaBortBloggtradMouseExited
-        // TODO add your handling code here:
+        
+        btnIFTaBortBloggtrad.setBackground(new java.awt.Color(0, 94, 125));
+        lblbtnIFTaBortBloggtrad.setForeground(new java.awt.Color(158, 174, 187));
+        btnIFTaBortBloggtrad.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
+
+        
     }//GEN-LAST:event_btnIFTaBortBloggtradMouseExited
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        selectInformelltForum();
+    }//GEN-LAST:event_jButton2MouseClicked
 
         public void setRadio() {
         
@@ -2157,11 +2195,11 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblSokfunktion;
     private javax.swing.JLabel lblUniversitet;
     private javax.swing.JLabel lblWelcome;
+    private javax.swing.JLabel lblbtnIFTaBortBloggtrad;
     private javax.swing.JLabel lblbtnSkapaBloggtrad;
     private javax.swing.JLabel lblbtnSkapaBloggtrad1;
     private javax.swing.JLabel lblbtnSokAnvandare;
     private javax.swing.JLabel lblbtnTaBortBloggtrad;
-    private javax.swing.JLabel lblbtnTaBortBloggtrad1;
     private javax.swing.JPanel panelMenu;
     private javax.swing.JPanel panelMenuBackground;
     private javax.swing.JPanel panelMenuLogga;
@@ -2190,7 +2228,7 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JSeparator sepFSok1;
     private javax.swing.JScrollPane spSoktaAnvandare;
     public static javax.swing.JTable tblForum;
-    public static javax.swing.JTable tblForum1;
+    public static javax.swing.JTable tblIFForum;
     private javax.swing.JTable tblSoktaAnvandare;
     private javax.swing.JTextField tfAnvNamn;
     private javax.swing.JTextField tfAnvTelefon;
