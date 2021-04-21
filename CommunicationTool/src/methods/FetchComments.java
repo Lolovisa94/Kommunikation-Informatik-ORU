@@ -86,25 +86,7 @@ public class FetchComments{
 
                 messages[i] = text;
                 commentIDs[i] =  commentID.toString();
-                
-
-//                String checkLikes = "SELECT COUNT(*) AS Total FROM Gilla_Kommentar WHERE Gillar = 'J' AND Kommentar_ID =" + commentID;
-//                
-//                
-//                rs2 = st.executeQuery(checkLikes);
-////                if (rs2 != null){
-//                if(rs2.next()){
-//
-//                    String oneLike = rs2.getString("Total");
-//                    commentLikes[i] = oneLike;
-//                }
-//                }
                
-//                new FetchCommentLikes(commentID);
-//                 commentIDs[i] = commentID.toString();
-
-
-//                String user = rs.getString("Namn");
                 i++;
 
             }

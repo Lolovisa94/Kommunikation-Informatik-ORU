@@ -120,7 +120,6 @@ public class PostGUI extends javax.swing.JFrame {
         caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
         label.setText(text);
         label.setMaximumSize(new java.awt.Dimension(600, 600));
-//        label.setSize(new java.awt.Dimension(600, 600));
         label.setLineWrap(true);
         label.setOpaque(true);
         label.setBackground(new java.awt.Color(158, 174, 187));
@@ -169,32 +168,7 @@ public class PostGUI extends javax.swing.JFrame {
         System.out.println(text);
     }
 
-//    public static void addLike(String likes){
-//            JLabel lblLike = new JLabel();
-//            JPanel pnlPositionLike = new JPanel();
-//            JPanel pnlBorder = new JPanel();
-////    DefaultCaret caret = (DefaultCaret) lblLike.getCaret();
-////    caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
-//            lblLike.setText(likes);
-//            lblLike.setMaximumSize(new java.awt.Dimension(50, 50));
-//            pnlPositionLike.setSize(panelBox.getSize());
-//            pnlPositionLike.setLayout(new javax.swing.BoxLayout(pnlPositionLike, javax.swing.BoxLayout.Y_AXIS));
-//            pnlBorder.setSize(lblSize);
-////        lblLike.setLineWrap(true);
-//        lblLike.setOpaque(true);
-//        lblLike.setBackground(new java.awt.Color(158, 174, 187));
-////        pnlPositionLike.setAlignmentX(Component.CENTER_ALIGNMENT);
-////        Border border = BorderFactory.createLineBorder(new java.awt.Color(202,100,91));
-////        lblLike.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(10, 10, 10, 10)));
-//
-//        lblLike.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 100, 91), 2, true));
-//        
-//        pnlPositionLike.add(lblLike);
-//        pnlBorder.add(pnlPositionLike);
-//        commentNLike.add(pnlPositionLike);
-//    
-//    
-//    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
