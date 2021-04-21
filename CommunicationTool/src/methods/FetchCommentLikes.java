@@ -16,14 +16,14 @@ import java.lang.reflect.Array;
 //implements Runnable 
 public class FetchCommentLikes{
 
-    private String[] likes = {};
+//    private String[] likes = {};
     private int likeCounter = 0;
     private JPanel panel;
     private JScrollPane scrollPane;
     private Timer timer;
-    private ResultSet rs = null;
+    public static ResultSet rs = null;
     public static JFrame frame;
-    private int commentID;
+//    private int commentID;
     
 
 //    public static void main(String[] args) {
@@ -32,86 +32,72 @@ public class FetchCommentLikes{
 
     public FetchCommentLikes(int commentID) {
 //        timer();
-        this.commentID = commentID;
+//        this.commentID = commentID;
         String[] nyLikes = {};
 //        GUI.PostGUI.addMessage(nyMessages[0]);
 //        this.msgCounter = 0;
-        this.likes = nyLikes;
+//        this.likes = nyLikes;
 //        getLikes();
 //        sortLikes();
 ////        addLikes();
         
     }
 
-    public void getLikes() {
+    public static String getLikes(String commentID) {
+        String likes = "0";
+        
         try {
             Statement st = Connectivity.ConnectionClass.conn.createStatement();
             int i = 0;
            String checkLike = "SELECT COUNT(*) AS Total FROM Gilla_Kommentar WHERE Gillar = 'J' AND Kommentar_ID =" + commentID;
             rs = st.executeQuery(checkLike);
-
-            int size = 0;
-            if (rs != null && !rs.isLast()) {
-                while (rs.next()) {
-                    size++;
-                    System.out.println("size är lika med" + size);
-
-                }
-
-            }
-            likes = new String[size];
             
-            rs = st.executeQuery(checkLike);
-            while (rs.next()) {
+            if (rs.next()){
 
-                String text = rs.getString("Total");
+                likes = rs.getString("Total");
 
-                System.out.println("i är lika med" + i + text);
-                likes[i] = text;
-
-                System.out.println("i nr 2 är lika med" + i);
-
-                i++;
             }
             
         } catch (Exception e) {
             System.out.println(e);
         }
-
-    }
-    
-
-    
-    public String[] sortLikes(){
         
-        int y = 0;
-        String like;
-        int lastLike = likes.length - 1;
-        String[] orderLikes = new String[lastLike + 1];
 
-    while(0 <= lastLike){
-
-
-        like = Array.get(likes, lastLike).toString();
-        orderLikes[y] = like;
-
-        System.out.println(like);
-        System.out.println(lastLike);
-        System.out.println(y);
-        lastLike--;
-        y++;
-    }
-
-    likes = orderLikes;
-    return orderLikes;
+        return likes;
     }
     
-    public void addLikes(){
-        while(likeCounter <  likes.length)
-            if (likeCounter < likes.length) {
-//                    GUI.PostGUI.addLike(likes[likeCounter]);
-                    likeCounter++;
-                } 
-    }
+
+    
+//    public String[] sortLikes(String [] likes){
+//        
+//        int y = 0;
+//        String like;
+//        int lastLike = likes.length - 1;
+//        String[] orderLikes = new String[lastLike + 1];
+//
+//    while(0 <= lastLike){
+//
+//
+//        like = Array.get(likes, lastLike).toString();
+//        orderLikes[y] = like;
+//
+//        System.out.println(like);
+//        System.out.println(lastLike);
+//        System.out.println(y);
+//        lastLike--;
+//        y++;
+//    }
+//
+//    likes = orderLikes;
+//    return orderLikes;
+//    }
+//    
+//    public void addLikes(){
+//        while(likeCounter <  likes.length)
+//            if (likeCounter < likes.length) {
+////                    GUI.PostGUI.addLike(likes[likeCounter]);
+//                    likeCounter++;
+//                } 
+//    }
     
 }

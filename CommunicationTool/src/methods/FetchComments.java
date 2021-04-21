@@ -11,6 +11,7 @@ import javax.swing.*;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import GUI.PostGUI;
+import static java.lang.Integer.parseInt;
 import java.lang.reflect.Array;
 
 //implements Runnable 
@@ -27,6 +28,7 @@ public class FetchComments{
 //    private String[] commentIDs = {};
     private String[] commentLikes = {};
      private ResultSet rs2 = null;
+     private String[] commentIDs = {};
 //    private String commentID;
 //    private String[] likes;
     
@@ -46,46 +48,46 @@ public class FetchComments{
         sortMessages();
         addMessages();
         
-        System.out.println("getMessages fungerar om vi ser detta");
+
 //        run();
 
 
-        System.out.println("Run fungerar om vi ser detta");
+
     }
 
     public void getMessages() {
         try {
-            System.out.println("1");
+
             Statement st = Connectivity.ConnectionClass.conn.createStatement();
             int i = 0;
             String getCommentTextSQL = "SELECT Användare.Namn, Kommentarer.Text, Kommentarer.Kommentar_ID FROM Kommentarer Inner join Användare on Användare.Användare_ID = Kommentarer.Användare_ID Inner join Inlägg on Kommentarer.Inlägg_ID = Inlägg.Inlägg_ID where Kommentarer.Inlägg_ID=" + postID;
             
-            
             rs = st.executeQuery(getCommentTextSQL);
-            System.out.println("2");
-
+            
             int size = 0;
             if (rs != null && !rs.isLast()) {
+                
                 while (rs.next()) {
+                    
                     size++;
-                    System.out.println("size är lika med" + size);
+
 
                 }
 
             }
             messages = new String[size];
-//            commentLikes = new String[size];
-//            commentIDs = new String[size];
+            commentIDs = new String [size];
             
             rs = st.executeQuery(getCommentTextSQL);
             while (rs.next()) {
 
                 String text = rs.getString("Text");
-                
-                System.out.println("i är lika med" + i + text);
-                messages[i] = text;
-                
                 Integer commentID = rs.getInt("Kommentar_ID");
+
+                messages[i] = text;
+                commentIDs[i] =  commentID.toString();
+                
+
 //                String checkLikes = "SELECT COUNT(*) AS Total FROM Gilla_Kommentar WHERE Gillar = 'J' AND Kommentar_ID =" + commentID;
 //                
 //                
@@ -98,9 +100,9 @@ public class FetchComments{
 //                }
 //                }
                
-                new FetchCommentLikes(commentID);
+//                new FetchCommentLikes(commentID);
 //                 commentIDs[i] = commentID.toString();
-                System.out.println("i nr 2 är lika med" + i);
+
 
 //                String user = rs.getString("Namn");
                 i++;
@@ -116,34 +118,33 @@ public class FetchComments{
     public void sortMessages(){
         int y = 0;
         String message;
+        String commentID;
         int lastMessage = messages.length - 1;
         String[] orderMessages = new String[lastMessage + 1];
-
+        String[] orderCommentIDs = new String[lastMessage + 1];
     while(0 <= lastMessage){
-
+        commentID = Array.get(commentIDs, lastMessage).toString();
     
         message = Array.get(messages, lastMessage).toString();
         orderMessages[y] = message;
+        orderCommentIDs[y] = commentID;
 
-        System.out.println(message);
-        System.out.println(lastMessage);
-        System.out.println(y);
         lastMessage--;
         y++;
     }
 
     messages = orderMessages;
+    commentIDs = orderCommentIDs;
     }
     
     
     public void addMessages(){
-
-        
-        while(msgCounter <  messages.length)
-            
-            if (msgCounter < messages.length) {
-                
-                    GUI.PostGUI.addMessage(messages[msgCounter], msgCounter);
+  
+        while(msgCounter <  messages.length)        
+            if (msgCounter < messages.length) { 
+                    String likes = methods.FetchCommentLikes.getLikes(commentIDs[msgCounter]);
+//                methods.FetchCommentLikes.getLikes();
+                    GUI.PostGUI.addMessage(messages[msgCounter], likes, parseInt(commentIDs[msgCounter]));
                     msgCounter++;
                 } 
     }

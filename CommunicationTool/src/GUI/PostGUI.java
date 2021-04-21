@@ -41,6 +41,7 @@ import methods.SFPT;
  * @author pierre
  */
 import javax.swing.ImageIcon;
+import methods.LikeComment;
 
 public class PostGUI extends javax.swing.JFrame {
 
@@ -112,15 +113,14 @@ public class PostGUI extends javax.swing.JFrame {
 
     }
 
-    public static void addMessage(String text, int likes) {
-        Integer likeear = likes;
+    public static void addMessage(String text, String likes, int commentID) {
         JTextArea label = new JTextArea();
 
         DefaultCaret caret = (DefaultCaret) label.getCaret();
         caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
         label.setText(text);
-//        label.setMaximumSize(new java.awt.Dimension(600, 600));
-        label.setSize(new java.awt.Dimension(600, 600));
+        label.setMaximumSize(new java.awt.Dimension(600, 600));
+//        label.setSize(new java.awt.Dimension(600, 600));
         label.setLineWrap(true);
         label.setOpaque(true);
         label.setBackground(new java.awt.Color(158, 174, 187));
@@ -128,16 +128,22 @@ public class PostGUI extends javax.swing.JFrame {
         label.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 
         JPanel btnCLike = new JPanel();
-
+        if(methods.LikeComment.checkLikeJN(commentID)){
+        btnCLike.setBackground(new java.awt.Color(202, 100, 91));
+        
+        } else{
         btnCLike.setBackground(new java.awt.Color(77, 85, 92));
-
+        }
         btnCLike.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 100, 91), 2, true));
 
         btnCLike.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCLikeMouseClicked(evt);
-                String query = likeear.toString();
-                skrivUt(query);
+                new LikeComment(commentID);
+                clearMessage();
+                new FetchComments(postID);
+//                String query = likeear.toString();
+//                skrivUt(query);
             }
         });
 
@@ -149,7 +155,7 @@ public class PostGUI extends javax.swing.JFrame {
 
         lblCommentLike.setIcon(likesIcon);
 
-        lblCommentLike.setText("1");
+        lblCommentLike.setText(likes);
 
         btnCLike.add(lblCommentLike);
 
@@ -336,7 +342,7 @@ public class PostGUI extends javax.swing.JFrame {
                                     .addComponent(lblUniversitet)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(lblOrebro)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 396, Short.MAX_VALUE)
                                         .addComponent(btnPGComment, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,10 +357,12 @@ public class PostGUI extends javax.swing.JFrame {
                     .addComponent(jScrollPane2)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnPGLike, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btnPGLike, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(109, 109, 109))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -465,7 +473,6 @@ public class PostGUI extends javax.swing.JFrame {
 
     public static void btnCLikeMouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Klick!");
     }
 
     /**
