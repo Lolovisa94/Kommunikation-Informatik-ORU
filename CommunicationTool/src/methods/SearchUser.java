@@ -106,5 +106,57 @@ public class SearchUser {
         }
         return userRemoved;
     }
+        public void getAllUsers(JTable table){
+        
+          try {
+            st = ConnectionClass.conn.createStatement();
+        }
+        catch(Exception e)
+        {
+            System.out.println("Failed to create statement.");
+            System.out.println(e.toString());
+            
+        }
+
+        Object columnNames[] = {"Namn", "Telefon", "Email"};
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+        
+        String getAllUsersQuery = "SELECT Namn, Telefon, Email FROM `Användare`" ;
+        
+        try {
+            queryResult = st.executeQuery(getAllUsersQuery);
+            
+            // Iterates as long as there are rows left to process
+            while (queryResult.next()) {                
+                String namn = queryResult.getString("Namn");
+                String telefon = queryResult.getString("Telefon");
+                String email = queryResult.getString("Email");
+                
+                Object rowData[] = {namn, telefon, email};
+                
+                model.addRow(rowData);
+            }
+            table.setModel(model);
+            
+            if (table.getRowCount() > 0){
+               
+            }
+            //table.setPreferredScrollableViewportSize(table.getPreferredSize());
+            //table.setFillsViewportHeight(true);
+            
+        } catch (SQLException e) {
+            System.out.println("Database access error.");
+            System.out.println(e.toString());
+        } finally {
+            // We have to close the connection and release the resources used.
+            // Closing the statement results in closing the resultSet as well.
+            try {
+                st.close();
+            } catch (SQLException e) {
+                System.out.println(e.toString());
+            }
+        }
+        
+        }
     
 }

@@ -233,6 +233,7 @@ public class PageGUI extends javax.swing.JFrame {
         lblKalenderText = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         pnlMeddelanden = new javax.swing.JPanel();
         lblMeddelanden = new javax.swing.JLabel();
         pnlSokfunktion = new javax.swing.JPanel();
@@ -779,6 +780,13 @@ public class PageGUI extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setText("Ge förslag på mötestider");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlKalenderLayout = new javax.swing.GroupLayout(pnlKalender);
         pnlKalender.setLayout(pnlKalenderLayout);
         pnlKalenderLayout.setHorizontalGroup(
@@ -786,49 +794,52 @@ public class PageGUI extends javax.swing.JFrame {
             .addGroup(pnlKalenderLayout.createSequentialGroup()
                 .addGroup(pnlKalenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlKalenderLayout.createSequentialGroup()
-                        .addGap(413, 413, 413)
-                        .addComponent(lblKalender))
-                    .addGroup(pnlKalenderLayout.createSequentialGroup()
-                        .addGap(362, 362, 362)
-                        .addComponent(lblKalenderText, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlKalenderLayout.createSequentialGroup()
                         .addGap(362, 362, 362)
                         .addComponent(lblKalenderFelText, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlKalenderLayout.createSequentialGroup()
-                        .addGap(290, 290, 290)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(599, 599, 599)
+                        .addComponent(lblKalender))
                     .addGroup(pnlKalenderLayout.createSequentialGroup()
-                        .addGap(439, 439, 439)
-                        .addComponent(jButton3))
+                        .addGap(556, 556, 556)
+                        .addComponent(lblKalenderText, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlKalenderLayout.createSequentialGroup()
-                        .addGap(327, 327, 327)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(95, 95, 95)
-                        .addGroup(pnlKalenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(847, Short.MAX_VALUE))
+                        .addGap(80, 80, 80)
+                        .addGroup(pnlKalenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlKalenderLayout.createSequentialGroup()
+                                .addGroup(pnlKalenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton3))
+                                .addGap(68, 68, 68)
+                                .addGroup(pnlKalenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlKalenderLayout.createSequentialGroup()
+                                        .addComponent(jButton4)
+                                        .addGap(127, 127, 127)
+                                        .addComponent(jButton5))
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(698, Short.MAX_VALUE))
         );
         pnlKalenderLayout.setVerticalGroup(
             pnlKalenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlKalenderLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
+                .addContainerGap()
                 .addComponent(lblKalender, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblKalenderText)
-                .addGap(61, 61, 61)
+                .addGap(103, 103, 103)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(44, 44, 44)
                 .addComponent(lblKalenderFelText, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlKalenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addContainerGap(473, Short.MAX_VALUE))
+                .addGroup(pnlKalenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jButton3)
+                    .addComponent(jButton5))
+                .addContainerGap(533, Short.MAX_VALUE))
         );
 
         jLayeredPane2.add(pnlKalender, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -1952,7 +1963,7 @@ public class PageGUI extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         
-        BookMeetingGUI book = new BookMeetingGUI();
+        SuggestMeetingGUI book = new SuggestMeetingGUI();
         book.setVisible(true);
         
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -1970,6 +1981,12 @@ public class PageGUI extends javax.swing.JFrame {
         c.publicCalendar(jTable1, s);
         
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+         SuggestMeetingGUI a = new SuggestMeetingGUI();
+         a.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     
     
@@ -2028,6 +2045,7 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLayeredPane jLayeredPane2;
     public static javax.swing.JRadioButton jRadioButton1;

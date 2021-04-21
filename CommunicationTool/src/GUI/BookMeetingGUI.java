@@ -341,7 +341,7 @@ public class BookMeetingGUI extends javax.swing.JFrame {
 
                 if (publikjRadio.isSelected()) {
 
-                    String publicMeeting = "insert into Möte(Namn, StartTid, SlutTidTime, Beskrivning, Datum, Publik) values (" + "'" + jTextField1.getText() + "'" + ", '" + jTextField2.getText() + "', '" + jTextField3.getText() + "', '" + jTextField4.getText() + "', '" + jTextField5.getText() + "', 'J')";
+                    String publicMeeting = "insert into Möte(Namn, StartTid, SlutTidTime, Beskrivning, Datum, Publik, Bokad) values (" + "'" + jTextField1.getText() + "'" + ", '" + jTextField2.getText() + "', '" + jTextField3.getText() + "', '" + jTextField4.getText() + "', '" + jTextField5.getText() + "', 'J', 'J')";
                     st.executeUpdate(publicMeeting);
 
                     //we need the specific meeting ID of the planned meeting in order to connect it to 1 or multiple users.
@@ -368,7 +368,7 @@ public class BookMeetingGUI extends javax.swing.JFrame {
 
                 if (privatjRadio.isSelected()) {
 
-                    String privateMeeting = "insert into Möte(Namn, StartTid, SlutTidTime, Beskrivning, Datum, Publik) values (" + "'" + jTextField1.getText() + "'" + ", '" + jTextField2.getText() + "', '" + jTextField3.getText() + "', '" + jTextField4.getText() + "', '" + jTextField5.getText() + "', 'N')";
+                    String privateMeeting = "insert into Möte(Namn, StartTid, SlutTidTime, Beskrivning, Datum, Publik, Bokad) values (" + "'" + jTextField1.getText() + "'" + ", '" + jTextField2.getText() + "', '" + jTextField3.getText() + "', '" + jTextField4.getText() + "', '" + jTextField5.getText() + "', 'N', 'J')";
                     st.executeUpdate(privateMeeting);
 
                     //we need the specific meeting ID of the planned meeting in order to connect it to 1 or multiple users.
@@ -467,6 +467,8 @@ public class BookMeetingGUI extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(BookMeetingGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

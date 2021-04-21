@@ -12,18 +12,21 @@ package Main;
  */
 import GUI.LogInGUI;
 import Connectivity.ConnectionClass;
+import GUI.SuggestMeetingGUI;
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import methods.SuggestMeeting;
 
 public class Main {
      public static void main(String[] args) {
 	ConnectionClass.test();
         ConnectionClass.get_connection();
-        
-         new LogInGUI().setVisible(true);
+       
+       new LogInGUI().setVisible(true);
+
      }
 }
     
