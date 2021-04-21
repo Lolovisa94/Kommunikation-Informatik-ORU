@@ -28,11 +28,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FetchChat {
 
-    private int msgCounter = 0;
-    private ResultSet rs;
-    private String[] messages;
+    private static int msgCounter = 0;
+    private static ResultSet rs;
+    private static String[] messages;
     private static String chatID;
-    private String[] messageSender;
+    private static String[] messageSender;
     static int userID = CurrentUser.currentUser.getID();
     static String userName = CurrentUser.currentUser.getName();
 
@@ -42,6 +42,9 @@ public class FetchChat {
         mouseClicker();
 
     }
+    
+    
+
 
     public static void createChatMessage(String text, boolean rightAlligned) {
         JTextArea chatLabel = new JTextArea();
@@ -110,11 +113,10 @@ public class FetchChat {
             public void mouseClicked(MouseEvent click) {
 
                 if (click.getButton() == MouseEvent.BUTTON1) {
-                    clearChatMessage();
-                    getChatMessages();
-                    addChatMessages();
+                    reloadChat();
                 }
                 if (click.getButton() == MouseEvent.BUTTON3) {
+
                     System.out.println("Höger");
                 }
             }
@@ -123,7 +125,7 @@ public class FetchChat {
 
     }
 
-    public void addChatMessages() {
+    public static void addChatMessages() {
         System.out.println("1000000");
         Integer uID = userID;
         boolean rightAlligned = true;
@@ -143,7 +145,7 @@ public class FetchChat {
         }
     }
 
-    public void getChatMessages() {
+    public static void getChatMessages() {
         try {
 
             Statement st = Connectivity.ConnectionClass.conn.createStatement();
@@ -201,9 +203,13 @@ public class FetchChat {
 
     }
     
-    public static void createChatMessage()
+    public static void sendChatMessage()
     {
         String getText = GUI.PageGUI.taCreateChatMessage.getText();
+        
+        if(!Validation.Validation.fieldEmpty(getText)){
+            
+            if(!Validation.Validation.fieldTooLong(getText, 250)){
         String createMessage = "INSERT INTO Meddelande (Chatt_ID, Text, Tid, Sändar_ID) VALUES (" + chatID + ", '" + getText + "', '" + java.time.LocalDateTime.now()+ "', " + userID + ")";
         try{
             Statement st = Connectivity.ConnectionClass.conn.createStatement();
@@ -214,5 +220,79 @@ public class FetchChat {
             JOptionPane.showMessageDialog(null, "ÖRRU");
             System.out.println(e);
         }
+            }else{
+                JOptionPane.showMessageDialog(null, "Ett chattmeddelande får högst vara 250 tecken långt, skriv om ditt meddelande eller skicka det i två vändor");
+            
+            }
+        } else {
+        
+            JOptionPane.showMessageDialog(null, "Du måste skriva något i ditt meddelande innan du skickar.");
+            
+               }
     }
+    
+    
+    
+    public static boolean checkIfChatExists(String mottagarNamn){
+        ResultSet rsCheck = null;
+        boolean chatExists = false;
+        String sqlQueryMottagarID = "SELECT Användare_ID from Användare WHERE namn = '" + mottagarNamn + "'";
+        
+        try{
+        Statement st = Connectivity.ConnectionClass.conn.createStatement();
+            rsCheck = st.executeQuery(sqlQueryMottagarID);
+            
+            rsCheck.next();
+            int chatUserID = rsCheck.getInt("Användare_ID");
+            
+            String sqlQuery = "SELECT * FROM Chatt WHERE Sändar_ID = " + CurrentUser.currentUser.getID() + " AND  Mottagar_ID = " + chatUserID + " OR Mottagar_ID = " + CurrentUser.currentUser.getID() + " AND Sändar_ID = " + chatUserID;
+    
+            rsCheck = st.executeQuery(sqlQuery);
+            
+            if(rsCheck.next()){
+            
+            
+            chatExists = true;
+            
+            } else {
+            
+            createChat(chatUserID);
+                System.out.println("Chattskapad");
+            
+            }
+        
+        } catch (Exception e){
+        
+            System.out.println(e);
+        }
+    
+        return chatExists;
+    }
+    
+    
+    public static void createChat(int chatUserID){
+    
+    String sqlQuery = "INSERT INTO Chatt (Sändar_ID, Mottagar_ID) VALUES (" + CurrentUser.currentUser.getID() + ", " + chatUserID + ")";
+    
+    try{
+        Statement st = Connectivity.ConnectionClass.conn.createStatement();
+        st.executeUpdate(sqlQuery);
+        
+    
+    } catch (Exception e){
+    
+        System.out.println(e);
+    }
+    
+    }
+    
+    public static void reloadChat(){
+    
+                        clearChatMessage();
+                    getChatMessages();
+                    addChatMessages();
+    }
+    
+
+        
 }

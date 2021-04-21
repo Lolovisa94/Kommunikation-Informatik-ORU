@@ -10,6 +10,7 @@ import Objects.CurrentUser;
 import Methods.SearchUser;
 import Validation.Validation;
 import java.awt.Dimension;
+import java.awt.event.MouseEvent;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -237,8 +238,8 @@ public class PageGUI extends javax.swing.JFrame {
         panelChat = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         taCreateChatMessage = new javax.swing.JTextArea();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnSendChat = new javax.swing.JButton();
+        btnRefreshChat = new javax.swing.JButton();
         pnlSokfunktion = new javax.swing.JPanel();
         lblSokfunktion = new javax.swing.JLabel();
         tfSokText = new javax.swing.JTextField();
@@ -248,6 +249,7 @@ public class PageGUI extends javax.swing.JFrame {
         spSoktaAnvandare = new javax.swing.JScrollPane();
         tblSoktaAnvandare = new javax.swing.JTable();
         btnTaBortAnvändare = new javax.swing.JButton();
+        btnStartChat = new javax.swing.JButton();
         pnlForum = new javax.swing.JPanel();
         btnSkapaBloggtrad = new javax.swing.JPanel();
         lblbtnSkapaBloggtrad = new javax.swing.JLabel();
@@ -763,11 +765,13 @@ public class PageGUI extends javax.swing.JFrame {
         jLayeredPane2.add(pnlKalender, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pnlMeddelanden.setBackground(new java.awt.Color(158, 174, 187));
+        pnlMeddelanden.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblMeddelanden.setBackground(new java.awt.Color(77, 85, 92));
         lblMeddelanden.setFont(new java.awt.Font("Poppins Medium", 1, 48)); // NOI18N
         lblMeddelanden.setForeground(new java.awt.Color(77, 85, 92));
         lblMeddelanden.setText("Meddelanden");
+        pnlMeddelanden.add(lblMeddelanden, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 58, -1, 60));
 
         tblChats.setAutoCreateRowSorter(true);
         tblChats.setModel(new javax.swing.table.DefaultTableModel(
@@ -779,6 +783,8 @@ public class PageGUI extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(tblChats);
+
+        pnlMeddelanden.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 161, 290, 633));
 
         jScrollPane2.setBackground(new java.awt.Color(158, 174, 187));
         jScrollPane2.setAutoscrolls(true);
@@ -796,72 +802,30 @@ public class PageGUI extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(panelBoxChat);
 
+        pnlMeddelanden.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(384, 162, 810, 450));
+
         taCreateChatMessage.setColumns(20);
+        taCreateChatMessage.setLineWrap(true);
         taCreateChatMessage.setRows(5);
         jScrollPane3.setViewportView(taCreateChatMessage);
 
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        pnlMeddelanden.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(387, 625, 720, 169));
+
+        btnSendChat.setText("Skicka");
+        btnSendChat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSendChatActionPerformed(evt);
             }
         });
+        pnlMeddelanden.add(btnSendChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 630, -1, -1));
 
-        jButton3.setText("jButton3");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnRefreshChat.setText("Refresh");
+        btnRefreshChat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnRefreshChatActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout pnlMeddelandenLayout = new javax.swing.GroupLayout(pnlMeddelanden);
-        pnlMeddelanden.setLayout(pnlMeddelandenLayout);
-        pnlMeddelandenLayout.setHorizontalGroup(
-            pnlMeddelandenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMeddelandenLayout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addGroup(pnlMeddelandenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblMeddelanden)
-                    .addGroup(pnlMeddelandenLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(pnlMeddelandenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 842, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addContainerGap(300, Short.MAX_VALUE))
-            .addGroup(pnlMeddelandenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlMeddelandenLayout.createSequentialGroup()
-                    .addGap(473, 473, 473)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 923, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(295, Short.MAX_VALUE)))
-        );
-        pnlMeddelandenLayout.setVerticalGroup(
-            pnlMeddelandenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMeddelandenLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(lblMeddelanden, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(jButton3)
-                .addGap(18, 18, 18)
-                .addGroup(pnlMeddelandenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlMeddelandenLayout.createSequentialGroup()
-                        .addGap(0, 638, Short.MAX_VALUE)
-                        .addGroup(pnlMeddelandenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMeddelandenLayout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addGap(194, 194, 194))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMeddelandenLayout.createSequentialGroup()
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(57, 57, 57))))
-                    .addComponent(jScrollPane1)))
-            .addGroup(pnlMeddelandenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlMeddelandenLayout.createSequentialGroup()
-                    .addGap(165, 165, 165)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(239, Short.MAX_VALUE)))
-        );
+        pnlMeddelanden.add(btnRefreshChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, -1, -1));
 
         jLayeredPane2.add(pnlMeddelanden, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -939,6 +903,13 @@ public class PageGUI extends javax.swing.JFrame {
             }
         });
 
+        btnStartChat.setText("Starta en chatt med användaren");
+        btnStartChat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStartChatActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlSokfunktionLayout = new javax.swing.GroupLayout(pnlSokfunktion);
         pnlSokfunktion.setLayout(pnlSokfunktionLayout);
         pnlSokfunktionLayout.setHorizontalGroup(
@@ -957,8 +928,11 @@ public class PageGUI extends javax.swing.JFrame {
                                 .addComponent(btnSokAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(lblIngetSokresultat, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlSokfunktionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnTaBortAnvändare)
+                            .addGroup(pnlSokfunktionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(pnlSokfunktionLayout.createSequentialGroup()
+                                    .addComponent(btnStartChat)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnTaBortAnvändare))
                                 .addComponent(spSoktaAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 764, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(717, Short.MAX_VALUE))
         );
@@ -976,7 +950,9 @@ public class PageGUI extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addComponent(spSoktaAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
-                .addComponent(btnTaBortAnvändare)
+                .addGroup(pnlSokfunktionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTaBortAnvändare)
+                    .addComponent(btnStartChat))
                 .addContainerGap(175, Short.MAX_VALUE))
         );
 
@@ -1956,15 +1932,35 @@ public class PageGUI extends javax.swing.JFrame {
         currentFetchPosts.postList();
     }//GEN-LAST:event_cbFOvrigtMouseClicked
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnRefreshChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshChatActionPerformed
+        // TODO add your handling code here:
+        methods.FetchChat.reloadChat();
+    }//GEN-LAST:event_btnRefreshChatActionPerformed
+
+    private void btnSendChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendChatActionPerformed
+        methods.FetchChat.sendChatMessage();
+        
+       methods.FetchChat.reloadChat();
+       
+       taCreateChatMessage.setText("");
+    }//GEN-LAST:event_btnSendChatActionPerformed
+
+    private void btnStartChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartChatActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jButton3ActionPerformed
+        int row = tblSoktaAnvandare.getSelectedRow();
+            String chatUserName = tblSoktaAnvandare.getValueAt(row, 0).toString();
+        if(methods.FetchChat.checkIfChatExists(chatUserName)){
+        
+            JOptionPane.showMessageDialog(null, "Du har redan en chatt med användaren, gå in på meddelande för att chatta :)");
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Chatt skapad med användaren, gå in på meddelande för att chatta :)");
+        }
+    }//GEN-LAST:event_btnStartChatActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        methods.FetchChat.createChatMessage();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
+    
+    
         public void setRadio() {
         
         if (CurrentUser.currentUser.getNotify().equals("J")) {
@@ -1998,9 +1994,12 @@ public class PageGUI extends javax.swing.JFrame {
     public static javax.swing.JPanel btnMeddelanden;
     private javax.swing.JButton btnPIUppdatera;
     public static javax.swing.JPanel btnProfilinstallningar;
+    private javax.swing.JButton btnRefreshChat;
+    private javax.swing.JButton btnSendChat;
     private javax.swing.JPanel btnSkapaBloggtrad;
     private javax.swing.JPanel btnSokAnvandare;
     public static javax.swing.JPanel btnSokfunktion;
+    private javax.swing.JButton btnStartChat;
     public static javax.swing.JPanel btnStartsida;
     private javax.swing.JButton btnTaBortAnvändare;
     public static javax.swing.JPanel btnTaBortBloggtrad;
@@ -2011,8 +2010,6 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel iconLogga;
     private javax.swing.JLabel iconSearch;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLayeredPane jLayeredPane2;
     public static javax.swing.JRadioButton jRadioButton1;
     public static javax.swing.JRadioButton jRadioButton2;
