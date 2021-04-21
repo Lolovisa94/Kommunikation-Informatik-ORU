@@ -37,9 +37,9 @@ public class FetchCommentLikes{
 //        GUI.PostGUI.addMessage(nyMessages[0]);
 //        this.msgCounter = 0;
         this.likes = nyLikes;
-        getLikes();
-        sortLikes();
-        addLikes();
+//        getLikes();
+//        sortLikes();
+////        addLikes();
         
     }
 
@@ -71,9 +71,7 @@ public class FetchCommentLikes{
 
                 System.out.println("i nr 2 är lika med" + i);
 
-//                String user = rs.getString("Namn");
                 i++;
-
             }
             
         } catch (Exception e) {
@@ -82,7 +80,10 @@ public class FetchCommentLikes{
 
     }
     
-    public void sortLikes(){
+
+    
+    public String[] sortLikes(){
+        
         int y = 0;
         String like;
         int lastLike = likes.length - 1;
@@ -102,81 +103,15 @@ public class FetchCommentLikes{
     }
 
     likes = orderLikes;
+    return orderLikes;
     }
     
     public void addLikes(){
         while(likeCounter <  likes.length)
             if (likeCounter < likes.length) {
-                    GUI.PostGUI.addLike(likes[likeCounter]);
+//                    GUI.PostGUI.addLike(likes[likeCounter]);
                     likeCounter++;
                 } 
     }
     
-//    public void timer(){
-//        timer = new Timer(0, new ActionListener() {
-//            public void actionPerformed(ActionEvent event) {
-//                if (msgCounter < messages.length) {
-//                    GUI.PostGUI.addMessage(messages[msgCounter]);
-//                    msgCounter++;
-//                } 
-//                else {
-//                    timer.stop();
-//                }
-//            }
-//        });
-//        timer.start();
-//}
-
-//    public void run() {
-//        panel = new JPanel();
-//        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-//
-//        scrollPane = new JScrollPane(panel);
-//        scrollPane.setVerticalScrollBarPolicy(
-//                JScrollPane.VERTICAL_SCROLLBAR_NEVER);
-//        scrollPane.setAutoscrolls(true);
-//
-//    frame = new JFrame("Message App");
-//    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//    frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
-//    frame.setSize(260, 180);
-////    frame.setLocationRelativeTo(null);
-//    frame.setVisible(true);
-//
-//        timer = new Timer(0, new ActionListener() {
-//            public void actionPerformed(ActionEvent event) {
-//                if (msgCounter < messages.length) {
-//                    addMessage(messages[msgCounter]);
-//                } else {
-//                    timer.stop();
-//                }
-//            }
-//        });
-//        timer.start();
-//    }
-
-//    private void addMessage(String text) {
-//        boolean oddMessage = msgCounter % 2 != 0;
-//        Color color = oddMessage ? Color.WHITE : Color.GRAY;
-//
-//        JTextArea label = new JTextArea(text);
-//        label.setMaximumSize(new java.awt.Dimension(600, 600));
-//        label.setLineWrap(true);
-//        label.setOpaque(true);
-//        label.setBackground(color);
-//        label.setBorder(BorderFactory.createCompoundBorder());
-//
-//    JPanel panelBox = new JPanel();
-//    panelBox.setLayout(new BoxLayout(panelBox, BoxLayout.X_AXIS));
-//    panelBox.setBorder(BorderFactory.createEmptyBorder(2,4,2,4));
-//    panelBox.add(label);
-//    panel.add(panelBox);
-//    panel.revalidate();
-//    msgCounter++;
-//    }
-
-//    @Override
-//    public void run() {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
 }

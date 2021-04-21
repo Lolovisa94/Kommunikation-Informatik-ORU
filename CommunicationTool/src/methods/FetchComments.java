@@ -85,7 +85,7 @@ public class FetchComments{
                 System.out.println("i är lika med" + i + text);
                 messages[i] = text;
                 
-//                Integer commentID = rs.getInt("Kommentar_ID");
+                Integer commentID = rs.getInt("Kommentar_ID");
 //                String checkLikes = "SELECT COUNT(*) AS Total FROM Gilla_Kommentar WHERE Gillar = 'J' AND Kommentar_ID =" + commentID;
 //                
 //                
@@ -98,7 +98,7 @@ public class FetchComments{
 //                }
 //                }
                
-//                new FetchCommentLikes(commentID);
+                new FetchCommentLikes(commentID);
 //                 commentIDs[i] = commentID.toString();
                 System.out.println("i nr 2 är lika med" + i);
 
@@ -135,71 +135,15 @@ public class FetchComments{
     messages = orderMessages;
     }
     
-//     public void getLikes() {
-//        try {
-//            Statement st = Connectivity.ConnectionClass.conn.createStatement();
-//            int i = 0;
-//           String checkLike = "SELECT COUNT(*) AS Total FROM Gilla_Kommentar WHERE Gillar = 'J' AND Kommentar_ID =" + commentID;
-//            rs = st.executeQuery(checkLike);
-//
-//            int size = 0;
-//            if (rs != null && !rs.isLast()) {
-//                while (rs.next()) {
-//                    size++;
-//                    System.out.println("size är lika med" + size);
-//
-//                }
-//
-//            }
-//            likes = new String[size];
-//            
-//            rs = st.executeQuery(checkLike);
-//            while (rs.next()) {
-//
-//                String text = rs.getString("Total");
-//
-//                System.out.println("i är lika med" + i + text);
-//                likes[i] = text;
-//
-//                System.out.println("i nr 2 är lika med" + i);
-//
-////                String user = rs.getString("Namn");
-//                i++;
-//
-//            }
-//            
-//        } catch (Exception e) {
-//            System.out.println(e);
-//        }
-//
-//    }
-    
-//    public void sortLikes(){
-//        int y = 0;
-//        String like;
-//        int lastLike = likes.length - 1;
-//        String[] orderLikes = new String[lastLike + 1];
-//
-//    while(0 <= lastLike){
-//
-//
-//        like = Array.get(likes, lastLike).toString();
-//        orderLikes[y] = like;
-//
-//        System.out.println(like);
-//        System.out.println(lastLike);
-//        System.out.println(y);
-//        lastLike--;
-//        y++;
-//    }
-//
-//    likes = orderLikes;
-//    }
     
     public void addMessages(){
+
+        
         while(msgCounter <  messages.length)
+            
             if (msgCounter < messages.length) {
-                    GUI.PostGUI.addMessage(messages[msgCounter], "Like");
+                
+                    GUI.PostGUI.addMessage(messages[msgCounter], msgCounter);
                     msgCounter++;
                 } 
     }

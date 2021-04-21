@@ -11,6 +11,8 @@ import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.SftpException;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
 import java.sql.ResultSet;
@@ -28,6 +30,7 @@ import javax.swing.JTextArea;
 import javax.swing.Timer;
 import javax.swing.border.Border;
 import javax.swing.text.DefaultCaret;
+import methods.FetchCommentLikes;
 import methods.FetchComments;
 import methods.Filnamn;
 import methods.LikePost;
@@ -37,6 +40,8 @@ import methods.SFPT;
  *
  * @author pierre
  */
+import javax.swing.ImageIcon;
+
 public class PostGUI extends javax.swing.JFrame {
 
     private String[] messages = {};
@@ -54,6 +59,11 @@ public class PostGUI extends javax.swing.JFrame {
     public static boolean admin;
     public String fileObject;
     public boolean isLiked = false;
+    public static int lblWidth;
+    public static Dimension lblSize;
+    public static JPanel commentNLike = new JPanel();
+    public ImageIcon likeIcon = new ImageIcon(getClass().getResource("/Images/likeIcon.png"));
+    public static ImageIcon likesIcon;
 
     /**
      * Creates new form PostGUI
@@ -67,7 +77,9 @@ public class PostGUI extends javax.swing.JFrame {
         Filnamn fil = new Filnamn();
         this.fileObject = fil.getFileObject(postID);
         System.out.println("filobjekt = " + fileObject);
-             
+
+        this.likesIcon = likeIcon;
+
         initComponents();
         new FetchComments(postID);
         btnPGUppdateraPost.setVisible(false);
@@ -90,8 +102,7 @@ public class PostGUI extends javax.swing.JFrame {
 
         Integer nrLikes = LikePost.likeCounter(postID);
         lblPostLike.setText(nrLikes.toString());
-        //CurrentUser.currentUser.isAdmin();
-        //CurrentUser.currentUser.getName();
+
     }
 
     public static void clearMessage() {
@@ -101,53 +112,83 @@ public class PostGUI extends javax.swing.JFrame {
 
     }
 
-    public static void addMessage(String text, String likes) {
-        
+    public static void addMessage(String text, int likes) {
+        Integer likeear = likes;
         JTextArea label = new JTextArea();
-        JPanel btnCLike = new JPanel();
-        JLabel lblCLike = new JLabel();
-        JPanel pnlComment = new JPanel();
+
         DefaultCaret caret = (DefaultCaret) label.getCaret();
         caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
         label.setText(text);
-        
-        label.setMaximumSize(new java.awt.Dimension(600, 600));
+//        label.setMaximumSize(new java.awt.Dimension(600, 600));
+        label.setSize(new java.awt.Dimension(600, 600));
         label.setLineWrap(true);
         label.setOpaque(true);
         label.setBackground(new java.awt.Color(158, 174, 187));
         Border border = BorderFactory.createLineBorder(new java.awt.Color(77, 85, 92));
         label.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 
-        lblCLike.setText(likes); 
-        btnCLike.setMinimumSize(new java.awt.Dimension(100, 100));
-        btnCLike.setBackground(new java.awt.Color(5, 26, 61));
-        
-        btnCLike.add(lblCLike);
-        pnlComment.add(label);
-        pnlComment.add(btnCLike);
-        panelBox.add(pnlComment);
+        JPanel btnCLike = new JPanel();
 
+        btnCLike.setBackground(new java.awt.Color(77, 85, 92));
+
+        btnCLike.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 100, 91), 2, true));
+
+        btnCLike.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCLikeMouseClicked(evt);
+                String query = likeear.toString();
+                skrivUt(query);
+            }
+        });
+
+        JLabel lblCommentLike = new JLabel();
+
+        lblCommentLike.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
+
+        lblCommentLike.setForeground(new java.awt.Color(234, 234, 234));
+
+        lblCommentLike.setIcon(likesIcon);
+
+        lblCommentLike.setText("1");
+
+        btnCLike.add(lblCommentLike);
+
+        panelBox.add(label);
+        panelBox.add(btnCLike);
 
     }
     
-    public static void addLike(String likes){
-            JLabel lblLike = new JLabel();
-//    DefaultCaret caret = (DefaultCaret) lblLike.getCaret();
-//    caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
-            lblLike.setText(likes);
-            lblLike.setMaximumSize(new java.awt.Dimension(600, 600));
-//        lblLike.setLineWrap(true);
-        lblLike.setOpaque(true);
-        lblLike.setBackground(new java.awt.Color(158, 174, 187));
-        Border border = BorderFactory.createLineBorder(new java.awt.Color(77, 85, 92));
-        lblLike.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(10, 10, 10, 10)));
-
-
-        panelBoxL.add(lblLike);
+    public static void skrivUt(String text){
     
-    
+        System.out.println(text);
     }
 
+//    public static void addLike(String likes){
+//            JLabel lblLike = new JLabel();
+//            JPanel pnlPositionLike = new JPanel();
+//            JPanel pnlBorder = new JPanel();
+////    DefaultCaret caret = (DefaultCaret) lblLike.getCaret();
+////    caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
+//            lblLike.setText(likes);
+//            lblLike.setMaximumSize(new java.awt.Dimension(50, 50));
+//            pnlPositionLike.setSize(panelBox.getSize());
+//            pnlPositionLike.setLayout(new javax.swing.BoxLayout(pnlPositionLike, javax.swing.BoxLayout.Y_AXIS));
+//            pnlBorder.setSize(lblSize);
+////        lblLike.setLineWrap(true);
+//        lblLike.setOpaque(true);
+//        lblLike.setBackground(new java.awt.Color(158, 174, 187));
+////        pnlPositionLike.setAlignmentX(Component.CENTER_ALIGNMENT);
+////        Border border = BorderFactory.createLineBorder(new java.awt.Color(202,100,91));
+////        lblLike.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+//
+//        lblLike.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 100, 91), 2, true));
+//        
+//        pnlPositionLike.add(lblLike);
+//        pnlBorder.add(pnlPositionLike);
+//        commentNLike.add(pnlPositionLike);
+//    
+//    
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -174,11 +215,6 @@ public class PostGUI extends javax.swing.JFrame {
         btnHämtaFil = new javax.swing.JButton();
         btnPGLike = new javax.swing.JPanel();
         lblPostLike = new javax.swing.JLabel();
-        btnCLike = new javax.swing.JPanel();
-        lblCommentLike = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        panelBoxL = new javax.swing.JPanel();
-        panelL = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -207,7 +243,7 @@ public class PostGUI extends javax.swing.JFrame {
         panelBox.setBackground(new java.awt.Color(158, 174, 187));
         panelBox.setAlignmentY(0.0F);
         panelBox.setAlignmentY(0.0F);
-        panelBox.setLayout(new javax.swing.BoxLayout(panelBox, javax.swing.BoxLayout.Y_AXIS));
+        panelBox.setLayout(new javax.swing.BoxLayout(panelBox, javax.swing.BoxLayout.PAGE_AXIS));
 
         panel.setBackground(new java.awt.Color(158, 174, 187));
         panel.setToolTipText("");
@@ -283,38 +319,6 @@ public class PostGUI extends javax.swing.JFrame {
         lblPostLike.setText("1");
         btnPGLike.add(lblPostLike);
 
-        btnCLike.setBackground(new java.awt.Color(77, 85, 92));
-        btnCLike.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 100, 91), 2, true));
-        btnCLike.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCLikeMouseClicked(evt);
-            }
-        });
-
-        lblCommentLike.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
-        lblCommentLike.setForeground(new java.awt.Color(234, 234, 234));
-        lblCommentLike.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/likeIcon.png"))); // NOI18N
-        lblCommentLike.setText("1");
-        btnCLike.add(lblCommentLike);
-
-        jScrollPane3.setAutoscrolls(true);
-
-        panelBoxL.setAlignmentX(0.0F);
-        panelBoxL.setAlignmentY(0.0F);
-        panelBoxL.setLayout(new javax.swing.BoxLayout(panelBoxL, javax.swing.BoxLayout.Y_AXIS));
-
-        panelL.setLayout(new javax.swing.BoxLayout(panelL, javax.swing.BoxLayout.LINE_AXIS));
-        panelBoxL.add(panelL);
-
-        jScrollPane3.setViewportView(panelBoxL);
-        panelBoxL.setBackground(new java.awt.Color(158, 174, 187));
-        panelBoxL.setAlignmentY(0.0F);
-        panelBoxL.setAlignmentY(0.0F);
-
-        panelBoxL.setLayout(new javax.swing.BoxLayout(panelBoxL, javax.swing.BoxLayout.Y_AXIS));
-
-        // Code of sub-components and layout - not shown here
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -348,14 +352,8 @@ public class PostGUI extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnCLike, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(261, 261, 261)
-                                .addComponent(btnPGLike, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(btnPGLike, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -385,17 +383,11 @@ public class PostGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPGLike, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCLike, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnPGLike, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-
-        jScrollPane3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -471,9 +463,10 @@ public class PostGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnPGLikeMouseClicked
 
-    private void btnCLikeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCLikeMouseClicked
+    public static void btnCLikeMouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCLikeMouseClicked
+        JOptionPane.showMessageDialog(null, "Klick!");
+    }
 
     /**
      * @param args the command line arguments
@@ -512,7 +505,6 @@ public class PostGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JPanel btnCLike;
     private javax.swing.JButton btnHämtaFil;
     private javax.swing.JButton btnPGComment;
     private javax.swing.JPanel btnPGLike;
@@ -522,17 +514,13 @@ public class PostGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblAuthor;
-    private javax.swing.JLabel lblCommentLike;
     private javax.swing.JLabel lblOrebro;
     private javax.swing.JLabel lblPostLike;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblUniversitet;
     public static javax.swing.JPanel panel;
     public static javax.swing.JPanel panelBox;
-    public static javax.swing.JPanel panelBoxL;
-    private javax.swing.JPanel panelL;
     private javax.swing.JTextArea taPostText;
     // End of variables declaration//GEN-END:variables
 }
