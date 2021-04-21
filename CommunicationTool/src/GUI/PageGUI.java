@@ -1921,8 +1921,8 @@ public class PageGUI extends javax.swing.JFrame {
     }
     
     public void removeIFPost(){
-        int row = tblIFForum.getSelectedRow();
-        String threadNameIF = tblIFForum.getValueAt(row, 1).toString();
+        int row = tblInformelltForum.getSelectedRow();
+        String threadNameIF = tblInformelltForum.getValueAt(row, 1).toString();
         EditForum.removeThread(threadNameIF);
     }
     private void btnTaBortBloggtradMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTaBortBloggtradMouseEntered
