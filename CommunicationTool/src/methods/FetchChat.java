@@ -127,7 +127,7 @@ public class FetchChat {
 
     public static void addChatMessages() {
         System.out.println("1000000");
-        Integer uID = userID;
+        Integer uID = CurrentUser.currentUser.getID();
         boolean rightAlligned = true;
         msgCounter = 0;
         while (msgCounter < messages.length) {
@@ -135,12 +135,13 @@ public class FetchChat {
 
                 if (messageSender[msgCounter].equals(uID.toString())) {
                     rightAlligned = false;
+                } else{
+                
+                rightAlligned = true;
                 }
                 createChatMessage(messages[msgCounter], rightAlligned);
                 msgCounter++;
-                if (rightAlligned) {
 
-                }
             }
         }
     }
