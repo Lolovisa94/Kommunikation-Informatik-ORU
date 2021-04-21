@@ -71,7 +71,6 @@ public final class CreatePost
             }
     }       
     
-
     
     public boolean createPostSQL()
     {

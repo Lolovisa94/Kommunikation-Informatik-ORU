@@ -72,7 +72,8 @@ public class FetchPosts {
         } else if (PageGUI.cbFOvrigt.isSelected() && PageGUI.cbFUtbildning.isSelected() && PageGUI.cbFForskning.isSelected()) {
             postsSQLQuery = "SELECT i.titel, i.publiceringsdatum, k.namn AS Kategori, a.Namn AS Publicerare FROM Inlägg i INNER JOIN Kategori k ON k.kategori_id = i.kategori_id"
                     + " INNER JOIN Inlägg_Användare ia ON ia.Inlägg_ID = i.Inlägg_ID"
-                    + " INNER JOIN Användare a ON a.Användare_ID = ia.Användare_ID";
+                    + " INNER JOIN Användare a ON a.Användare_ID = ia.Användare_ID"
+                    + " WHERE k.namn = 'Allmänt' OR k.namn = 'Forskning' OR k.namn = 'Utbuldning';";
 
         } else {
             categorySelected = false;
@@ -97,10 +98,8 @@ public class FetchPosts {
                 mouseClicker();
             } catch (Exception e) {
                 System.out.println(e);
-
             }
         }
-
     }
     public void openText()
     {
@@ -148,5 +147,7 @@ public class FetchPosts {
 
         });
        
+        
+        }
     }
-}
+
