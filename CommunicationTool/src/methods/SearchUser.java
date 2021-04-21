@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Methods;
+package methods;
 
 import Connectivity.ConnectionClass;
 import Validation.Validation;
@@ -19,21 +19,20 @@ import javax.swing.table.DefaultTableModel;
  * @author LovisaKampe
  */
 public class SearchUser {
+
     Statement st;
     ResultSet queryResult = null;
 
-    public boolean findUsers(String searchText, JTable table){
-        if(!Validation.isValidatedName(searchText)) {
+    public boolean findUsers(String searchText, JTable table) {
+        if (!Validation.isValidatedName(searchText)) {
             return false;
         }
-        
+
         boolean usersFound = false;
-        
+
         try {
             st = ConnectionClass.conn.createStatement();
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             System.out.println("Failed to create statement.");
             System.out.println(e.toString());
             return usersFound;
@@ -41,30 +40,30 @@ public class SearchUser {
 
         Object columnNames[] = {"Namn", "Telefon", "Email"};
         DefaultTableModel model = new DefaultTableModel(columnNames, 0);
-        
+
         String containsUsersQuery = "SELECT Namn, Telefon, Email FROM `Användare` WHERE Namn LIKE '%" + searchText + "%';";
-        
+
         try {
             queryResult = st.executeQuery(containsUsersQuery);
-            
+
             // Iterates as long as there are rows left to process
-            while (queryResult.next()) {                
+            while (queryResult.next()) {
                 String namn = queryResult.getString("Namn");
                 String telefon = queryResult.getString("Telefon");
                 String email = queryResult.getString("Email");
-                
+
                 Object rowData[] = {namn, telefon, email};
-                
+
                 model.addRow(rowData);
             }
             table.setModel(model);
-            
-            if (table.getRowCount() > 0){
+
+            if (table.getRowCount() > 0) {
                 usersFound = true;
             }
             //table.setPreferredScrollableViewportSize(table.getPreferredSize());
             //table.setFillsViewportHeight(true);
-            
+
         } catch (SQLException e) {
             System.out.println("Database access error.");
             System.out.println(e.toString());
@@ -79,32 +78,29 @@ public class SearchUser {
         }
         return usersFound;
     }
-    
-    
-        public boolean removeUser(String email)
-    {
-        boolean userRemoved = false;
-        String query = "delete from `Användare` where Email = '"+email+"';";
-        String query2 = "SELECT Användare_ID FROM Användare WHERE Email = '" + email +"';"; 
 
-        
-        try{
+    public boolean removeUser(String email) {
+        boolean userRemoved = false;
+        String query = "delete from `Användare` where Email = '" + email + "';";
+        String query2 = "SELECT Användare_ID FROM Användare WHERE Email = '" + email + "';";
+
+        try {
             st = ConnectionClass.conn.createStatement();
-            ResultSet rs = st.executeQuery(query2); 
-            if(rs.next()){
-            int id = rs.getInt("Användare_ID");
-            String deleteQuery = "DELETE FROM Notifikation WHERE Användare_ID =" + id;
-            
-            st.execute(deleteQuery);
-            st.execute(query);
-            userRemoved = true;
-            
+            ResultSet rs = st.executeQuery(query2);
+            if (rs.next()) {
+                int id = rs.getInt("Användare_ID");
+                String deleteQuery = "DELETE FROM Notifikation WHERE Användare_ID =" + id;
+
+                st.execute(deleteQuery);
+                st.execute(query);
+                userRemoved = true;
+
             }
-            
-        }catch(Exception e){
+
+        } catch (Exception e) {
             System.out.println(e);
         }
         return userRemoved;
     }
-    
+
 }
