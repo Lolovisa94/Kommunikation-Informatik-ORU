@@ -127,6 +127,7 @@ public class PageGUI extends javax.swing.JFrame {
         selMeddelanden.setVisible(true);
         pnlMeddelanden.setVisible(true);
         isSelMeddelanden = true;
+        new FetchChat();
     }
 
     public void selectSokfunktion() {
@@ -235,7 +236,7 @@ public class PageGUI extends javax.swing.JFrame {
         panelBoxChat = new javax.swing.JPanel();
         panelChat = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        taCreateChatMessage = new javax.swing.JTextArea();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         pnlSokfunktion = new javax.swing.JPanel();
@@ -768,9 +769,10 @@ public class PageGUI extends javax.swing.JFrame {
         lblMeddelanden.setForeground(new java.awt.Color(77, 85, 92));
         lblMeddelanden.setText("Meddelanden");
 
+        tblChats.setAutoCreateRowSorter(true);
         tblChats.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1"}
+                {}
             },
             new String [] {
                 "Chattar"
@@ -794,11 +796,16 @@ public class PageGUI extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(panelBoxChat);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane3.setViewportView(jTextArea1);
+        taCreateChatMessage.setColumns(20);
+        taCreateChatMessage.setRows(5);
+        jScrollPane3.setViewportView(taCreateChatMessage);
 
         jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("jButton3");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -837,16 +844,18 @@ public class PageGUI extends javax.swing.JFrame {
                 .addComponent(lblMeddelanden, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(pnlMeddelandenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMeddelandenLayout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(194, 194, 194))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMeddelandenLayout.createSequentialGroup()
-                        .addGroup(pnlMeddelandenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 803, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(57, 57, 57))))
+                    .addGroup(pnlMeddelandenLayout.createSequentialGroup()
+                        .addGap(0, 638, Short.MAX_VALUE)
+                        .addGroup(pnlMeddelandenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMeddelandenLayout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addGap(194, 194, 194))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMeddelandenLayout.createSequentialGroup()
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(57, 57, 57))))
+                    .addComponent(jScrollPane1)))
             .addGroup(pnlMeddelandenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlMeddelandenLayout.createSequentialGroup()
                     .addGap(165, 165, 165)
@@ -1600,7 +1609,7 @@ public class PageGUI extends javax.swing.JFrame {
     private void btnMeddelandenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMeddelandenMouseEntered
         // TODO add your handling code here:
         if (!isSelMeddelanden) {
-            selMeddelanden.setVisible(true);
+            selMeddelanden.setVisible(true);           
         }
     }//GEN-LAST:event_btnMeddelandenMouseEntered
 
@@ -1949,8 +1958,12 @@ public class PageGUI extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        new FetchChat("1");
+        
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        methods.FetchChat.createChatMessage();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
         public void setRadio() {
         
@@ -2006,7 +2019,6 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblAdminFraga;
     private javax.swing.JLabel lblAnvEpost;
     private javax.swing.JLabel lblAnvLosenord;
@@ -2071,7 +2083,8 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JPanel selStartsida;
     private javax.swing.JSeparator sepFSok;
     private javax.swing.JScrollPane spSoktaAnvandare;
-    private javax.swing.JTable tblChats;
+    public static javax.swing.JTextArea taCreateChatMessage;
+    public static javax.swing.JTable tblChats;
     public static javax.swing.JTable tblForum;
     private javax.swing.JTable tblSoktaAnvandare;
     private javax.swing.JTextField tfAnvNamn;
