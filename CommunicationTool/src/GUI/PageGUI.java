@@ -10,6 +10,7 @@ import Objects.CurrentUser;
 import Methods.SearchUser;
 import Validation.Validation;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -21,6 +22,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import methods.EditForum;
 import methods.FetchChat;
+import static methods.FetchChat.reloadChat;
 import methods.FetchPosts;
 import methods.User;
 
@@ -43,7 +45,6 @@ public class PageGUI extends javax.swing.JFrame {
         selectStartsida();
         initializeMethods();
         initializeGUIComponents();
-
         welcomeText(CurrentUser.currentUser.getName());
         
         
@@ -197,6 +198,7 @@ public class PageGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupRightClick = new javax.swing.JPopupMenu();
         panelMenuBackground = new javax.swing.JPanel();
         panelMenu = new javax.swing.JPanel();
         panelMenuLogga = new javax.swing.JPanel();
@@ -782,6 +784,8 @@ public class PageGUI extends javax.swing.JFrame {
                 "Chattar"
             }
         ));
+        tblChats.setAlignmentX(100.0F);
+        tblChats.setAlignmentY(100.0F);
         jScrollPane1.setViewportView(tblChats);
 
         pnlMeddelanden.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 161, 290, 633));
@@ -2011,6 +2015,7 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel iconSearch;
     private javax.swing.JButton jButton1;
     private javax.swing.JLayeredPane jLayeredPane2;
+    public static javax.swing.JPopupMenu jPopupRightClick;
     public static javax.swing.JRadioButton jRadioButton1;
     public static javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -2065,7 +2070,7 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JPanel pnlForum;
     private javax.swing.JPanel pnlKalender;
     private javax.swing.JPanel pnlLaggTillAnvandare;
-    private javax.swing.JPanel pnlMeddelanden;
+    public static javax.swing.JPanel pnlMeddelanden;
     private javax.swing.JPanel pnlPIUserName;
     private javax.swing.JPanel pnlProfilinstallningar;
     private javax.swing.JPanel pnlSokfunktion;

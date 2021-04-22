@@ -15,11 +15,12 @@ import java.sql.Statement;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
-import javax.swing.text.DefaultCaret;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -35,7 +36,7 @@ public class FetchChat {
     private static String[] messageSender;
     static int userID = CurrentUser.currentUser.getID();
     static String userName = CurrentUser.currentUser.getName();
-
+    
     public FetchChat() {
         //this.chatID = chatID;
         addChatTable();
@@ -108,25 +109,39 @@ public class FetchChat {
 
     public void mouseClicker() {
 
+        JMenuItem menuShowChat = new JMenuItem("Visa chat");
+        JMenuItem menuRemoveChat = new JMenuItem("Ta bort chat");
+        JMenuItem menuShowProfile = new JMenuItem ("Visa profil");
+        GUI.PageGUI.jPopupRightClick.add(menuShowChat);
+        GUI.PageGUI.jPopupRightClick.addSeparator();
+        GUI.PageGUI.jPopupRightClick.add(menuRemoveChat);
+        GUI.PageGUI.jPopupRightClick.addSeparator();
+        GUI.PageGUI.jPopupRightClick.add(menuShowProfile);
+     
         PageGUI.tblChats.addMouseListener(new MouseAdapter() {
-
+             
             public void mouseClicked(MouseEvent click) {
 
                 if (click.getButton() == MouseEvent.BUTTON1) {
                     reloadChat();
+                    GUI.PageGUI.jPopupRightClick.setVisible(false);
                 }
                 if (click.getButton() == MouseEvent.BUTTON3) {
 
-                    System.out.println("Höger");
+                    int X = click.getX();
+                    int Y = click.getY();
+                    GUI.PageGUI.jPopupRightClick.setLocation(X + 500 ,Y + 220);
+                    GUI.PageGUI.jPopupRightClick.setVisible(true);
+
+                    }
                 }
-            }
+            
 
         });
 
     }
 
     public static void addChatMessages() {
-        System.out.println("1000000");
         Integer uID = CurrentUser.currentUser.getID();
         boolean rightAlligned = true;
         msgCounter = 0;
@@ -289,7 +304,7 @@ public class FetchChat {
     
     public static void reloadChat(){
     
-                        clearChatMessage();
+                    clearChatMessage();
                     getChatMessages();
                     addChatMessages();
     }
