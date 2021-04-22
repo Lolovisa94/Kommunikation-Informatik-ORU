@@ -108,10 +108,6 @@ public class User {
         public void addNewUser(String namn, int tele, String email, String losenord, boolean admin) {
 
         try {
-
-            //int anvTele = tele.VAD SKA DET STÅ ? ();
-
-
             Statement st = ConnectionClass.conn.createStatement();
             String query = "";
             

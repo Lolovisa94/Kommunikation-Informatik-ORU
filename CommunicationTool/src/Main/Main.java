@@ -25,6 +25,7 @@ public class Main {
 	ConnectionClass.test();
         ConnectionClass.get_connection();
        
+      
        new LogInGUI().setVisible(true);
 
      }

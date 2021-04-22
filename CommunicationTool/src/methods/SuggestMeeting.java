@@ -10,8 +10,11 @@ import com.sun.jdi.connect.spi.Connection;
 import Connectivity.ConnectionClass;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -32,7 +35,7 @@ public class SuggestMeeting {
     try{
      st =ConnectionClass.conn.createStatement();
      
-   String createSuggestion="insert into Förslagstider(Namn, Beskrivning, Skapar_ID, Starttid1,Sluttid1, Datum1) values ('" + namn + "', " + "'" + beskrivning + "', " + "'" + creatorID + "', " + "'" + Startid1 + "', " + "'" + Sluttid1 + "', " + "'" + datum1 + "')" ;
+   String createSuggestion="insert into Förslagstider(Mötesnamn, Beskrivning, Skapar_ID, Starttid1,Sluttid1, Datum1) values ('" + namn + "', " + "'" + beskrivning + "', " + "'" + creatorID + "', " + "'" + Startid1 + "', " + "'" + Sluttid1 + "', " + "'" + datum1 + "')" ;
    st.executeUpdate(createSuggestion);
     }catch(Exception e){
         
@@ -45,7 +48,7 @@ public class SuggestMeeting {
     try{
      st =ConnectionClass.conn.createStatement();
      
-   String createSuggestion="insert into Förslagstider(Namn, Beskrivning, Skapar_ID, Starttid1,Sluttid1, Datum1, Starttid2, Sluttid2, Datum2) values ('" + namn + "', " + "'" + beskrivning + "', " + "'" + creatorID +  "', " + "'" + Startid1 + "', " + "'" + Sluttid1 + "', " + "'" + datum1 + "', " + "'" +  Starttid2 + "', " + "'" +  Sluttid2 + "', " + "'" + Datum2 + "')" ;
+   String createSuggestion="insert into Förslagstider(Mötesnamn, Beskrivning, Skapar_ID, Starttid1,Sluttid1, Datum1, Starttid2, Sluttid2, Datum2) values ('" + namn + "', " + "'" + beskrivning + "', " + "'" + creatorID +  "', " + "'" + Startid1 + "', " + "'" + Sluttid1 + "', " + "'" + datum1 + "', " + "'" +  Starttid2 + "', " + "'" +  Sluttid2 + "', " + "'" + Datum2 + "')" ;
         
    st.executeUpdate(createSuggestion);
     }catch(Exception e){
@@ -58,7 +61,7 @@ public class SuggestMeeting {
     try{
      st =ConnectionClass.conn.createStatement();
      
-   String createSuggestion="insert into Förslagstider(Namn, Beskrivning, Skapar_ID, Starttid1,Sluttid1, Datum1, Starttid2, Sluttid2, Datum2, Starttid3, Sluttid3, Datum3) values ('" + namn + "', " + "'" + beskrivning + "', " + "'" + creatorID + "', " + "'" + Startid1 + "', " + "'" + Sluttid1 + "', " + "'" + datum1 + "', " + "'" +  Starttid2 + "', " + "'" +  Sluttid2 + "', " + "'" + Datum2 + "', " + "'" + Starttid3 + "', " + "'" + Sluttid3 + "', " + "'" + Datum3 + "')" ;
+   String createSuggestion="insert into Förslagstider(Mötesnamn, Beskrivning, Skapar_ID, Starttid1,Sluttid1, Datum1, Starttid2, Sluttid2, Datum2, Starttid3, Sluttid3, Datum3) values ('" + namn + "', " + "'" + beskrivning + "', " + "'" + creatorID + "', " + "'" + Startid1 + "', " + "'" + Sluttid1 + "', " + "'" + datum1 + "', " + "'" +  Starttid2 + "', " + "'" +  Sluttid2 + "', " + "'" + Datum2 + "', " + "'" + Starttid3 + "', " + "'" + Sluttid3 + "', " + "'" + Datum3 + "')" ;
       
    st.executeUpdate(createSuggestion);
     }catch(Exception e){
@@ -98,9 +101,51 @@ while(rs.next())
        }
      return id;
    }
+   public ArrayList<String> getFörslagsID(int userID){
+   ArrayList förslagsID= new ArrayList<String>();
+     
+        try {
+            Statement st = Connectivity.ConnectionClass.conn.createStatement();
+            String förslagsIDQuery = "select Förslags_ID from Förslag_Användare where Användare_ID="+ userID;
+rs=st.executeQuery(förslagsIDQuery);
+while(rs.next()){
+förslagsID.add(rs.getInt("Förslags_ID"));
+}
+        } catch (Exception e) {
+            ;
+        }
+
    
-   
+   return förslagsID;
    }
+   public void showSuggestedMeetings(JTable table,int userID){
+       ResultSet rs = null;
+        Object columnNames[] = {"MötesNamn", "Skapare"};
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+        String query="select Förslagstider.Mötesnamn, Användare.Namn from Förslagstider join Förslag_Användare on Förslagstider.`Förslags_ID`=Förslag_Användare.`Förslags_ID` join Användare on Användare.`Användare_ID`=Förslagstider.Skapar_ID where Förslag_Användare.`Användare_ID`=" + userID;
+        try {
+            Statement st= Connectivity.ConnectionClass.conn.createStatement();
+            rs=st.executeQuery(query);
+            while(rs.next()){
+             String mötesnamn = rs.getString("Förslagstider.Mötesnamn");
+                String skapare = rs.getString("Användare.Namn");
+                
+                
+                Object rowData[] = {mötesnamn, skapare};
+                
+                model.addRow(rowData);
+            
+            }
+           
+            
+        } catch (Exception e) {
+            
+        }
+        table.setModel(model);
+            
+} 
+
+}
       
  
  
