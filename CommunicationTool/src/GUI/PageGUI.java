@@ -7,7 +7,7 @@ package GUI;
 
 import Connectivity.ConnectionClass;
 import Objects.CurrentUser;
-import Methods.SearchUser;
+import methods.SearchUser;
 import Validation.Validation;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
@@ -199,6 +199,7 @@ public class PageGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPopupRightClick = new javax.swing.JPopupMenu();
+        jPopupFetchPosts = new javax.swing.JPopupMenu();
         panelMenuBackground = new javax.swing.JPanel();
         panelMenu = new javax.swing.JPanel();
         panelMenuLogga = new javax.swing.JPanel();
@@ -892,7 +893,6 @@ public class PageGUI extends javax.swing.JFrame {
             }
         ));
         tblSoktaAnvandare.setName(""); // NOI18N
-        tblSoktaAnvandare.setRowHeight(20);
         tblSoktaAnvandare.getTableHeader().setReorderingAllowed(false);
         tblSoktaAnvandare.setPreferredScrollableViewportSize(
             new Dimension(
@@ -2015,6 +2015,7 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel iconSearch;
     private javax.swing.JButton jButton1;
     private javax.swing.JLayeredPane jLayeredPane2;
+    public static javax.swing.JPopupMenu jPopupFetchPosts;
     public static javax.swing.JPopupMenu jPopupRightClick;
     public static javax.swing.JRadioButton jRadioButton1;
     public static javax.swing.JRadioButton jRadioButton2;

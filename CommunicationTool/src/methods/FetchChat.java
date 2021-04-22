@@ -15,7 +15,6 @@ import java.sql.Statement;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -109,16 +108,34 @@ public class FetchChat {
 
     public void mouseClicker() {
 
-        JMenuItem menuShowChat = new JMenuItem("Visa chat");
         JMenuItem menuRemoveChat = new JMenuItem("Ta bort chat");
-        JMenuItem menuShowProfile = new JMenuItem ("Visa profil");
-        GUI.PageGUI.jPopupRightClick.add(menuShowChat);
-        GUI.PageGUI.jPopupRightClick.addSeparator();
+        JMenuItem menuShowProfileInfo = new JMenuItem ("Visa profilinfo");
         GUI.PageGUI.jPopupRightClick.add(menuRemoveChat);
         GUI.PageGUI.jPopupRightClick.addSeparator();
-        GUI.PageGUI.jPopupRightClick.add(menuShowProfile);
-     
-        PageGUI.tblChats.addMouseListener(new MouseAdapter() {
+        GUI.PageGUI.jPopupRightClick.add(menuShowProfileInfo);
+        
+        menuShowProfileInfo.addMouseListener(new MouseAdapter() 
+        {
+             
+            public void mouseClicked(MouseEvent click) {
+                if (click.getButton() == MouseEvent.BUTTON1) {
+                    GUI.PageGUI.jPopupRightClick.setVisible(false);
+                }
+                }
+        });
+        menuRemoveChat.addMouseListener(new MouseAdapter() 
+        {
+             
+            public void mouseClicked(MouseEvent click) {
+                if (click.getButton() == MouseEvent.BUTTON1) {
+                    removeChat();
+                    addChatTable();
+                    GUI.PageGUI.jPopupRightClick.setVisible(false);
+                }
+                }
+        });
+        PageGUI.tblChats.addMouseListener(new MouseAdapter() 
+        {
              
             public void mouseClicked(MouseEvent click) {
 
@@ -135,8 +152,6 @@ public class FetchChat {
 
                     }
                 }
-            
-
         });
 
     }
@@ -218,7 +233,27 @@ public class FetchChat {
         GUI.PageGUI.panelBoxChat.repaint();
 
     }
+    public void removeChat()
+    {
+        try{
+        Statement st = Connectivity.ConnectionClass.conn.createStatement();
+        int row = PageGUI.tblChats.getSelectedRow();
+            String chatPerson = PageGUI.tblChats.getValueAt(row, 0).toString();
+            String getChatIDSQL = "SELECT Användare_ID FROM Användare WHERE Namn = '" + chatPerson + "'";
+            rs = st.executeQuery(getChatIDSQL);
+            rs.next();
+            String chatUserID = rs.getString("Användare_ID");
+            String removeChat = "DELETE FROM Chatt WHERE Sändar_ID = " + userID + " AND  Mottagar_ID = " + chatUserID + " OR Mottagar_ID = " + userID + " AND Sändar_ID = " + chatUserID;
+            st.executeUpdate(removeChat);
+            JOptionPane.showMessageDialog(null, "Chatten är borttagen");}
+            
+        
     
+        catch(Exception e){
+        JOptionPane.showMessageDialog(null, "Något har blivit fel");
+            System.out.println(e);
+        }
+    }
     public static void sendChatMessage()
     {
         String getText = GUI.PageGUI.taCreateChatMessage.getText();

@@ -12,6 +12,7 @@ import GUI.PageGUI;
 import GUI.PostGUI;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JMenuItem;
 
 /**
  *
@@ -21,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 public class FetchPosts {
 
     private ResultSet rs = null;
-
+    public static String test = "";
     public FetchPosts(){
     
     postList();
@@ -107,7 +108,7 @@ public class FetchPosts {
         try{
                 Statement st = Connectivity.ConnectionClass.conn.createStatement();
                 int row = PageGUI.tblForum.getSelectedRow();
-                String test = PageGUI.tblForum.getValueAt(row, 1).toString();
+                this.test = PageGUI.tblForum.getValueAt(row, 1).toString();
                 String getTextSQLQuery = "SELECT i.titel, i.text, i.publiceringsdatum, k.namn AS Kategori, a.Namn AS Publicerare, i.Inlägg_ID FROM Inlägg i INNER JOIN Kategori k ON k.kategori_id = i.kategori_id"
                     + " INNER JOIN Inlägg_Användare ia ON ia.Inlägg_ID = i.Inlägg_ID"
                     + " INNER JOIN Användare a ON a.Användare_ID = ia.Användare_ID"
@@ -129,7 +130,32 @@ public class FetchPosts {
     }
     public void mouseClicker()
     {
+        JMenuItem menuShowPost = new JMenuItem ("Visa Inlägg");
+        JMenuItem menuRemovePost = new JMenuItem("Ta bort Inlägg");
         
+        GUI.PageGUI.jPopupFetchPosts.add(menuShowPost);
+        GUI.PageGUI.jPopupFetchPosts.addSeparator();
+        GUI.PageGUI.jPopupFetchPosts.add(menuRemovePost);
+        menuShowPost.addMouseListener(new MouseAdapter() 
+        {             
+            public void mouseClicked(MouseEvent click) 
+            {
+                if (click.getButton() == MouseEvent.BUTTON1) {
+                    GUI.PageGUI.jPopupFetchPosts.setVisible(false);
+                    openText();
+                }
+            }
+        });
+                menuRemovePost.addMouseListener(new MouseAdapter() 
+        {             
+            public void mouseClicked(MouseEvent click) 
+            {
+                if (click.getButton() == MouseEvent.BUTTON1) {
+                    GUI.PageGUI.jPopupFetchPosts.setVisible(false);
+                    EditForum.removeThread(test);
+                }
+            }
+        });
         PageGUI.tblForum.addMouseListener(new MouseAdapter()
         {
             
@@ -142,7 +168,10 @@ public class FetchPosts {
                 }
                 if(click.getButton()== MouseEvent.BUTTON3)
                 {
-                    System.out.println("Höger");
+                    int X = click.getX();
+                    int Y = click.getY();
+                    GUI.PageGUI.jPopupFetchPosts.setLocation(X + 495 ,Y + 455);
+                    GUI.PageGUI.jPopupFetchPosts.setVisible(true);
                 }
             }
 
