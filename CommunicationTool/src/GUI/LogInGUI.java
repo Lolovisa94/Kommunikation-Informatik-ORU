@@ -285,28 +285,37 @@ public class LogInGUI extends javax.swing.JFrame {
 
     private void btnLogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogInMouseClicked
         // TODO add your handling code here:
-        
-        if(LogIn.logIn(tfEmail.getText(), pfPw.getText())){
-        dispose();
+        if (LogIn.logIn(tfEmail.getText(), pfPw.getText())) {
+            try {
+                LogIn.setLoggedInUserLoginLocationAndTime();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
+            dispose();
         }
     }//GEN-LAST:event_btnLogInMouseClicked
 
     private void pfPwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pfPwKeyPressed
         // TODO add your handling code here:
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
-                    if(LogIn.logIn(tfEmail.getText(), pfPw.getText())){
-        dispose();
-        }
-        
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            if (LogIn.logIn(tfEmail.getText(), pfPw.getText())) {
+                try {
+                    LogIn.setLoggedInUserLoginLocationAndTime();
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+                dispose();
+            }
         }
     }//GEN-LAST:event_pfPwKeyPressed
 
     private void tfEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfEmailKeyPressed
         // TODO add your handling code here:
-                if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
-                    if(LogIn.logIn(tfEmail.getText(), pfPw.getText())){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            if (LogIn.logIn(tfEmail.getText(), pfPw.getText())) {
                 dispose();
-                }
+            }
         }
     }//GEN-LAST:event_tfEmailKeyPressed
 
