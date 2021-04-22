@@ -29,7 +29,7 @@ public class ConnectionClass {
         if (connection == null) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                connection = DriverManager.getConnection("jdbc:mysql://35.228.249.180:3306/CommunicationDB", "root", "root");
+                connection = DriverManager.getConnection("jdbc:mysql://35.228.178.255:3306/CommunicationDB", "root", "Projektgruppen123@!");
 
             } catch (Exception e) {
                 System.out.println(e);

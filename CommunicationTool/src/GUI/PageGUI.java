@@ -12,6 +12,7 @@ import Validation.Validation;
 import java.awt.Dimension;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import methods.EditForum;
 import methods.FetchPosts;
@@ -40,7 +41,7 @@ public class PageGUI extends javax.swing.JFrame {
     }
 
     public void initializeGUIComponents() {
-        lblIngetSokresultat.setVisible(false);
+        lblSokresultat.setVisible(false);
         tblSoktaAnvandare.setVisible(false);
 
     }
@@ -223,7 +224,7 @@ public class PageGUI extends javax.swing.JFrame {
         tfSokText = new javax.swing.JTextField();
         btnSokAnvandare = new javax.swing.JPanel();
         lblbtnSokAnvandare = new javax.swing.JLabel();
-        lblIngetSokresultat = new javax.swing.JLabel();
+        lblSokresultat = new javax.swing.JLabel();
         spSoktaAnvandare = new javax.swing.JScrollPane();
         tblSoktaAnvandare = new javax.swing.JTable();
         btnTaBortAnvändare = new javax.swing.JButton();
@@ -810,9 +811,8 @@ public class PageGUI extends javax.swing.JFrame {
         lblbtnSokAnvandare.setIconTextGap(5);
         btnSokAnvandare.add(lblbtnSokAnvandare);
 
-        lblIngetSokresultat.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblIngetSokresultat.setForeground(new java.awt.Color(77, 85, 92));
-        lblIngetSokresultat.setText("Sökningen gav inget resultat.");
+        lblSokresultat.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblSokresultat.setForeground(new java.awt.Color(77, 85, 92));
 
         spSoktaAnvandare.setBackground(new java.awt.Color(158, 174, 187));
         spSoktaAnvandare.setForeground(new java.awt.Color(77, 85, 92));
@@ -834,6 +834,11 @@ public class PageGUI extends javax.swing.JFrame {
             new Dimension(
                 tblSoktaAnvandare.getPreferredSize().width,
                 tblSoktaAnvandare.getRowHeight() * tblSoktaAnvandare.getRowCount()));
+        tblSoktaAnvandare.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblSoktaAnvandareMouseClicked(evt);
+            }
+        });
         spSoktaAnvandare.setViewportView(tblSoktaAnvandare);
 
         btnTaBortAnvändare.setText("Ta bort användare");
@@ -860,7 +865,7 @@ public class PageGUI extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnSokAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(lblIngetSokresultat, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lblSokresultat, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pnlSokfunktionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(btnTaBortAnvändare)
                                 .addComponent(spSoktaAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 764, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -876,7 +881,7 @@ public class PageGUI extends javax.swing.JFrame {
                     .addGroup(pnlSokfunktionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btnSokAnvandare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(tfSokText))
-                    .addComponent(lblIngetSokresultat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblSokresultat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addComponent(spSoktaAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
@@ -1206,7 +1211,6 @@ public class PageGUI extends javax.swing.JFrame {
         });
 
         lblPIUserName.setFont(new java.awt.Font(".SF NS Text", 1, 13)); // NOI18N
-        lblPIUserName.setForeground(new java.awt.Color(0, 0, 0));
         lblPIUserName.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblPIUserNameMouseClicked(evt);
@@ -1616,10 +1620,12 @@ public class PageGUI extends javax.swing.JFrame {
         boolean foundUsers = searchUser.findUsers(tfSokText.getText(), tblSoktaAnvandare);
         if (foundUsers) {
             tblSoktaAnvandare.setVisible(true);
-            lblIngetSokresultat.setVisible(false);
+            lblSokresultat.setText("Klicka på användare för att se ytterligare information.");
+            lblSokresultat.setVisible(true);
         } else {
             tblSoktaAnvandare.setVisible(false);
-            lblIngetSokresultat.setVisible(true);
+            lblSokresultat.setText("Sökningen gav inget resultat.");
+            lblSokresultat.setVisible(true);
         }
     }//GEN-LAST:event_btnSokAnvandareMouseClicked
 
@@ -1855,22 +1861,32 @@ public class PageGUI extends javax.swing.JFrame {
         btnTaBortBloggtrad.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
     }//GEN-LAST:event_btnTaBortBloggtradMouseExited
 
-        public void setRadio() {
+    private void tblSoktaAnvandareMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSoktaAnvandareMouseClicked
+        // TODO add your handling code here:
+        int indexSelectedRow = tblSoktaAnvandare.getSelectedRow();
         
+        if(indexSelectedRow != -1) {
+            String userID = searchUser.getUserID(indexSelectedRow);
+            
+            ShowUserInformationGUI selectedUserInformation = new ShowUserInformationGUI(userID);
+            selectedUserInformation.setVisible(true);
+            selectedUserInformation.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        }
+    }//GEN-LAST:event_tblSoktaAnvandareMouseClicked
+
+    public void setRadio() {
+
         if (CurrentUser.currentUser.getNotify().equals("J")) {
-            
-             jRadioButton1.setSelected(true);
-           
+
+            jRadioButton1.setSelected(true);
+
+        } else {
+
+            jRadioButton2.setSelected(true);
         }
-        
-        else {
-            
-             jRadioButton2.setSelected(true);
-        }
-        
+
     }
-    
-    
+        
     private boolean isSelStartsida;
     private boolean isSelSokfunktion;
     private boolean isSelProfilinstallningar;
@@ -1922,7 +1938,6 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblFUtbildning;
     private javax.swing.JLabel lblFVisaKategorier;
     private javax.swing.JLabel lblForum;
-    private javax.swing.JLabel lblIngetSokresultat;
     private javax.swing.JLabel lblKalender;
     private javax.swing.JLabel lblLaggTillAnvError;
     private javax.swing.JLabel lblLaggTillAnvandare;
@@ -1939,6 +1954,7 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblPIUserName;
     private javax.swing.JLabel lblPersonligaInstallningarText;
     private javax.swing.JLabel lblSokfunktion;
+    private javax.swing.JLabel lblSokresultat;
     private javax.swing.JLabel lblUniversitet;
     private javax.swing.JLabel lblWelcome;
     private javax.swing.JLabel lblbtnFUppdatera;
