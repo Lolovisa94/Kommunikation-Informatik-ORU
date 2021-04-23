@@ -5,6 +5,13 @@
  */
 package GUI;
 
+import static GUI.PageGUI.tblMeetings;
+import Objects.CurrentUser;
+import java.awt.Component;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import methods.SuggestMeeting;
+
 /**
  *
  * @author pierre
@@ -16,6 +23,42 @@ public class VoteMeetingGUI extends javax.swing.JFrame {
      */
     public VoteMeetingGUI() {
         initComponents();
+        cbMeeting1.setVisible(false);
+        cbMeeting2.setVisible(false);
+        cbMeeting3.setVisible(false);
+    }
+
+    public void setMeetingName(String meetingName) {
+        lblMeetingName.setText(meetingName);
+    }
+    
+    
+    
+    public void setComboBox(int numberOfProposals){
+        
+        System.out.println("setComboBox " + numberOfProposals);
+        if(numberOfProposals == 1){
+        cbMeeting1.setVisible(true);
+        
+        } else if(numberOfProposals == 2){
+        cbMeeting1.setVisible(true);
+        cbMeeting2.setVisible(true);
+        
+        } else if(numberOfProposals == 3){
+        cbMeeting1.setVisible(true);
+        cbMeeting2.setVisible(true);
+        cbMeeting3.setVisible(true);
+        
+        }
+    
+    }
+    
+    public boolean noneSelected(){
+        boolean noneSelected = false;
+    if(!cbMeeting1.isSelected() && !cbMeeting2.isSelected() && !cbMeeting3.isSelected()){
+    noneSelected = true;
+    }
+    return noneSelected;
     }
 
     /**
@@ -39,7 +82,10 @@ public class VoteMeetingGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        lblVMRubrik.setText("Rösta på de mötestförslag som passar dig för mötet.");
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblVMRubrik.setText("Rösta på de mötestförslag som passar dig för mötet:");
+        jPanel1.add(lblVMRubrik, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 24, -1, -1));
 
         tblMeetingProposes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -54,56 +100,27 @@ public class VoteMeetingGUI extends javax.swing.JFrame {
         tblMeetingProposes.setRowHeight(23);
         jScrollPane1.setViewportView(tblMeetingProposes);
 
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 87, -1, 91));
+
         cbMeeting1.setText("Ja");
+        jPanel1.add(cbMeeting1, new org.netbeans.lib.awtextra.AbsoluteConstraints(487, 106, -1, -1));
 
         cbMeeting2.setText("Ja");
+        jPanel1.add(cbMeeting2, new org.netbeans.lib.awtextra.AbsoluteConstraints(487, 132, -1, -1));
 
         cbMeeting3.setText("Ja");
+        jPanel1.add(cbMeeting3, new org.netbeans.lib.awtextra.AbsoluteConstraints(487, 158, -1, -1));
 
         btnSendChoices.setText("Skicka val");
+        btnSendChoices.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendChoicesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSendChoices, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 206, -1, -1));
 
         lblMeetingName.setText("Mötes Namn");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblVMRubrik)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnSendChoices)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbMeeting1)
-                            .addComponent(cbMeeting2)
-                            .addComponent(cbMeeting3)))
-                    .addComponent(lblMeetingName))
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(lblVMRubrik)
-                .addGap(18, 18, 18)
-                .addComponent(lblMeetingName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(cbMeeting1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbMeeting2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbMeeting3))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addComponent(btnSendChoices)
-                .addGap(23, 23, 23))
-        );
+        jPanel1.add(lblMeetingName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,46 +136,36 @@ public class VoteMeetingGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSendChoicesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendChoicesActionPerformed
+        if(!noneSelected()){
+        SuggestMeeting.voteMeeting();
+        SuggestMeeting.deleteFromProposes();        
+        SuggestMeeting h = new SuggestMeeting();
+        h.showSuggestedMeetings(tblMeetings, CurrentUser.currentUser.getID());
+        
+        JOptionPane.showMessageDialog(null, "Dina godkända mötestider är skickade till mötesinbokaren");
+        dispose();
+        } else {
+           int jopAnswer = JOptionPane.showConfirmDialog((Component) null, "Är du säker på att du inte vill acceptera någon av tiderna?", "", JOptionPane.YES_NO_OPTION);
+            if(jopAnswer == 0){
+        SuggestMeeting.deleteFromProposes();        
+        SuggestMeeting h = new SuggestMeeting();
+        h.showSuggestedMeetings(tblMeetings, CurrentUser.currentUser.getID());
+        dispose();
+            }
+        }
+ 
+    }//GEN-LAST:event_btnSendChoicesActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VoteMeetingGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VoteMeetingGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VoteMeetingGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VoteMeetingGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VoteMeetingGUI().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnSendChoices;
-    private javax.swing.JCheckBox cbMeeting1;
-    private javax.swing.JCheckBox cbMeeting2;
-    private javax.swing.JCheckBox cbMeeting3;
+    public static javax.swing.JCheckBox cbMeeting1;
+    public static javax.swing.JCheckBox cbMeeting2;
+    public static javax.swing.JCheckBox cbMeeting3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblMeetingName;
