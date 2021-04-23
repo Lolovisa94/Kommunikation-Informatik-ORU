@@ -19,7 +19,7 @@ public class send_email_gmail {
     public static boolean iterationDone;
    
     //ArrayList<String> arrayEmail, ArrayList<String> arrayNamn
-    public void mail(ArrayList<String> arrayEmail, ArrayList<String> arrayName) {
+    public void mail(ArrayList<String> arrayEmail, ArrayList<String> arrayName, String titel) {
          //
          
          final String username = "InformatikOrebro@gmail.com";
@@ -49,7 +49,8 @@ public class send_email_gmail {
 			message.setRecipients(Message.RecipientType.TO,
 			InternetAddress.parse(arrayEmail.get(i)));
 			message.setSubject("Titel innehåll");    
-			message.setText("Hej! " + arrayName.get(i) + " En ny post har lagts upp!!");   
+			message.setText("Hej! " + arrayName.get(i) + " En ny post har lagts upp med titeln: " + titel);   
+                       
                         
                         //message.setDisposition("Inlägget handlar om rödluvan och hur hon influerat lärarna på informatik programmet!");
                     

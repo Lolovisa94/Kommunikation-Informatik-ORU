@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -50,11 +51,12 @@ public class BookMeetingGUI extends javax.swing.JFrame {
         publikjRadio = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         lblWelcome11 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        timePicker1 = new com.github.lgooddatepicker.components.TimePicker();
+        timePicker2 = new com.github.lgooddatepicker.components.TimePicker();
 
         jTextField6.setText("hh:mm:ss");
 
@@ -126,46 +128,29 @@ public class BookMeetingGUI extends javax.swing.JFrame {
             }
         });
 
-        jTextField2.setText("hh:mm:ss");
-        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField2FocusGained(evt);
-            }
-        });
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-
-        jTextField3.setText("hh:mm:ss");
-        jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField3FocusGained(evt);
-            }
-        });
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-
         lblWelcome11.setBackground(new java.awt.Color(77, 85, 92));
         lblWelcome11.setFont(new java.awt.Font("Poppins Medium", 1, 14)); // NOI18N
         lblWelcome11.setForeground(new java.awt.Color(77, 85, 92));
         lblWelcome11.setText("Datum:");
 
-        jTextField5.setText("YYYY-MM-DD");
-        jTextField5.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField5FocusGained(evt);
-            }
-        });
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
+        jPanel2.setBackground(new java.awt.Color(158, 174, 187));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -189,30 +174,37 @@ public class BookMeetingGUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(76, 76, 76)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(lblWelcome7)
-                                    .addGap(122, 122, 122)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblWelcome10)
-                                        .addComponent(lblWelcome8)
-                                        .addComponent(lblWelcome11)
-                                        .addComponent(lblWelcome6, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTextField1)
-                                        .addComponent(jTextField5)
-                                        .addComponent(jTextField4)
-                                        .addComponent(jTextField3))))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(93, 93, 93)
+                                        .addComponent(publikjRadio))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(lblWelcome10)
+                                                    .addComponent(lblWelcome8)
+                                                    .addComponent(lblWelcome6, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(96, 96, 96))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(lblWelcome7)
+                                                .addGap(127, 127, 127)))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextField1)
+                                            .addComponent(timePicker1, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                                            .addComponent(timePicker2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(privatjRadio))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblWelcome11)
+                                .addGap(113, 113, 113)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(195, 195, 195)
-                        .addComponent(publikjRadio)
-                        .addGap(149, 149, 149)
-                        .addComponent(privatjRadio)))
+                        .addGap(288, 288, 288)
+                        .addComponent(jButton1)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -220,46 +212,45 @@ public class BookMeetingGUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(iconLogga))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(lblUniversitet)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblOrebro)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblWelcome5)))
-                        .addGap(34, 34, 34)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblWelcome6)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblWelcome7)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(45, 45, 45)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblWelcome8)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(40, 40, 40)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblWelcome10)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 75, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblWelcome11))
-                        .addGap(18, 18, 18)))
+                        .addContainerGap()
+                        .addComponent(iconLogga))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(lblUniversitet)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblOrebro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblWelcome5)))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblWelcome6)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblWelcome7)
+                    .addComponent(timePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblWelcome8)
+                    .addComponent(timePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblWelcome10)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(lblWelcome11))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(publikjRadio)
                     .addComponent(privatjRadio))
-                .addGap(21, 21, 21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
-                .addGap(40, 40, 40))
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -305,45 +296,45 @@ public class BookMeetingGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jTextField5ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
         ResultSet userInfo = null;
         ResultSet userInfo2 = null;
+        
+        
+        System.out.println(timePicker1.getTime());
 
-        if (Validation.fieldEmpty(jTextField1.getText()) || Validation.fieldEmpty(jTextField2.getText()) || Validation.fieldEmpty(jTextField3.getText()) || Validation.fieldEmpty(jTextField4.getText()) || Validation.fieldEmpty(jTextField5.getText())) {
+        if (Validation.fieldEmpty(jTextField1.getText()) || Validation.fieldEmpty(jTextField4.getText())) {
 
             System.out.println("Något av fälten är tomma");
             JOptionPane.showMessageDialog(null, "Något av fälten är tomma!");
+              
 
         } else {
+            
+            if (timePicker1.getTime() == null || timePicker2.getTime() == null) {
+                
+                System.out.println("jävla idiot!!!!");
+                JOptionPane.showMessageDialog(null, "Var vänlig och ange tiden för mötet!");
+                
+            } else { 
 
             try {
+                       
+                Date date = jDateChooser1.getDate();
+                DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+                String s = format.format(date);
+                
 
                 Statement st = Connectivity.ConnectionClass.conn.createStatement();
                 Statement t = Connectivity.ConnectionClass.conn.createStatement();
 
                 if (publikjRadio.isSelected()) {
 
-                    String publicMeeting = "insert into Möte(Namn, StartTid, SlutTidTime, Beskrivning, Datum, Publik, Bokad) values (" + "'" + jTextField1.getText() + "'" + ", '" + jTextField2.getText() + "', '" + jTextField3.getText() + "', '" + jTextField4.getText() + "', '" + jTextField5.getText() + "', 'J', 'J')";
+                    String publicMeeting = "insert into Möte(Namn, StartTid, SlutTidTime, Beskrivning, Datum, Publik) values (" + "'" + jTextField1.getText() + "'" + ", '" + timePicker1.getTime() + "', '" + timePicker2.getTime() + "', '" + jTextField4.getText() + "', '" + s + "', 'J')";
                     st.executeUpdate(publicMeeting);
-
+                     System.out.println("detta funkar");
                     //we need the specific meeting ID of the planned meeting in order to connect it to 1 or multiple users.
                     String pwQuery = "Select Möte_ID from Möte where Namn = " + "'" + jTextField1.getText() + "' and " + "Beskrivning = " + "'" + jTextField4.getText() + "'";
 
@@ -353,22 +344,24 @@ public class BookMeetingGUI extends javax.swing.JFrame {
                     if (userInfo.next()) {
 
                         int i = userInfo.getInt("Möte_ID");
+                       
 
                         System.out.println(i);
 
-                        String meet_user = "insert into Möte_Användare values(" + i + ", " + CurrentUser.currentUser.getID() + ")";
+                        String meet_user = "insert into Möte_Användare (Möte_ID, Användare_ID) values(" + i + ", " + CurrentUser.currentUser.getID() + ")";
 
                         System.out.println("hej");
                         t.executeUpdate(meet_user);
 
                         System.out.println("apperently it's working");
+                        JOptionPane.showMessageDialog(null, "Mötet är inbokat");
 
                     }
                 }
 
                 if (privatjRadio.isSelected()) {
 
-                    String privateMeeting = "insert into Möte(Namn, StartTid, SlutTidTime, Beskrivning, Datum, Publik, Bokad) values (" + "'" + jTextField1.getText() + "'" + ", '" + jTextField2.getText() + "', '" + jTextField3.getText() + "', '" + jTextField4.getText() + "', '" + jTextField5.getText() + "', 'N', 'J')";
+                    String privateMeeting = "insert into Möte(Namn, StartTid, SlutTidTime, Beskrivning, Datum, Publik) values (" + "'" + jTextField1.getText() + "'" + ", '" + timePicker1.getTime() + "', '" + timePicker2.getTime() + "', '" + jTextField4.getText() + "', '" + s + "', 'N')";
                     st.executeUpdate(privateMeeting);
 
                     //we need the specific meeting ID of the planned meeting in order to connect it to 1 or multiple users.
@@ -382,13 +375,13 @@ public class BookMeetingGUI extends javax.swing.JFrame {
 
                         System.out.println(i);
 
-                        String meet_user = "insert into Möte_Användare values(" + i + ", " + CurrentUser.currentUser.getID() + ")";
+                        String meet_user = "insert into Möte_Användare (Möte_ID, Användare_ID) values(" + i + ", " + CurrentUser.currentUser.getID() + ")";
 
                         System.out.println("hej");
                         t.executeUpdate(meet_user);
 
                         System.out.println("apperently it's working");
-
+                        JOptionPane.showMessageDialog(null, "Mötet är inbokat");
                     }
 
                 }
@@ -399,48 +392,9 @@ public class BookMeetingGUI extends javax.swing.JFrame {
             }
         }
 
+        }
 
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private static boolean dateValidation(String date) {
-        boolean status = false;
-        if (checkDate(date)) {
-            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            dateFormat.setLenient(false);
-            try {
-                dateFormat.parse(date);
-                status = true;
-            } catch (Exception e) {
-                status = false;
-            }
-        }
-        return status;
-    }
-
-    static boolean checkDate(String date) {
-        String pattern = "(0?[1-9]|[12][0-9]|3[01])\\/(0?[1-9]|1[0-2])\\/([0-9]{4})";
-        boolean flag = false;
-        if (date.matches(pattern)) {
-            flag = true;
-        }
-        return flag;
-
-    }
-
-    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
-        // TODO add your handling code here:
-        jTextField2.setText("");
-    }//GEN-LAST:event_jTextField2FocusGained
-
-    private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
-        // TODO add your handling code here:¨
-        jTextField3.setText("");
-    }//GEN-LAST:event_jTextField3FocusGained
-
-    private void jTextField5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusGained
-        // TODO add your handling code here:
-        jTextField5.setText("");
-    }//GEN-LAST:event_jTextField5FocusGained
 
     /**
      * @param args the command line arguments
@@ -469,8 +423,6 @@ public class BookMeetingGUI extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -483,12 +435,11 @@ public class BookMeetingGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel iconLogga;
     private javax.swing.JButton jButton1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JLabel lblOrebro;
     private javax.swing.JLabel lblUniversitet;
@@ -500,5 +451,7 @@ public class BookMeetingGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblWelcome8;
     private javax.swing.JRadioButton privatjRadio;
     private javax.swing.JRadioButton publikjRadio;
+    private com.github.lgooddatepicker.components.TimePicker timePicker1;
+    private com.github.lgooddatepicker.components.TimePicker timePicker2;
     // End of variables declaration//GEN-END:variables
 }

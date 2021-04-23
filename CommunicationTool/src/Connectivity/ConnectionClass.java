@@ -25,6 +25,7 @@ public class ConnectionClass {
     }
     
     //Only establishes new connection if no other connection is found. Returns current connection if connection is found.
+    
     public static Connection get_connection(){
         if (connection == null) {
             try {

@@ -24,7 +24,7 @@ public class Mail {
        private static String creatorOfPost;
        private static String emailOfCreator;
     
-    public void lagraEmail() {
+    public void postEmail(String title) {
         
         ResultSet userInfo = null;
         
@@ -53,7 +53,7 @@ public class Mail {
                 
                 send_email_gmail seg = new send_email_gmail();
              //   seg.mail(emailList, nameList);
-             seg.mail(emailList, nameList);
+             seg.mail(emailList, nameList, title);
                 
                 //av kommentera om du vill skicka det som arraylisten har fångat
                 
@@ -98,8 +98,9 @@ public class Mail {
                 //fånga skapare av tråden
                 String creatorPost = "select Användare.Email, Inlägg.Titel, Användare.Namn, Användare.Användare_ID from Användare join Inlägg_Användare on Användare.`Användare_ID` = Inlägg_Användare.`Användare_ID` join Inlägg on Inlägg.`Inlägg_ID` = Inlägg_Användare.`Inlägg_ID` join Notifikation on Användare.`Användare_ID` = Notifikation.`Användare_ID` where Inlägg.`Inlägg_ID` = " +  postID + " and Notifiering = 'J'";
                 // fånga kommentarsförfattarna
-                String commentatorsPost = "select Distinct Användare.Email, Inlägg.Titel, Användare.Namn, Kommentarer.`Användare_ID` from Användare join Kommentarer on Kommentarer.`Användare_ID` = Användare.`Användare_ID` join Inlägg on Inlägg.`Inlägg_ID` = Kommentarer.`Inlägg_ID` where Kommentarer.`Inlägg_ID` = " + postID;
-                // select Distinct Användare.Email, Inlägg.Titel, Användare.Namn, Kommentarer.`Användare_ID` from Användare join Kommentarer on Kommentarer.`Användare_ID` = Användare.`Användare_ID` join Inlägg on Inlägg.`Inlägg_ID` = Kommentarer.`Inlägg_ID` join Notifikation on Användare.`Användare_ID` = Notifikation.`Användare_ID` where Inlägg.`Inlägg_ID` = 110 and Notifiering = 'J';
+              
+                String commentatorsPost = "select Distinct Användare.Email, Inlägg.Titel, Användare.Namn, Kommentarer.`Användare_ID` from Användare join Kommentarer on Kommentarer.`Användare_ID` = Användare.`Användare_ID` join Inlägg on Inlägg.`Inlägg_ID` = Kommentarer.`Inlägg_ID` join Notifikation on Användare.`Användare_ID` = Notifikation.`Användare_ID` where Inlägg.`Inlägg_ID` = " + postID + " and Notifiering = 'J' and NOT Användare.`Användare_ID` = " + CurrentUser.currentUser.getID();
+                
 
                 userInfo1 = st.executeQuery(creatorPost);
 
@@ -114,6 +115,7 @@ public class Mail {
                    System.out.println(creatorPost);
                 
                 int i = 0;
+                
                 
                 userInfo2 = st.executeQuery(commentatorsPost);
                 while (userInfo2.next()) {                    
@@ -148,7 +150,7 @@ public class Mail {
             
             else {
                 
-                System.out.println("kontakta Kai!");
+                System.out.println("Kontakta Kai!");
                 
             }
   
