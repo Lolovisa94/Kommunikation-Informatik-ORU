@@ -7,7 +7,6 @@ package methods;
 
 import Connectivity.ConnectionClass;
 import GUI.PageGUI;
-import static GUI.PageGUI.lblKalenderFelText;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -132,8 +131,7 @@ public class Calendar {
                 
                 System.out.println("inga resultat");
                 JOptionPane.showMessageDialog(null, "Inget är inplanerat på det visade datumet");
-                 //PageGUI.felmeddelandeText();
-                //System.out.println(PageGUI.lblKalenderFelText.getText());
+
             }
             
             
