@@ -79,12 +79,15 @@ public class DecideMeetingGUI extends javax.swing.JFrame {
         cbMeeting3 = new javax.swing.JCheckBox();
         btnSendChoices = new javax.swing.JToggleButton();
         lblMeetingName = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblVMRubrik.setText("Fastställ mötestid utifrån antalet röster här nedan.");
+        lblVMRubrik.setText("Fastställ mötestid utifrån antalet röster här nedan och fyll i en beskrivning.");
         jPanel1.add(lblVMRubrik, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 24, -1, -1));
 
         tblMeetingProposes.setModel(new javax.swing.table.DefaultTableModel(
@@ -119,16 +122,25 @@ public class DecideMeetingGUI extends javax.swing.JFrame {
         cbMeeting3.setText("Ja");
         jPanel1.add(cbMeeting3, new org.netbeans.lib.awtextra.AbsoluteConstraints(487, 158, -1, -1));
 
-        btnSendChoices.setText("Skicka val");
+        btnSendChoices.setText("Boka mötet");
         btnSendChoices.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSendChoicesActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSendChoices, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 206, -1, -1));
+        jPanel1.add(btnSendChoices, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, -1, -1));
 
         lblMeetingName.setText("Mötes Namn");
         jPanel1.add(lblMeetingName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 219, 450, 70));
+
+        jLabel1.setText("Beskrivning:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,7 +150,7 @@ public class DecideMeetingGUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
         );
 
         pack();
@@ -174,8 +186,11 @@ public class DecideMeetingGUI extends javax.swing.JFrame {
     public static javax.swing.JCheckBox cbMeeting1;
     public static javax.swing.JCheckBox cbMeeting2;
     public static javax.swing.JCheckBox cbMeeting3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblMeetingName;
     private javax.swing.JLabel lblVMRubrik;
     public static javax.swing.JTable tblMeetingProposes;
