@@ -23,7 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" pref="530" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="0" pref="538" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -41,7 +41,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lblVMRubrik">
           <Properties>
-            <Property name="text" type="java.lang.String" value="R&#xf6;sta p&#xe5; de m&#xf6;testf&#xf6;rslag som passar dig f&#xf6;r m&#xf6;tet:"/>
+            <Property name="text" type="java.lang.String" value="Fastst&#xe4;ll m&#xf6;testid utifr&#xe5;n antalet r&#xf6;ster h&#xe4;r nedan."/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -64,10 +64,11 @@
             <Component class="javax.swing.JTable" name="tblMeetingProposes">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="3" rowCount="3">
+                  <Table columnCount="4" rowCount="3">
                     <Column editable="false" title="Datum" type="java.lang.Object"/>
                     <Column editable="false" title="Starttid" type="java.lang.Object"/>
                     <Column editable="false" title="Sluttid" type="java.lang.Object"/>
+                    <Column editable="false" title="Antal r&#xf6;ster" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="rowHeight" type="int" value="23"/>

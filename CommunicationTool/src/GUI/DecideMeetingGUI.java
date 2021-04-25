@@ -16,12 +16,12 @@ import methods.SuggestMeeting;
  *
  * @author pierre
  */
-public class VoteMeetingGUI extends javax.swing.JFrame {
+public class DecideMeetingGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form VoteMeetingGUI
      */
-    public VoteMeetingGUI() {
+    public DecideMeetingGUI() {
         initComponents();
         cbMeeting1.setVisible(false);
         cbMeeting2.setVisible(false);
@@ -84,21 +84,21 @@ public class VoteMeetingGUI extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblVMRubrik.setText("Rösta på de mötestförslag som passar dig för mötet:");
+        lblVMRubrik.setText("Fastställ mötestid utifrån antalet röster här nedan.");
         jPanel1.add(lblVMRubrik, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 24, -1, -1));
 
         tblMeetingProposes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Datum", "Starttid", "Sluttid"
+                "Datum", "Starttid", "Sluttid", "Antal röster"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -134,7 +134,7 @@ public class VoteMeetingGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
