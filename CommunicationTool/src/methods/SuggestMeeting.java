@@ -132,8 +132,10 @@ public class SuggestMeeting {
             }
 
         } catch (Exception e) {
-        }
+            System.out.println(e);
+                }
         return id;
+
     }
 
     public ArrayList<String> getFörslagsID(int userID) {

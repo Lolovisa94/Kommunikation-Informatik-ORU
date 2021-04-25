@@ -6,6 +6,7 @@
 package Methods;
 
 import Connectivity.ConnectionClass;
+import Objects.CurrentUser;
 import Validation.Validation;
 
 import java.sql.Statement;
@@ -121,7 +122,7 @@ public class SearchUser {
         Object columnNames[] = {"Namn", "Telefon", "Email"};
         DefaultTableModel model = new DefaultTableModel(columnNames, 0);
         
-        String getAllUsersQuery = "SELECT Namn, Telefon, Email FROM `Användare`" ;
+        String getAllUsersQuery = "SELECT Namn, Telefon, Email FROM `Användare` WHERE NOT Användare_ID = " + CurrentUser.currentUser.getID();
         
         try {
             queryResult = st.executeQuery(getAllUsersQuery);

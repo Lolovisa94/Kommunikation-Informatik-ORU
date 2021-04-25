@@ -8,6 +8,7 @@ package GUI;
 import Connectivity.ConnectionClass;
 import Objects.CurrentUser;
 import Methods.SearchUser;
+import Objects.CurrentDM;
 import Validation.Validation;
 import java.awt.Dimension;
 import java.sql.ResultSet;
@@ -120,8 +121,13 @@ public class PageGUI extends javax.swing.JFrame {
         isSelKalender = true;
         SuggestMeeting h = new SuggestMeeting();
         h.showSuggestedMeetings(tblMeetings, CurrentUser.currentUser.getID());
-        new DecideMeeting(tblMeetingsDecide);
-        
+                    if(CurrentDM.currentDM == null){
+                    DecideMeeting createdDM = new DecideMeeting(tblMeetingsDecide);
+                    CurrentDM currentDM = new CurrentDM(createdDM);
+                    } else {
+                            CurrentDM.currentDM.fillMeetingDecideTable(tblMeetingsDecide);
+                    }
+
     }
 
     public void selectMeddelanden() {
