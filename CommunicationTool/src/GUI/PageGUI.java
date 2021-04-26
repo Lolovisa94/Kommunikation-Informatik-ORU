@@ -22,6 +22,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import methods.EditForum;
 import methods.FetchChat;
+import methods.FetchInformalPosts;
 import methods.FetchPosts;
 import methods.User;
 
@@ -46,11 +47,8 @@ public class PageGUI extends javax.swing.JFrame {
         initializeGUIComponents();
 
         welcomeText(CurrentUser.currentUser.getName());
-        
-        
-    }
-    
 
+    }
 
     public void initializeGUIComponents() {
         lblISokresultat.setVisible(false);
@@ -66,13 +64,14 @@ public class PageGUI extends javax.swing.JFrame {
 
         selStartsida.setVisible(false);
         selForum.setVisible(false);
+        selInformelltForum.setVisible(false);
         selKalender.setVisible(false);
         selMeddelanden.setVisible(false);
         selSokfunktion.setVisible(false);
         selProfilinstallningar.setVisible(false);
         selAdminfunktionalitet.setVisible(false);
-        if(!CurrentUser.currentUser.isAdmin()){
-        btnLaggTillAnvandare.setVisible(false);
+        if (!CurrentUser.currentUser.isAdmin()) {
+            btnLaggTillAnvandare.setVisible(false);
         }
 
         isSelStartsida = false;
@@ -81,12 +80,14 @@ public class PageGUI extends javax.swing.JFrame {
         isSelKalender = false;
         isSelProfilinstallningar = false;
         isSelForum = false;
+        isSelInformelltForum = false;
         isSelAdminfunktionalitet = false;
     }
 
     public void resetPanel() {
         pnlStartsida.setVisible(false);
         pnlForum.setVisible(false);
+        pnlInformelltForum.setVisible(false);
         pnlKalender.setVisible(false);
         pnlMeddelanden.setVisible(false);
         pnlSokfunktion.setVisible(false);
@@ -109,10 +110,21 @@ public class PageGUI extends javax.swing.JFrame {
         selForum.setVisible(true);
         pnlForum.setVisible(true);
         isSelForum = true;
-        if(!CurrentUser.currentUser.isAdmin())
-        {
+        if (!CurrentUser.currentUser.isAdmin()) {
             btnTaBortBloggtrad.setVisible(false);
-        } 
+        }
+    }
+
+    public void selectInformelltForum() {
+        resetPanel();
+        resetMenu();
+        new FetchInformalPosts();
+        selInformelltForum.setVisible(true);
+        pnlInformelltForum.setVisible(true);
+        isSelInformelltForum = true;
+        if (!CurrentUser.currentUser.isAdmin()) {
+            btnTaBortBloggtradInformellt.setVisible(false);
+        }
     }
 
     public void selectKalender() {
@@ -140,8 +152,8 @@ public class PageGUI extends javax.swing.JFrame {
         isSelSokfunktion = true;
 
         tblSoktaAnvandare.setVisible(false);
-        if(!CurrentUser.currentUser.isAdmin()){
-        btnTaBortAnvändare.setVisible(false);
+        if (!CurrentUser.currentUser.isAdmin()) {
+            btnTaBortAnvändare.setVisible(false);
         }
     }
 
@@ -156,8 +168,8 @@ public class PageGUI extends javax.swing.JFrame {
         selProfilinstallningar.setVisible(true);
         pnlProfilinstallningar.setVisible(true);
         isSelProfilinstallningar = true;
-                setInfoPersonligInfo();
-                setRadio();
+        setInfoPersonligInfo();
+        setRadio();
     }
 
     public void selectAdminfunktionalitet() {
@@ -225,6 +237,9 @@ public class PageGUI extends javax.swing.JFrame {
         btnForum = new javax.swing.JPanel();
         lblBtnForum = new javax.swing.JLabel();
         selForum = new javax.swing.JPanel();
+        btnInformelltForum = new javax.swing.JPanel();
+        lblBtnInformelltForum = new javax.swing.JLabel();
+        selInformelltForum = new javax.swing.JPanel();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         pnlStartsida = new javax.swing.JPanel();
         lblWelcome = new javax.swing.JLabel();
@@ -303,6 +318,18 @@ public class PageGUI extends javax.swing.JFrame {
         lblAnvEpost = new javax.swing.JLabel();
         tfAnvTelefon = new javax.swing.JTextField();
         lblLaggTillAnvError = new javax.swing.JLabel();
+        pnlInformelltForum = new javax.swing.JPanel();
+        btnSkapaBloggtradInformellt = new javax.swing.JPanel();
+        lblbtnSkapaBloggtradInformellt = new javax.swing.JLabel();
+        lblInformelltForum = new javax.swing.JLabel();
+        sPInformelltForum1 = new javax.swing.JScrollPane();
+        tblInformelltForum = new javax.swing.JTable();
+        pnlIFSok = new javax.swing.JPanel();
+        sepIFSok = new javax.swing.JSeparator();
+        tfIFSok1 = new javax.swing.JTextField();
+        iconSearch1 = new javax.swing.JLabel();
+        btnTaBortBloggtradInformellt = new javax.swing.JPanel();
+        lblbtnTaBortBloggtradInformellt = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -672,6 +699,55 @@ public class PageGUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnInformelltForum.setBackground(new java.awt.Color(77, 85, 92));
+        btnInformelltForum.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInformelltForumMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnInformelltForumMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnInformelltForumMouseExited(evt);
+            }
+        });
+
+        lblBtnInformelltForum.setFont(new java.awt.Font("Poppins Medium", 0, 12)); // NOI18N
+        lblBtnInformelltForum.setForeground(new java.awt.Color(158, 174, 187));
+        lblBtnInformelltForum.setText("Informellt Forum");
+
+        selInformelltForum.setBackground(new java.awt.Color(202, 100, 91));
+
+        javax.swing.GroupLayout selInformelltForumLayout = new javax.swing.GroupLayout(selInformelltForum);
+        selInformelltForum.setLayout(selInformelltForumLayout);
+        selInformelltForumLayout.setHorizontalGroup(
+            selInformelltForumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 9, Short.MAX_VALUE)
+        );
+        selInformelltForumLayout.setVerticalGroup(
+            selInformelltForumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout btnInformelltForumLayout = new javax.swing.GroupLayout(btnInformelltForum);
+        btnInformelltForum.setLayout(btnInformelltForumLayout);
+        btnInformelltForumLayout.setHorizontalGroup(
+            btnInformelltForumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnInformelltForumLayout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(lblBtnInformelltForum)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(selInformelltForum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        btnInformelltForumLayout.setVerticalGroup(
+            btnInformelltForumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(selInformelltForum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnInformelltForumLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblBtnInformelltForum)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout panelMenuLayout = new javax.swing.GroupLayout(panelMenu);
         panelMenu.setLayout(panelMenuLayout);
         panelMenuLayout.setHorizontalGroup(
@@ -679,13 +755,14 @@ public class PageGUI extends javax.swing.JFrame {
             .addGroup(panelMenuLayout.createSequentialGroup()
                 .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnStartsida, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelMenuLogga, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
+                    .addComponent(panelMenuLogga, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
                     .addComponent(btnLaggTillAnvandare, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnProfilinstallningar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSokfunktion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnMeddelanden, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnKalender, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnForum, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnForum, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnInformelltForum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         panelMenuLayout.setVerticalGroup(
@@ -696,7 +773,9 @@ public class PageGUI extends javax.swing.JFrame {
                 .addComponent(btnStartsida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnForum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnInformelltForum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
                 .addComponent(btnKalender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnMeddelanden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -706,7 +785,7 @@ public class PageGUI extends javax.swing.JFrame {
                 .addComponent(btnProfilinstallningar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnLaggTillAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(818, 818, 818))
+                .addGap(479, 479, 479))
         );
 
         panelMenuBackground.add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 1010));
@@ -1542,6 +1621,179 @@ public class PageGUI extends javax.swing.JFrame {
 
         jLayeredPane2.add(pnlLaggTillAnvandare, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        pnlInformelltForum.setBackground(new java.awt.Color(158, 174, 187));
+        pnlInformelltForum.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnSkapaBloggtradInformellt.setBackground(new java.awt.Color(0, 94, 125));
+        btnSkapaBloggtradInformellt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
+        btnSkapaBloggtradInformellt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSkapaBloggtradInformelltMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSkapaBloggtradInformelltMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSkapaBloggtradInformelltMouseExited(evt);
+            }
+        });
+
+        lblbtnSkapaBloggtradInformellt.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        lblbtnSkapaBloggtradInformellt.setForeground(new java.awt.Color(158, 174, 187));
+        lblbtnSkapaBloggtradInformellt.setText("Skapa Bloggtråd");
+        lblbtnSkapaBloggtradInformellt.setIconTextGap(5);
+        lblbtnSkapaBloggtradInformellt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                lblbtnSkapaBloggtradInformelltKeyPressed(evt);
+            }
+        });
+        btnSkapaBloggtradInformellt.add(lblbtnSkapaBloggtradInformellt);
+
+        pnlInformelltForum.add(btnSkapaBloggtradInformellt, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 260, 270, -1));
+
+        lblInformelltForum.setBackground(new java.awt.Color(77, 85, 92));
+        lblInformelltForum.setFont(new java.awt.Font("Poppins Medium", 1, 48)); // NOI18N
+        lblInformelltForum.setForeground(new java.awt.Color(77, 85, 92));
+        lblInformelltForum.setText("Informellt Forum");
+        pnlInformelltForum.add(lblInformelltForum, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, -1, 60));
+
+        sPInformelltForum1.setBackground(new java.awt.Color(158, 174, 187));
+        sPInformelltForum1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(77, 85, 92), 1, true));
+        sPInformelltForum1.setForeground(new java.awt.Color(158, 174, 187));
+        sPInformelltForum1.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
+        sPForum.getViewport().setBackground(new java.awt.Color(158, 174, 187));
+
+        tblInformelltForum.setBackground(new java.awt.Color(158, 174, 187));
+        tblInformelltForum.setFont(new java.awt.Font("Poppins Medium", 0, 18)); // NOI18N
+        tblInformelltForum.setForeground(new java.awt.Color(77, 85, 92));
+        tblInformelltForum.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Kategori", "Titel", "Trådförfattare", "Publicerad"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblInformelltForum.setGridColor(new java.awt.Color(77, 85, 92));
+        tblInformelltForum.setOpaque(false);
+        tblInformelltForum.setRowHeight(40);
+        tblInformelltForum.setSelectionBackground(new java.awt.Color(0, 94, 125));
+        tblInformelltForum.setSelectionForeground(new java.awt.Color(158, 174, 187));
+        tblInformelltForum.setShowGrid(true);
+        tblInformelltForum.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblInformelltForumMouseClicked(evt);
+            }
+        });
+        sPInformelltForum1.setViewportView(tblInformelltForum);
+        tblInformelltForum.getTableHeader().setFont(new java.awt.Font("Poppins Medium", 0, 18));
+
+        tblInformelltForum.getTableHeader().setForeground(new java.awt.Color(77,85,92));
+
+        tblInformelltForum.getTableHeader().setBackground(new java.awt.Color(158, 174, 187));
+
+        tblInformelltForum.getTableHeader().setBorder(new javax.swing.border.LineBorder(new java.awt.Color(77, 85, 92), 1, true));
+
+        tblInformelltForum.setAutoCreateRowSorter(true);
+
+        TableRowSorter<TableModel> sorterInformellt = new TableRowSorter<>(tblInformelltForum.getModel());
+        tblInformelltForum.setRowSorter(sorterInformellt);
+        ArrayList<RowSorter.SortKey> sortKeysInformellt = new ArrayList<>();
+
+        int columnIndexToSortInformellt = 3;
+        sortKeysInformellt.add(new RowSorter.SortKey(columnIndexToSortInformellt, SortOrder.DESCENDING));
+
+        sorterInformellt.setSortKeys(sortKeysInformellt);
+        sorterInformellt.sort();
+
+        tblInformelltForum.getColumnModel().getColumn(0).setPreferredWidth(8);
+        tblInformelltForum.getColumnModel().getColumn(1).setPreferredWidth(400);
+        tblInformelltForum.getColumnModel().getColumn(2).setPreferredWidth(20);
+        tblInformelltForum.getColumnModel().getColumn(3).setPreferredWidth(20);
+
+        pnlInformelltForum.add(sPInformelltForum1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 1150, 465));
+
+        pnlIFSok.setBackground(new java.awt.Color(158, 174, 187));
+
+        sepIFSok.setBackground(new java.awt.Color(0, 94, 125));
+        sepIFSok.setForeground(new java.awt.Color(0, 94, 125));
+
+        tfIFSok1.setBackground(new java.awt.Color(158, 174, 187));
+        tfIFSok1.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
+        tfIFSok1.setForeground(new java.awt.Color(0, 94, 125));
+        tfIFSok1.setBorder(null);
+        tfIFSok1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfIFSok1ActionPerformed(evt);
+            }
+        });
+
+        iconSearch1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/searchIcon.png"))); // NOI18N
+
+        javax.swing.GroupLayout pnlIFSokLayout = new javax.swing.GroupLayout(pnlIFSok);
+        pnlIFSok.setLayout(pnlIFSokLayout);
+        pnlIFSokLayout.setHorizontalGroup(
+            pnlIFSokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlIFSokLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlIFSokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(sepIFSok)
+                    .addComponent(tfIFSok1, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(iconSearch1)
+                .addContainerGap(124, Short.MAX_VALUE))
+        );
+        pnlIFSokLayout.setVerticalGroup(
+            pnlIFSokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlIFSokLayout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addGroup(pnlIFSokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfIFSok1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iconSearch1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sepIFSok, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
+        );
+
+        pnlInformelltForum.add(pnlIFSok, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 10, -1, -1));
+
+        btnTaBortBloggtradInformellt.setBackground(new java.awt.Color(0, 94, 125));
+        btnTaBortBloggtradInformellt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
+        btnTaBortBloggtradInformellt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTaBortBloggtradInformelltMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnTaBortBloggtradInformelltMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnTaBortBloggtradInformelltMouseExited(evt);
+            }
+        });
+
+        lblbtnTaBortBloggtradInformellt.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        lblbtnTaBortBloggtradInformellt.setForeground(new java.awt.Color(158, 174, 187));
+        lblbtnTaBortBloggtradInformellt.setText("Ta Bort Bloggtråd");
+        lblbtnTaBortBloggtradInformellt.setIconTextGap(5);
+        lblbtnTaBortBloggtradInformellt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                lblbtnTaBortBloggtradInformelltKeyPressed(evt);
+            }
+        });
+        btnTaBortBloggtradInformellt.add(lblbtnTaBortBloggtradInformellt);
+
+        pnlInformelltForum.add(btnTaBortBloggtradInformellt, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 310, 270, -1));
+
+        jLayeredPane2.add(pnlInformelltForum, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         panelMenuBackground.add(jLayeredPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 1500, 1020));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1589,7 +1841,7 @@ public class PageGUI extends javax.swing.JFrame {
     private void btnMeddelandenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMeddelandenMouseEntered
         // TODO add your handling code here:
         if (!isSelMeddelanden) {
-            selMeddelanden.setVisible(true);           
+            selMeddelanden.setVisible(true);
         }
     }//GEN-LAST:event_btnMeddelandenMouseEntered
 
@@ -1838,19 +2090,18 @@ public class PageGUI extends javax.swing.JFrame {
 
         if (validate.verifyInformation(tfAnvNamn, tfAnvTelefon, tfEmail, tfLosenord)) {
             user.addNewUser(anvNamn, anvTele, anvEmail, anvLosenord, anvAdmin);
-            
+
             tfAnvNamn.setText("");
             tfAnvTelefon.setText("");
             tfEmail.setText("");
             tfLosenord.setText("");
-            
-            
-            try{
-                
+
+            try {
+
                 System.out.println("1");
                 Statement st = ConnectionClass.conn.createStatement();
                 System.out.println("2");
-                String getID = "SELECT Användare_ID FROM Användare WHERE Namn = '" + anvNamn + "' AND Telefon = " + anvTele +" AND Email = '" + anvEmail +"' AND Lösenord = '"+ anvLosenord +"'";
+                String getID = "SELECT Användare_ID FROM Användare WHERE Namn = '" + anvNamn + "' AND Telefon = " + anvTele + " AND Email = '" + anvEmail + "' AND Lösenord = '" + anvLosenord + "'";
                 System.out.println("33");
                 userInfo = st.executeQuery(getID);
                 System.out.println("34");
@@ -1858,17 +2109,16 @@ public class PageGUI extends javax.swing.JFrame {
                 int id = userInfo.getInt("Användare_ID");
                 System.out.println("ID är " + id);
                 System.out.println("3");
-                String insertNotifikation = "INSERT INTO Notifikation VALUES (" + id + ", 'J', " + id +")";
+                String insertNotifikation = "INSERT INTO Notifikation VALUES (" + id + ", 'J', " + id + ")";
                 System.out.println("4");
                 st.executeUpdate(insertNotifikation);
                 System.out.println("5");
-            
-            
-            } catch (Exception e){
+
+            } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Något gick väldigt fel kontakta IT med felkod" + e);
             }
             JOptionPane.showMessageDialog(null, "Ny användare vid namn " + anvNamn + " tillagd!");
-            
+
         }
     }//GEN-LAST:event_btnLaggTillAnvActionPerformed
 
@@ -1888,9 +2138,9 @@ public class PageGUI extends javax.swing.JFrame {
         {
             int row = tblSoktaAnvandare.getSelectedRow();
             String email = tblSoktaAnvandare.getValueAt(row, 2).toString();
-            if(searchUser.removeUser(email)){
+            if (searchUser.removeUser(email)) {
                 JOptionPane.showMessageDialog(null, "Användare borttagen!");
-            
+
             }
         }
 
@@ -1925,7 +2175,7 @@ public class PageGUI extends javax.swing.JFrame {
     private void cbFForskningMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbFForskningMouseClicked
         // TODO add your handling code here:
         currentFetchPosts.postList();
-        
+
     }//GEN-LAST:event_cbFForskningMouseClicked
 
     private void cbFUtbildningMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbFUtbildningMouseClicked
@@ -1938,10 +2188,10 @@ public class PageGUI extends javax.swing.JFrame {
         currentFetchPosts.postList();
     }//GEN-LAST:event_cbFOvrigtMouseClicked
 
-    private void tblSoktaAnvandareMouseClicked(java.awt.event.MouseEvent evt) {                                               
+    private void tblSoktaAnvandareMouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
         int indexSelectedRow = tblSoktaAnvandare.getSelectedRow();
-        
+
         if (indexSelectedRow != -1) {
             String userID = searchUser.getUserID(indexSelectedRow);
 
@@ -1949,7 +2199,7 @@ public class PageGUI extends javax.swing.JFrame {
             selectedUserInformation.setVisible(true);
             selectedUserInformation.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         }
-    } 
+    }
     private void btnRefreshChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshChatActionPerformed
         // TODO add your handling code here:
         methods.FetchChat.reloadChat();
@@ -1957,26 +2207,97 @@ public class PageGUI extends javax.swing.JFrame {
 
     private void btnSendChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendChatActionPerformed
         methods.FetchChat.sendChatMessage();
-        
-       methods.FetchChat.reloadChat();
-       
-       taCreateChatMessage.setText("");
+
+        methods.FetchChat.reloadChat();
+
+        taCreateChatMessage.setText("");
     }//GEN-LAST:event_btnSendChatActionPerformed
 
     private void btnStartChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartChatActionPerformed
         // TODO add your handling code here:
-        
+
         int row = tblSoktaAnvandare.getSelectedRow();
-            String chatUserName = tblSoktaAnvandare.getValueAt(row, 0).toString();
-        if(methods.FetchChat.checkIfChatExists(chatUserName)){
-        
+        String chatUserName = tblSoktaAnvandare.getValueAt(row, 0).toString();
+        if (methods.FetchChat.checkIfChatExists(chatUserName)) {
+
             JOptionPane.showMessageDialog(null, "Du har redan en chatt med användaren, gå in på meddelande för att chatta :)");
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "Chatt skapad med användaren, gå in på meddelande för att chatta :)");
         }
     }//GEN-LAST:event_btnStartChatActionPerformed
-                                           
+
+    private void btnInformelltForumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInformelltForumMouseClicked
+        selectInformelltForum();
+    }//GEN-LAST:event_btnInformelltForumMouseClicked
+
+    private void btnInformelltForumMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInformelltForumMouseEntered
+        if (!isSelInformelltForum) {
+            selInformelltForum.setVisible(false);
+        }
+    }//GEN-LAST:event_btnInformelltForumMouseEntered
+
+    private void btnInformelltForumMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInformelltForumMouseExited
+        if (!isSelInformelltForum) {
+            selInformelltForum.setVisible(true);
+        }
+    }//GEN-LAST:event_btnInformelltForumMouseExited
+
+    private void lblbtnSkapaBloggtradInformelltKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblbtnSkapaBloggtradInformelltKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblbtnSkapaBloggtradInformelltKeyPressed
+
+    private void btnSkapaBloggtradInformelltMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkapaBloggtradInformelltMouseClicked
+        new CreatePostGUI(1).setVisible(true);
+    }//GEN-LAST:event_btnSkapaBloggtradInformelltMouseClicked
+
+    private void btnSkapaBloggtradInformelltMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkapaBloggtradInformelltMouseEntered
+        btnSkapaBloggtradInformellt.setBackground(new java.awt.Color(158, 174, 187));
+        btnSkapaBloggtradInformellt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
+        btnSkapaBloggtradInformellt.setForeground(new java.awt.Color(0, 94, 125));
+    }//GEN-LAST:event_btnSkapaBloggtradInformelltMouseEntered
+
+    private void btnSkapaBloggtradInformelltMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSkapaBloggtradInformelltMouseExited
+        btnSkapaBloggtradInformellt.setBackground(new java.awt.Color(0, 94, 125));
+        btnSkapaBloggtradInformellt.setForeground(new java.awt.Color(158, 174, 187));
+        btnSkapaBloggtradInformellt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
+    }//GEN-LAST:event_btnSkapaBloggtradInformelltMouseExited
+
+    private void tblInformelltForumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblInformelltForumMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblInformelltForumMouseClicked
+
+    private void tfIFSok1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIFSok1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfIFSok1ActionPerformed
+
+    private void lblbtnTaBortBloggtradInformelltKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblbtnTaBortBloggtradInformelltKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblbtnTaBortBloggtradInformelltKeyPressed
+
+    private void btnTaBortBloggtradInformelltMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTaBortBloggtradInformelltMouseClicked
+        // TODO add your handling code here:
+        removeIFPost();
+    }//GEN-LAST:event_btnTaBortBloggtradInformelltMouseClicked
+
+    public void removeIFPost() {
+        int row = tblInformelltForum.getSelectedRow();
+        String threadNameIF = tblInformelltForum.getValueAt(row, 1).toString();
+        EditForum.removeThread(threadNameIF);
+    }
+
+    private void btnTaBortBloggtradInformelltMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTaBortBloggtradInformelltMouseEntered
+        btnTaBortBloggtradInformellt.setBackground(new java.awt.Color(158, 174, 187));
+        btnTaBortBloggtradInformellt.setForeground(new java.awt.Color(0, 94, 125));
+        btnTaBortBloggtradInformellt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
+
+    }//GEN-LAST:event_btnTaBortBloggtradInformelltMouseEntered
+
+    private void btnTaBortBloggtradInformelltMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTaBortBloggtradInformelltMouseExited
+        // TODO add your handling code here:
+        btnTaBortBloggtradInformellt.setBackground(new java.awt.Color(0, 94, 125));
+        btnTaBortBloggtradInformellt.setForeground(new java.awt.Color(158, 174, 187));
+        btnTaBortBloggtradInformellt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
+    }//GEN-LAST:event_btnTaBortBloggtradInformelltMouseExited
 
     public void setRadio() {
 
@@ -1989,18 +2310,20 @@ public class PageGUI extends javax.swing.JFrame {
         }
 
     }
-        
+
     private boolean isSelStartsida;
     private boolean isSelSokfunktion;
     private boolean isSelProfilinstallningar;
     private boolean isSelMeddelanden;
     private boolean isSelKalender;
+    private boolean isSelInformelltForum;
     private boolean isSelForum;
     private boolean isSelAdminfunktionalitet;
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JPanel btnForum;
+    public static javax.swing.JPanel btnInformelltForum;
     public static javax.swing.JPanel btnKalender;
     private javax.swing.JButton btnLaggTillAnv;
     public static javax.swing.JPanel btnLaggTillAnvandare;
@@ -2010,18 +2333,21 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnRefreshChat;
     private javax.swing.JButton btnSendChat;
     private javax.swing.JPanel btnSkapaBloggtrad;
+    private javax.swing.JPanel btnSkapaBloggtradInformellt;
     private javax.swing.JPanel btnSokAnvandare;
     public static javax.swing.JPanel btnSokfunktion;
     private javax.swing.JButton btnStartChat;
     public static javax.swing.JPanel btnStartsida;
     private javax.swing.JButton btnTaBortAnvändare;
     public static javax.swing.JPanel btnTaBortBloggtrad;
+    public static javax.swing.JPanel btnTaBortBloggtradInformellt;
     private javax.swing.JCheckBox cbAdminFraga;
     public static javax.swing.JCheckBox cbFForskning;
     public static javax.swing.JCheckBox cbFOvrigt;
     public static javax.swing.JCheckBox cbFUtbildning;
     private javax.swing.JLabel iconLogga;
     private javax.swing.JLabel iconSearch;
+    private javax.swing.JLabel iconSearch1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLayeredPane jLayeredPane2;
     public static javax.swing.JRadioButton jRadioButton1;
@@ -2036,6 +2362,7 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblAnvTele;
     private javax.swing.JLabel lblBtnAdminfunktionalitet;
     private javax.swing.JLabel lblBtnForum;
+    private javax.swing.JLabel lblBtnInformelltForum;
     private javax.swing.JLabel lblBtnKalender;
     private javax.swing.JLabel lblBtnProfilinstallningar;
     private javax.swing.JLabel lblBtnSokfunktion;
@@ -2047,6 +2374,7 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblFVisaKategorier;
     private javax.swing.JLabel lblForum;
     private javax.swing.JLabel lblISokresultat;
+    private javax.swing.JLabel lblInformelltForum;
     private javax.swing.JLabel lblKalender;
     private javax.swing.JLabel lblLaggTillAnvError;
     private javax.swing.JLabel lblLaggTillAnvandare;
@@ -2066,8 +2394,10 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblUniversitet;
     private javax.swing.JLabel lblWelcome;
     private javax.swing.JLabel lblbtnSkapaBloggtrad;
+    private javax.swing.JLabel lblbtnSkapaBloggtradInformellt;
     private javax.swing.JLabel lblbtnSokAnvandare;
     private javax.swing.JLabel lblbtnTaBortBloggtrad;
+    private javax.swing.JLabel lblbtnTaBortBloggtradInformellt;
     public static javax.swing.JPanel panelBoxChat;
     public static javax.swing.JPanel panelChat;
     private javax.swing.JPanel panelMenu;
@@ -2076,6 +2406,8 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JPanel pnlFSok;
     private javax.swing.JPanel pnlFVisaKategorier;
     private javax.swing.JPanel pnlForum;
+    private javax.swing.JPanel pnlIFSok;
+    private javax.swing.JPanel pnlInformelltForum;
     private javax.swing.JPanel pnlKalender;
     private javax.swing.JPanel pnlLaggTillAnvandare;
     private javax.swing.JPanel pnlMeddelanden;
@@ -2084,23 +2416,28 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JPanel pnlSokfunktion;
     private javax.swing.JPanel pnlStartsida;
     private javax.swing.JScrollPane sPForum;
+    private javax.swing.JScrollPane sPInformelltForum1;
     private javax.swing.JPanel selAdminfunktionalitet;
     private javax.swing.JPanel selForum;
+    private javax.swing.JPanel selInformelltForum;
     private javax.swing.JPanel selKalender;
     private javax.swing.JPanel selMeddelanden;
     private javax.swing.JPanel selProfilinstallningar;
     private javax.swing.JPanel selSokfunktion;
     private javax.swing.JPanel selStartsida;
     private javax.swing.JSeparator sepFSok;
+    private javax.swing.JSeparator sepIFSok;
     private javax.swing.JScrollPane spSoktaAnvandare;
     public static javax.swing.JTextArea taCreateChatMessage;
     public static javax.swing.JTable tblChats;
     public static javax.swing.JTable tblForum;
+    public static javax.swing.JTable tblInformelltForum;
     private javax.swing.JTable tblSoktaAnvandare;
     private javax.swing.JTextField tfAnvNamn;
     private javax.swing.JTextField tfAnvTelefon;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfFSok;
+    private javax.swing.JTextField tfIFSok1;
     private javax.swing.JTextField tfLosenord;
     private javax.swing.JTextField tfPIEmail;
     private javax.swing.JTextField tfPITlfn;

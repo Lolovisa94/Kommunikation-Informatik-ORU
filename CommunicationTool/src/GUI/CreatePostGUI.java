@@ -39,17 +39,42 @@ public class CreatePostGUI extends javax.swing.JFrame {
         fillCategories();
 
     }
+    
+        public CreatePostGUI(int inf)
+    {
+        initComponents();
+        fillCategoriesInformal();
+    }
+        
+        private void fillCategoriesInformal()
+    {
+        try
+            {       
+                Statement st = Connectivity.ConnectionClass.conn.createStatement();
+                String categorySQL = "SELECT Namn FROM Kategori where namn = 'Informellt'";
+                rs = st.executeQuery(categorySQL);
+                while(rs.next()) 
+                {
+                    cbCategory.addItem(rs.getString("Namn"));
+                }
+            }
+            catch(Exception e)
+            {
+                
+                
+            }
+    }
 
     private void fillCategories() {
         try {
             Statement st = Connectivity.ConnectionClass.conn.createStatement();
-            String categorySQL = "SELECT Namn FROM Kategori";
+            String categorySQL = "SELECT Namn FROM Kategori where namn != 'Informellt'";
             rs = st.executeQuery(categorySQL);
             while (rs.next()) {
                 cbCategory.addItem(rs.getString("Namn"));
             }
         } catch (Exception e) {
-
+            System.out.println(e);
         }
     }
 
