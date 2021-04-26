@@ -142,11 +142,11 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                  <Color blue="de" green="d4" red="c8" type="rgb"/>
                 </Property>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="5c" green="55" red="4d" type="rgb"/>
+                  <Color blue="1a" green="11" red="c" type="rgb"/>
                 </Property>
                 <Property name="lineWrap" type="boolean" value="true"/>
                 <Property name="rows" type="int" value="5"/>
@@ -167,7 +167,7 @@
               <Font name="Poppins Medium" size="18" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="bb" green="ae" red="9e" type="rgb"/>
+              <Color blue="de" green="d4" red="c8" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="title" type="code"/>
@@ -196,7 +196,7 @@
             <Container class="javax.swing.JPanel" name="panelBox">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor" postCode="panelBox.setAlignmentY(0.0F);">
-                  <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                  <Color blue="de" green="d4" red="c8" type="rgb"/>
                 </Property>
                 <Property name="alignmentY" type="float" value="0.0"/>
               </Properties>
@@ -267,7 +267,7 @@
               <Font name="Poppins Medium" size="12" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="bb" green="ae" red="9e" type="rgb"/>
+              <Color blue="de" green="d4" red="c8" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="publisher" type="code"/>

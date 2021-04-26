@@ -128,9 +128,9 @@ public class CreatePostGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(158, 174, 187));
+        jPanel1.setBackground(new java.awt.Color(200, 212, 222));
 
-        panelMenuLogga.setBackground(new java.awt.Color(158, 174, 187));
+        panelMenuLogga.setBackground(new java.awt.Color(200, 212, 222));
         panelMenuLogga.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         iconLogga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logga.png"))); // NOI18N
@@ -146,7 +146,7 @@ public class CreatePostGUI extends javax.swing.JFrame {
         lblUniversitet.setText("Örebro");
         panelMenuLogga.add(lblUniversitet, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, -1, -1));
 
-        pnlCreatePost.setBackground(new java.awt.Color(158, 174, 187));
+        pnlCreatePost.setBackground(new java.awt.Color(200, 212, 222));
 
         cbCategory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,9 +167,9 @@ public class CreatePostGUI extends javax.swing.JFrame {
         sepTradtitel.setBackground(new java.awt.Color(0, 94, 125));
         sepTradtitel.setForeground(new java.awt.Color(0, 94, 125));
 
-        tfTitel.setBackground(new java.awt.Color(158, 174, 187));
+        tfTitel.setBackground(new java.awt.Color(200, 212, 222));
         tfTitel.setFont(new java.awt.Font("Playfair Display Medium", 0, 14)); // NOI18N
-        tfTitel.setForeground(new java.awt.Color(0, 94, 125));
+        tfTitel.setForeground(new java.awt.Color(12, 17, 26));
         tfTitel.setBorder(null);
         tfTitel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,23 +179,22 @@ public class CreatePostGUI extends javax.swing.JFrame {
 
         jScrollPane2.setBorder(null);
 
-        taText.setBackground(new java.awt.Color(158, 174, 187));
+        taText.setBackground(new java.awt.Color(200, 212, 222));
         taText.setColumns(20);
         taText.setFont(new java.awt.Font("Poppins Medium", 0, 12)); // NOI18N
-        taText.setForeground(new java.awt.Color(77, 85, 92));
+        taText.setForeground(new java.awt.Color(12, 17, 26));
         taText.setLineWrap(true);
         taText.setRows(5);
         taText.setWrapStyleWord(true);
         taText.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 1, true));
         jScrollPane2.setViewportView(taText);
 
-        lblInnehall.setFont(new java.awt.Font("Playfair Display Medium", 0, 14)); // NOI18N
+        lblInnehall.setFont(new java.awt.Font("Playfair Display Medium", 0, 18)); // NOI18N
         lblInnehall.setForeground(new java.awt.Color(77, 85, 92));
         lblInnehall.setText("Innehåll");
 
-        btnPost.setBackground(new java.awt.Color(202, 100, 91));
-        btnPost.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
-        btnPost.setForeground(new java.awt.Color(77, 85, 92));
+        btnPost.setBackground(new java.awt.Color(0, 94, 125));
+        btnPost.setForeground(new java.awt.Color(245, 245, 245));
         btnPost.setText("Posta");
         btnPost.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,8 +202,8 @@ public class CreatePostGUI extends javax.swing.JFrame {
             }
         });
 
-        btnBifogaFil.setBackground(new java.awt.Color(202, 100, 91));
-        btnBifogaFil.setForeground(new java.awt.Color(77, 85, 92));
+        btnBifogaFil.setBackground(new java.awt.Color(0, 94, 125));
+        btnBifogaFil.setForeground(new java.awt.Color(245, 245, 245));
         btnBifogaFil.setText("Bifoga fil");
         btnBifogaFil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -251,7 +250,7 @@ public class CreatePostGUI extends javax.swing.JFrame {
                     .addComponent(lblTradtitel, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblKategori))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 19, Short.MAX_VALUE)
+                .addComponent(cbCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 25, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfTitel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

@@ -40,7 +40,7 @@
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="bb" green="ae" red="9e" type="rgb"/>
+          <Color blue="de" green="d4" red="c8" type="rgb"/>
         </Property>
       </Properties>
 
@@ -69,7 +69,7 @@
         <Container class="javax.swing.JPanel" name="panelMenuLogga">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="bb" green="ae" red="9e" type="rgb"/>
+              <Color blue="de" green="d4" red="c8" type="rgb"/>
             </Property>
           </Properties>
 
@@ -126,7 +126,7 @@
         <Container class="javax.swing.JPanel" name="pnlCreatePost">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="bb" green="ae" red="9e" type="rgb"/>
+              <Color blue="de" green="d4" red="c8" type="rgb"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -182,7 +182,7 @@
                           <Component id="lblKategori" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cbCategory" pref="19" max="32767" attributes="0"/>
+                      <Component id="cbCategory" pref="25" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="tfTitel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -257,13 +257,13 @@
             <Component class="javax.swing.JTextField" name="tfTitel">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                  <Color blue="de" green="d4" red="c8" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Playfair Display Medium" size="14" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="7d" green="5e" red="0" type="rgb"/>
+                  <Color blue="1a" green="11" red="c" type="rgb"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -291,14 +291,14 @@
                 <Component class="javax.swing.JTextArea" name="taText">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                      <Color blue="de" green="d4" red="c8" type="rgb"/>
                     </Property>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Poppins Medium" size="12" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="5c" green="55" red="4d" type="rgb"/>
+                      <Color blue="1a" green="11" red="c" type="rgb"/>
                     </Property>
                     <Property name="lineWrap" type="boolean" value="true"/>
                     <Property name="rows" type="int" value="5"/>
@@ -320,7 +320,7 @@
             <Component class="javax.swing.JLabel" name="lblInnehall">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Playfair Display Medium" size="14" style="0"/>
+                  <Font name="Playfair Display Medium" size="18" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="5c" green="55" red="4d" type="rgb"/>
@@ -331,13 +331,10 @@
             <Component class="javax.swing.JButton" name="btnPost">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="5b" green="64" red="ca" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins Medium" size="14" style="0"/>
+                  <Color blue="7d" green="5e" red="0" type="rgb"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="5c" green="55" red="4d" type="rgb"/>
+                  <Color blue="f5" green="f5" red="f5" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Posta"/>
               </Properties>
@@ -348,10 +345,10 @@
             <Component class="javax.swing.JButton" name="btnBifogaFil">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="5b" green="64" red="ca" type="rgb"/>
+                  <Color blue="7d" green="5e" red="0" type="rgb"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="5c" green="55" red="4d" type="rgb"/>
+                  <Color blue="f5" green="f5" red="f5" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Bifoga fil"/>
               </Properties>

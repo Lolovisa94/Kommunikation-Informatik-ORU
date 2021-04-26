@@ -62,7 +62,7 @@ public class BookMeetingGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(158, 174, 187));
+        jPanel1.setBackground(new java.awt.Color(200, 212, 222));
 
         iconLogga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logga.png"))); // NOI18N
 
@@ -133,7 +133,7 @@ public class BookMeetingGUI extends javax.swing.JFrame {
         lblWelcome11.setForeground(new java.awt.Color(77, 85, 92));
         lblWelcome11.setText("Datum:");
 
-        jPanel2.setBackground(new java.awt.Color(158, 174, 187));
+        jPanel2.setBackground(new java.awt.Color(200, 212, 222));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

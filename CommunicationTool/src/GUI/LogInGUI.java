@@ -94,7 +94,7 @@ public class LogInGUI extends javax.swing.JFrame {
 
         bgInlogg.add(bgPink, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        bgBlue.setBackground(new java.awt.Color(158, 174, 187));
+        bgBlue.setBackground(new java.awt.Color(200, 212, 222));
         bgBlue.setMinimumSize(new java.awt.Dimension(300, 400));
         bgBlue.setPreferredSize(new java.awt.Dimension(300, 400));
 
@@ -102,7 +102,7 @@ public class LogInGUI extends javax.swing.JFrame {
         lblValkommen.setForeground(new java.awt.Color(202, 100, 91));
         lblValkommen.setText("Välkommen till Örebro Universitet");
 
-        panelLogIn.setBackground(new java.awt.Color(158, 174, 187));
+        panelLogIn.setBackground(new java.awt.Color(200, 212, 222));
 
         btnLogIn.setBackground(new java.awt.Color(0, 94, 125));
         btnLogIn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
@@ -119,7 +119,7 @@ public class LogInGUI extends javax.swing.JFrame {
         });
 
         lblbtnLoggaIn.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        lblbtnLoggaIn.setForeground(new java.awt.Color(158, 174, 187));
+        lblbtnLoggaIn.setForeground(new java.awt.Color(200, 212, 222));
         lblbtnLoggaIn.setText("Logga In");
         lblbtnLoggaIn.setIconTextGap(5);
         btnLogIn.add(lblbtnLoggaIn);
@@ -140,10 +140,10 @@ public class LogInGUI extends javax.swing.JFrame {
         lblPw.setText("Lösenord");
         lblPw.setIconTextGap(5);
 
-        tfEmail.setBackground(new java.awt.Color(158, 174, 187));
-        tfEmail.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        tfEmail.setBackground(new java.awt.Color(200, 212, 222));
+        tfEmail.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
         tfEmail.setForeground(new java.awt.Color(0, 94, 125));
-        tfEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(158, 174, 187)));
+        tfEmail.setBorder(null);
         tfEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfEmailActionPerformed(evt);
@@ -155,10 +155,10 @@ public class LogInGUI extends javax.swing.JFrame {
             }
         });
 
-        pfPw.setBackground(new java.awt.Color(158, 174, 187));
-        pfPw.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        pfPw.setBackground(new java.awt.Color(200, 212, 222));
+        pfPw.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
         pfPw.setForeground(new java.awt.Color(0, 94, 125));
-        pfPw.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(158, 174, 187)));
+        pfPw.setBorder(null);
         pfPw.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pfPwActionPerformed(evt);

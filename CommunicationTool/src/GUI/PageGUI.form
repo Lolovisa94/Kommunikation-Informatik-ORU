@@ -52,7 +52,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="0" width="-1" height="1010"/>
+              <AbsoluteConstraints x="0" y="0" width="440" height="1010"/>
             </Constraint>
           </Constraints>
 
@@ -60,16 +60,18 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="btnStartsida" alignment="0" max="32767" attributes="0"/>
-                          <Component id="panelMenuLogga" alignment="0" pref="412" max="32767" attributes="0"/>
-                          <Component id="btnLaggTillAnvandare" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnProfilinstallningar" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnSokfunktion" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnMeddelanden" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnKalender" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnForum" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnInformelltForum" alignment="1" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="panelMenuLogga" alignment="0" min="-2" pref="937" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="btnLaggTillAnvandare" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnProfilinstallningar" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnSokfunktion" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnMeddelanden" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnKalender" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnInformelltForum" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnForum" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnStartsida" alignment="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -179,7 +181,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                           <Component id="lblBtnStartsida" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="282" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="selStartsida" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -199,10 +201,10 @@
                 <Component class="javax.swing.JLabel" name="lblBtnStartsida">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Poppins Medium" size="12" style="0"/>
+                      <Font name="Poppins Medium" size="24" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                      <Color blue="de" green="d4" red="c8" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Startsida"/>
                   </Properties>
@@ -253,7 +255,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                           <Component id="lblBtnAdminfunktionalitet" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="223" max="32767" attributes="0"/>
+                          <EmptySpace pref="131" max="32767" attributes="0"/>
                           <Component id="selAdminfunktionalitet" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -273,7 +275,7 @@
                 <Component class="javax.swing.JLabel" name="lblBtnAdminfunktionalitet">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Poppins Medium" size="12" style="0"/>
+                      <Font name="Poppins Medium" size="24" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="bb" green="ae" red="9e" type="rgb"/>
@@ -324,7 +326,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                           <Component id="lblBtnProfilinstallningar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="231" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="selProfilinstallningar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -344,10 +346,10 @@
                 <Component class="javax.swing.JLabel" name="lblBtnProfilinstallningar">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Poppins Medium" size="12" style="0"/>
+                      <Font name="Poppins Medium" size="24" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                      <Color blue="de" green="d4" red="c8" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Profilinst&#xe4;llningar"/>
                   </Properties>
@@ -395,7 +397,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                           <Component id="lblBtnSokfunktion" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="266" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="selSokfunktion" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -415,10 +417,10 @@
                 <Component class="javax.swing.JLabel" name="lblBtnSokfunktion">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Poppins Medium" size="12" style="0"/>
+                      <Font name="Poppins Medium" size="24" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                      <Color blue="de" green="d4" red="c8" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="S&#xf6;kfunktion"/>
                   </Properties>
@@ -466,7 +468,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                           <Component id="lblBtnStartsida4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="255" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="selMeddelanden" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -486,10 +488,10 @@
                 <Component class="javax.swing.JLabel" name="lblBtnStartsida4">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Poppins Medium" size="12" style="0"/>
+                      <Font name="Poppins Medium" size="24" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                      <Color blue="de" green="d4" red="c8" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Meddelanden"/>
                   </Properties>
@@ -537,7 +539,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                           <Component id="lblBtnKalender" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="284" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="selKalender" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -557,10 +559,10 @@
                 <Component class="javax.swing.JLabel" name="lblBtnKalender">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Poppins Medium" size="12" style="0"/>
+                      <Font name="Poppins Medium" size="24" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                      <Color blue="de" green="d4" red="c8" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Kalender"/>
                   </Properties>
@@ -608,7 +610,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                           <Component id="lblBtnForum" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="298" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="selForum" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -628,10 +630,10 @@
                 <Component class="javax.swing.JLabel" name="lblBtnForum">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Poppins Medium" size="12" style="0"/>
+                      <Font name="Poppins Medium" size="24" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                      <Color blue="de" green="d4" red="c8" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Forum"/>
                   </Properties>
@@ -699,10 +701,10 @@
                 <Component class="javax.swing.JLabel" name="lblBtnInformelltForum">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Poppins Medium" size="12" style="0"/>
+                      <Font name="Poppins Medium" size="24" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                      <Color blue="de" green="d4" red="c8" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Informellt Forum"/>
                   </Properties>
@@ -745,7 +747,10 @@
             <Container class="javax.swing.JPanel" name="pnlStartsida">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                  <Color blue="de" green="d4" red="c8" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="de" green="d4" red="c8" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -794,7 +799,10 @@
             <Container class="javax.swing.JPanel" name="pnlMeddelanden">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                  <Color blue="de" green="d4" red="c8" type="rgb"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[1535, 1020]"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -887,7 +895,7 @@
                     <Container class="javax.swing.JPanel" name="panelBoxChat">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                          <Color blue="de" green="d4" red="c8" type="rgb"/>
                         </Property>
                         <Property name="alignmentY" type="float" value="0.0"/>
                       </Properties>
@@ -943,6 +951,12 @@
                 </Container>
                 <Component class="javax.swing.JButton" name="btnSendChat">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="7d" green="5e" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f5" green="f5" red="f5" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Skicka"/>
                   </Properties>
                   <Events>
@@ -956,6 +970,12 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnRefreshChat">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="7d" green="5e" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f5" green="f5" red="f5" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Refresh"/>
                   </Properties>
                   <Events>
@@ -972,7 +992,10 @@
             <Container class="javax.swing.JPanel" name="pnlSokfunktion">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                  <Color blue="de" green="d4" red="c8" type="rgb"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[1535, 1020]"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -1093,7 +1116,7 @@
                           <Font name="Poppins" size="20" style="1"/>
                         </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                          <Color blue="de" green="d4" red="c8" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="S&#xf6;k"/>
                         <Property name="iconTextGap" type="int" value="5"/>
@@ -1174,6 +1197,12 @@
                 </Container>
                 <Component class="javax.swing.JButton" name="btnTaBortAnv&#xe4;ndare">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="7d" green="5e" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f5" green="f5" red="f5" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Ta bort anv&#xe4;ndare"/>
                   </Properties>
                   <Events>
@@ -1182,6 +1211,12 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnStartChat">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="7d" green="5e" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f5" green="f5" red="f5" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Starta en chatt med anv&#xe4;ndaren"/>
                   </Properties>
                   <Events>
@@ -1193,7 +1228,10 @@
             <Container class="javax.swing.JPanel" name="pnlForum">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                  <Color blue="de" green="d4" red="c8" type="rgb"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[1535, 1020]"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -1234,7 +1272,7 @@
                           <Font name="Poppins" size="14" style="1"/>
                         </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                          <Color blue="de" green="d4" red="c8" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Skapa Bloggtr&#xe5;d"/>
                         <Property name="iconTextGap" type="int" value="5"/>
@@ -1267,7 +1305,7 @@
                 <Container class="javax.swing.JPanel" name="pnlFVisaKategorier">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                      <Color blue="de" green="d4" red="c8" type="rgb"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -1376,7 +1414,7 @@
                     <Component class="javax.swing.JCheckBox" name="cbFForskning">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                          <Color blue="de" green="d4" red="c8" type="rgb"/>
                         </Property>
                         <Property name="selected" type="boolean" value="true"/>
                       </Properties>
@@ -1391,7 +1429,7 @@
                     <Component class="javax.swing.JCheckBox" name="cbFUtbildning">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                          <Color blue="de" green="d4" red="c8" type="rgb"/>
                         </Property>
                         <Property name="selected" type="boolean" value="true"/>
                       </Properties>
@@ -1406,7 +1444,7 @@
                     <Component class="javax.swing.JCheckBox" name="cbFOvrigt">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                          <Color blue="de" green="d4" red="c8" type="rgb"/>
                         </Property>
                         <Property name="selected" type="boolean" value="true"/>
                       </Properties>
@@ -1453,8 +1491,8 @@
                   <SubComponents>
                     <Component class="javax.swing.JTable" name="tblForum">
                       <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="new java.awt.Color(200,212,222)" type="code"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Poppins Medium" size="18" style="0"/>
@@ -1478,8 +1516,8 @@
                         <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="7d" green="5e" red="0" type="rgb"/>
                         </Property>
-                        <Property name="selectionForeground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                        <Property name="selectionForeground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="new java.awt.Color(200,212,222)" type="code"/>
                         </Property>
                         <Property name="showGrid" type="boolean" value="true"/>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
@@ -1490,7 +1528,7 @@
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblForumMouseClicked"/>
                       </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="tblForum.getTableHeader().setFont(new java.awt.Font(&quot;Poppins Medium&quot;, 0, 18));&#xa;&#xa;tblForum.getTableHeader().setForeground(new java.awt.Color(77,85,92));&#xa;&#xa;tblForum.getTableHeader().setBackground(new java.awt.Color(158, 174, 187));&#xa;&#xa;&#xa;tblForum.getTableHeader().setBorder(new javax.swing.border.LineBorder(new java.awt.Color(77, 85, 92), 1, true));&#xa;&#xa;tblForum.setAutoCreateRowSorter(true);&#xa;&#xa;&#xa;        TableRowSorter&lt;TableModel&gt; sorter = new TableRowSorter&lt;&gt;(tblForum.getModel());&#xa;        tblForum.setRowSorter(sorter);&#xa;        ArrayList&lt;RowSorter.SortKey&gt; sortKeys = new ArrayList&lt;&gt;();&#xa; &#xa;        int columnIndexToSort = 3;&#xa;        sortKeys.add(new RowSorter.SortKey(columnIndexToSort, SortOrder.DESCENDING));&#xa; &#xa;        sorter.setSortKeys(sortKeys);&#xa;        sorter.sort();&#xa;&#xa;&#xa;tblForum.getColumnModel().getColumn(0).setPreferredWidth(8);&#xa;tblForum.getColumnModel().getColumn(1).setPreferredWidth(400);&#xa;tblForum.getColumnModel().getColumn(2).setPreferredWidth(20);&#xa;tblForum.getColumnModel().getColumn(3).setPreferredWidth(20);"/>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="tblForum.getTableHeader().setFont(new java.awt.Font(&quot;Poppins Medium&quot;, 0, 18));&#xa;&#xa;tblForum.getTableHeader().setForeground(new java.awt.Color(77,85,92));&#xa;&#xa;tblForum.getTableHeader().setBackground(new java.awt.Color(200,212,222));&#xa;&#xa;&#xa;tblForum.getTableHeader().setBorder(new javax.swing.border.LineBorder(new java.awt.Color(77, 85, 92), 1, true));&#xa;&#xa;tblForum.setAutoCreateRowSorter(true);&#xa;&#xa;&#xa;        TableRowSorter&lt;TableModel&gt; sorter = new TableRowSorter&lt;&gt;(tblForum.getModel());&#xa;        tblForum.setRowSorter(sorter);&#xa;        ArrayList&lt;RowSorter.SortKey&gt; sortKeys = new ArrayList&lt;&gt;();&#xa; &#xa;        int columnIndexToSort = 3;&#xa;        sortKeys.add(new RowSorter.SortKey(columnIndexToSort, SortOrder.DESCENDING));&#xa; &#xa;        sorter.setSortKeys(sortKeys);&#xa;        sorter.sort();&#xa;&#xa;&#xa;tblForum.getColumnModel().getColumn(0).setPreferredWidth(8);&#xa;tblForum.getColumnModel().getColumn(1).setPreferredWidth(400);&#xa;tblForum.getColumnModel().getColumn(2).setPreferredWidth(20);&#xa;tblForum.getColumnModel().getColumn(3).setPreferredWidth(20);"/>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
                       </AuxValues>
                     </Component>
@@ -1499,7 +1537,7 @@
                 <Container class="javax.swing.JPanel" name="pnlFSok">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                      <Color blue="de" green="d4" red="c8" type="rgb"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -1552,7 +1590,7 @@
                     <Component class="javax.swing.JTextField" name="tfFSok">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                          <Color blue="de" green="d4" red="c8" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Poppins Medium" size="14" style="0"/>
@@ -1608,7 +1646,7 @@
                           <Font name="Poppins" size="14" style="1"/>
                         </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                          <Color blue="de" green="d4" red="c8" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Ta Bort Bloggtr&#xe5;d"/>
                         <Property name="iconTextGap" type="int" value="5"/>
@@ -1624,7 +1662,10 @@
             <Container class="javax.swing.JPanel" name="pnlProfilinstallningar">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                  <Color blue="de" green="d4" red="c8" type="rgb"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[1535, 1020]"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -1826,10 +1867,10 @@
                 <Component class="javax.swing.JButton" name="jButton1">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="5b" green="64" red="ca" type="rgb"/>
+                      <Color blue="7d" green="5e" red="0" type="rgb"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                      <Color blue="f5" green="f5" red="f5" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Byt l&#xf6;senord"/>
                   </Properties>
@@ -1892,10 +1933,10 @@
                 <Component class="javax.swing.JButton" name="btnPIUppdatera">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="5b" green="64" red="ca" type="rgb"/>
+                      <Color blue="7d" green="5e" red="0" type="rgb"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                      <Color blue="f5" green="f5" red="f5" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Uppdatera"/>
                   </Properties>
@@ -1974,7 +2015,10 @@
             <Container class="javax.swing.JPanel" name="pnlLaggTillAnvandare">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                  <Color blue="de" green="d4" red="c8" type="rgb"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[1535, 1020]"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -2077,11 +2121,23 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblAnvTele">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Dialog" size="12" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="5c" green="55" red="4d" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Telefon"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnLaggTillAnv">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="7d" green="5e" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f5" green="f5" red="f5" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="L&#xe4;gg till ny anv&#xe4;nadare"/>
                   </Properties>
                   <Events>
@@ -2092,11 +2148,23 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblAdminFraga">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Dialog" size="12" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="5c" green="55" red="4d" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Admin"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblAnvNamn">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Dialog" size="12" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="5c" green="55" red="4d" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Namn"/>
                   </Properties>
                 </Component>
@@ -2115,6 +2183,12 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblAnvLosenord">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Dialog" size="12" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="5c" green="55" red="4d" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="L&#xf6;senord"/>
                   </Properties>
                 </Component>
@@ -2125,6 +2199,12 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblAnvEpost">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Dialog" size="12" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="5c" green="55" red="4d" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Email"/>
                   </Properties>
                 </Component>
@@ -2142,7 +2222,13 @@
             <Container class="javax.swing.JPanel" name="pnlInformelltForum">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                  <Color blue="de" green="d4" red="c8" type="rgb"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[1535, 1020]"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[1535, 1020]"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -2183,7 +2269,7 @@
                           <Font name="Poppins" size="14" style="1"/>
                         </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                          <Color blue="de" green="d4" red="c8" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Skapa Bloggtr&#xe5;d"/>
                         <Property name="iconTextGap" type="int" value="5"/>
@@ -2246,8 +2332,8 @@
                   <SubComponents>
                     <Component class="javax.swing.JTable" name="tblInformelltForum">
                       <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="new java.awt.Color(200,212,222)" type="code"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Poppins Medium" size="18" style="0"/>
@@ -2271,8 +2357,8 @@
                         <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="7d" green="5e" red="0" type="rgb"/>
                         </Property>
-                        <Property name="selectionForeground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                        <Property name="selectionForeground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="new java.awt.Color(200,212,222)" type="code"/>
                         </Property>
                         <Property name="showGrid" type="boolean" value="true"/>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
@@ -2283,7 +2369,7 @@
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblInformelltForumMouseClicked"/>
                       </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="tblInformelltForum.getTableHeader().setFont(new java.awt.Font(&quot;Poppins Medium&quot;, 0, 18));&#xa;&#xa;tblInformelltForum.getTableHeader().setForeground(new java.awt.Color(77,85,92));&#xa;&#xa;tblInformelltForum.getTableHeader().setBackground(new java.awt.Color(158, 174, 187));&#xa;&#xa;&#xa;tblInformelltForum.getTableHeader().setBorder(new javax.swing.border.LineBorder(new java.awt.Color(77, 85, 92), 1, true));&#xa;&#xa;tblInformelltForum.setAutoCreateRowSorter(true);&#xa;&#xa;&#xa;        TableRowSorter&lt;TableModel&gt; sorterInformellt = new TableRowSorter&lt;&gt;(tblInformelltForum.getModel());&#xa;        tblInformelltForum.setRowSorter(sorterInformellt);&#xa;        ArrayList&lt;RowSorter.SortKey&gt; sortKeysInformellt = new ArrayList&lt;&gt;();&#xa; &#xa;        int columnIndexToSortInformellt = 3;&#xa;        sortKeysInformellt.add(new RowSorter.SortKey(columnIndexToSortInformellt, SortOrder.DESCENDING));&#xa; &#xa;        sorterInformellt.setSortKeys(sortKeysInformellt);&#xa;        sorterInformellt.sort();&#xa;&#xa;&#xa;tblInformelltForum.getColumnModel().getColumn(0).setPreferredWidth(8);&#xa;tblInformelltForum.getColumnModel().getColumn(1).setPreferredWidth(400);&#xa;tblInformelltForum.getColumnModel().getColumn(2).setPreferredWidth(20);&#xa;tblInformelltForum.getColumnModel().getColumn(3).setPreferredWidth(20);"/>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="tblInformelltForum.getTableHeader().setFont(new java.awt.Font(&quot;Poppins Medium&quot;, 0, 18));&#xa;&#xa;tblInformelltForum.getTableHeader().setForeground(new java.awt.Color(77,85,92));&#xa;&#xa;tblInformelltForum.getTableHeader().setBackground(new java.awt.Color(200,212,222));&#xa;&#xa;&#xa;tblInformelltForum.getTableHeader().setBorder(new javax.swing.border.LineBorder(new java.awt.Color(77, 85, 92), 1, true));&#xa;&#xa;tblInformelltForum.setAutoCreateRowSorter(true);&#xa;&#xa;&#xa;        TableRowSorter&lt;TableModel&gt; sorterInformellt = new TableRowSorter&lt;&gt;(tblInformelltForum.getModel());&#xa;        tblInformelltForum.setRowSorter(sorterInformellt);&#xa;        ArrayList&lt;RowSorter.SortKey&gt; sortKeysInformellt = new ArrayList&lt;&gt;();&#xa; &#xa;        int columnIndexToSortInformellt = 3;&#xa;        sortKeysInformellt.add(new RowSorter.SortKey(columnIndexToSortInformellt, SortOrder.DESCENDING));&#xa; &#xa;        sorterInformellt.setSortKeys(sortKeysInformellt);&#xa;        sorterInformellt.sort();&#xa;&#xa;&#xa;tblInformelltForum.getColumnModel().getColumn(0).setPreferredWidth(8);&#xa;tblInformelltForum.getColumnModel().getColumn(1).setPreferredWidth(400);&#xa;tblInformelltForum.getColumnModel().getColumn(2).setPreferredWidth(20);&#xa;tblInformelltForum.getColumnModel().getColumn(3).setPreferredWidth(20);"/>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
                       </AuxValues>
                     </Component>
@@ -2292,7 +2378,7 @@
                 <Container class="javax.swing.JPanel" name="pnlIFSok">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                      <Color blue="de" green="d4" red="c8" type="rgb"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -2345,7 +2431,7 @@
                     <Component class="javax.swing.JTextField" name="tfIFSok1">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                          <Color blue="de" green="d4" red="c8" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Poppins Medium" size="14" style="0"/>
@@ -2401,7 +2487,7 @@
                           <Font name="Poppins" size="14" style="1"/>
                         </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                          <Color blue="de" green="d4" red="c8" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Ta Bort Bloggtr&#xe5;d"/>
                         <Property name="iconTextGap" type="int" value="5"/>
@@ -2417,7 +2503,10 @@
             <Container class="javax.swing.JPanel" name="pnlKalender">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                  <Color blue="de" green="d4" red="c8" type="rgb"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[1535, 1020]"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -2484,6 +2573,12 @@
                 </Container>
                 <Component class="javax.swing.JButton" name="jButton2">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="7d" green="5e" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f5" green="f5" red="f5" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="H&#xe4;mta fr&#xe5;n privat"/>
                   </Properties>
                   <Events>
@@ -2544,6 +2639,12 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton3">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="7c" green="5e" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f5" green="f5" red="f5" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Skapa"/>
                   </Properties>
                   <Events>
@@ -2557,6 +2658,12 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton4">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="7d" green="5e" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f5" green="f5" red="f5" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="H&#xe4;mta fr&#xe5;n publik"/>
                   </Properties>
                   <Events>
@@ -2570,6 +2677,12 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton5">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="7d" green="5e" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f5" green="f5" red="f5" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Ge f&#xf6;rslag p&#xe5; m&#xf6;testider"/>
                   </Properties>
                   <Events>
@@ -2704,7 +2817,7 @@
                 <Container class="javax.swing.JPanel" name="jPanel1">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="bb" green="ae" red="9e" type="rgb"/>
+                      <Color blue="de" green="d4" red="c8" type="rgb"/>
                     </Property>
                   </Properties>
                   <Constraints>

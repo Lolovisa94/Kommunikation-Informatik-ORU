@@ -403,8 +403,8 @@ public class PageGUI extends javax.swing.JFrame {
             }
         });
 
-        lblBtnStartsida.setFont(new java.awt.Font("Poppins Medium", 0, 12)); // NOI18N
-        lblBtnStartsida.setForeground(new java.awt.Color(158, 174, 187));
+        lblBtnStartsida.setFont(new java.awt.Font("Poppins Medium", 0, 24)); // NOI18N
+        lblBtnStartsida.setForeground(new java.awt.Color(200, 212, 222));
         lblBtnStartsida.setText("Startsida");
 
         selStartsida.setBackground(new java.awt.Color(202, 100, 91));
@@ -427,7 +427,7 @@ public class PageGUI extends javax.swing.JFrame {
             .addGroup(btnStartsidaLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(lblBtnStartsida)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 282, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(selStartsida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         btnStartsidaLayout.setVerticalGroup(
@@ -454,7 +454,7 @@ public class PageGUI extends javax.swing.JFrame {
             }
         });
 
-        lblBtnAdminfunktionalitet.setFont(new java.awt.Font("Poppins Medium", 0, 12)); // NOI18N
+        lblBtnAdminfunktionalitet.setFont(new java.awt.Font("Poppins Medium", 0, 24)); // NOI18N
         lblBtnAdminfunktionalitet.setForeground(new java.awt.Color(158, 174, 187));
         lblBtnAdminfunktionalitet.setText("Lägg Till Användare");
 
@@ -478,7 +478,7 @@ public class PageGUI extends javax.swing.JFrame {
             .addGroup(btnLaggTillAnvandareLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(lblBtnAdminfunktionalitet)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                 .addComponent(selAdminfunktionalitet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         btnLaggTillAnvandareLayout.setVerticalGroup(
@@ -503,8 +503,8 @@ public class PageGUI extends javax.swing.JFrame {
             }
         });
 
-        lblBtnProfilinstallningar.setFont(new java.awt.Font("Poppins Medium", 0, 12)); // NOI18N
-        lblBtnProfilinstallningar.setForeground(new java.awt.Color(158, 174, 187));
+        lblBtnProfilinstallningar.setFont(new java.awt.Font("Poppins Medium", 0, 24)); // NOI18N
+        lblBtnProfilinstallningar.setForeground(new java.awt.Color(200, 212, 222));
         lblBtnProfilinstallningar.setText("Profilinställningar");
 
         selProfilinstallningar.setBackground(new java.awt.Color(202, 100, 91));
@@ -527,7 +527,7 @@ public class PageGUI extends javax.swing.JFrame {
             .addGroup(btnProfilinstallningarLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(lblBtnProfilinstallningar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(selProfilinstallningar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         btnProfilinstallningarLayout.setVerticalGroup(
@@ -552,8 +552,8 @@ public class PageGUI extends javax.swing.JFrame {
             }
         });
 
-        lblBtnSokfunktion.setFont(new java.awt.Font("Poppins Medium", 0, 12)); // NOI18N
-        lblBtnSokfunktion.setForeground(new java.awt.Color(158, 174, 187));
+        lblBtnSokfunktion.setFont(new java.awt.Font("Poppins Medium", 0, 24)); // NOI18N
+        lblBtnSokfunktion.setForeground(new java.awt.Color(200, 212, 222));
         lblBtnSokfunktion.setText("Sökfunktion");
 
         selSokfunktion.setBackground(new java.awt.Color(202, 100, 91));
@@ -576,7 +576,7 @@ public class PageGUI extends javax.swing.JFrame {
             .addGroup(btnSokfunktionLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(lblBtnSokfunktion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 266, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(selSokfunktion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         btnSokfunktionLayout.setVerticalGroup(
@@ -601,8 +601,8 @@ public class PageGUI extends javax.swing.JFrame {
             }
         });
 
-        lblBtnStartsida4.setFont(new java.awt.Font("Poppins Medium", 0, 12)); // NOI18N
-        lblBtnStartsida4.setForeground(new java.awt.Color(158, 174, 187));
+        lblBtnStartsida4.setFont(new java.awt.Font("Poppins Medium", 0, 24)); // NOI18N
+        lblBtnStartsida4.setForeground(new java.awt.Color(200, 212, 222));
         lblBtnStartsida4.setText("Meddelanden");
 
         selMeddelanden.setBackground(new java.awt.Color(202, 100, 91));
@@ -625,7 +625,7 @@ public class PageGUI extends javax.swing.JFrame {
             .addGroup(btnMeddelandenLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(lblBtnStartsida4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 255, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(selMeddelanden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         btnMeddelandenLayout.setVerticalGroup(
@@ -650,8 +650,8 @@ public class PageGUI extends javax.swing.JFrame {
             }
         });
 
-        lblBtnKalender.setFont(new java.awt.Font("Poppins Medium", 0, 12)); // NOI18N
-        lblBtnKalender.setForeground(new java.awt.Color(158, 174, 187));
+        lblBtnKalender.setFont(new java.awt.Font("Poppins Medium", 0, 24)); // NOI18N
+        lblBtnKalender.setForeground(new java.awt.Color(200, 212, 222));
         lblBtnKalender.setText("Kalender");
 
         selKalender.setBackground(new java.awt.Color(202, 100, 91));
@@ -674,7 +674,7 @@ public class PageGUI extends javax.swing.JFrame {
             .addGroup(btnKalenderLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(lblBtnKalender)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 284, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(selKalender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         btnKalenderLayout.setVerticalGroup(
@@ -699,8 +699,8 @@ public class PageGUI extends javax.swing.JFrame {
             }
         });
 
-        lblBtnForum.setFont(new java.awt.Font("Poppins Medium", 0, 12)); // NOI18N
-        lblBtnForum.setForeground(new java.awt.Color(158, 174, 187));
+        lblBtnForum.setFont(new java.awt.Font("Poppins Medium", 0, 24)); // NOI18N
+        lblBtnForum.setForeground(new java.awt.Color(200, 212, 222));
         lblBtnForum.setText("Forum");
 
         selForum.setBackground(new java.awt.Color(202, 100, 91));
@@ -723,7 +723,7 @@ public class PageGUI extends javax.swing.JFrame {
             .addGroup(btnForumLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(lblBtnForum)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 298, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(selForum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         btnForumLayout.setVerticalGroup(
@@ -748,8 +748,8 @@ public class PageGUI extends javax.swing.JFrame {
             }
         });
 
-        lblBtnInformelltForum.setFont(new java.awt.Font("Poppins Medium", 0, 12)); // NOI18N
-        lblBtnInformelltForum.setForeground(new java.awt.Color(158, 174, 187));
+        lblBtnInformelltForum.setFont(new java.awt.Font("Poppins Medium", 0, 24)); // NOI18N
+        lblBtnInformelltForum.setForeground(new java.awt.Color(200, 212, 222));
         lblBtnInformelltForum.setText("Informellt Forum");
 
         selInformelltForum.setBackground(new java.awt.Color(202, 100, 91));
@@ -789,16 +789,17 @@ public class PageGUI extends javax.swing.JFrame {
         panelMenuLayout.setHorizontalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMenuLayout.createSequentialGroup()
-                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnStartsida, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelMenuLogga, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
-                    .addComponent(btnLaggTillAnvandare, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnProfilinstallningar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSokfunktion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnMeddelanden, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnKalender, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnForum, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnInformelltForum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(panelMenuLogga, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 937, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btnLaggTillAnvandare, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnProfilinstallningar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSokfunktion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnMeddelanden, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnKalender, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnInformelltForum, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnForum, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnStartsida, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         panelMenuLayout.setVerticalGroup(
@@ -824,11 +825,12 @@ public class PageGUI extends javax.swing.JFrame {
                 .addGap(479, 479, 479))
         );
 
-        panelMenuBackground.add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 1010));
+        panelMenuBackground.add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 1010));
 
         jLayeredPane2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlStartsida.setBackground(new java.awt.Color(158, 174, 187));
+        pnlStartsida.setBackground(new java.awt.Color(200, 212, 222));
+        pnlStartsida.setForeground(new java.awt.Color(200, 212, 222));
 
         lblWelcome.setBackground(new java.awt.Color(77, 85, 92));
         lblWelcome.setFont(new java.awt.Font("Poppins Medium", 1, 48)); // NOI18N
@@ -854,7 +856,8 @@ public class PageGUI extends javax.swing.JFrame {
 
         jLayeredPane2.add(pnlStartsida, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        pnlMeddelanden.setBackground(new java.awt.Color(158, 174, 187));
+        pnlMeddelanden.setBackground(new java.awt.Color(200, 212, 222));
+        pnlMeddelanden.setPreferredSize(new java.awt.Dimension(1535, 1020));
         pnlMeddelanden.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblMeddelanden.setBackground(new java.awt.Color(77, 85, 92));
@@ -880,7 +883,7 @@ public class PageGUI extends javax.swing.JFrame {
         jScrollPane2.setAutoscrolls(true);
         jScrollPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        panelBoxChat.setBackground(new java.awt.Color(158, 174, 187));
+        panelBoxChat.setBackground(new java.awt.Color(200, 212, 222));
         panelBoxChat.setAlignmentY(0.0F);
         panelBoxChat.setLayout(new javax.swing.BoxLayout(panelBoxChat, javax.swing.BoxLayout.PAGE_AXIS));
 
@@ -901,6 +904,8 @@ public class PageGUI extends javax.swing.JFrame {
 
         pnlMeddelanden.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(387, 625, 720, 169));
 
+        btnSendChat.setBackground(new java.awt.Color(0, 94, 125));
+        btnSendChat.setForeground(new java.awt.Color(245, 245, 245));
         btnSendChat.setText("Skicka");
         btnSendChat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -909,6 +914,8 @@ public class PageGUI extends javax.swing.JFrame {
         });
         pnlMeddelanden.add(btnSendChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 630, -1, -1));
 
+        btnRefreshChat.setBackground(new java.awt.Color(0, 94, 125));
+        btnRefreshChat.setForeground(new java.awt.Color(245, 245, 245));
         btnRefreshChat.setText("Refresh");
         btnRefreshChat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -919,7 +926,8 @@ public class PageGUI extends javax.swing.JFrame {
 
         jLayeredPane2.add(pnlMeddelanden, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        pnlSokfunktion.setBackground(new java.awt.Color(158, 174, 187));
+        pnlSokfunktion.setBackground(new java.awt.Color(200, 212, 222));
+        pnlSokfunktion.setPreferredSize(new java.awt.Dimension(1535, 1020));
 
         lblSokfunktion.setBackground(new java.awt.Color(77, 85, 92));
         lblSokfunktion.setFont(new java.awt.Font("Poppins Medium", 1, 48)); // NOI18N
@@ -955,7 +963,7 @@ public class PageGUI extends javax.swing.JFrame {
         });
 
         lblbtnSokAnvandare.setFont(new java.awt.Font("Poppins", 1, 20)); // NOI18N
-        lblbtnSokAnvandare.setForeground(new java.awt.Color(158, 174, 187));
+        lblbtnSokAnvandare.setForeground(new java.awt.Color(200, 212, 222));
         lblbtnSokAnvandare.setText("Sök");
         lblbtnSokAnvandare.setIconTextGap(5);
         btnSokAnvandare.add(lblbtnSokAnvandare);
@@ -990,6 +998,8 @@ public class PageGUI extends javax.swing.JFrame {
         });
         spSoktaAnvandare.setViewportView(tblSoktaAnvandare);
 
+        btnTaBortAnvändare.setBackground(new java.awt.Color(0, 94, 125));
+        btnTaBortAnvändare.setForeground(new java.awt.Color(245, 245, 245));
         btnTaBortAnvändare.setText("Ta bort användare");
         btnTaBortAnvändare.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -997,6 +1007,8 @@ public class PageGUI extends javax.swing.JFrame {
             }
         });
 
+        btnStartChat.setBackground(new java.awt.Color(0, 94, 125));
+        btnStartChat.setForeground(new java.awt.Color(245, 245, 245));
         btnStartChat.setText("Starta en chatt med användaren");
         btnStartChat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1052,7 +1064,8 @@ public class PageGUI extends javax.swing.JFrame {
 
         jLayeredPane2.add(pnlSokfunktion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        pnlForum.setBackground(new java.awt.Color(158, 174, 187));
+        pnlForum.setBackground(new java.awt.Color(200, 212, 222));
+        pnlForum.setPreferredSize(new java.awt.Dimension(1535, 1020));
         pnlForum.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnSkapaBloggtrad.setBackground(new java.awt.Color(0, 94, 125));
@@ -1070,7 +1083,7 @@ public class PageGUI extends javax.swing.JFrame {
         });
 
         lblbtnSkapaBloggtrad.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        lblbtnSkapaBloggtrad.setForeground(new java.awt.Color(158, 174, 187));
+        lblbtnSkapaBloggtrad.setForeground(new java.awt.Color(200, 212, 222));
         lblbtnSkapaBloggtrad.setText("Skapa Bloggtråd");
         lblbtnSkapaBloggtrad.setIconTextGap(5);
         lblbtnSkapaBloggtrad.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1088,7 +1101,7 @@ public class PageGUI extends javax.swing.JFrame {
         lblForum.setText("Forum");
         pnlForum.add(lblForum, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, -1, 60));
 
-        pnlFVisaKategorier.setBackground(new java.awt.Color(158, 174, 187));
+        pnlFVisaKategorier.setBackground(new java.awt.Color(200, 212, 222));
 
         lblFVisaKategorier.setBackground(new java.awt.Color(77, 85, 92));
         lblFVisaKategorier.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
@@ -1107,7 +1120,7 @@ public class PageGUI extends javax.swing.JFrame {
         lblFAllmant.setForeground(new java.awt.Color(77, 85, 92));
         lblFAllmant.setText("Allmänt");
 
-        cbFForskning.setBackground(new java.awt.Color(158, 174, 187));
+        cbFForskning.setBackground(new java.awt.Color(200, 212, 222));
         cbFForskning.setSelected(true);
         cbFForskning.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1120,7 +1133,7 @@ public class PageGUI extends javax.swing.JFrame {
             }
         });
 
-        cbFUtbildning.setBackground(new java.awt.Color(158, 174, 187));
+        cbFUtbildning.setBackground(new java.awt.Color(200, 212, 222));
         cbFUtbildning.setSelected(true);
         cbFUtbildning.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1133,7 +1146,7 @@ public class PageGUI extends javax.swing.JFrame {
             }
         });
 
-        cbFOvrigt.setBackground(new java.awt.Color(158, 174, 187));
+        cbFOvrigt.setBackground(new java.awt.Color(200, 212, 222));
         cbFOvrigt.setSelected(true);
         cbFOvrigt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1194,7 +1207,7 @@ public class PageGUI extends javax.swing.JFrame {
         sPForum.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
         sPForum.getViewport().setBackground(new java.awt.Color(158, 174, 187));
 
-        tblForum.setBackground(new java.awt.Color(158, 174, 187));
+        tblForum.setBackground(new java.awt.Color(200,212,222));
         tblForum.setFont(new java.awt.Font("Poppins Medium", 0, 18)); // NOI18N
         tblForum.setForeground(new java.awt.Color(77, 85, 92));
         tblForum.setModel(new javax.swing.table.DefaultTableModel(
@@ -1217,7 +1230,7 @@ public class PageGUI extends javax.swing.JFrame {
         tblForum.setOpaque(false);
         tblForum.setRowHeight(40);
         tblForum.setSelectionBackground(new java.awt.Color(0, 94, 125));
-        tblForum.setSelectionForeground(new java.awt.Color(158, 174, 187));
+        tblForum.setSelectionForeground(new java.awt.Color(200,212,222));
         tblForum.setShowGrid(true);
         tblForum.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1229,7 +1242,7 @@ public class PageGUI extends javax.swing.JFrame {
 
         tblForum.getTableHeader().setForeground(new java.awt.Color(77,85,92));
 
-        tblForum.getTableHeader().setBackground(new java.awt.Color(158, 174, 187));
+        tblForum.getTableHeader().setBackground(new java.awt.Color(200,212,222));
 
         tblForum.getTableHeader().setBorder(new javax.swing.border.LineBorder(new java.awt.Color(77, 85, 92), 1, true));
 
@@ -1252,12 +1265,12 @@ public class PageGUI extends javax.swing.JFrame {
 
         pnlForum.add(sPForum, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 1150, 465));
 
-        pnlFSok.setBackground(new java.awt.Color(158, 174, 187));
+        pnlFSok.setBackground(new java.awt.Color(200, 212, 222));
 
         sepFSok.setBackground(new java.awt.Color(0, 94, 125));
         sepFSok.setForeground(new java.awt.Color(0, 94, 125));
 
-        tfFSok.setBackground(new java.awt.Color(158, 174, 187));
+        tfFSok.setBackground(new java.awt.Color(200, 212, 222));
         tfFSok.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
         tfFSok.setForeground(new java.awt.Color(0, 94, 125));
         tfFSok.setBorder(null);
@@ -1311,7 +1324,7 @@ public class PageGUI extends javax.swing.JFrame {
         });
 
         lblbtnTaBortBloggtrad.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        lblbtnTaBortBloggtrad.setForeground(new java.awt.Color(158, 174, 187));
+        lblbtnTaBortBloggtrad.setForeground(new java.awt.Color(200, 212, 222));
         lblbtnTaBortBloggtrad.setText("Ta Bort Bloggtråd");
         lblbtnTaBortBloggtrad.setIconTextGap(5);
         lblbtnTaBortBloggtrad.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1325,7 +1338,8 @@ public class PageGUI extends javax.swing.JFrame {
 
         jLayeredPane2.add(pnlForum, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        pnlProfilinstallningar.setBackground(new java.awt.Color(158, 174, 187));
+        pnlProfilinstallningar.setBackground(new java.awt.Color(200, 212, 222));
+        pnlProfilinstallningar.setPreferredSize(new java.awt.Dimension(1535, 1020));
 
         lblPIRubrik.setBackground(new java.awt.Color(77, 85, 92));
         lblPIRubrik.setFont(new java.awt.Font("Poppins Medium", 1, 24)); // NOI18N
@@ -1359,8 +1373,8 @@ public class PageGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(202, 100, 91));
-        jButton1.setForeground(new java.awt.Color(204, 204, 204));
+        jButton1.setBackground(new java.awt.Color(0, 94, 125));
+        jButton1.setForeground(new java.awt.Color(245, 245, 245));
         jButton1.setText("Byt lösenord");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1400,8 +1414,8 @@ public class PageGUI extends javax.swing.JFrame {
                 .addComponent(lblPIUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        btnPIUppdatera.setBackground(new java.awt.Color(202, 100, 91));
-        btnPIUppdatera.setForeground(new java.awt.Color(204, 204, 204));
+        btnPIUppdatera.setBackground(new java.awt.Color(0, 94, 125));
+        btnPIUppdatera.setForeground(new java.awt.Color(245, 245, 245));
         btnPIUppdatera.setText("Uppdatera");
         btnPIUppdatera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1522,15 +1536,20 @@ public class PageGUI extends javax.swing.JFrame {
 
         jLayeredPane2.add(pnlProfilinstallningar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        pnlLaggTillAnvandare.setBackground(new java.awt.Color(158, 174, 187));
+        pnlLaggTillAnvandare.setBackground(new java.awt.Color(200, 212, 222));
+        pnlLaggTillAnvandare.setPreferredSize(new java.awt.Dimension(1535, 1020));
 
         lblLaggTillAnvandare.setBackground(new java.awt.Color(77, 85, 92));
         lblLaggTillAnvandare.setFont(new java.awt.Font("Poppins Medium", 1, 48)); // NOI18N
         lblLaggTillAnvandare.setForeground(new java.awt.Color(77, 85, 92));
         lblLaggTillAnvandare.setText("Lägg till användare");
 
+        lblAnvTele.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        lblAnvTele.setForeground(new java.awt.Color(77, 85, 92));
         lblAnvTele.setText("Telefon");
 
+        btnLaggTillAnv.setBackground(new java.awt.Color(0, 94, 125));
+        btnLaggTillAnv.setForeground(new java.awt.Color(245, 245, 245));
         btnLaggTillAnv.setText("Lägg till ny använadare");
         btnLaggTillAnv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1538,8 +1557,12 @@ public class PageGUI extends javax.swing.JFrame {
             }
         });
 
+        lblAdminFraga.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        lblAdminFraga.setForeground(new java.awt.Color(77, 85, 92));
         lblAdminFraga.setText("Admin");
 
+        lblAnvNamn.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        lblAnvNamn.setForeground(new java.awt.Color(77, 85, 92));
         lblAnvNamn.setText("Namn");
 
         cbAdminFraga.setText("Ja");
@@ -1555,6 +1578,8 @@ public class PageGUI extends javax.swing.JFrame {
             }
         });
 
+        lblAnvLosenord.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        lblAnvLosenord.setForeground(new java.awt.Color(77, 85, 92));
         lblAnvLosenord.setText("Lösenord");
 
         tfEmail.addActionListener(new java.awt.event.ActionListener() {
@@ -1563,6 +1588,8 @@ public class PageGUI extends javax.swing.JFrame {
             }
         });
 
+        lblAnvEpost.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        lblAnvEpost.setForeground(new java.awt.Color(77, 85, 92));
         lblAnvEpost.setText("Email");
 
         lblLaggTillAnvError.setForeground(new java.awt.Color(202, 100, 91));
@@ -1631,7 +1658,9 @@ public class PageGUI extends javax.swing.JFrame {
 
         jLayeredPane2.add(pnlLaggTillAnvandare, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        pnlInformelltForum.setBackground(new java.awt.Color(158, 174, 187));
+        pnlInformelltForum.setBackground(new java.awt.Color(200, 212, 222));
+        pnlInformelltForum.setMinimumSize(new java.awt.Dimension(1535, 1020));
+        pnlInformelltForum.setPreferredSize(new java.awt.Dimension(1535, 1020));
         pnlInformelltForum.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnSkapaBloggtradInformellt.setBackground(new java.awt.Color(0, 94, 125));
@@ -1649,7 +1678,7 @@ public class PageGUI extends javax.swing.JFrame {
         });
 
         lblbtnSkapaBloggtradInformellt.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        lblbtnSkapaBloggtradInformellt.setForeground(new java.awt.Color(158, 174, 187));
+        lblbtnSkapaBloggtradInformellt.setForeground(new java.awt.Color(200, 212, 222));
         lblbtnSkapaBloggtradInformellt.setText("Skapa Bloggtråd");
         lblbtnSkapaBloggtradInformellt.setIconTextGap(5);
         lblbtnSkapaBloggtradInformellt.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1673,7 +1702,7 @@ public class PageGUI extends javax.swing.JFrame {
         sPInformelltForum1.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
         sPForum.getViewport().setBackground(new java.awt.Color(158, 174, 187));
 
-        tblInformelltForum.setBackground(new java.awt.Color(158, 174, 187));
+        tblInformelltForum.setBackground(new java.awt.Color(200,212,222));
         tblInformelltForum.setFont(new java.awt.Font("Poppins Medium", 0, 18)); // NOI18N
         tblInformelltForum.setForeground(new java.awt.Color(77, 85, 92));
         tblInformelltForum.setModel(new javax.swing.table.DefaultTableModel(
@@ -1696,7 +1725,7 @@ public class PageGUI extends javax.swing.JFrame {
         tblInformelltForum.setOpaque(false);
         tblInformelltForum.setRowHeight(40);
         tblInformelltForum.setSelectionBackground(new java.awt.Color(0, 94, 125));
-        tblInformelltForum.setSelectionForeground(new java.awt.Color(158, 174, 187));
+        tblInformelltForum.setSelectionForeground(new java.awt.Color(200,212,222));
         tblInformelltForum.setShowGrid(true);
         tblInformelltForum.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1708,7 +1737,7 @@ public class PageGUI extends javax.swing.JFrame {
 
         tblInformelltForum.getTableHeader().setForeground(new java.awt.Color(77,85,92));
 
-        tblInformelltForum.getTableHeader().setBackground(new java.awt.Color(158, 174, 187));
+        tblInformelltForum.getTableHeader().setBackground(new java.awt.Color(200,212,222));
 
         tblInformelltForum.getTableHeader().setBorder(new javax.swing.border.LineBorder(new java.awt.Color(77, 85, 92), 1, true));
 
@@ -1731,12 +1760,12 @@ public class PageGUI extends javax.swing.JFrame {
 
         pnlInformelltForum.add(sPInformelltForum1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 1150, 465));
 
-        pnlIFSok.setBackground(new java.awt.Color(158, 174, 187));
+        pnlIFSok.setBackground(new java.awt.Color(200, 212, 222));
 
         sepIFSok.setBackground(new java.awt.Color(0, 94, 125));
         sepIFSok.setForeground(new java.awt.Color(0, 94, 125));
 
-        tfIFSok1.setBackground(new java.awt.Color(158, 174, 187));
+        tfIFSok1.setBackground(new java.awt.Color(200, 212, 222));
         tfIFSok1.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
         tfIFSok1.setForeground(new java.awt.Color(0, 94, 125));
         tfIFSok1.setBorder(null);
@@ -1790,7 +1819,7 @@ public class PageGUI extends javax.swing.JFrame {
         });
 
         lblbtnTaBortBloggtradInformellt.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        lblbtnTaBortBloggtradInformellt.setForeground(new java.awt.Color(158, 174, 187));
+        lblbtnTaBortBloggtradInformellt.setForeground(new java.awt.Color(200, 212, 222));
         lblbtnTaBortBloggtradInformellt.setText("Ta Bort Bloggtråd");
         lblbtnTaBortBloggtradInformellt.setIconTextGap(5);
         lblbtnTaBortBloggtradInformellt.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1804,7 +1833,8 @@ public class PageGUI extends javax.swing.JFrame {
 
         jLayeredPane2.add(pnlInformelltForum, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        pnlKalender.setBackground(new java.awt.Color(158, 174, 187));
+        pnlKalender.setBackground(new java.awt.Color(200, 212, 222));
+        pnlKalender.setPreferredSize(new java.awt.Dimension(1535, 1020));
         pnlKalender.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblKalender.setBackground(new java.awt.Color(77, 85, 92));
@@ -1833,6 +1863,8 @@ public class PageGUI extends javax.swing.JFrame {
 
         pnlKalender.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 162, 423, 157));
 
+        jButton2.setBackground(new java.awt.Color(0, 94, 125));
+        jButton2.setForeground(new java.awt.Color(245, 245, 245));
         jButton2.setText("Hämta från privat");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1853,6 +1885,8 @@ public class PageGUI extends javax.swing.JFrame {
         lblKalenderText.setText("Välkommen här kan du se din privata och den publika kalendern");
         pnlKalender.add(lblKalenderText, new org.netbeans.lib.awtextra.AbsoluteConstraints(513, 72, -1, -1));
 
+        jButton3.setBackground(new java.awt.Color(0, 94, 124));
+        jButton3.setForeground(new java.awt.Color(245, 245, 245));
         jButton3.setText("Skapa");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1861,6 +1895,8 @@ public class PageGUI extends javax.swing.JFrame {
         });
         pnlKalender.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 482, -1, -1));
 
+        jButton4.setBackground(new java.awt.Color(0, 94, 125));
+        jButton4.setForeground(new java.awt.Color(245, 245, 245));
         jButton4.setText("Hämta från publik");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1869,6 +1905,8 @@ public class PageGUI extends javax.swing.JFrame {
         });
         pnlKalender.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(193, 392, -1, -1));
 
+        jButton5.setBackground(new java.awt.Color(0, 94, 125));
+        jButton5.setForeground(new java.awt.Color(245, 245, 245));
         jButton5.setText("Ge förslag på mötestider");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1933,7 +1971,7 @@ public class PageGUI extends javax.swing.JFrame {
         lblGiveProposes.setText("Tryck på \"Ge förslag på mötestider\" för att bjuda in dina kollegor till ett möte. ");
         pnlKalender.add(lblGiveProposes, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 270, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(158, 174, 187));
+        jPanel1.setBackground(new java.awt.Color(200, 212, 222));
 
         tblMeetingsDecide.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -2388,6 +2426,7 @@ public class PageGUI extends javax.swing.JFrame {
             selectedUserInformation.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         }
     }
+    
     private void btnRefreshChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshChatActionPerformed
         // TODO add your handling code here:
         methods.FetchChat.reloadChat();

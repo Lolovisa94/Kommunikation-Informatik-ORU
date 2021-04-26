@@ -44,7 +44,7 @@ public class changePassword extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(158, 174, 187));
+        jPanel1.setBackground(new java.awt.Color(200, 212, 222));
 
         lblWelcome5.setBackground(new java.awt.Color(77, 85, 92));
         lblWelcome5.setFont(new java.awt.Font("Poppins Medium", 1, 14)); // NOI18N
@@ -69,10 +69,9 @@ public class changePassword extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(77, 85, 92));
         jLabel3.setText("Nytt lösenord:");
 
-        jButton1.setBackground(new java.awt.Color(202, 100, 91));
-        jButton1.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(77, 85, 92));
-        jButton1.setText("Byt lösen");
+        jButton1.setBackground(new java.awt.Color(0, 94, 125));
+        jButton1.setForeground(new java.awt.Color(245, 245, 245));
+        jButton1.setText("Byt lösenord");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -129,7 +128,7 @@ public class changePassword extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(newPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(45, 45, 45))
         );

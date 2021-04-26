@@ -201,9 +201,9 @@ public class PostGUI extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(77, 85, 92));
 
         taPostText.setEditable(false);
-        taPostText.setBackground(new java.awt.Color(158, 174, 187));
+        taPostText.setBackground(new java.awt.Color(200, 212, 222));
         taPostText.setColumns(20);
-        taPostText.setForeground(new java.awt.Color(77, 85, 92));
+        taPostText.setForeground(new java.awt.Color(12, 17, 26));
         taPostText.setLineWrap(true);
         taPostText.setRows(5);
         taPostText.setText(postText);
@@ -212,7 +212,7 @@ public class PostGUI extends javax.swing.JFrame {
 
         lblTitle.setBackground(new java.awt.Color(158, 174, 187));
         lblTitle.setFont(new java.awt.Font("Poppins Medium", 1, 18)); // NOI18N
-        lblTitle.setForeground(new java.awt.Color(158, 174, 187));
+        lblTitle.setForeground(new java.awt.Color(200, 212, 222));
         lblTitle.setText(title);
 
         jScrollPane1.setBackground(new java.awt.Color(158, 174, 187));
@@ -220,7 +220,7 @@ public class PostGUI extends javax.swing.JFrame {
         jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(panelBox);
 
-        panelBox.setBackground(new java.awt.Color(158, 174, 187));
+        panelBox.setBackground(new java.awt.Color(200, 212, 222));
         panelBox.setAlignmentY(0.0F);
         panelBox.setAlignmentY(0.0F);
         panelBox.setLayout(new javax.swing.BoxLayout(panelBox, javax.swing.BoxLayout.PAGE_AXIS));
@@ -246,7 +246,7 @@ public class PostGUI extends javax.swing.JFrame {
 
         lblAuthor.setBackground(new java.awt.Color(158, 174, 187));
         lblAuthor.setFont(new java.awt.Font("Poppins Medium", 1, 12)); // NOI18N
-        lblAuthor.setForeground(new java.awt.Color(158, 174, 187));
+        lblAuthor.setForeground(new java.awt.Color(200, 212, 222));
         lblAuthor.setText(publisher);
 
         btnPGComment.setBackground(new java.awt.Color(0, 94, 125));

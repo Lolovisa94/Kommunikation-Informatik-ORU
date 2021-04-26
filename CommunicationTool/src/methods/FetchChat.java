@@ -64,7 +64,7 @@ public class FetchChat {
         if (!rightAlligned) {
             chatPanel.add(Box.createHorizontalGlue());
             chatPanel.add(chatLabel);
-            chatLabel.setBackground(Color.gray);
+            chatLabel.setBackground(new java.awt.Color(200,212,222));
         } else {
             chatPanel.add(chatLabel);
             chatPanel.add(Box.createHorizontalGlue());

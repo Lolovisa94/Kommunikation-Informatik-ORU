@@ -43,7 +43,7 @@ public class CommentGUI extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(77, 85, 92));
 
-        taCGText.setBackground(new java.awt.Color(158, 174, 187));
+        taCGText.setBackground(new java.awt.Color(200, 212, 222));
         taCGText.setColumns(20);
         taCGText.setForeground(new java.awt.Color(77, 85, 92));
         taCGText.setLineWrap(true);
@@ -51,8 +51,8 @@ public class CommentGUI extends javax.swing.JFrame {
         taCGText.setWrapStyleWord(true);
         jScrollPane2.setViewportView(taCGText);
 
-        btnPGPostComment.setBackground(new java.awt.Color(202, 100, 91));
-        btnPGPostComment.setForeground(new java.awt.Color(158, 174, 187));
+        btnPGPostComment.setBackground(new java.awt.Color(0, 94, 125));
+        btnPGPostComment.setForeground(new java.awt.Color(245, 245, 245));
         btnPGPostComment.setText("Posta kommentar");
         btnPGPostComment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,7 +60,8 @@ public class CommentGUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setForeground(new java.awt.Color(158, 174, 187));
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(200, 212, 222));
         jLabel2.setText("Ny kommentar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -88,7 +89,7 @@ public class CommentGUI extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnPGPostComment)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

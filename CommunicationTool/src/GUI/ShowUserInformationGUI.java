@@ -70,7 +70,7 @@ public class ShowUserInformationGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(158, 174, 187));
+        jPanel1.setBackground(new java.awt.Color(200, 212, 222));
 
         lblIngetSokresultat.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         lblIngetSokresultat.setForeground(new java.awt.Color(77, 85, 92));
