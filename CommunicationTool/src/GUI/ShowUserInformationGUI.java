@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -44,7 +45,7 @@ public class ShowUserInformationGUI extends javax.swing.JFrame {
         UserPositionOnMap();
         
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -325,16 +326,16 @@ public class ShowUserInformationGUI extends javax.swing.JFrame {
         lblUserPosition.setText(userLatestLoginCity);
     }
     
-    //Metod för att hämta karta med användarens position och fylla en JPanel med denna. Precision på ca 1,5 km.
+    //Metod för att hämta karta med användarens position och fylla en JPanel med denna. Visar vilken stad användaren loggade in i senast.
     public void UserPositionOnMap() {
-
+        String destinationFile = "image_" + userID + ".jpg";
         try {
             String imageUrl = "http://open.mapquestapi.com/staticmap/v4/getmap?key=7KbAOgw7xHYVG78wtPuQxqXuTWblA5I6&size=600,600&zoom=15&center=" + userLatestLoginLocation + "&pois=red_1," + userLatestLoginLocation + ",0,0&type=map";
-            String destinationFile = "image.jpg";
-            String str = destinationFile;
+            
+            //String str = destinationFile;
             URL url = new URL(imageUrl);
             InputStream is = url.openStream();
-            OutputStream os = new FileOutputStream(destinationFile);
+            OutputStream os = new FileOutputStream(destinationFile, false);
 
             byte[] b = new byte[2048];
             int length;
@@ -350,10 +351,20 @@ public class ShowUserInformationGUI extends javax.swing.JFrame {
         }
         
         //Fyller pnlMap med bilden som innehåller karta med markerad position.
-        ImageIcon imageMap = new ImageIcon("image.jpg");
+        ImageIcon imageMap = new ImageIcon(destinationFile);
         JLabel imageLabel = new JLabel("", imageMap, JLabel.CENTER);
+        
+        
         pnlMap.setLayout(new BorderLayout());
         pnlMap.add(imageLabel, BorderLayout.CENTER);
+        pnlMap.revalidate();
+        pnlMap.repaint();
+
+        //Tar bort filen om den finns.
+        File imageFile = new File(destinationFile);
+        if(imageFile.exists()) {
+            imageFile.delete(); 
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
