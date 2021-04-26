@@ -360,10 +360,17 @@ public class CreatePostGUI extends javax.swing.JFrame {
         //Ny kod, ersätter det som är utkommenterat i denna klass. 
 //        if (createPostNow) {
 //            new CreatePost();
-            dispose();
-        CurrentFP.currentFP.postList();
-        CurrentIFP.currentIFP.postList();
+            if(PageGUI.isSelectedForum()){
+            CurrentFP.currentFP.postList();
             
+            } else{
+            
+            CurrentIFP.currentIFP.postList();
+            }
+            dispose();
+            
+
+        
 //        }
     }
 

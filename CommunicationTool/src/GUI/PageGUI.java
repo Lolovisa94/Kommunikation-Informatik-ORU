@@ -2596,6 +2596,10 @@ public class PageGUI extends javax.swing.JFrame {
         }
 
     }
+    
+    public static boolean isSelectedForum(){
+    return isSelForum;
+    }
 
     private boolean isSelStartsida;
     private boolean isSelSokfunktion;
@@ -2603,7 +2607,7 @@ public class PageGUI extends javax.swing.JFrame {
     private boolean isSelMeddelanden;
     private boolean isSelKalender;
     private boolean isSelInformelltForum;
-    private boolean isSelForum;
+    private static boolean isSelForum;
     private boolean isSelAdminfunktionalitet;
 
 
