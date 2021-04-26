@@ -9,6 +9,9 @@ import Connectivity.ConnectionClass;
 import Objects.CurrentUser;
 import Methods.SearchUser;
 import Objects.CurrentDM;
+import Objects.CurrentFP;
+import Objects.CurrentIFP;
+import Objects.CurrentSM;
 import Validation.Validation;
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
@@ -113,7 +116,12 @@ public class PageGUI extends javax.swing.JFrame {
     public void selectForum() {
         resetPanel();
         resetMenu();
-        currentFetchPosts = new FetchPosts();
+        if (CurrentFP.currentFP == null) {
+            FetchPosts createdFP = new FetchPosts();
+            CurrentFP currentFP = new CurrentFP(createdFP);
+        } else {
+            CurrentFP.currentFP.postList();
+        }
         selForum.setVisible(true);
         pnlForum.setVisible(true);
         isSelForum = true;
@@ -125,7 +133,13 @@ public class PageGUI extends javax.swing.JFrame {
     public void selectInformelltForum() {
         resetPanel();
         resetMenu();
-        new FetchInformalPosts();
+        if (CurrentIFP.currentIFP == null) {
+            FetchInformalPosts createdIFP = new FetchInformalPosts();
+            CurrentIFP currentIFP = new CurrentIFP(createdIFP);
+        } else {
+            CurrentIFP.currentIFP.postList();
+        }
+
         selInformelltForum.setVisible(true);
         pnlInformelltForum.setVisible(true);
         isSelInformelltForum = true;
@@ -135,19 +149,26 @@ public class PageGUI extends javax.swing.JFrame {
     }
 
     public void selectKalender() {
-           resetPanel();
+        resetPanel();
         resetMenu();
         selKalender.setVisible(true);
         pnlKalender.setVisible(true);
         isSelKalender = true;
-        SuggestMeeting h = new SuggestMeeting();
-        h.showSuggestedMeetings(tblMeetings, CurrentUser.currentUser.getID());
-                    if(CurrentDM.currentDM == null){
-                    DecideMeeting createdDM = new DecideMeeting(tblMeetingsDecide);
-                    CurrentDM currentDM = new CurrentDM(createdDM);
-                    } else {
-                            CurrentDM.currentDM.fillMeetingDecideTable(tblMeetingsDecide);
-                    }
+
+        if (CurrentSM.currentSM == null) {
+            SuggestMeeting createdSM = new SuggestMeeting();
+            CurrentSM currentSM = new CurrentSM(createdSM);
+            CurrentSM.currentSM.showSuggestedMeetings(tblMeetings, CurrentUser.currentUser.getID());
+        } else {
+            CurrentDM.currentDM.fillMeetingDecideTable(tblMeetingsDecide);
+        }
+
+        if (CurrentDM.currentDM == null) {
+            DecideMeeting createdDM = new DecideMeeting(tblMeetingsDecide);
+            CurrentDM currentDM = new CurrentDM(createdDM);
+        } else {
+            CurrentDM.currentDM.fillMeetingDecideTable(tblMeetingsDecide);
+        }
     }
 
     public void selectMeddelanden() {
@@ -455,7 +476,7 @@ public class PageGUI extends javax.swing.JFrame {
         });
 
         lblBtnAdminfunktionalitet.setFont(new java.awt.Font("Poppins Medium", 0, 24)); // NOI18N
-        lblBtnAdminfunktionalitet.setForeground(new java.awt.Color(158, 174, 187));
+        lblBtnAdminfunktionalitet.setForeground(new java.awt.Color(200, 212, 222));
         lblBtnAdminfunktionalitet.setText("Lägg Till Användare");
 
         selAdminfunktionalitet.setBackground(new java.awt.Color(202, 100, 91));
@@ -2426,7 +2447,7 @@ public class PageGUI extends javax.swing.JFrame {
             selectedUserInformation.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         }
     }
-    
+
     private void btnRefreshChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshChatActionPerformed
         // TODO add your handling code here:
         methods.FetchChat.reloadChat();
@@ -2442,7 +2463,6 @@ public class PageGUI extends javax.swing.JFrame {
 
     private void btnStartChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartChatActionPerformed
         // TODO add your handling code here:
-
         int row = tblSoktaAnvandare.getSelectedRow();
         String chatUserName = tblSoktaAnvandare.getValueAt(row, 0).toString();
         if (methods.FetchChat.checkIfChatExists(chatUserName)) {
@@ -2533,7 +2553,7 @@ public class PageGUI extends javax.swing.JFrame {
         DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
         String s = format.format(date);
 
-        System.out.println("testning " +  s);
+        System.out.println("testning " + s);
         //jTextField1.setText(format.format(date));
         Calendar c = new Calendar();
         c.privateCalendar(jTable1, s);
@@ -2553,7 +2573,7 @@ public class PageGUI extends javax.swing.JFrame {
         DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
         String s = format.format(date);
 
-        System.out.println("testning " +  s);
+        System.out.println("testning " + s);
         //jTextField1.setText(format.format(date));
         Calendar c = new Calendar();
         c.publicCalendar(jTable1, s);

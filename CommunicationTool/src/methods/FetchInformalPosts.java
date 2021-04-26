@@ -23,8 +23,8 @@ public class FetchInformalPosts {
     private ResultSet rs = null;
 
     public FetchInformalPosts(){
-    
     postList();
+    mouseClicker();
     }
     
     public void openText()
@@ -103,7 +103,7 @@ public class FetchInformalPosts {
                     model.insertRow(PageGUI.tblInformelltForum.getRowCount(), new Object[] {category, title, publisher, date});
                     
                 }
-                mouseClicker();
+
             } catch (Exception e) {
                 System.out.println(e);
             }

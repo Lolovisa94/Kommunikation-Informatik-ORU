@@ -38,20 +38,14 @@ public class FetchComments{
 //    }
 
     public FetchComments(int postID) {
-//        timer();
+
         this.postID = postID;
         String[] nyMessages = {};
-//        GUI.PostGUI.addMessage(nyMessages[0]);
-//        this.msgCounter = 0;
+
         this.messages = nyMessages;
         getMessages();
         sortMessages();
         addMessages();
-        
-
-//        run();
-
-
 
     }
 

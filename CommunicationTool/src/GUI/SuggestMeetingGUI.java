@@ -7,10 +7,13 @@ package GUI;
  
 
 import Connectivity.ConnectionClass;
+import static GUI.PageGUI.tblMeetingsDecide;
 import Objects.CurrentUser;
 import Validation.Validation;
 
 import Methods.SearchUser;
+import Objects.CurrentDM;
+import Objects.CurrentSM;
 import com.mysql.cj.MysqlType;
 import java.awt.Component;
 import java.sql.ResultSet;
@@ -393,22 +396,21 @@ Statement st;
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        SuggestMeeting h = new SuggestMeeting();
         if(jTable1.getRowCount()<1){
             JOptionPane.showMessageDialog(null, "Du måste föreslå minst en tid för att kunna skapa ett mötesförslag");
         }
         if(jTable1.getRowCount()==1){
        
-        h.createSuggestion1(CurrentUser.currentUser.getID(),jTextField1.getText(), jTextField4.getText(), jTable1.getModel().getValueAt(0,1 ).toString(), jTable1.getModel().getValueAt(0,2).toString(), jTable1.getModel().getValueAt(0,0).toString());
-        suggestedMeetingID=h.getSuggestedMeetingID();
+        CurrentSM.currentSM.createSuggestion1(CurrentUser.currentUser.getID(),jTextField1.getText(), jTextField4.getText(), jTable1.getModel().getValueAt(0,1 ).toString(), jTable1.getModel().getValueAt(0,2).toString(), jTable1.getModel().getValueAt(0,0).toString());
+        suggestedMeetingID=CurrentSM.currentSM.getSuggestedMeetingID();
         }
         if(jTable1.getRowCount()==2){
-            h.createSuggestion2(CurrentUser.currentUser.getID(),jTextField1.getText(), jTextField4.getText(),jTable1.getModel().getValueAt(0,1 ).toString(), jTable1.getModel().getValueAt(0,2).toString(), jTable1.getModel().getValueAt(0,0).toString(), jTable1.getModel().getValueAt(1,1).toString(), jTable1.getModel().getValueAt(1,2).toString(), jTable1.getModel().getValueAt(1,0).toString());
-            suggestedMeetingID=h.getSuggestedMeetingID();
+            CurrentSM.currentSM.createSuggestion2(CurrentUser.currentUser.getID(),jTextField1.getText(), jTextField4.getText(),jTable1.getModel().getValueAt(0,1 ).toString(), jTable1.getModel().getValueAt(0,2).toString(), jTable1.getModel().getValueAt(0,0).toString(), jTable1.getModel().getValueAt(1,1).toString(), jTable1.getModel().getValueAt(1,2).toString(), jTable1.getModel().getValueAt(1,0).toString());
+            suggestedMeetingID=CurrentSM.currentSM.getSuggestedMeetingID();
         }
         if(jTable1.getRowCount()==3){
-        h.createSuggestion3(CurrentUser.currentUser.getID(),jTextField1.getText(), jTextField4.getText(),jTable1.getModel().getValueAt(0,1 ).toString(),jTable1.getModel().getValueAt(0,2 ).toString(), jTable1.getModel().getValueAt(0,0 ).toString(), jTable1.getModel().getValueAt(1,1 ).toString(), jTable1.getModel().getValueAt(1,2 ).toString(), jTable1.getModel().getValueAt(1,0 ).toString(), jTable1.getModel().getValueAt(2,1 ).toString(), jTable1.getModel().getValueAt(2,2 ).toString(), jTable1.getModel().getValueAt(2,0 ).toString());
-        suggestedMeetingID=h.getSuggestedMeetingID();
+        CurrentSM.currentSM.createSuggestion3(CurrentUser.currentUser.getID(),jTextField1.getText(), jTextField4.getText(),jTable1.getModel().getValueAt(0,1 ).toString(),jTable1.getModel().getValueAt(0,2 ).toString(), jTable1.getModel().getValueAt(0,0 ).toString(), jTable1.getModel().getValueAt(1,1 ).toString(), jTable1.getModel().getValueAt(1,2 ).toString(), jTable1.getModel().getValueAt(1,0 ).toString(), jTable1.getModel().getValueAt(2,1 ).toString(), jTable1.getModel().getValueAt(2,2 ).toString(), jTable1.getModel().getValueAt(2,0 ).toString());
+        suggestedMeetingID=CurrentSM.currentSM.getSuggestedMeetingID();
         }
 
     for (int i = 0; i < jTable3.getRowCount(); i++) {
@@ -417,10 +419,11 @@ Statement st;
         email.add(jTable3.getValueAt(i,1).toString());
     }
     for(int i=0; i<email.size(); i++){
-        h.inviteOtherToMeeting(email.get(i),suggestedMeetingID);
+       CurrentSM.currentSM.inviteOtherToMeeting(email.get(i),suggestedMeetingID);
       
     }
     JOptionPane.showMessageDialog(null, "Du har nu skapat en inbjudan");
+    CurrentDM.currentDM.fillMeetingDecideTable(tblMeetingsDecide);
     dispose();
     
   
