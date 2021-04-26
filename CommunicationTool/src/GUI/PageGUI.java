@@ -8,22 +8,29 @@ package GUI;
 import Connectivity.ConnectionClass;
 import Objects.CurrentUser;
 import Methods.SearchUser;
+import Objects.CurrentDM;
 import Validation.Validation;
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.swing.JFrame;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.RowSorter;
 import javax.swing.SortOrder;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import methods.Calendar;
+import methods.DecideMeeting;
 import methods.EditForum;
 import methods.FetchChat;
 import methods.FetchInformalPosts;
 import methods.FetchPosts;
+import methods.SuggestMeeting;
 import methods.User;
 
 /**
@@ -128,11 +135,19 @@ public class PageGUI extends javax.swing.JFrame {
     }
 
     public void selectKalender() {
-        resetPanel();
+           resetPanel();
         resetMenu();
         selKalender.setVisible(true);
         pnlKalender.setVisible(true);
         isSelKalender = true;
+        SuggestMeeting h = new SuggestMeeting();
+        h.showSuggestedMeetings(tblMeetings, CurrentUser.currentUser.getID());
+                    if(CurrentDM.currentDM == null){
+                    DecideMeeting createdDM = new DecideMeeting(tblMeetingsDecide);
+                    CurrentDM currentDM = new CurrentDM(createdDM);
+                    } else {
+                            CurrentDM.currentDM.fillMeetingDecideTable(tblMeetingsDecide);
+                    }
     }
 
     public void selectMeddelanden() {
@@ -243,8 +258,6 @@ public class PageGUI extends javax.swing.JFrame {
         jLayeredPane2 = new javax.swing.JLayeredPane();
         pnlStartsida = new javax.swing.JPanel();
         lblWelcome = new javax.swing.JLabel();
-        pnlKalender = new javax.swing.JPanel();
-        lblKalender = new javax.swing.JLabel();
         pnlMeddelanden = new javax.swing.JPanel();
         lblMeddelanden = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -330,6 +343,29 @@ public class PageGUI extends javax.swing.JFrame {
         iconSearch1 = new javax.swing.JLabel();
         btnTaBortBloggtradInformellt = new javax.swing.JPanel();
         lblbtnTaBortBloggtradInformellt = new javax.swing.JLabel();
+        pnlKalender = new javax.swing.JPanel();
+        lblKalender = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+        lblKalenderFelText = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        lblKalenderText = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tblMeetings = new javax.swing.JTable();
+        lblChooseDateToGet = new javax.swing.JLabel();
+        lblCreate = new javax.swing.JLabel();
+        lblYourCalender = new javax.swing.JLabel();
+        pnlCalenderDivider = new javax.swing.JPanel();
+        lblMeetingAccept = new javax.swing.JLabel();
+        lblGiveProposes = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tblMeetingsDecide = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -817,32 +853,6 @@ public class PageGUI extends javax.swing.JFrame {
         );
 
         jLayeredPane2.add(pnlStartsida, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        pnlKalender.setBackground(new java.awt.Color(158, 174, 187));
-
-        lblKalender.setBackground(new java.awt.Color(77, 85, 92));
-        lblKalender.setFont(new java.awt.Font("Poppins Medium", 1, 48)); // NOI18N
-        lblKalender.setForeground(new java.awt.Color(77, 85, 92));
-        lblKalender.setText("Kalender");
-
-        javax.swing.GroupLayout pnlKalenderLayout = new javax.swing.GroupLayout(pnlKalender);
-        pnlKalender.setLayout(pnlKalenderLayout);
-        pnlKalenderLayout.setHorizontalGroup(
-            pnlKalenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlKalenderLayout.createSequentialGroup()
-                .addGap(413, 413, 413)
-                .addComponent(lblKalender)
-                .addContainerGap(927, Short.MAX_VALUE))
-        );
-        pnlKalenderLayout.setVerticalGroup(
-            pnlKalenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlKalenderLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(lblKalender, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(898, Short.MAX_VALUE))
-        );
-
-        jLayeredPane2.add(pnlKalender, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pnlMeddelanden.setBackground(new java.awt.Color(158, 174, 187));
         pnlMeddelanden.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1794,6 +1804,184 @@ public class PageGUI extends javax.swing.JFrame {
 
         jLayeredPane2.add(pnlInformelltForum, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        pnlKalender.setBackground(new java.awt.Color(158, 174, 187));
+        pnlKalender.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblKalender.setBackground(new java.awt.Color(77, 85, 92));
+        lblKalender.setFont(new java.awt.Font("Poppins Medium", 1, 48)); // NOI18N
+        lblKalender.setForeground(new java.awt.Color(77, 85, 92));
+        lblKalender.setText("Kalender");
+        pnlKalender.add(lblKalender, new org.netbeans.lib.awtextra.AbsoluteConstraints(599, 6, -1, 60));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Namn", "Starttid", "Sluttid", "Beskrivning", "Datum"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(jTable1);
+
+        pnlKalender.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 162, 423, 157));
+
+        jButton2.setText("Hämta från privat");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        pnlKalender.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(193, 357, 126, -1));
+
+        lblKalenderFelText.setBackground(new java.awt.Color(77, 85, 92));
+        lblKalenderFelText.setFont(new java.awt.Font("Poppins Medium", 1, 12)); // NOI18N
+        lblKalenderFelText.setForeground(new java.awt.Color(0, 0, 0));
+        pnlKalender.add(lblKalenderFelText, new org.netbeans.lib.awtextra.AbsoluteConstraints(499, 357, 306, 22));
+        pnlKalender.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 357, -1, -1));
+
+        lblKalenderText.setBackground(new java.awt.Color(77, 85, 92));
+        lblKalenderText.setFont(new java.awt.Font("Poppins Medium", 1, 12)); // NOI18N
+        lblKalenderText.setForeground(new java.awt.Color(77, 85, 92));
+        lblKalenderText.setText("Välkommen här kan du se din privata och den publika kalendern");
+        pnlKalender.add(lblKalenderText, new org.netbeans.lib.awtextra.AbsoluteConstraints(513, 72, -1, -1));
+
+        jButton3.setText("Skapa");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        pnlKalender.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 482, -1, -1));
+
+        jButton4.setText("Hämta från publik");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        pnlKalender.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(193, 392, -1, -1));
+
+        jButton5.setText("Ge förslag på mötestider");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        pnlKalender.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 300, -1, -1));
+
+        tblMeetings.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Mötesnamn", "Skapare"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(tblMeetings);
+
+        pnlKalender.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 160, 441, 89));
+
+        lblChooseDateToGet.setForeground(new java.awt.Color(60, 63, 65));
+        lblChooseDateToGet.setText("Välj datum och hämta dina eller publika möten det specifika datumet.");
+        pnlKalender.add(lblChooseDateToGet, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 331, -1, -1));
+
+        lblCreate.setForeground(new java.awt.Color(60, 63, 65));
+        lblCreate.setText("Tryck på \"Skapa\" för att boka in privata händelser, eller publika möten.");
+        pnlKalender.add(lblCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 461, -1, -1));
+
+        lblYourCalender.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lblYourCalender.setForeground(new java.awt.Color(60, 63, 65));
+        lblYourCalender.setText("Din Kalender");
+        pnlKalender.add(lblYourCalender, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 122, -1, -1));
+
+        pnlCalenderDivider.setPreferredSize(new java.awt.Dimension(2, 580));
+
+        javax.swing.GroupLayout pnlCalenderDividerLayout = new javax.swing.GroupLayout(pnlCalenderDivider);
+        pnlCalenderDivider.setLayout(pnlCalenderDividerLayout);
+        pnlCalenderDividerLayout.setHorizontalGroup(
+            pnlCalenderDividerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 2, Short.MAX_VALUE)
+        );
+        pnlCalenderDividerLayout.setVerticalGroup(
+            pnlCalenderDividerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 580, Short.MAX_VALUE)
+        );
+
+        pnlKalender.add(pnlCalenderDivider, new org.netbeans.lib.awtextra.AbsoluteConstraints(683, 151, -1, 580));
+
+        lblMeetingAccept.setForeground(new java.awt.Color(60, 63, 65));
+        lblMeetingAccept.setText("Tryck på ett möte nedan för att tacka ja eller nej till inbjudan. ");
+        pnlKalender.add(lblMeetingAccept, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 140, -1, -1));
+
+        lblGiveProposes.setForeground(new java.awt.Color(60, 63, 65));
+        lblGiveProposes.setText("Tryck på \"Ge förslag på mötestider\" för att bjuda in dina kollegor till ett möte. ");
+        pnlKalender.add(lblGiveProposes, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 270, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(158, 174, 187));
+
+        tblMeetingsDecide.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Mötesnamn", "Antal som röstat"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(tblMeetingsDecide);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 450, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        pnlKalender.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 410, 450, 100));
+
+        jLabel1.setForeground(new java.awt.Color(60, 63, 65));
+        jLabel1.setText("Tryck på ett möte nedan för att fastställa en mötestid.");
+        pnlKalender.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 390, -1, -1));
+
+        jLayeredPane2.add(pnlKalender, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         panelMenuBackground.add(jLayeredPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 1500, 1020));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -2232,13 +2420,13 @@ public class PageGUI extends javax.swing.JFrame {
 
     private void btnInformelltForumMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInformelltForumMouseEntered
         if (!isSelInformelltForum) {
-            selInformelltForum.setVisible(false);
+            selInformelltForum.setVisible(true);
         }
     }//GEN-LAST:event_btnInformelltForumMouseEntered
 
     private void btnInformelltForumMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInformelltForumMouseExited
         if (!isSelInformelltForum) {
-            selInformelltForum.setVisible(true);
+            selInformelltForum.setVisible(false);
         }
     }//GEN-LAST:event_btnInformelltForumMouseExited
 
@@ -2299,6 +2487,45 @@ public class PageGUI extends javax.swing.JFrame {
         btnTaBortBloggtradInformellt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 94, 125), 2, true));
     }//GEN-LAST:event_btnTaBortBloggtradInformelltMouseExited
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+
+        Date date = jDateChooser1.getDate();
+        DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+        String s = format.format(date);
+
+        System.out.println("testning " +  s);
+        //jTextField1.setText(format.format(date));
+        Calendar c = new Calendar();
+        c.privateCalendar(jTable1, s);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+
+        BookMeetingGUI book = new BookMeetingGUI();
+        book.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+
+        Date date = jDateChooser1.getDate();
+        DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+        String s = format.format(date);
+
+        System.out.println("testning " +  s);
+        //jTextField1.setText(format.format(date));
+        Calendar c = new Calendar();
+        c.publicCalendar(jTable1, s);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        SuggestMeetingGUI a = new SuggestMeetingGUI();
+        a.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     public void setRadio() {
 
         if (CurrentUser.currentUser.getNotify().equals("J")) {
@@ -2349,12 +2576,23 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel iconSearch;
     private javax.swing.JLabel iconSearch1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane2;
+    private javax.swing.JPanel jPanel1;
     public static javax.swing.JRadioButton jRadioButton1;
     public static javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    public javax.swing.JTable jTable1;
     private javax.swing.JLabel lblAdminFraga;
     private javax.swing.JLabel lblAnvEpost;
     private javax.swing.JLabel lblAnvLosenord;
@@ -2368,17 +2606,23 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblBtnSokfunktion;
     private javax.swing.JLabel lblBtnStartsida;
     private javax.swing.JLabel lblBtnStartsida4;
+    private javax.swing.JLabel lblChooseDateToGet;
+    private javax.swing.JLabel lblCreate;
     private javax.swing.JLabel lblFAllmant;
     private javax.swing.JLabel lblFForskning;
     private javax.swing.JLabel lblFUtbildning;
     private javax.swing.JLabel lblFVisaKategorier;
     private javax.swing.JLabel lblForum;
+    private javax.swing.JLabel lblGiveProposes;
     private javax.swing.JLabel lblISokresultat;
     private javax.swing.JLabel lblInformelltForum;
     private javax.swing.JLabel lblKalender;
+    public static javax.swing.JLabel lblKalenderFelText;
+    private javax.swing.JLabel lblKalenderText;
     private javax.swing.JLabel lblLaggTillAnvError;
     private javax.swing.JLabel lblLaggTillAnvandare;
     private javax.swing.JLabel lblMeddelanden;
+    private javax.swing.JLabel lblMeetingAccept;
     private javax.swing.JLabel lblOrebro;
     private javax.swing.JLabel lblPIEmail;
     private static javax.swing.JLabel lblPIFelmeddelandeNamn;
@@ -2393,6 +2637,7 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblSokfunktion;
     private javax.swing.JLabel lblUniversitet;
     private javax.swing.JLabel lblWelcome;
+    private javax.swing.JLabel lblYourCalender;
     private javax.swing.JLabel lblbtnSkapaBloggtrad;
     private javax.swing.JLabel lblbtnSkapaBloggtradInformellt;
     private javax.swing.JLabel lblbtnSokAnvandare;
@@ -2403,6 +2648,7 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JPanel panelMenu;
     private javax.swing.JPanel panelMenuBackground;
     private javax.swing.JPanel panelMenuLogga;
+    private javax.swing.JPanel pnlCalenderDivider;
     private javax.swing.JPanel pnlFSok;
     private javax.swing.JPanel pnlFVisaKategorier;
     private javax.swing.JPanel pnlForum;
@@ -2432,6 +2678,8 @@ public class PageGUI extends javax.swing.JFrame {
     public static javax.swing.JTable tblChats;
     public static javax.swing.JTable tblForum;
     public static javax.swing.JTable tblInformelltForum;
+    public static javax.swing.JTable tblMeetings;
+    public static javax.swing.JTable tblMeetingsDecide;
     private javax.swing.JTable tblSoktaAnvandare;
     private javax.swing.JTextField tfAnvNamn;
     private javax.swing.JTextField tfAnvTelefon;
