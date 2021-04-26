@@ -9,7 +9,10 @@ import Objects.CurrentComments;
 import Objects.CurrentUser;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.SftpException;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
 import java.sql.ResultSet;
@@ -19,6 +22,7 @@ import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -26,6 +30,7 @@ import javax.swing.JTextArea;
 import javax.swing.Timer;
 import javax.swing.border.Border;
 import javax.swing.text.DefaultCaret;
+import methods.FetchCommentLikes;
 import methods.FetchComments;
 import methods.Filnamn;
 import methods.LikePost;
@@ -35,6 +40,9 @@ import methods.SFPT;
  *
  * @author pierre
  */
+import javax.swing.ImageIcon;
+import methods.LikeComment;
+
 public class PostGUI extends javax.swing.JFrame {
 
     private String[] messages = {};
@@ -52,75 +60,112 @@ public class PostGUI extends javax.swing.JFrame {
     public static boolean admin;
     public String fileObject;
     public boolean isLiked = false;
+    public static int lblWidth;
+    public static Dimension lblSize;
+    public static JPanel commentNLike = new JPanel();
+    public ImageIcon likeIcon = new ImageIcon(getClass().getResource("/Images/likeIcon.png"));
+    public static ImageIcon likesIcon;
 
     /**
      * Creates new form PostGUI
      */
     public PostGUI(int postID, String publisher, String title, String postText) {
-        
+
         this.postID = postID;
         this.publisher = publisher;
         this.title = title;
         this.postText = postText;
         Filnamn fil = new Filnamn();
-        this.fileObject= fil.getFileObject(postID);
-        
-        
-        
-        
-        initComponents();
-     new FetchComments(postID);
-     btnPGUppdateraPost.setVisible(false);
-     btnPGRedigera.setVisible(false);
-     
-     if(CurrentUser.currentUser.isAdmin() || CurrentUser.currentUser.getName().equals(publisher)){
-         btnPGRedigera.setVisible(true);
-     }
-     if(fileObject==null){
-     btnHämtaFil.setVisible(false);
-     }
-     
-     if(LikePost.checkLike(postID)){
-         if(LikePost.checkLikeJN(postID)){
-         btnPGLike.setBackground(new java.awt.Color(202, 100, 91));
-         isLiked = true;}
-     
-     }
-     
-     
-   
-    Integer nrLikes = LikePost.likeCounter(postID);
-    lblPostLike.setText(nrLikes.toString());
-     //CurrentUser.currentUser.isAdmin();
-     //CurrentUser.currentUser.getName();
-    }
-    
-        public static void addMessage(String text) {
-//        boolean oddMessage = msgCounter % 2 != 0;
-//        Color color = oddMessage ? Color.WHITE : Color.GRAY;
+        this.fileObject = fil.getFileObject(postID);
+        System.out.println("filobjekt = " + fileObject);
 
+        this.likesIcon = likeIcon;
+
+        initComponents();
+        new FetchComments(postID);
+        btnPGUppdateraPost.setVisible(false);
+        btnPGRedigera.setVisible(false);
+
+        if (CurrentUser.currentUser.isAdmin() || CurrentUser.currentUser.getName().equals(publisher)) {
+            btnPGRedigera.setVisible(true);
+        }
+        if (fileObject == null) {
+            btnHämtaFil.setVisible(false);
+        }
+
+        if (LikePost.checkLike(postID)) {
+            if (LikePost.checkLikeJN(postID)) {
+                btnPGLike.setBackground(new java.awt.Color(202, 100, 91));
+                isLiked = true;
+            }
+
+        }
+
+        Integer nrLikes = LikePost.likeCounter(postID);
+        lblPostLike.setText(nrLikes.toString());
+
+    }
+
+    public static void clearMessage() {
+        panelBox.removeAll();
+        panelBox.revalidate();
+        panelBox.repaint();
+
+    }
+
+    public static void addMessage(String text, String likes, int commentID) {
         JTextArea label = new JTextArea();
-                DefaultCaret caret = (DefaultCaret) label.getCaret();
+
+        DefaultCaret caret = (DefaultCaret) label.getCaret();
         caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
         label.setText(text);
-
         label.setMaximumSize(new java.awt.Dimension(600, 600));
         label.setLineWrap(true);
         label.setOpaque(true);
         label.setBackground(new java.awt.Color(158, 174, 187));
-//        label.setBackground(color);
-        Border border = BorderFactory.createLineBorder(new java.awt.Color(77,85,92));
+        Border border = BorderFactory.createLineBorder(new java.awt.Color(77, 85, 92));
         label.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 
-//    JPanel panelBox = new JPanel();
-//    panelBox.setLayout(new BoxLayout(panelBox, BoxLayout.X_AXIS));
-//    panelBox.setBorder(BorderFactory.createEmptyBorder(2,4,2,4));
+        JPanel btnCLike = new JPanel();
+        if(methods.LikeComment.checkLikeJN(commentID)){
+        btnCLike.setBackground(new java.awt.Color(202, 100, 91));
+        
+        } else{
+        btnCLike.setBackground(new java.awt.Color(77, 85, 92));
+        }
+        btnCLike.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 100, 91), 2, true));
+
+        btnCLike.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCLikeMouseClicked(evt);
+                new LikeComment(commentID);
+                clearMessage();
+                new FetchComments(postID);
+//                String query = likeear.toString();
+//                skrivUt(query);
+            }
+        });
+
+        JLabel lblCommentLike = new JLabel();
+
+        lblCommentLike.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
+
+        lblCommentLike.setForeground(new java.awt.Color(234, 234, 234));
+
+        lblCommentLike.setIcon(likesIcon);
+
+        lblCommentLike.setText(likes);
+
+        btnCLike.add(lblCommentLike);
 
         panelBox.add(label);
-       
-//    panel.add(panelBox);
-//    panel.revalidate();
-//    msgCounter++;
+        panelBox.add(btnCLike);
+
+    }
+    
+    public static void skrivUt(String text){
+    
+        System.out.println(text);
     }
 
 
@@ -152,7 +197,6 @@ public class PostGUI extends javax.swing.JFrame {
         lblPostLike = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(10000, 10000));
 
         jPanel1.setBackground(new java.awt.Color(77, 85, 92));
 
@@ -179,7 +223,7 @@ public class PostGUI extends javax.swing.JFrame {
         panelBox.setBackground(new java.awt.Color(158, 174, 187));
         panelBox.setAlignmentY(0.0F);
         panelBox.setAlignmentY(0.0F);
-        panelBox.setLayout(new javax.swing.BoxLayout(panelBox, javax.swing.BoxLayout.Y_AXIS));
+        panelBox.setLayout(new javax.swing.BoxLayout(panelBox, javax.swing.BoxLayout.PAGE_AXIS));
 
         panel.setBackground(new java.awt.Color(158, 174, 187));
         panel.setToolTipText("");
@@ -205,8 +249,8 @@ public class PostGUI extends javax.swing.JFrame {
         lblAuthor.setForeground(new java.awt.Color(158, 174, 187));
         lblAuthor.setText(publisher);
 
-        btnPGComment.setBackground(new java.awt.Color(202, 100, 91));
-        btnPGComment.setForeground(new java.awt.Color(158, 174, 187));
+        btnPGComment.setBackground(new java.awt.Color(0, 94, 125));
+        btnPGComment.setForeground(new java.awt.Color(245, 245, 245));
         btnPGComment.setText("Kommentera");
         btnPGComment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,8 +258,8 @@ public class PostGUI extends javax.swing.JFrame {
             }
         });
 
-        btnPGRedigera.setBackground(new java.awt.Color(202, 100, 91));
-        btnPGRedigera.setForeground(new java.awt.Color(158, 174, 187));
+        btnPGRedigera.setBackground(new java.awt.Color(0, 94, 125));
+        btnPGRedigera.setForeground(new java.awt.Color(245, 245, 245));
         btnPGRedigera.setText("Redigera Post");
         btnPGRedigera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,8 +267,8 @@ public class PostGUI extends javax.swing.JFrame {
             }
         });
 
-        btnPGUppdateraPost.setBackground(new java.awt.Color(202, 100, 91));
-        btnPGUppdateraPost.setForeground(new java.awt.Color(158, 174, 187));
+        btnPGUppdateraPost.setBackground(new java.awt.Color(0, 94, 125));
+        btnPGUppdateraPost.setForeground(new java.awt.Color(245, 245, 245));
         btnPGUppdateraPost.setText("Uppdatera Post");
         btnPGUppdateraPost.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,7 +276,8 @@ public class PostGUI extends javax.swing.JFrame {
             }
         });
 
-        btnHämtaFil.setBackground(new java.awt.Color(202, 100, 91));
+        btnHämtaFil.setBackground(new java.awt.Color(0, 94, 125));
+        btnHämtaFil.setForeground(new java.awt.Color(245, 245, 245));
         btnHämtaFil.setText("Hämta bifogad fil");
         btnHämtaFil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,9 +307,6 @@ public class PostGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -274,7 +316,7 @@ public class PostGUI extends javax.swing.JFrame {
                                     .addComponent(lblUniversitet)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(lblOrebro)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 396, Short.MAX_VALUE)
                                         .addComponent(btnPGComment, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,6 +333,10 @@ public class PostGUI extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnPGLike, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(109, 109, 109))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,11 +363,12 @@ public class PostGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPGLike, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -351,17 +398,16 @@ public class PostGUI extends javax.swing.JFrame {
 
     private void btnPGUppdateraPostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPGUppdateraPostActionPerformed
         // TODO add your handling code here:
-        try{
-        String newText = taPostText.getText();
-        Statement st = Connectivity.ConnectionClass.conn.createStatement();
-        String query = "UPDATE `Inlägg` SET Text = '"+newText+"' where Titel = '"+title+"';";
-        st.execute(query);
-        
-        btnPGUppdateraPost.setVisible(false);
-        btnPGRedigera.setEnabled(false);
-        taPostText.setEditable(false);
-        }
-        catch(Exception e){
+        try {
+            String newText = taPostText.getText();
+            Statement st = Connectivity.ConnectionClass.conn.createStatement();
+            String query = "UPDATE `Inlägg` SET Text = '" + newText + "' where Titel = '" + title + "';";
+            st.execute(query);
+
+            btnPGUppdateraPost.setVisible(false);
+            btnPGRedigera.setEnabled(false);
+            taPostText.setEditable(false);
+        } catch (Exception e) {
             System.out.println(e);
         }
     }//GEN-LAST:event_btnPGUppdateraPostActionPerformed
@@ -371,33 +417,37 @@ public class PostGUI extends javax.swing.JFrame {
         SFPT download = new SFPT();
         try {
             String home = System.getProperty("user.home");
-File file = new File(home+"/Downloads/" + fileObject );
+            File file = new File(home + "/Downloads/" + fileObject);
             download.connect();
-            download.download(fileObject,file.toString());
+            download.download(fileObject, file.toString());
             download.disconnect();
         } catch (JSchException | SftpException ex) {
             Logger.getLogger(PostGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        JOptionPane.showMessageDialog(null, "Filen: " + fileObject + " är nedladdad" );
+        JOptionPane.showMessageDialog(null, "Filen: " + fileObject + " är nedladdad");
     }//GEN-LAST:event_btnHämtaFilActionPerformed
 
     private void btnPGLikeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPGLikeMouseClicked
         // TODO add your handling code here:
-        
-        if(isLiked){
-            btnPGLike.setBackground(new java.awt.Color(77,85,92));
+
+        if (isLiked) {
+            btnPGLike.setBackground(new java.awt.Color(77, 85, 92));
             isLiked = false;
             new LikePost(postID);
         } else {
             btnPGLike.setBackground(new java.awt.Color(202, 100, 91));
             new LikePost(postID);
             isLiked = true;
-        
+
         }
-            Integer nrLikes = LikePost.likeCounter(postID);
-            lblPostLike.setText(nrLikes.toString());
-        
+        Integer nrLikes = LikePost.likeCounter(postID);
+        lblPostLike.setText(nrLikes.toString());
+
     }//GEN-LAST:event_btnPGLikeMouseClicked
+
+    public static void btnCLikeMouseClicked(java.awt.event.MouseEvent evt) {
+        // TODO add your handling code here:
+    }
 
     /**
      * @param args the command line arguments
@@ -430,7 +480,7 @@ File file = new File(home+"/Downloads/" + fileObject );
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new PostGUI(postID, publisher, title, postText).setVisible(true);
-            
+
             }
         });
     }

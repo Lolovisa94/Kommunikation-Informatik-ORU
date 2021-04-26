@@ -10,11 +10,18 @@ import Objects.CurrentUser;
 import Methods.SearchUser;
 import Validation.Validation;
 import java.awt.Dimension;
+import java.awt.event.MouseEvent;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JFrame;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import methods.EditForum;
+import methods.FetchChat;
 import methods.FetchPosts;
 import methods.User;
 
@@ -25,6 +32,7 @@ import methods.User;
 public class PageGUI extends javax.swing.JFrame {
 
     private SearchUser searchUser;
+    public static FetchPosts currentFetchPosts;
 
     /**
      * Creates new form StartingPageGUI
@@ -38,10 +46,14 @@ public class PageGUI extends javax.swing.JFrame {
         initializeGUIComponents();
 
         welcomeText(CurrentUser.currentUser.getName());
+        
+        
     }
+    
+
 
     public void initializeGUIComponents() {
-        lblSokresultat.setVisible(false);
+        lblISokresultat.setVisible(false);
         tblSoktaAnvandare.setVisible(false);
 
     }
@@ -93,7 +105,7 @@ public class PageGUI extends javax.swing.JFrame {
     public void selectForum() {
         resetPanel();
         resetMenu();
-        new FetchPosts();
+        currentFetchPosts = new FetchPosts();
         selForum.setVisible(true);
         pnlForum.setVisible(true);
         isSelForum = true;
@@ -117,6 +129,7 @@ public class PageGUI extends javax.swing.JFrame {
         selMeddelanden.setVisible(true);
         pnlMeddelanden.setVisible(true);
         isSelMeddelanden = true;
+        new FetchChat();
     }
 
     public void selectSokfunktion() {
@@ -219,15 +232,25 @@ public class PageGUI extends javax.swing.JFrame {
         lblKalender = new javax.swing.JLabel();
         pnlMeddelanden = new javax.swing.JPanel();
         lblMeddelanden = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblChats = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        panelBoxChat = new javax.swing.JPanel();
+        panelChat = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        taCreateChatMessage = new javax.swing.JTextArea();
+        btnSendChat = new javax.swing.JButton();
+        btnRefreshChat = new javax.swing.JButton();
         pnlSokfunktion = new javax.swing.JPanel();
         lblSokfunktion = new javax.swing.JLabel();
         tfSokText = new javax.swing.JTextField();
         btnSokAnvandare = new javax.swing.JPanel();
         lblbtnSokAnvandare = new javax.swing.JLabel();
-        lblSokresultat = new javax.swing.JLabel();
+        lblISokresultat = new javax.swing.JLabel();
         spSoktaAnvandare = new javax.swing.JScrollPane();
         tblSoktaAnvandare = new javax.swing.JTable();
         btnTaBortAnvändare = new javax.swing.JButton();
+        btnStartChat = new javax.swing.JButton();
         pnlForum = new javax.swing.JPanel();
         btnSkapaBloggtrad = new javax.swing.JPanel();
         lblbtnSkapaBloggtrad = new javax.swing.JLabel();
@@ -743,28 +766,67 @@ public class PageGUI extends javax.swing.JFrame {
         jLayeredPane2.add(pnlKalender, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pnlMeddelanden.setBackground(new java.awt.Color(158, 174, 187));
+        pnlMeddelanden.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblMeddelanden.setBackground(new java.awt.Color(77, 85, 92));
         lblMeddelanden.setFont(new java.awt.Font("Poppins Medium", 1, 48)); // NOI18N
         lblMeddelanden.setForeground(new java.awt.Color(77, 85, 92));
         lblMeddelanden.setText("Meddelanden");
+        pnlMeddelanden.add(lblMeddelanden, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 58, -1, 60));
 
-        javax.swing.GroupLayout pnlMeddelandenLayout = new javax.swing.GroupLayout(pnlMeddelanden);
-        pnlMeddelanden.setLayout(pnlMeddelandenLayout);
-        pnlMeddelandenLayout.setHorizontalGroup(
-            pnlMeddelandenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMeddelandenLayout.createSequentialGroup()
-                .addGap(413, 413, 413)
-                .addComponent(lblMeddelanden)
-                .addContainerGap(927, Short.MAX_VALUE))
-        );
-        pnlMeddelandenLayout.setVerticalGroup(
-            pnlMeddelandenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMeddelandenLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(lblMeddelanden, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(898, Short.MAX_VALUE))
-        );
+        tblChats.setAutoCreateRowSorter(true);
+        tblChats.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {}
+            },
+            new String [] {
+                "Chattar"
+            }
+        ));
+        jScrollPane1.setViewportView(tblChats);
+
+        pnlMeddelanden.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 161, 290, 633));
+
+        jScrollPane2.setBackground(new java.awt.Color(158, 174, 187));
+        jScrollPane2.setAutoscrolls(true);
+        jScrollPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        panelBoxChat.setBackground(new java.awt.Color(158, 174, 187));
+        panelBoxChat.setAlignmentY(0.0F);
+        panelBoxChat.setLayout(new javax.swing.BoxLayout(panelBoxChat, javax.swing.BoxLayout.PAGE_AXIS));
+
+        panelChat.setBackground(new java.awt.Color(158, 174, 187));
+        panelChat.setToolTipText("");
+        panelChat.setRequestFocusEnabled(false);
+        panelChat.setLayout(new javax.swing.BoxLayout(panelChat, javax.swing.BoxLayout.LINE_AXIS));
+        panelBoxChat.add(panelChat);
+
+        jScrollPane2.setViewportView(panelBoxChat);
+
+        pnlMeddelanden.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(384, 162, 810, 450));
+
+        taCreateChatMessage.setColumns(20);
+        taCreateChatMessage.setLineWrap(true);
+        taCreateChatMessage.setRows(5);
+        jScrollPane3.setViewportView(taCreateChatMessage);
+
+        pnlMeddelanden.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(387, 625, 720, 169));
+
+        btnSendChat.setText("Skicka");
+        btnSendChat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendChatActionPerformed(evt);
+            }
+        });
+        pnlMeddelanden.add(btnSendChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 630, -1, -1));
+
+        btnRefreshChat.setText("Refresh");
+        btnRefreshChat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshChatActionPerformed(evt);
+            }
+        });
+        pnlMeddelanden.add(btnRefreshChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, -1, -1));
 
         jLayeredPane2.add(pnlMeddelanden, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -809,8 +871,8 @@ public class PageGUI extends javax.swing.JFrame {
         lblbtnSokAnvandare.setIconTextGap(5);
         btnSokAnvandare.add(lblbtnSokAnvandare);
 
-        lblSokresultat.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblSokresultat.setForeground(new java.awt.Color(77, 85, 92));
+        lblISokresultat.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblISokresultat.setForeground(new java.awt.Color(77, 85, 92));
 
         spSoktaAnvandare.setBackground(new java.awt.Color(158, 174, 187));
         spSoktaAnvandare.setForeground(new java.awt.Color(77, 85, 92));
@@ -846,6 +908,13 @@ public class PageGUI extends javax.swing.JFrame {
             }
         });
 
+        btnStartChat.setText("Starta en chatt med användaren");
+        btnStartChat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStartChatActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlSokfunktionLayout = new javax.swing.GroupLayout(pnlSokfunktion);
         pnlSokfunktion.setLayout(pnlSokfunktionLayout);
         pnlSokfunktionLayout.setHorizontalGroup(
@@ -863,9 +932,12 @@ public class PageGUI extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnSokAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(lblSokresultat, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlSokfunktionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnTaBortAnvändare)
+                                .addComponent(lblISokresultat, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlSokfunktionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(pnlSokfunktionLayout.createSequentialGroup()
+                                    .addComponent(btnStartChat)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnTaBortAnvändare))
                                 .addComponent(spSoktaAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 764, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(717, Short.MAX_VALUE))
         );
@@ -879,11 +951,13 @@ public class PageGUI extends javax.swing.JFrame {
                     .addGroup(pnlSokfunktionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btnSokAnvandare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(tfSokText))
-                    .addComponent(lblSokresultat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblISokresultat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addComponent(spSoktaAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
-                .addComponent(btnTaBortAnvändare)
+                .addGroup(pnlSokfunktionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTaBortAnvändare)
+                    .addComponent(btnStartChat))
                 .addContainerGap(175, Short.MAX_VALUE))
         );
 
@@ -1069,6 +1143,23 @@ public class PageGUI extends javax.swing.JFrame {
         tblForum.getTableHeader().setBackground(new java.awt.Color(158, 174, 187));
 
         tblForum.getTableHeader().setBorder(new javax.swing.border.LineBorder(new java.awt.Color(77, 85, 92), 1, true));
+
+        tblForum.setAutoCreateRowSorter(true);
+
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(tblForum.getModel());
+        tblForum.setRowSorter(sorter);
+        ArrayList<RowSorter.SortKey> sortKeys = new ArrayList<>();
+
+        int columnIndexToSort = 3;
+        sortKeys.add(new RowSorter.SortKey(columnIndexToSort, SortOrder.DESCENDING));
+
+        sorter.setSortKeys(sortKeys);
+        sorter.sort();
+
+        tblForum.getColumnModel().getColumn(0).setPreferredWidth(8);
+        tblForum.getColumnModel().getColumn(1).setPreferredWidth(400);
+        tblForum.getColumnModel().getColumn(2).setPreferredWidth(20);
+        tblForum.getColumnModel().getColumn(3).setPreferredWidth(20);
 
         pnlForum.add(sPForum, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 1150, 465));
 
@@ -1498,7 +1589,7 @@ public class PageGUI extends javax.swing.JFrame {
     private void btnMeddelandenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMeddelandenMouseEntered
         // TODO add your handling code here:
         if (!isSelMeddelanden) {
-            selMeddelanden.setVisible(true);
+            selMeddelanden.setVisible(true);           
         }
     }//GEN-LAST:event_btnMeddelandenMouseEntered
 
@@ -1610,12 +1701,12 @@ public class PageGUI extends javax.swing.JFrame {
         boolean foundUsers = searchUser.findUsers(tfSokText.getText(), tblSoktaAnvandare);
         if (foundUsers) {
             tblSoktaAnvandare.setVisible(true);
-            lblSokresultat.setText("Klicka på användare för att se ytterligare information.");
-            lblSokresultat.setVisible(true);
+            lblISokresultat.setText("Klicka på användare för att se ytterligare information.");
+            lblISokresultat.setVisible(true);
         } else {
             tblSoktaAnvandare.setVisible(false);
-            lblSokresultat.setText("Sökningen gav inget resultat.");
-            lblSokresultat.setVisible(true);
+            lblISokresultat.setText("Sökningen gav inget resultat.");
+            lblISokresultat.setVisible(true);
         }
     }//GEN-LAST:event_btnSokAnvandareMouseClicked
 
@@ -1814,7 +1905,7 @@ public class PageGUI extends javax.swing.JFrame {
         int row = tblForum.getSelectedRow();
         String threadName = tblForum.getValueAt(row, 1).toString();
         EditForum.removeThread(threadName);
-        new FetchPosts();
+        currentFetchPosts.postList();
     }//GEN-LAST:event_btnTaBortBloggtradMouseClicked
 
     private void btnTaBortBloggtradMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTaBortBloggtradMouseEntered
@@ -1833,39 +1924,65 @@ public class PageGUI extends javax.swing.JFrame {
 
     private void cbFForskningMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbFForskningMouseClicked
         // TODO add your handling code here:
-        new FetchPosts();
+        currentFetchPosts.postList();
         
     }//GEN-LAST:event_cbFForskningMouseClicked
 
     private void cbFUtbildningMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbFUtbildningMouseClicked
         // TODO add your handling code here:
-        new FetchPosts();
+        currentFetchPosts.postList();
     }//GEN-LAST:event_cbFUtbildningMouseClicked
 
     private void cbFOvrigtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbFOvrigtMouseClicked
         // TODO add your handling code here:
-        new FetchPosts();
+        currentFetchPosts.postList();
     }//GEN-LAST:event_cbFOvrigtMouseClicked
 
-    private void tblSoktaAnvandareMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSoktaAnvandareMouseClicked
+    private void tblSoktaAnvandareMouseClicked(java.awt.event.MouseEvent evt) {                                               
         // TODO add your handling code here:
         int indexSelectedRow = tblSoktaAnvandare.getSelectedRow();
         
-        if(indexSelectedRow != -1) {
+        if (indexSelectedRow != -1) {
             String userID = searchUser.getUserID(indexSelectedRow);
-            
+
             ShowUserInformationGUI selectedUserInformation = new ShowUserInformationGUI(userID);
             selectedUserInformation.setVisible(true);
             selectedUserInformation.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         }
-    }//GEN-LAST:event_tblSoktaAnvandareMouseClicked
+    } 
+    private void btnRefreshChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshChatActionPerformed
+        // TODO add your handling code here:
+        methods.FetchChat.reloadChat();
+    }//GEN-LAST:event_btnRefreshChatActionPerformed
+
+    private void btnSendChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendChatActionPerformed
+        methods.FetchChat.sendChatMessage();
+        
+       methods.FetchChat.reloadChat();
+       
+       taCreateChatMessage.setText("");
+    }//GEN-LAST:event_btnSendChatActionPerformed
+
+    private void btnStartChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartChatActionPerformed
+        // TODO add your handling code here:
+        
+        int row = tblSoktaAnvandare.getSelectedRow();
+            String chatUserName = tblSoktaAnvandare.getValueAt(row, 0).toString();
+        if(methods.FetchChat.checkIfChatExists(chatUserName)){
+        
+            JOptionPane.showMessageDialog(null, "Du har redan en chatt med användaren, gå in på meddelande för att chatta :)");
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Chatt skapad med användaren, gå in på meddelande för att chatta :)");
+        }
+    }//GEN-LAST:event_btnStartChatActionPerformed
+                                           
 
     public void setRadio() {
 
         if (CurrentUser.currentUser.getNotify().equals("J")) {
 
             jRadioButton1.setSelected(true);
-
         } else {
 
             jRadioButton2.setSelected(true);
@@ -1890,9 +2007,12 @@ public class PageGUI extends javax.swing.JFrame {
     public static javax.swing.JPanel btnMeddelanden;
     private javax.swing.JButton btnPIUppdatera;
     public static javax.swing.JPanel btnProfilinstallningar;
+    private javax.swing.JButton btnRefreshChat;
+    private javax.swing.JButton btnSendChat;
     private javax.swing.JPanel btnSkapaBloggtrad;
     private javax.swing.JPanel btnSokAnvandare;
     public static javax.swing.JPanel btnSokfunktion;
+    private javax.swing.JButton btnStartChat;
     public static javax.swing.JPanel btnStartsida;
     private javax.swing.JButton btnTaBortAnvändare;
     public static javax.swing.JPanel btnTaBortBloggtrad;
@@ -1906,6 +2026,9 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane2;
     public static javax.swing.JRadioButton jRadioButton1;
     public static javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblAdminFraga;
     private javax.swing.JLabel lblAnvEpost;
     private javax.swing.JLabel lblAnvLosenord;
@@ -1923,6 +2046,7 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblFUtbildning;
     private javax.swing.JLabel lblFVisaKategorier;
     private javax.swing.JLabel lblForum;
+    private javax.swing.JLabel lblISokresultat;
     private javax.swing.JLabel lblKalender;
     private javax.swing.JLabel lblLaggTillAnvError;
     private javax.swing.JLabel lblLaggTillAnvandare;
@@ -1939,12 +2063,13 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblPIUserName;
     private javax.swing.JLabel lblPersonligaInstallningarText;
     private javax.swing.JLabel lblSokfunktion;
-    private javax.swing.JLabel lblSokresultat;
     private javax.swing.JLabel lblUniversitet;
     private javax.swing.JLabel lblWelcome;
     private javax.swing.JLabel lblbtnSkapaBloggtrad;
     private javax.swing.JLabel lblbtnSokAnvandare;
     private javax.swing.JLabel lblbtnTaBortBloggtrad;
+    public static javax.swing.JPanel panelBoxChat;
+    public static javax.swing.JPanel panelChat;
     private javax.swing.JPanel panelMenu;
     private javax.swing.JPanel panelMenuBackground;
     private javax.swing.JPanel panelMenuLogga;
@@ -1968,6 +2093,8 @@ public class PageGUI extends javax.swing.JFrame {
     private javax.swing.JPanel selStartsida;
     private javax.swing.JSeparator sepFSok;
     private javax.swing.JScrollPane spSoktaAnvandare;
+    public static javax.swing.JTextArea taCreateChatMessage;
+    public static javax.swing.JTable tblChats;
     public static javax.swing.JTable tblForum;
     private javax.swing.JTable tblSoktaAnvandare;
     private javax.swing.JTextField tfAnvNamn;

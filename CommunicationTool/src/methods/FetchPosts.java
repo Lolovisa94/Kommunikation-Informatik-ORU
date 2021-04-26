@@ -25,6 +25,7 @@ public class FetchPosts {
     public FetchPosts(){
     
     postList();
+    mouseClicker();
     }
     
 
@@ -36,41 +37,41 @@ public class FetchPosts {
 
         if (PageGUI.cbFOvrigt.isSelected() && !PageGUI.cbFUtbildning.isSelected() && !PageGUI.cbFForskning.isSelected()) {
 
-            postsSQLQuery = "SELECT i.titel, i.publiceringsdatum, k.namn AS Kategori, a.Namn AS Publicerare FROM Inlägg i INNER JOIN Kategori k ON k.kategori_id = i.kategori_id"
+            postsSQLQuery = "SELECT i.titel, i.publiceringsdatum, i.publiceringstid, k.namn AS Kategori, a.Namn AS Publicerare FROM Inlägg i INNER JOIN Kategori k ON k.kategori_id = i.kategori_id"
                     + " INNER JOIN Inlägg_Användare ia ON ia.Inlägg_ID = i.Inlägg_ID"
                     + " INNER JOIN Användare a ON a.Användare_ID = ia.Användare_ID"
                     + " WHERE k.namn = 'Allmänt'";
         } else if (!PageGUI.cbFOvrigt.isSelected() && PageGUI.cbFUtbildning.isSelected() && !PageGUI.cbFForskning.isSelected()) {
-            postsSQLQuery = "SELECT i.titel, i.publiceringsdatum, k.namn AS Kategori, a.Namn AS Publicerare FROM Inlägg i INNER JOIN Kategori k ON k.kategori_id = i.kategori_id"
+            postsSQLQuery = "SELECT i.titel, i.publiceringsdatum, i.publiceringstid, k.namn AS Kategori, a.Namn AS Publicerare FROM Inlägg i INNER JOIN Kategori k ON k.kategori_id = i.kategori_id"
                     + " INNER JOIN Inlägg_Användare ia ON ia.Inlägg_ID = i.Inlägg_ID"
                     + " INNER JOIN Användare a ON a.Användare_ID = ia.Användare_ID"
                     + " WHERE k.namn = 'Utbildning'";
 
         } else if (!PageGUI.cbFOvrigt.isSelected() && !PageGUI.cbFUtbildning.isSelected() && PageGUI.cbFForskning.isSelected()) {
-            postsSQLQuery = "SELECT i.titel, i.publiceringsdatum, k.namn AS Kategori, a.Namn AS Publicerare FROM Inlägg i INNER JOIN Kategori k ON k.kategori_id = i.kategori_id"
+            postsSQLQuery = "SELECT i.titel, i.publiceringsdatum, i.publiceringstid, k.namn AS Kategori, a.Namn AS Publicerare FROM Inlägg i INNER JOIN Kategori k ON k.kategori_id = i.kategori_id"
                     + " INNER JOIN Inlägg_Användare ia ON ia.Inlägg_ID = i.Inlägg_ID"
                     + " INNER JOIN Användare a ON a.Användare_ID = ia.Användare_ID"
                     + " WHERE k.namn = 'Forskning'";
         } else if (PageGUI.cbFOvrigt.isSelected() && PageGUI.cbFUtbildning.isSelected() && !PageGUI.cbFForskning.isSelected()) {
-            postsSQLQuery = "SELECT i.titel, i.publiceringsdatum, k.namn AS Kategori, a.Namn AS Publicerare FROM Inlägg i INNER JOIN Kategori k ON k.kategori_id = i.kategori_id"
+            postsSQLQuery = "SELECT i.titel, i.publiceringsdatum, i.publiceringstid, k.namn AS Kategori, a.Namn AS Publicerare FROM Inlägg i INNER JOIN Kategori k ON k.kategori_id = i.kategori_id"
                     + " INNER JOIN Inlägg_Användare ia ON ia.Inlägg_ID = i.Inlägg_ID"
                     + " INNER JOIN Användare a ON a.Användare_ID = ia.Användare_ID"
                     + " WHERE k.namn = 'Allmänt' OR k.namn = 'Utbildning'";
 
         } else if (!PageGUI.cbFOvrigt.isSelected() && PageGUI.cbFUtbildning.isSelected() && PageGUI.cbFForskning.isSelected()) {
-            postsSQLQuery = "SELECT i.titel, i.publiceringsdatum, k.namn AS Kategori, a.Namn AS Publicerare FROM Inlägg i INNER JOIN Kategori k ON k.kategori_id = i.kategori_id"
+            postsSQLQuery = "SELECT i.titel, i.publiceringsdatum, i.publiceringstid, k.namn AS Kategori, a.Namn AS Publicerare FROM Inlägg i INNER JOIN Kategori k ON k.kategori_id = i.kategori_id"
                     + " INNER JOIN Inlägg_Användare ia ON ia.Inlägg_ID = i.Inlägg_ID"
                     + " INNER JOIN Användare a ON a.Användare_ID = ia.Användare_ID"
                     + " WHERE k.namn = 'Forskning' OR k.namn = 'Utbildning'";
 
         } else if (PageGUI.cbFOvrigt.isSelected() && !PageGUI.cbFUtbildning.isSelected() && PageGUI.cbFForskning.isSelected()) {
-            postsSQLQuery = "SELECT i.titel, i.publiceringsdatum, k.namn AS Kategori, a.Namn AS Publicerare FROM Inlägg i INNER JOIN Kategori k ON k.kategori_id = i.kategori_id"
+            postsSQLQuery = "SELECT i.titel, i.publiceringsdatum, i.publiceringstid, k.namn AS Kategori, a.Namn AS Publicerare FROM Inlägg i INNER JOIN Kategori k ON k.kategori_id = i.kategori_id"
                     + " INNER JOIN Inlägg_Användare ia ON ia.Inlägg_ID = i.Inlägg_ID"
                     + " INNER JOIN Användare a ON a.Användare_ID = ia.Användare_ID"
                     + " WHERE k.namn = 'Allmänt' OR k.namn = 'Forskning'";
 
         } else if (PageGUI.cbFOvrigt.isSelected() && PageGUI.cbFUtbildning.isSelected() && PageGUI.cbFForskning.isSelected()) {
-            postsSQLQuery = "SELECT i.titel, i.publiceringsdatum, k.namn AS Kategori, a.Namn AS Publicerare FROM Inlägg i INNER JOIN Kategori k ON k.kategori_id = i.kategori_id"
+            postsSQLQuery = "SELECT i.titel, i.publiceringsdatum, i.publiceringstid, k.namn AS Kategori, a.Namn AS Publicerare FROM Inlägg i INNER JOIN Kategori k ON k.kategori_id = i.kategori_id"
                     + " INNER JOIN Inlägg_Användare ia ON ia.Inlägg_ID = i.Inlägg_ID"
                     + " INNER JOIN Användare a ON a.Användare_ID = ia.Användare_ID";
 
@@ -89,12 +90,11 @@ public class FetchPosts {
                     String category = rs.getString("Kategori");
                     String title = rs.getString ("Titel");
                     String publisher = rs.getString("Publicerare");
-                    String date = rs.getString("PubliceringsDatum");
-                    
+                    String date = rs.getString("PubliceringsDatum") + ", kl. " + rs.getString("PubliceringsTid");
                     model.insertRow(PageGUI.tblForum.getRowCount(), new Object[] {category, title, publisher, date});
                     
                 }
-                mouseClicker();
+//                mouseClicker();
             } catch (Exception e) {
                 System.out.println(e);
 

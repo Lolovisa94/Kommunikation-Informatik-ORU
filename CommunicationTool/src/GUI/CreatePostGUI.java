@@ -21,62 +21,58 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import methods.Filnamn;
 import methods.SFPT;
+
 /**
  *
  * @author Pierre
  */
 public class CreatePostGUI extends javax.swing.JFrame {
+
     private ResultSet rs = null;
     private String filename;
+
     /**
      * Creates new form CreatePostGUI
      */
     public CreatePostGUI() {
         initComponents();
         fillCategories();
-                    
+
     }
-            private void fillCategories()
-        {
-            try
-            {       
-                Statement st = Connectivity.ConnectionClass.conn.createStatement();
-                String categorySQL = "SELECT Namn FROM Kategori";
-                rs = st.executeQuery(categorySQL);
-                while(rs.next()) 
-                {
-                    cbCategory.addItem(rs.getString("Namn"));
-                }
+
+    private void fillCategories() {
+        try {
+            Statement st = Connectivity.ConnectionClass.conn.createStatement();
+            String categorySQL = "SELECT Namn FROM Kategori";
+            rs = st.executeQuery(categorySQL);
+            while (rs.next()) {
+                cbCategory.addItem(rs.getString("Namn"));
             }
-            catch(Exception e)
-            {
-                
-                
-            }
+        } catch (Exception e) {
+
         }
-    public static String textField()
-    {
-        
+    }
+
+    public static String textField() {
+
         String text = taText.getText();
         textEmpty = Validation.Validation.fieldEmpty(text);
         textTooLong = Validation.Validation.fieldTooLong(text, 8000);
-        
-        
+
         return text;
     }
-    public static String getCategory()
-    {
+
+    public static String getCategory() {
         String category = cbCategory.getSelectedItem().toString();
         return category;
     }
-    public static String getTitel()
-    {
+
+    public static String getTitel() {
         String titel = tfTitel.getText();
         titleEmpty = Validation.Validation.fieldEmpty(titel);
         titleTooLong = Validation.Validation.fieldTooLong(titel, 45);
         return titel;
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -279,76 +275,98 @@ public class CreatePostGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfTitelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTitelActionPerformed
-        
+
     }//GEN-LAST:event_tfTitelActionPerformed
 
     private void btnPostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPostActionPerformed
-Filnamn namn = new Filnamn();
-         boolean nameInfo=false; 
-            if(filename!=null){
-                try {
-                    namn.Filnamn(filename);
-               nameInfo =namn.checkFileName(namn.getFilename());
-                 
-                } catch (Exception ex) {
-                 
-                }
-            }else{
-                new CreatePost();
-                dispose();
-                 new FetchPosts(); 
-             
+        createPost();
+    }//GEN-LAST:event_btnPostActionPerformed
+
+    public void createPost() {
+
+        Filnamn newFile = new Filnamn();
+        boolean fileNameExists = false;
+//        boolean createPostWithoutFile = false;
+//        boolean createPostWithFile = false;
+        if (filename != null) {
+            try {
+                newFile.Filnamn(filename);
+                fileNameExists = newFile.checkFileName(newFile.getFilename());
+
+            } catch (Exception e){
+                System.out.println(e);
+
             }
-        if(nameInfo==false){
+        } 
+//        else {
+//            createPostWithoutFile = true;
             new CreatePost();
-        SFPT uploadFile= new SFPT();
+//            dispose();
+//            new FetchPosts();
+//
+//        }
+        if (fileNameExists == false) {
+//            createPostWithFile = true;
+//            new CreatePost();
+            SFPT uploadFile = new SFPT();
             try {
                 uploadFile.connect();
                 uploadFile.upload(filename);
                 uploadFile.disconnect();
-            try {
-                namn.linkFileToPost(namn.getFilename());
-            } catch (SQLException ex) {
-                Logger.getLogger(CreatePostGUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                
+                try {
+                    newFile.linkFileToPost(newFile.getFilename());
+                } catch (SQLException ex) {
+                    Logger.getLogger(CreatePostGUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
             } catch (JSchException ex) {
                 Logger.getLogger(CreatePostGUI.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SftpException ex) {
                 Logger.getLogger(CreatePostGUI.class.getName()).log(Level.SEVERE, null, ex);
             }
-            dispose();
-                 new FetchPosts(); 
-        }else{
-       
-         JOptionPane.showMessageDialog(null, "Du måste tyvärr byta till något annat namn på filen");
+//            dispose();
+//            new FetchPosts();
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Du måste tyvärr byta till något annat namn på filen");
         }
-    }//GEN-LAST:event_btnPostActionPerformed
+
+        //Ny kod, ersätter det som är utkommenterat i denna klass. 
+//        if (createPostNow) {
+//            new CreatePost();
+            dispose();
+            PageGUI.currentFetchPosts.postList();
+//        }
+    }
 
     private void cbCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCategoryActionPerformed
-            
+
     }//GEN-LAST:event_cbCategoryActionPerformed
 
     private void btnBifogaFilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBifogaFilActionPerformed
         // TODO add your handling code here:
-                JFileChooser createPost = new JFileChooser();
-        createPost.setVisible(true);
+        chooseFile();
+
+    }//GEN-LAST:event_btnBifogaFilActionPerformed
+
+    public void chooseFile() {
+//        JFileChooser fileChooser = new JFileChooser();
+//        fileChooser.setVisible(true);
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
         String filename = f.getAbsolutePath();
         setFilename(filename);
-        
-    }//GEN-LAST:event_btnBifogaFilActionPerformed
+    }
 
-    public void setFilename(String filename){
-this.filename=filename;
-}
-    
-    public String getFilename(){
-return filename;
-}
-    
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
     /**
      * @param args the command line arguments
      */

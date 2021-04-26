@@ -5,6 +5,7 @@
  */
 package methods;
 
+import GUI.PostGUI;
 import Objects.CurrentComments;
 import Objects.CurrentUser;
 import java.sql.Statement;
@@ -24,6 +25,8 @@ public class PostComment {
         this.postID = postID;
         this.date = java.time.LocalDate.now().toString();
         postComment();
+        PostGUI.clearMessage();
+        new FetchComments(postID);
 
     }
 

@@ -14,16 +14,16 @@ import java.sql.ResultSet;
  *
  * @author Pierre
  */
-public class LikePost {
+public class LikeComment {
 
     private ResultSet rs;
     private String query;
-    private int postID;
+    private int commentID;
     private int userID;
     public static boolean like;
 
-    public LikePost(int postID) {
-        this.postID = postID;
+    public LikeComment(int commentID) {
+        this.commentID = commentID;
         this.userID = CurrentUser.currentUser.getID();
         this.like = false;
         likePost();
@@ -45,29 +45,29 @@ public class LikePost {
 
     public void setQuery() {
 
-        if (checkLike(postID)) {
+        if (checkLike(commentID)) {
 
             if (like) {
 
-                query = "UPDATE Gilla_Inlägg SET Gillar = 'N' WHERE Användare_ID =" + userID + " AND Inlägg_ID =" + postID;
+                query = "UPDATE Gilla_Kommentar SET Gillar = 'N' WHERE Användare_ID =" + userID + " AND Kommentar_ID =" + commentID;
 
             } else {
 
-                query = "UPDATE Gilla_Inlägg SET Gillar = 'J' WHERE Användare_ID =" + userID + " AND Inlägg_ID =" + postID;
+                query = "UPDATE Gilla_Kommentar SET Gillar = 'J' WHERE Användare_ID =" + userID + " AND Kommentar_ID =" + commentID;
 
             }
 
         } else {
 
-            query = "INSERT INTO Gilla_Inlägg (Gillar, Användare_ID, Inlägg_ID) VALUES('J' ," + userID + "," + postID + ")";
+            query = "INSERT INTO Gilla_Kommentar (Gillar, Användare_ID, Kommentar_ID) VALUES('J' ," + userID + "," + commentID + ")";
 
         }
 
     }
 
-    public static boolean checkLike(int postID) {
+    public static boolean checkLike(int commentID) {
         boolean hasLiked = false;
-        String checkLike = "SELECT Gillar FROM Gilla_Inlägg WHERE Användare_ID = " + CurrentUser.currentUser.getID() + " AND Inlägg_ID = " + postID;
+        String checkLike = "SELECT Gillar FROM Gilla_Kommentar WHERE Användare_ID = " + CurrentUser.currentUser.getID() + " AND Kommentar_ID = " + commentID;
         ResultSet rsLike;
         try {
 
@@ -109,9 +109,9 @@ public class LikePost {
         return hasLiked;
     }
 
-    public static boolean checkLikeJN(int postID) {
+    public static boolean checkLikeJN(int commentID) {
         boolean Likes = false;
-        String checkLike = "SELECT Gillar FROM Gilla_Inlägg WHERE Användare_ID = " + CurrentUser.currentUser.getID() + " AND Inlägg_ID = " + postID;
+        String checkLike = "SELECT Gillar FROM Gilla_Kommentar WHERE Användare_ID = " + CurrentUser.currentUser.getID() + " AND Kommentar_ID = " + commentID;
         ResultSet rsLike;
 
         try {
@@ -141,11 +141,11 @@ public class LikePost {
 
     }
 
-    public static int likeCounter(int postID) {
+    public static int likeCounter(int commentID) {
 
         int likeCounter = 0;
 
-        String checkLike = "SELECT COUNT(*) AS Total FROM Gilla_Inlägg WHERE GIllar = 'J' AND Inlägg_ID =" + postID;
+        String checkLike = "SELECT COUNT(*) AS Total FROM Kommentar_Inlägg WHERE GIllar = 'J' AND Inlägg_ID =" + commentID;
         ResultSet rsCount;
         try {
 
