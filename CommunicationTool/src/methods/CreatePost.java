@@ -66,7 +66,7 @@ public final class CreatePost
                 LatestPost.inlagg = newPost; 
                 
                 Mail mail = new Mail();
-                mail.lagraEmail();
+                mail.postEmail(titel);
                 mail.iterationMail();
             }
     }       

@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import Objects.CurrentFP;
+import Objects.CurrentIFP;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.SftpException;
 import java.io.File;
@@ -359,7 +361,9 @@ public class CreatePostGUI extends javax.swing.JFrame {
 //        if (createPostNow) {
 //            new CreatePost();
             dispose();
-            PageGUI.currentFetchPosts.postList();
+        CurrentFP.currentFP.postList();
+        CurrentIFP.currentIFP.postList();
+            
 //        }
     }
 
