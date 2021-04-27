@@ -2421,18 +2421,18 @@ public class PageGUI extends javax.swing.JFrame {
 
     private void cbFForskningMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbFForskningMouseClicked
         // TODO add your handling code here:
-        currentFetchPosts.postList();
+         CurrentFP.currentFP.postList();
 
     }//GEN-LAST:event_cbFForskningMouseClicked
 
     private void cbFUtbildningMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbFUtbildningMouseClicked
         // TODO add your handling code here:
-        currentFetchPosts.postList();
+        CurrentFP.currentFP.postList();
     }//GEN-LAST:event_cbFUtbildningMouseClicked
 
     private void cbFOvrigtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbFOvrigtMouseClicked
         // TODO add your handling code here:
-        currentFetchPosts.postList();
+        CurrentFP.currentFP.postList();
     }//GEN-LAST:event_cbFOvrigtMouseClicked
 
     private void tblSoktaAnvandareMouseClicked(java.awt.event.MouseEvent evt) {
